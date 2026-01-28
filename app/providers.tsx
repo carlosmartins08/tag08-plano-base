@@ -2,9 +2,19 @@
 
 import React, { useEffect } from 'react';
 import { LanguageProvider } from '../components/LanguageContext';
+import { UXProvider, useUX } from '../components/UXContext';
+import { Language } from '../types';
 
-// Fix: Providers children are made optional to handle cases where it might be missing or passed as undefined.
-export function Providers({ children }: { children?: React.ReactNode }) {
+const BlueprintWrapper = ({ children }: { children?: React.ReactNode }) => {
+  const { isBlueprintMode } = useUX();
+  return (
+    <div className={`${isBlueprintMode ? 'blueprint-active' : ''} min-h-screen transition-colors duration-500`}>
+      {children}
+    </div>
+  );
+};
+
+export function Providers({ children, initialLanguage }: { children?: React.ReactNode, initialLanguage?: Language }) {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -26,8 +36,12 @@ export function Providers({ children }: { children?: React.ReactNode }) {
   }, []);
 
   return (
-    <LanguageProvider>
-      {children}
+    <LanguageProvider initialLanguage={initialLanguage}>
+      <UXProvider>
+        <BlueprintWrapper>
+          {children}
+        </BlueprintWrapper>
+      </UXProvider>
     </LanguageProvider>
   );
 }

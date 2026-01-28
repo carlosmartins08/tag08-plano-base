@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://tag08.com.br</loc>
-<lastmod>2026-01-13T15:23:03.951Z</lastmod>
+<loc>https://tag08.com.br/pt</loc>
+<lastmod>2026-01-28T03:22:19.914Z</lastmod>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://tag08.com.br/en</loc>
+<lastmod>2026-01-28T03:22:19.914Z</lastmod>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://tag08.com.br/es</loc>
+<lastmod>2026-01-28T03:22:19.914Z</lastmod>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://tag08.com.br/fr</loc>
+<lastmod>2026-01-28T03:22:19.914Z</lastmod>
 <priority>1</priority>
 </url>
 </urlset>

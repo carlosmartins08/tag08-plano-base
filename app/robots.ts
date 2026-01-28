@@ -1,11 +1,14 @@
+import { SITE_CONFIG } from '../constants';
+
 const robotsConfig = {
   rules: [
     {
       userAgent: '*',
       allow: '/',
+      disallow: ['/_next/', '/api/'],
     },
   ],
-  sitemap: 'https://tag08.com.br/sitemap.xml',
+  sitemap: `${SITE_CONFIG.domain}/sitemap.xml`,
 };
 
 export default function robots() {

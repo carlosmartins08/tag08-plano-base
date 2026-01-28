@@ -28,11 +28,17 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const GA_TRACKING_ID = 'G-ZJ9SRM27Y9';
 const GOOGLE_ADS_ID = 'AW-823454219';
 
-export const LanguageProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('pt');
+export const LanguageProvider: React.FC<{ children?: React.ReactNode, initialLanguage?: Language }> = ({ children, initialLanguage }) => {
+  const [language, setLanguageState] = useState<Language>(initialLanguage || 'pt');
   const [isPrivacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [isCookieModalOpen, setCookieModalOpen] = useState(false);
   const [cookieConsent, setCookieConsent] = useState<CookieConsent | null>(null);
+
+  useEffect(() => {
+    if (initialLanguage && initialLanguage !== language) {
+      setLanguageState(initialLanguage);
+    }
+  }, [initialLanguage, language]);
 
   // Function to load Google Analytics / Ads based on consent
   const loadGoogleAnalytics = (consentOverride?: CookieConsent) => {
@@ -64,10 +70,10 @@ export const LanguageProvider: React.FC<{ children?: React.ReactNode }> = ({ chi
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        ${configLines.join('\\n        ')}
+        ${configLines.join('\n        ')}
       `;
       doc.head.appendChild(inlineScript);
-      
+
       console.debug('Google Analytics / Ads ativado com sucesso.');
     } else {
       const gtagFn = (window as typeof globalThis & { gtag?: CallableFunction }).gtag;
@@ -84,39 +90,44 @@ export const LanguageProvider: React.FC<{ children?: React.ReactNode }> = ({ chi
 
 
   useEffect(() => {
-    // Carregar idioma
-    const savedLang = localStorage.getItem('tag08-lang') as Language | null;
-    const supportedLanguages: Language[] = ['pt', 'en', 'es', 'fr'];
-
-    if (savedLang && supportedLanguages.includes(savedLang)) {
-      setLanguageState(savedLang);
-    } else {
-      const browserLang = navigator.language.toLowerCase();
-      let resolvedLang: Language = 'en';
-
-      if (browserLang === 'pt-br' || browserLang === 'pt-pt') {
-        resolvedLang = 'pt';
-      } else if (browserLang === 'es' || browserLang === 'es-419') {
-        resolvedLang = 'es';
-      } else if (browserLang === 'fr') {
-        resolvedLang = 'fr';
-      }
-
-      setLanguageState(resolvedLang);
-    }
-
     // Carregar consentimento de cookies
     const savedConsent = localStorage.getItem('tag08-cookie-preferences');
     if (savedConsent) {
       const parsedConsent: CookieConsent = JSON.parse(savedConsent);
       setCookieConsent(parsedConsent);
-      
+
       // Se houver consentimento salvo, com Analytics ou Marketing
       loadGoogleAnalytics(parsedConsent);
     }
-  }, []);
+
+    // If no initial language, fallback to local storage or browser
+    if (!initialLanguage) {
+      const savedLang = localStorage.getItem('tag08-lang') as Language | null;
+      const supportedLanguages: Language[] = ['pt', 'en', 'es', 'fr'];
+
+      if (savedLang && supportedLanguages.includes(savedLang)) {
+        setLanguageState(savedLang);
+      } else {
+        const browserLang = navigator.language.toLowerCase();
+        let resolvedLang: Language = 'en';
+
+        if (browserLang.includes('pt')) {
+          resolvedLang = 'pt';
+        } else if (browserLang.includes('es')) {
+          resolvedLang = 'es';
+        } else if (browserLang.includes('fr')) {
+          resolvedLang = 'fr';
+        }
+
+        setLanguageState(resolvedLang);
+      }
+    }
+  }, [initialLanguage]);
 
   const setLanguage = (lang: Language) => {
+    // With URL routing, we should probably redirect instead of just setting state
+    // But for now, we'll keep the state set so components can react immediately
+    // The LanguageSwitcher will handle the actual URL change
     setLanguageState(lang);
     localStorage.setItem('tag08-lang', lang);
     document.documentElement.lang = lang;
@@ -125,25 +136,23 @@ export const LanguageProvider: React.FC<{ children?: React.ReactNode }> = ({ chi
   const updateCookieConsent = (consent: CookieConsent) => {
     setCookieConsent(consent);
     localStorage.setItem('tag08-cookie-preferences', JSON.stringify(consent));
-    
+
     // Gerenciamento dinâmico de scripts baseado no novo consentimento
     if (consent.analytical || consent.marketing) {
       loadGoogleAnalytics(consent);
     } else {
       console.debug('Scripts Analiticos desativados pelo usuario.');
-      // Nota: Remover scripts do DOM nao remove necessariamente os rastreadores ja inicializados na sessao,
-      // mas impede novos carregamentos e obedece a escolha do usuario para sessoes futuras.
     }
-    
+
     if (consent.marketing) {
       console.debug('Iniciando Scripts de Marketing (Pixel/Ads)...');
     }
   };
 
   return (
-    <LanguageContext.Provider value={{ 
-      language, 
-      setLanguage, 
+    <LanguageContext.Provider value={{
+      language,
+      setLanguage,
       t: translations[language],
       isPrivacyModalOpen,
       setPrivacyModalOpen,

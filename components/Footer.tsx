@@ -1,205 +1,226 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { Icons } from '../constants';
 import { useTranslation } from './LanguageContext';
+import { useUX } from './UXContext';
+import Button from './Button';
+import BrandLogo from './BrandLogo';
+import {
+  ArrowUpRight,
+  MapPin,
+  Mail,
+  Instagram,
+  Linkedin,
+  Facebook,
+  Youtube,
+  Twitter,
+  Phone,
+  ShieldCheck,
+} from 'lucide-react';
+
+const socialLinks = [
+  { href: 'https://instagram.com/tag08.com.br', label: 'Instagram', icon: Instagram },
+  { href: 'https://linkedin.com/company/tag08-com-br/', label: 'LinkedIn', icon: Linkedin },
+  { href: 'https://www.facebook.com/tag08.com.br', label: 'Facebook', icon: Facebook },
+  { href: 'https://www.youtube.com/@tag08portfolio66', label: 'YouTube', icon: Youtube },
+  { href: 'https://twitter.com/TAG08_com_br', label: 'Twitter', icon: Twitter },
+];
 
 const Footer: React.FC = () => {
   const { t, setPrivacyModalOpen, setCookieModalOpen } = useTranslation();
+  const { setStrategyNote } = useUX();
 
   const handleResetCookies = () => {
     localStorage.removeItem('tag08-cookie-preferences');
     window.location.reload();
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const socialLinks = [
-    { name: 'Instagram', href: 'http://instagram.com/tag08.com.br', icon: <Icons.Instagram />, aria: 'Siga a TAG08 no Instagram' },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/tag08-com-br/', icon: <Icons.Linkedin />, aria: 'Conecte-se conosco no LinkedIn' },
-    { name: 'YouTube', href: 'https://www.youtube.com/@tag08portfolio66', icon: <Icons.Youtube />, aria: 'Assista nossos cases no YouTube' },
-    { name: 'Facebook', href: 'https://www.facebook.com/tag08.com.br', icon: <Icons.Facebook />, aria: 'Curta nossa página no Facebook' },
-    { name: 'Twitter', href: 'https://twitter.com/TAG08_com_br', icon: <Icons.TwitterX />, aria: 'Siga a TAG08 no X (Twitter)' },
-    { name: 'Pinterest', href: 'https://br.pinterest.com/contatotag08/', icon: <Icons.Pinterest />, aria: 'Veja nossas inspirações no Pinterest' },
-  ];
-
   return (
-    <footer 
-      className="relative bg-brand-black text-slate-400 pt-32 pb-12 border-t border-white/5 overflow-hidden bg-noise"
-      itemScope 
+    <footer
+      id="contato"
+      className="bg-brand-black text-white border-t border-white/10 relative overflow-hidden bg-noise"
+      itemScope
       itemType="https://schema.org/Organization"
+      onMouseEnter={() => setStrategyNote(t.strategyNotes.hero)}
+      onMouseLeave={() => setStrategyNote(null)}
     >
-      {/* Dados Estruturados Ocultos para SEO */}
       <meta itemProp="name" content="TAG08 Studio Creations" />
       <meta itemProp="url" content="https://tag08.com.br" />
       <meta itemProp="logo" content="https://tag08.com.br/logo.png" />
       <meta itemProp="legalName" content="TAG08 STUDIO CREATIONS LTDA" />
 
-      {/* Elementos Decorativos de Background */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-lime/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true"></div>
-      
-      <div className="absolute bottom-0 left-0 w-full pointer-events-none select-none overflow-hidden z-0 opacity-[0.02]" aria-hidden="true">
-        <span className="text-[25vw] font-black leading-none whitespace-nowrap -mb-10 block">
-          TAG08 STUDIO
-        </span>
+      <div className="py-24 px-4 relative z-10">
+        <div className="max-w-5xl mx-auto text-center space-y-8 reveal relative">
+          <span className="blueprint-label -top-8 left-1/2 -translate-x-1/2">CONVERSION_FINAL: CTA_BLOCK</span>
+          <div className="inline-flex items-center gap-2 text-brand-lime bg-brand-lime/5 border border-brand-lime/20 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold mx-auto relative">
+            <ShieldCheck size={12} />
+            {t.footer.badge}
+            <span className="blueprint-label -right-16 top-0">SSL_ENCRYPTED</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-6xl font-black leading-[0.9] tracking-tighter uppercase italic">
+            {t.footer.title} <br />
+            <span className="text-brand-lime">{t.footer.titleAccent}</span>
+          </h2>
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
+            {t.footer.description}
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-6 pt-12 relative">
+            <span className="blueprint-label -top-4 right-0">ACTION_TYPE: REDIRECT</span>
+            <Button
+              className="px-10 py-5 text-sm uppercase tracking-widest italic font-black shadow-xl"
+              onClick={() => window.open('https://wa.me/message/XURZIJ762YMVB1', '_blank')}
+            >
+              {t.footer.ctaDiagnosis}
+              <ArrowUpRight className="ml-3 w-5 h-5" />
+            </Button>
+            <Button
+              variant="outline"
+              className="px-10 py-5 text-sm uppercase tracking-widest italic font-black border-white/10 hover:border-brand-lime hover:text-brand-lime transition-all"
+              onClick={() => window.open('https://tag08.com.br/contato', '_blank')}
+            >
+              {t.footer.ctaDirection}
+            </Button>
+          </div>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 mb-24">
-          
-          {/* Coluna de Branding e Social */}
-          <div className="lg:col-span-4 flex flex-col items-start">
-            <Link href="/" className="flex items-center gap-4 mb-8 group" aria-label="TAG08 Studio - Voltar para Home">
-              <Icons.LogoIcon />
-              <div className="flex flex-col">
-                <span className="text-3xl font-black text-white tracking-tighter leading-none group-hover:text-brand-lime transition-colors">TAG08</span>
-                <span className="text-[10px] font-bold text-white/50 tracking-[0.3em] uppercase leading-none mt-1">Studio Creations</span>
-              </div>
-            </Link>
-            <p className="max-w-md text-base leading-relaxed font-medium mb-10 text-slate-300" itemProp="description">
-              Transformamos operações de marketing em máquinas de escala. Consultoria estratégica focada em marcas que buscam o topo do mercado digital.
+      <div className="border-t border-white/5 bg-black/50 py-24 px-4 relative z-10 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-12 relative">
+          <span className="blueprint-label -top-8 left-0">FOOTER_ARCHITECTURE: GRID_12</span>
+
+          <div className="lg:col-span-4 space-y-10 reveal relative">
+            <span className="blueprint-label -top-4 left-0">BRAND_RECAP</span>
+            <BrandLogo className="text-4xl text-white" color="white" />
+            <p className="text-slate-400 leading-relaxed text-base font-medium max-w-sm">
+              {t.footer.about}
             </p>
-            
-            <nav aria-label="Redes Sociais da TAG08">
-              <ul className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-3 gap-3 w-full list-none p-0 m-0">
-                {socialLinks.map((social) => (
-                  <li key={social.name}>
-                    <a 
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer me"
-                      className="h-12 w-full rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-brand-lime hover:text-brand-black hover:border-brand-lime transition-all duration-300 group outline-none focus-visible:ring-2 focus-visible:ring-brand-lime"
-                      aria-label={social.aria}
-                      itemProp="sameAs"
-                    >
-                      <div className="transition-transform group-hover:scale-110" aria-hidden="true">
-                        {social.icon}
-                      </div>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
 
-          {/* Coluna de Links Rápidos */}
-          <div className="lg:col-span-2 lg:ml-8">
-            <h4 id="nav-footer-explore" className="text-white font-black mb-8 uppercase tracking-[0.2em] text-[10px] italic">Explorar</h4>
-            <nav aria-labelledby="nav-footer-explore">
-              <ul className="flex flex-col gap-4 list-none p-0 m-0">
-                {['Problema', 'Solução', 'Pilares', 'Ciclo'].map((link) => (
-                  <li key={link}>
-                    <a 
-                      href={`#${link.toLowerCase()}`}
-                      className="text-sm font-bold hover:text-brand-lime transition-colors w-fit relative group block outline-none focus-visible:text-brand-lime"
-                    >
-                      {link}
-                      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-lime transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          {/* Coluna de Diretrizes Legais */}
-          <div className="lg:col-span-2">
-            <h4 id="nav-footer-guidelines" className="text-white font-black mb-8 uppercase tracking-[0.2em] text-[10px] italic">Diretrizes</h4>
-            <nav aria-labelledby="nav-footer-guidelines">
-              <ul className="flex flex-col gap-4 list-none p-0 m-0">
-                <li>
-                  <button 
-                    onClick={() => setPrivacyModalOpen(true)}
-                    className="text-sm font-bold text-left hover:text-brand-lime transition-colors w-fit relative group block outline-none focus-visible:text-brand-lime"
-                  >
-                    Privacidade
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-lime transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => setCookieModalOpen(true)}
-                    className="text-sm font-bold text-left hover:text-brand-lime transition-colors w-fit relative group block outline-none focus-visible:text-brand-lime"
-                  >
-                    Política de Cookies
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-lime transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={handleResetCookies}
-                    className="text-sm font-bold text-left hover:text-brand-lime transition-colors w-fit relative group block outline-none focus-visible:text-brand-lime"
-                  >
-                    Preferências de Privacidade
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-lime transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-
-          {/* Coluna de Contato e Endereço */}
-          <div className="lg:col-span-4">
-            <h4 id="footer-contact-title" className="text-white font-black mb-8 uppercase tracking-[0.2em] text-[10px] italic">Informações de Contato</h4>
-            <address className="not-italic space-y-8">
-              <div className="flex flex-col">
-                <span className="text-[10px] font-black text-brand-lime uppercase tracking-widest mb-1">Canais Diretos</span>
-                <a 
-                  href="mailto:contato@tag08.com.br" 
-                  className="text-white font-bold hover:text-brand-lime transition-colors mb-1 outline-none focus-visible:text-brand-lime"
-                  itemProp="email"
-                >
-                  contato@tag08.com.br
-                </a>
-                <a 
-                  href="tel:+5583998868882" 
-                  className="text-white font-bold hover:text-brand-lime transition-colors outline-none focus-visible:text-brand-lime"
-                  itemProp="telephone"
-                >
-                  ‪+55 (83) 99886‑8882‬
-                </a>
+            <div className="space-y-6 pt-4">
+              <div className="flex items-start gap-5 group relative">
+                <span className="blueprint-label -left-12 top-0 rotate-90 origin-left">LOC_SCHEMA</span>
+                <div className="bg-white/5 p-3 rounded-2xl group-hover:bg-brand-lime group-hover:text-brand-black transition-all duration-500 shadow-lg">
+                  <MapPin size={22} />
+                </div>
+                <div>
+                  <span className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2 font-mono">Escritório</span>
+                  <address className="not-italic text-white font-bold leading-relaxed text-sm">
+                    R. Cassimiro de Abreu, Nº60<br />
+                    Sala 05 - Brisamar<br />
+                    João Pessoa - PB, 58033-330
+                  </address>
+                </div>
               </div>
-              <div className="flex flex-col" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-                <span className="text-[10px] font-black text-brand-lime uppercase tracking-widest mb-1">Escritório Central</span>
-                <p className="text-white font-bold leading-relaxed">
-                  <span itemProp="streetAddress">R. Cassimiro de Abreu, Nº60, SALA 05</span><br />
-                  <span itemProp="addressLocality">Brisamar</span>, <span itemProp="addressRegion">João Pessoa - PB</span><br />
-                  <span itemProp="postalCode">CEP 58033-330</span>
-                  <meta itemProp="addressCountry" content="BR" />
-                </p>
+
+              <div className="flex items-center gap-5 group">
+                <div className="bg-white/5 p-3 rounded-2xl group-hover:bg-brand-lime group-hover:text-brand-black transition-all duration-500 shadow-lg">
+                  <Mail size={22} />
+                </div>
+                <div>
+                  <span className="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2 font-mono">Email</span>
+                  <a
+                    href="mailto:contato@tag08.com.br"
+                    className="text-white font-bold hover:text-brand-lime transition-colors text-sm"
+                  >
+                    contato@tag08.com.br
+                  </a>
+                </div>
               </div>
-            </address>
+            </div>
           </div>
 
+          <div className="lg:col-span-3 space-y-8 lg:pl-12 reveal stagger-1 relative">
+            <span className="blueprint-label -top-4 left-12">STRATEGIC_MAP</span>
+            <h4 className="text-white font-black uppercase tracking-widest italic text-lg">{t.footer.ecosystem}</h4>
+            <ul className="space-y-5 text-slate-400">
+              <li>
+                <a
+                  href="https://tag08.com.br/"
+                  className="hover:text-brand-lime transition-all flex items-center gap-4 group font-bold text-sm"
+                >
+                  <span className="w-2 h-2 bg-slate-700 rounded-full group-hover:bg-brand-lime transition-colors"></span>
+                  Desenvolvimento e Estratégia Digital
+                </a>
+              </li>
+              <li>
+                <div className="text-white font-black flex items-center gap-4 text-sm italic">
+                  <span className="w-2 h-2 bg-brand-lime rounded-full animate-pulse shadow-[0_0_8px_rgba(212,255,0,0.5)]"></span>
+                  Process Intelligence
+                </div>
+              </li>
+              <li>
+                <a
+                  href="https://tag08.com.br/growth"
+                  className="hover:text-brand-lime transition-all flex items-center gap-4 group font-bold text-sm"
+                >
+                  <span className="w-2 h-2 bg-slate-700 rounded-full group-hover:bg-brand-lime transition-colors"></span>
+                  Growth & Marketing
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2 space-y-8 reveal stagger-2">
+            <h4 className="text-white font-black uppercase tracking-widest italic text-lg">{t.footer.institutional}</h4>
+            <ul className="space-y-5 text-slate-400 font-bold text-sm">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setPrivacyModalOpen(true)}
+                  className="hover:text-brand-lime transition-all"
+                >
+                  {t.footer.privacy}
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setCookieModalOpen(true)}
+                  className="hover:text-brand-lime transition-all"
+                >
+                  {t.footer.cookies}
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-3 space-y-8 reveal stagger-3 relative">
+            <span className="blueprint-label -top-4 left-0">SOCIAL_CHANNELS</span>
+            <h4 className="text-white font-black uppercase tracking-widest italic text-lg">{t.footer.social}</h4>
+            <div className="flex gap-4 flex-wrap">
+              {socialLinks.slice(0, 3).map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/5 hover:bg-brand-lime hover:text-brand-black p-4 rounded-2xl transition-all group border border-white/5 hover:border-brand-lime shadow-lg"
+                  >
+                    <Icon size={22} />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Barra de Rodapé Inferior */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-center md:text-left">
-            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500">
-              © 2024 TAG08 Studio Creations. <span itemProp="taxID" title="Cadastro Nacional da Pessoa Jurídica (CNPJ)">CNPJ: 26.828.685/0001-52</span>.
-            </p>
-            <div className="flex items-center gap-2 py-1.5 px-3 bg-brand-lime/10 rounded-full" role="status" aria-label="Operação em conformidade com a LGPD">
-              <div className="w-1.5 h-1.5 bg-brand-lime rounded-full animate-pulse" aria-hidden="true"></div>
-              <span className="text-[8px] font-black text-brand-lime uppercase tracking-widest">LGPD Compliant Operation</span>
-            </div>
+      <div className="bg-black py-10 px-4 border-t border-white/5 relative z-10">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10 text-[10px] font-mono uppercase tracking-[0.4em] text-slate-500 text-center md:text-left">
+            <span>© {new Date().getFullYear()} {t.footer.rights}.</span>
+            <div className="w-1 h-1 bg-white/10 rounded-full hidden md:block"></div>
+            <span>{t.footer.allRights}</span>
           </div>
-          
-          <button 
-            onClick={scrollToTop}
-            className="flex items-center gap-3 text-white group outline-none focus-visible:ring-2 focus-visible:ring-brand-lime rounded-lg p-1"
-            aria-label="Voltar ao topo da página"
-          >
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] group-hover:text-brand-lime transition-colors">Back to top</span>
-            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-brand-lime group-hover:text-brand-black group-hover:border-brand-lime transition-all duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="m18 15-6-6-6 6"/>
-              </svg>
-            </div>
-          </button>
+
+          <div className="flex flex-col md:flex-row items-center gap-6 text-[10px] text-slate-500 uppercase tracking-[0.4em] font-mono text-center md:text-left relative group">
+            <span className="blueprint-label -top-6 right-0 opacity-0 group-hover:opacity-100 italic transition-all">SVR_RESP: 24MS</span>
+            <span>CNPJ: 43.140.403/0001-37</span>
+            <div className="w-1.5 h-1.5 bg-brand-lime rounded-full hidden md:block animate-pulse"></div>
+            <span>João Pessoa • Brasil</span>
+          </div>
         </div>
       </div>
     </footer>

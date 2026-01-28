@@ -1,6 +1,8 @@
 {
-  "/robots.txt/route": "/robots.txt",
+  "/[lang]/page": "/[lang]",
+  "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/sitemap.xml/route": "/sitemap.xml",
-  "/page": "/"
+  "/page": "/",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml"
 }
