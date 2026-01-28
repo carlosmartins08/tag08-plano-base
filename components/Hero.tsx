@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useTranslation } from './LanguageContext';
 
 const Hero: React.FC = () => {
@@ -42,12 +43,14 @@ const Hero: React.FC = () => {
           </div>
           <div className="flex-1 relative hidden lg:block reveal stagger-4">
             <div className="relative z-10 rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-              <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop" 
-                alt="Equipe de consultoria estratégica da TAG08 planejando o crescimento de uma marca premium" 
-                width="800"
-                height="533"
-                className="w-full grayscale brightness-50 contrast-125 transition-transform duration-700 group-hover:scale-105"
+              <Image
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop"
+                alt="Equipe de consultoria estratégica da TAG08 planejando o crescimento de uma marca premium"
+                width={800}
+                height={533}
+                priority
+                className="w-full h-auto grayscale brightness-50 contrast-125 transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
             </div>

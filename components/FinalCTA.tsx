@@ -6,6 +6,20 @@ import { useTranslation } from './LanguageContext';
 const FinalCTA: React.FC = () => {
   const { t } = useTranslation();
 
+  const handleContactClick = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      // Dispara evento para GA4 e Google Ads
+      (window as any).gtag('event', 'generate_lead', {
+        currency: 'BRL',
+        value: 0,
+        source: 'whatsapp_button',
+      });
+      
+      // Se tivermos um rótulo de conversão específico do Ads no futuro, adicionamos aqui
+      console.log('Evento de conversão disparado');
+    }
+  };
+
   return (
     <section id="contato" className="py-32 bg-brand-lime overflow-hidden relative">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -30,6 +44,7 @@ const FinalCTA: React.FC = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="px-12 py-6 bg-brand-black text-brand-lime font-black text-2xl rounded-2xl hover:bg-slate-800 transition-all shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-4 uppercase tracking-tight"
+              onClick={handleContactClick}
             >
               {t.cta.button}
             </a>

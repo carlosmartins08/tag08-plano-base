@@ -18,6 +18,18 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tag08.com.br'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'pt-BR': '/?lang=pt',
+      'en-US': '/?lang=en',
+      'es-ES': '/?lang=es',
+      'fr-FR': '/?lang=fr',
+    },
+  },
+  verification: {
+    google: 'google-site-verification=SEU_CODIGO_AQUI',
+  },
   title: {
     default: 'TAG08 Studio | Marketing Estratégico & Design de Elite',
     template: '%s | TAG08 Studio'

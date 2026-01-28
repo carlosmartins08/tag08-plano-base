@@ -24,8 +24,9 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-// ID do Google Analytics (Substituir pelo ID real quando disponível)
+// IDs do Google (Analytics e Ads)
 const GA_TRACKING_ID = 'G-ZJ9SRM27Y9';
+const GOOGLE_ADS_ID = 'AW-823454219';
 
 export const LanguageProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>('pt');
@@ -33,40 +34,75 @@ export const LanguageProvider: React.FC<{ children?: React.ReactNode }> = ({ chi
   const [isCookieModalOpen, setCookieModalOpen] = useState(false);
   const [cookieConsent, setCookieConsent] = useState<CookieConsent | null>(null);
 
-  // Função para carregar o Google Analytics dinamicamente
-  const loadGoogleAnalytics = (id: string) => {
-    if (typeof window === 'undefined' || window.document.getElementById('ga-script')) return;
+  // Function to load Google Analytics / Ads based on consent
+  const loadGoogleAnalytics = (consentOverride?: CookieConsent) => {
+    const consent = consentOverride ?? cookieConsent;
+    if (!consent) return;
 
-    // Injeta o script principal do GTAG
-    const script = document.createElement('script');
-    script.id = 'ga-script';
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-    document.head.appendChild(script);
+    const { analytical, marketing } = consent;
+    if (!analytical && !marketing) return;
 
-    // Injeta a configuração inicial
-    const inlineScript = document.createElement('script');
-    inlineScript.id = 'ga-init-script';
-    inlineScript.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${id}', { 'anonymize_ip': true });
-    `;
-    document.head.appendChild(inlineScript);
-    
-    console.debug('Google Analytics ativado com sucesso.');
+    if (typeof window === 'undefined') return;
+
+    const doc = window.document;
+    const hasScript = !!doc.getElementById('ga-script');
+
+    const configLines: string[] = [];
+    if (analytical) configLines.push(`gtag('config', '${GA_TRACKING_ID}', { 'anonymize_ip': true });`);
+    if (marketing) configLines.push(`gtag('config', '${GOOGLE_ADS_ID}');`);
+
+    if (!hasScript) {
+      const script = doc.createElement('script');
+      script.id = 'ga-script';
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
+      doc.head.appendChild(script);
+
+      const inlineScript = doc.createElement('script');
+      inlineScript.id = 'ga-init-script';
+      inlineScript.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        ${configLines.join('\\n        ')}
+      `;
+      doc.head.appendChild(inlineScript);
+      
+      console.debug('Google Analytics / Ads ativado com sucesso.');
+    } else {
+      const gtagFn = (window as typeof globalThis & { gtag?: CallableFunction }).gtag;
+      if (gtagFn) {
+        if (analytical) {
+          gtagFn('config', GA_TRACKING_ID, { 'anonymize_ip': true });
+        }
+        if (marketing) {
+          gtagFn('config', GOOGLE_ADS_ID);
+        }
+      }
+    }
   };
+
 
   useEffect(() => {
     // Carregar idioma
-    const savedLang = localStorage.getItem('tag08-lang') as Language;
-    const browserLang = navigator.language.split('-')[0] as Language;
-    
-    if (savedLang && ['pt', 'en', 'es', 'fr'].includes(savedLang)) {
+    const savedLang = localStorage.getItem('tag08-lang') as Language | null;
+    const supportedLanguages: Language[] = ['pt', 'en', 'es', 'fr'];
+
+    if (savedLang && supportedLanguages.includes(savedLang)) {
       setLanguageState(savedLang);
-    } else if (['pt', 'en', 'es', 'fr'].includes(browserLang)) {
-      setLanguageState(browserLang);
+    } else {
+      const browserLang = navigator.language.toLowerCase();
+      let resolvedLang: Language = 'en';
+
+      if (browserLang === 'pt-br' || browserLang === 'pt-pt') {
+        resolvedLang = 'pt';
+      } else if (browserLang === 'es' || browserLang === 'es-419') {
+        resolvedLang = 'es';
+      } else if (browserLang === 'fr') {
+        resolvedLang = 'fr';
+      }
+
+      setLanguageState(resolvedLang);
     }
 
     // Carregar consentimento de cookies
@@ -75,10 +111,8 @@ export const LanguageProvider: React.FC<{ children?: React.ReactNode }> = ({ chi
       const parsedConsent: CookieConsent = JSON.parse(savedConsent);
       setCookieConsent(parsedConsent);
       
-      // Se já houver consentimento analítico, carrega o GA imediatamente
-      if (parsedConsent.analytical) {
-        loadGoogleAnalytics(GA_TRACKING_ID);
-      }
+      // Se houver consentimento salvo, com Analytics ou Marketing
+      loadGoogleAnalytics(parsedConsent);
     }
   }, []);
 
@@ -93,12 +127,12 @@ export const LanguageProvider: React.FC<{ children?: React.ReactNode }> = ({ chi
     localStorage.setItem('tag08-cookie-preferences', JSON.stringify(consent));
     
     // Gerenciamento dinâmico de scripts baseado no novo consentimento
-    if (consent.analytical) {
-      loadGoogleAnalytics(GA_TRACKING_ID);
+    if (consent.analytical || consent.marketing) {
+      loadGoogleAnalytics(consent);
     } else {
-      console.debug('Scripts Analíticos desativados pelo usuário.');
-      // Nota: Remover scripts do DOM não remove necessariamente os rastreadores já inicializados na sessão,
-      // mas impede novos carregamentos e obedece à escolha do usuário para sessões futuras.
+      console.debug('Scripts Analiticos desativados pelo usuario.');
+      // Nota: Remover scripts do DOM nao remove necessariamente os rastreadores ja inicializados na sessao,
+      // mas impede novos carregamentos e obedece a escolha do usuario para sessoes futuras.
     }
     
     if (consent.marketing) {

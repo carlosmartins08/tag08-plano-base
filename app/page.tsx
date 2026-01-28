@@ -10,6 +10,7 @@ import InvestmentAndSecurity from '../components/InvestmentAndSecurity';
 import ClientResponsibilities from '../components/ClientResponsibilities';
 import FAQ from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
+import OpportunityCalculator from '../components/OpportunityCalculator';
 import Footer from '../components/Footer';
 import CookieBanner from '../components/CookieBanner';
 import PrivacyModal from '../components/PrivacyModal';
@@ -96,6 +97,7 @@ export default function Page() {
         <div className="reveal"><InvestmentAndSecurity /></div>
         <div className="reveal"><ClientResponsibilities /></div>
         <div className="reveal"><FAQ /></div>
+        <OpportunityCalculator />
         <FinalCTA />
       </main>
       <Footer />
