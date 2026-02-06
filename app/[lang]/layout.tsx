@@ -63,8 +63,8 @@ export default async function LocaleLayout(props: {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "TAG08",
-        "url": "https://tag08.com.br",
-        "logo": "https://tag08.com.br/logo.png",
+        "url": "https://socialmedia.tag08.com.br",
+        "logo": "https://socialmedia.tag08.com.br/logo.png",
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+55-83-99886-8882",

@@ -8,7 +8,7 @@ export const COLORS = {
 };
 
 export const SITE_CONFIG = {
-  domain: 'https://tag08.com.br', // Change this to subdomain if needed, e.g., https://planobase.tag08.com.br
+  domain: 'https://socialmedia.tag08.com.br',
   locales: ['pt', 'en', 'es', 'fr'],
   defaultLocale: 'pt',
 };
