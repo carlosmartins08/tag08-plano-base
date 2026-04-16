@@ -31,6 +31,36 @@ export interface FAQItem {
 
 export type Persona = 'data-focused' | 'vision-focused' | 'neutral';
 export type Niche = 'real-estate' | 'health' | 'tech' | 'expert' | 'generic';
+export type GoogleReviewSource = 'google' | 'fallback' | 'unconfigured' | 'error';
+
+export interface GoogleReviewAuthor {
+  displayName: string;
+  uri?: string;
+  photoUri?: string;
+}
+
+export interface GoogleReview {
+  id: string;
+  author: GoogleReviewAuthor;
+  rating: number;
+  text: string;
+  relativePublishTimeDescription: string;
+  googleMapsUri?: string;
+  publishTime?: string;
+}
+
+export interface GoogleReviewsPayload {
+  source: GoogleReviewSource;
+  placeId: string;
+  placeName: string;
+  formattedAddress?: string;
+  rating: number | null;
+  userRatingCount: number | null;
+  googleMapsUri?: string;
+  reviews: GoogleReview[];
+  fetchedAt: string;
+  error?: string;
+}
 
 export interface TranslationSchema {
   nicheHeadlines: Record<Niche, string>;
@@ -60,6 +90,21 @@ export interface TranslationSchema {
       solution: string;
       plan: string;
       cycle: string;
+      videos: string;
+      team: string;
+      testimonials: string;
+      faq: string;
+    };
+  };
+  valueProposition: {
+    badge: string;
+    title: string;
+    titleAccent: string;
+    subtitle: string;
+    features: {
+      focus: { title: string; desc: string };
+      data: { title: string; desc: string };
+      scale: { title: string; desc: string };
     };
   };
   problem: {
@@ -75,6 +120,7 @@ export interface TranslationSchema {
     };
   };
   pillars: {
+    badge: string;
     title: string;
     subtitle: string;
     items: {
@@ -103,11 +149,40 @@ export interface TranslationSchema {
     disclaimer: string;
     urgency: string;
   };
+  contactRouting: {
+    badge: string;
+    title: string;
+    titleAccent: string;
+    subtitle: string;
+    helper: string;
+    recommended: string;
+    disclaimer: string;
+    routes: {
+      br: {
+        label: string;
+        summary: string;
+        button: string;
+        message: string;
+      };
+      intl: {
+        label: string;
+        summary: string;
+        button: string;
+        message: string;
+      };
+    };
+  };
   cookie: {
     title: string;
     desc: string;
     accept: string;
     policy: string;
+    configure: string;
+    acceptAll: string;
+    customizeTitle: string;
+    customizeSubtitle: string;
+    back: string;
+    savePreferences: string;
   };
   privacy: {
     title: string;
@@ -146,6 +221,8 @@ export interface TranslationSchema {
     subtitle: string;
     googleRating: string;
     reviewCount: string;
+    reviewCountLabel: string;
+    sourceLabel: string;
     viewAll: string;
     items: {
       name: string;
@@ -154,9 +231,43 @@ export interface TranslationSchema {
       date: string;
     }[];
   };
+  videoGallery: {
+    badge: string;
+    title: string;
+    titleAccent: string;
+    subtitle: string;
+    updated: string;
+    featured: string;
+    latest: string;
+    openChannel: string;
+    watch: string;
+    loading: string;
+    error: string;
+  };
+  teamShowcase: {
+    badge: string;
+    title: string;
+    titleAccent: string;
+    subtitle: string;
+    featuredLabel: string;
+    openProfile: string;
+    items: {
+      name: string;
+      role: string;
+      summary: string;
+      focus: string;
+      tags: string[];
+      linkedinUrl: string;
+    }[];
+  };
   strategicBenefits: {
+    badge: string;
     title: string;
     subtitle: string;
+    stats: {
+      transparency: string;
+      roi: string;
+    };
     items: {
       title: string;
       desc: string;
@@ -181,7 +292,7 @@ export interface TranslationSchema {
     titleAccent: string;
     subtitle: string;
     cardTitle: string;
-    fideleityTitle: string;
+    fidelityTitle: string;
     fidelityTag: string;
     fidelityDesc: string;
     cancelTitle: string;
@@ -205,6 +316,8 @@ export interface TranslationSchema {
     description: string;
     ctaDiagnosis: string;
     ctaDirection: string;
+    headquarters: string;
+    centralSupport: string;
     about: string;
     ecosystem: string;
     aboutTag08: string;
@@ -230,7 +343,7 @@ export interface TranslationSchema {
       step4: { stage: string; title: string; desc: string };
     };
   };
-  strategyNotes: {
+    strategyNotes: {
     hero: string;
     metrics: string;
     roadmap: string;

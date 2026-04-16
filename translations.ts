@@ -3,8 +3,8 @@ import { Language, TranslationSchema } from './types';
 export const translations: Record<Language, TranslationSchema> = {
   pt: {
     nicheHeadlines: {
-      'real-estate': "Domine o mercado imobiliário.",
-      'health': "Autoridade máxima em saúde.",
+      'real-estate': "Domine o mercado imobili?rio.",
+      'health': "Autoridade m?xima em sa?de.",
       'tech': "Escalabilidade digital de elite.",
       'expert': "Sua autoridade merece uma vitrine de elite.",
       'generic': "Venda mais. Sem achismos."
@@ -12,29 +12,43 @@ export const translations: Record<Language, TranslationSchema> = {
     hero: {
       badge: "Plano Base Studio",
       title: "Venda mais.",
-      titleAccent: "Apareça melhor.",
-      description: "Transformamos empresas estagnadas em marcas dominantes através de gestão estratégica de marketing e design de elite. O fim da tentativa e erro.",
-      cta: "Agendar Diagnóstico",
+      titleAccent: "Apare?a melhor.",
+      description: "Transformamos empresas estagnadas em marcas dominantes atrav?s de gest?o estrat?gica de marketing e design de elite. O fim da tentativa e erro.",
+      cta: "Agendar Diagn?stico",
       limited: "Vagas Limitadas",
       welcomeBack: "Bem-vindo de volta",
       sourceMeta: "Domine o Social.",
-      sourceGoogle: "Apareça no Topo.",
+      sourceGoogle: "Apare?a no Topo.",
       sourceLinkedin: "Conquiste o B2B.",
-      heroAlt: "Equipe de consultoria estratégica da TAG08 planejando o crescimento de uma marca premium",
+      heroAlt: "Equipe de consultoria estrat?gica da TAG08 planejando o crescimento de uma marca premium",
       headlines: {
-        data: "Decisões baseadas em lucro real.",
+        data: "Decis?es baseadas em lucro real.",
         vision: "O futuro da sua marca, hoje.",
-        default: "Venda mais. Apareça melhor.",
+        default: "Venda mais. Apare?a melhor.",
       }
-    },
-    navbar: {
-      diagnosis: "Diagnóstico",
+    },    navbar: {
+      diagnosis: "Diagn?stico",
       free: "Gratuito",
       menu: {
         problem: "Problema",
-        solution: "Solução",
-        plan: "O Plano",
+        solution: "Solu??o",
+        plan: "Pilares",
         cycle: "Ciclo",
+        videos: "V?deos",
+        team: "Equipe",
+        testimonials: "Depoimentos",
+        faq: "FAQ",
+      }
+    },
+    valueProposition: {
+      badge: "A nossa proposta",
+      title: "Somos o bra?o direito",
+      titleAccent: "do seu neg?cio.",
+      subtitle: "O Plano Base TAG08 foi desenhado para empresas que j? validaram seu produto e agora precisam de uma estrutura profissional para escalar sem a complexidade de gerenciar m?ltiplos freelancers.",
+      features: {
+        focus: { title: "Foco no neg?cio", desc: "Voc? foca em vender e entregar; n?s cuidamos da atra??o e da autoridade digital." },
+        data: { title: "Dados e an?lise", desc: "Relat?rios mensais objetivos mostram o que gera lucro e o que precisa mudar." },
+        scale: { title: "Escalabilidade", desc: "A??es cont?nuas constroem valor de marca e autoridade no longo prazo." },
       }
     },
     problem: {
@@ -55,13 +69,14 @@ export const translations: Record<Language, TranslationSchema> = {
       }
     },
     pillars: {
-      title: "Construção de Ativos Digitais",
-      subtitle: "Construímos o patrimônio digital que sua empresa precisa para dominar o nicho de forma sustentável.",
+      badge: "Arquitetura da entrega",
+      title: "Constru??o de Ativos Digitais",
+      subtitle: "Constru?mos o patrim?nio digital que sua empresa precisa para dominar o nicho de forma sustent?vel.",
       items: {
-        strategy: { title: "Direção Estratégica", desc: "Definição de canais, personas e linha editorial focada em ROI real e previsibilidade." },
-        content: { title: "Produção de Elite", desc: "Criação de criativos premium que convertem atenção em autoridade e desejo de compra." },
-        ads: { title: "Alavancagem de Tráfego", desc: "Gestão profissional de campanhas em Meta e Google para maximizar o lucro, não só cliques." },
-        analysis: { title: "Dashboard de Performance", desc: "Acompanhamento em tempo real e reuniões mensais de alinhamento com especialistas seniores." },
+        strategy: { title: "Dire??o Estrat?gica", desc: "Defini??o de canais, personas e linha editorial focada em ROI real e previsibilidade." },
+        content: { title: "Produ??o de Elite", desc: "Cria??o de criativos premium que convertem aten??o em autoridade e desejo de compra." },
+        ads: { title: "Alavancagem de Tr?fego", desc: "Gest?o profissional de campanhas em Meta e Google para maximizar o lucro, n?o s? cliques." },
+        analysis: { title: "Dashboard de Performance", desc: "Acompanhamento em tempo real e reuni?es mensais de alinhamento com especialistas seniores." },
       }
     },
     faq: {
@@ -90,11 +105,40 @@ export const translations: Record<Language, TranslationSchema> = {
       disclaimer: "* Ao iniciar o contato, você autoriza a TAG08 a tratar seus dados para fins de diagnóstico comercial, conforme a LGPD e nossa política de privacidade.",
       urgency: "Vagas limitadas para novos parceiros este mês",
     },
+    contactRouting: {
+      badge: "Roteamento direto",
+      title: "Escolha o canal",
+      titleAccent: "certo.",
+      subtitle: "Brasil e Internacional / Español seguem rotas diferentes. Isso evita ruído e leva você ao time que atende o seu caso.",
+      helper: "Se você estiver no Brasil, use o canal nacional. Se estiver fora do país ou precisar de atendimento em espanhol, use o canal internacional.",
+      recommended: "Recomendado",
+      disclaimer: "* Ao iniciar o contato, você autoriza a TAG08 a tratar seus dados para fins de diagnóstico comercial, conforme a LGPD e nossa política de privacidade.",
+      routes: {
+        br: {
+          label: "Brasil",
+          summary: "Atendimento nacional via WhatsApp para clientes no Brasil.",
+          button: "Abrir WhatsApp Brasil",
+          message: "Olá, quero atendimento para o Brasil.",
+        },
+        intl: {
+          label: "Internacional / Español",
+          summary: "Atendimento via WhatsApp para clientes internacionais e em espanhol.",
+          button: "Abrir WhatsApp Internacional",
+          message: "Hola, necesito atención internacional en español.",
+        },
+      },
+    },
     cookie: {
       title: "Privacidade & Dados",
-      desc: "Utilizamos cookies para otimizar sua experiência e analisar nosso tráfego.",
+      desc: "Usamos cookies essenciais, anal?ticos e de marketing para otimizar sua experi?ncia e entender nosso tr?fego.",
       accept: "Aceitar",
-      policy: "Política de Privacidade",
+      policy: "Pol?tica de cookies",
+      configure: "Configurar",
+      acceptAll: "Aceitar todos",
+      customizeTitle: "Personalizar cookies",
+      customizeSubtitle: "Sua escolha impacta como podemos melhorar nosso servi?o para voc?.",
+      back: "Voltar",
+      savePreferences: "Salvar prefer?ncias",
     },
     privacy: {
       title: "Política de Privacidade",
@@ -133,6 +177,8 @@ export const translations: Record<Language, TranslationSchema> = {
       subtitle: "O que nossos parceiros dizem sobre a experiência TAG08 no Google.",
       googleRating: "5.0",
       reviewCount: "mais de 40 avaliações",
+      reviewCountLabel: "avaliações",
+      sourceLabel: "Google Meu Negócio",
       viewAll: "Ver todas no Google",
       items: [
         { name: "Ricardo Almeida", role: "CEO, TechFlux", content: "A TAG08 transformou nossa presença digital. O Plano Base nos deu a constância que faltava e o ROI foi visível já no segundo mês.", date: "há 2 meses" },
@@ -140,14 +186,66 @@ export const translations: Record<Language, TranslationSchema> = {
         { name: "Bruno Mantovani", role: "Sócio, Nexus Invest", content: "O profissionalismo da equipe é impressionante. O ciclo mensal de entrega é muito organizado e nos dá total clareza do crescimento.", date: "há 3 semanas" }
       ]
     },
-    strategicBenefits: {
-      title: "O Padrão Studio TAG08",
-      subtitle: "Diferenciais que nos colocam no topo da cadeia do marketing estratégico e inteligente.",
+    videoGallery: {
+      badge: "Prova pública",
+      title: "O canal TAG08 em",
+      titleAccent: "vitrine viva.",
+      subtitle: "Uma seleção sempre atualizada dos vídeos mais recentes. Aqui a entrega aparece em público: ritmo, consistência e volume real de produção.",
+      updated: "Atualizado automaticamente",
+      featured: "Vídeo em destaque",
+      latest: "Últimos vídeos",
+      openChannel: "Ver canal",
+      watch: "Assistir",
+      loading: "Carregando os últimos vídeos...",
+      error: "Não foi possível carregar os vídeos agora. Abra o canal para ver a biblioteca completa.",
+    },
+    teamShowcase: {
+      badge: "Núcleo sênior",
+      title: "O núcleo por trás",
+      titleAccent: "da TAG08.",
+      subtitle: "Carlos Martins criou a TAG08. Ignacio e Pedro entram para sustentar estratégia, operação e tecnologia sem excesso de ruído.",
+      featuredLabel: "Liderança ativa",
+      openProfile: "Abrir perfil",
       items: [
-        { title: "Inteligência Estratégica", desc: "Não apenas executamos; pensamos o seu negócio com foco em ativos digitais recorrentes." },
-        { title: "Patrimônio de Marca", desc: "Construímos uma autoridade que se valoriza com o tempo, gerando desejo de compra real." },
-        { title: "Time Sênior", desc: "Acesso direto a consultores especialistas. Sem estagiários na linha de frente da sua marca." },
-        { title: "Processos Validados", desc: "Troque o caos pela clareza de um fluxo de trabalho que privilegia a sua produtividade." }
+        {
+          name: "Carlos Martins",
+          role: "Fundador e direção",
+          summary: "Criou a TAG08 e conduz a direção estratégica da operação.",
+          focus: "Fundador",
+          tags: ["Fundação", "Direção", "Clareza"],
+          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/",
+        },
+        {
+          name: "Ignacio Quiroz",
+          role: "Estratégia e comunicação",
+          summary: "Define posicionamento e narrativa para transformar intenção em direção comercial.",
+          focus: "Estratégia",
+          tags: ["Posicionamento", "Narrativa", "Oferta"],
+          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/",
+        },
+        {
+          name: "Pedro V. Félix",
+          role: "Dados e tecnologia",
+          summary: "Organiza dados, automação e suporte técnico para decisões mais seguras.",
+          focus: "Tecnologia",
+          tags: ["Dados", "Automação", "Integração"],
+          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/",
+        }
+      ],
+    },
+    strategicBenefits: {
+      badge: "La norme TAG08",
+      title: "La norme TAG08",
+      subtitle: "Des diff?renciateurs qui nous placent au sommet du marketing strat?gique et intelligent.",
+      stats: {
+        transparency: "Transparence",
+        roi: "ROI moyen",
+      },
+      items: [
+        { title: "Coh?rence absolue", desc: "Une pr?sence num?rique continue et professionnelle qui construit une vraie autorit?." },
+        { title: "ROI cibl?", desc: "Des campagnes optimis?es pour g?n?rer du profit et de la croissance, sans m?triques de vanit?." },
+        { title: "?quipe senior", desc: "Acc?s direct ? des consultants experts, sans interm?diaires ni stagiaires." },
+        { title: "Agilit?", desc: "Ex?cution rapide et adaptation constante aux ?volutions du march? num?rique." }
       ]
     },
     calculator: {
@@ -169,7 +267,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleAccent: "Estratégico.",
       subtitle: "Clareza total sobre o valor da sua transformação. Sem letras miúdas, apenas performance de elite.",
       cardTitle: "Segurança de Studio",
-      fideleityTitle: "Zero Fidelidade",
+      fidelityTitle: "Zero Fidelidade",
       fidelityTag: "ELITE",
       fidelityDesc: "Foque nos resultados. Não prendemos nossos parceiros com contratos longos; nossa retenção é baseada em performance real.",
       cancelTitle: "Cancelamento Flexível",
@@ -194,23 +292,25 @@ export const translations: Record<Language, TranslationSchema> = {
     footer: {
       badge: "Consultoria de Elite",
       title: "Sua empresa pronta para o",
-      titleAccent: "próximo nível de maturidade.",
-      description: "A TAG08 une estratégia de negócios, engenharia de processos e tecnologia para transformar o caos operacional em máquinas de crescimento.",
-      ctaDiagnosis: "AGENDAR DIAGNÓSTICO",
-      ctaDirection: "FALAR COM A DIREÇÃO",
-      about: "Consultoria especializada em alavancagem de negócios. Substituímos o 'achismo' por dados e o caos por processos validados.",
+      titleAccent: "pr?ximo n?vel de maturidade.",
+      description: "A TAG08 une estrat?gia de neg?cios, engenharia de processos e tecnologia para transformar o caos operacional em m?quinas de crescimento.",
+      ctaDiagnosis: "AGENDAR DIAGN?STICO",
+      ctaDirection: "FALAR COM A DIRE??O",
+      headquarters: "Sede",
+      centralSupport: "Central de atendimento",
+      about: "Consultoria especializada em alavancagem de neg?cios. Substitu?mos o 'achismo' por dados e o caos por processos validados.",
       ecosystem: "Ecossistema TAG08",
       aboutTag08: "Sobre a TAG08",
-      blog: "Blog Estratégico",
+      blog: "Blog Estrat?gico",
       sebraetec: "Sebraetec",
       institutional: "Institucional",
       social: "Redes Sociais",
-      socialDesc: "Acompanhe os bastidores das consultorias e insights diários de gestão.",
-      rights: "TAG08 Estratégia Digital",
+      socialDesc: "Acompanhe os bastidores das consultorias e insights di?rios de gest?o.",
+      rights: "TAG08 Estrat?gia Digital",
       allRights: "Todos os direitos reservados.",
       privacy: "Privacidade",
-      cookies: "Política de Cookies",
-      preferences: "Preferências de Privacidade"
+      cookies: "Pol?tica de Cookies",
+      preferences: "Prefer?ncias de Privacidade"
     },
     growthRoadmap: {
       title: "O Caminho para o",
@@ -257,15 +357,29 @@ export const translations: Record<Language, TranslationSchema> = {
         vision: "The future of your brand, today.",
         default: "Sell more. Look better.",
       }
-    },
-    navbar: {
+    },    navbar: {
       diagnosis: "Diagnosis",
       free: "Free",
       menu: {
         problem: "Problem",
         solution: "Solution",
-        plan: "The Plan",
+        plan: "Pillars",
         cycle: "Cycle",
+        videos: "Videos",
+        team: "Team",
+        testimonials: "Testimonials",
+        faq: "FAQ",
+      }
+    },
+    valueProposition: {
+      badge: "Our proposal",
+      title: "We are the right hand",
+      titleAccent: "of your business.",
+      subtitle: "The TAG08 Base Plan was designed for companies that have already validated their product and now need a professional structure to scale without the complexity of managing multiple freelancers.",
+      features: {
+        focus: { title: "Business focus", desc: "You focus on selling and delivery; we handle attraction and digital authority." },
+        data: { title: "Data and analysis", desc: "Clear monthly reports show what creates profit and what needs to change." },
+        scale: { title: "Scalability", desc: "Continuous actions build brand value and authority over time." },
       }
     },
     problem: {
@@ -286,13 +400,14 @@ export const translations: Record<Language, TranslationSchema> = {
       }
     },
     pillars: {
-      title: "The 4 Pillars of Delivery",
-      subtitle: "A complete and integrated solution for your digital consolidation.",
+      badge: "Delivery architecture",
+      title: "Building Digital Assets",
+      subtitle: "We build the digital equity your company needs to dominate the niche sustainably.",
       items: {
-        strategy: { title: "Strategic Planning", desc: "Definition of channels, personas, editorial line, and quarterly action schedule focused on conversion." },
-        content: { title: "Content Production", desc: "Creation of creative assets for social media and ads, maintaining your brand's premium visual standard." },
-        ads: { title: "Paid Media Management", desc: "Daily configuration and optimization of Meta Ads and Google Ads campaigns to maximize ROI." },
-        analysis: { title: "Analysis & Reporting", desc: "Real-time dashboard and monthly alignment meetings with marketing specialists." },
+        strategy: { title: "Strategic Direction", desc: "Channel, persona and editorial-line definition focused on real ROI and predictability." },
+        content: { title: "Elite Production", desc: "Premium creatives that convert attention into authority and buying intent." },
+        ads: { title: "Traffic Leverage", desc: "Professional Meta and Google campaign management to maximize profit, not just clicks." },
+        analysis: { title: "Performance Dashboard", desc: "Real-time tracking and monthly alignment with senior specialists." },
       }
     },
     faq: {
@@ -327,11 +442,40 @@ export const translations: Record<Language, TranslationSchema> = {
       disclaimer: "By clicking, you agree to the processing of your data for commercial contact purposes as per our privacy policy.",
       urgency: "Limited spots for new partners this month",
     },
+    contactRouting: {
+      badge: "Direct routing",
+      title: "Choose the right",
+      titleAccent: "channel.",
+      subtitle: "Brazil and International / Spanish follow different routes. That keeps the conversation clean and sends you to the team that handles your case.",
+      helper: "If you're in Brazil, use the national channel. If you're outside the country or need Spanish support, use the international channel.",
+      recommended: "Recommended",
+      disclaimer: "By starting the contact, you agree that TAG08 may process your data for commercial diagnosis purposes, in line with our privacy policy.",
+      routes: {
+        br: {
+          label: "Brazil",
+          summary: "Brazilian WhatsApp support for local clients.",
+          button: "Open Brazil WhatsApp",
+          message: "Olá, quero atendimento para o Brasil.",
+        },
+        intl: {
+          label: "International / Spanish",
+          summary: "WhatsApp support for international clients and Spanish-speaking conversations.",
+          button: "Open International WhatsApp",
+          message: "Hola, necesito atención internacional en español.",
+        },
+      },
+    },
     cookie: {
       title: "Privacy & Data",
-      desc: "We use cookies to optimize your experience and analyze our traffic.",
+      desc: "We use essential, analytical and marketing cookies to improve your experience and understand our traffic.",
       accept: "Accept",
-      policy: "Privacy Policy",
+      policy: "Cookie Policy",
+      configure: "Configure",
+      acceptAll: "Accept all",
+      customizeTitle: "Customize cookies",
+      customizeSubtitle: "Your choice affects how we can improve the site for you.",
+      back: "Back",
+      savePreferences: "Save preferences",
     },
     privacy: {
       title: "Privacy Policy",
@@ -370,6 +514,8 @@ export const translations: Record<Language, TranslationSchema> = {
       subtitle: "What our partners say about the TAG08 experience on Google.",
       googleRating: "5.0",
       reviewCount: "over 40 reviews",
+      reviewCountLabel: "reviews",
+      sourceLabel: "Google Business Profile",
       viewAll: "View all on Google",
       items: [
         { name: "Ricardo Almeida", role: "CEO, TechFlux", content: "TAG08 transformed our digital presence. The Base Plan gave us the consistency we lacked, and the ROI was visible by the second month.", date: "2 months ago" },
@@ -396,7 +542,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleAccent: "Investment.",
       subtitle: "Total clarity on the value of your transformation. No fine print, just elite performance.",
       cardTitle: "Studio Safety",
-      fideleityTitle: "Zero Loyalty",
+      fidelityTitle: "Zero Loyalty",
       fidelityTag: "ELITE",
       fidelityDesc: "Focus on results. We don't trap our clients with long contracts; our retention is based on real performance.",
       cancelTitle: "Flexible Cancellation",
@@ -418,9 +564,61 @@ export const translations: Record<Language, TranslationSchema> = {
         "Constant feedback on generated leads."
       ]
     },
+    videoGallery: {
+      badge: "Public proof",
+      title: "TAG08 channel in",
+      titleAccent: "a living showcase.",
+      subtitle: "A constantly updated selection of the latest videos. This is where delivery becomes visible: cadence, consistency, and real production volume.",
+      updated: "Auto-updated",
+      featured: "Featured video",
+      latest: "Latest videos",
+      openChannel: "Open channel",
+      watch: "Watch",
+      loading: "Loading the latest videos...",
+      error: "We could not load the videos right now. Open the channel to view the full library.",
+    },
+    teamShowcase: {
+      badge: "Senior core",
+      title: "The core behind",
+      titleAccent: "TAG08.",
+      subtitle: "Carlos Martins created TAG08. Ignacio and Pedro support strategy, operations, and technology without unnecessary noise.",
+      featuredLabel: "Active leadership",
+      openProfile: "Open profile",
+      items: [
+        {
+          name: "Carlos Martins",
+          role: "Founder and direction",
+          summary: "Created TAG08 and leads the strategic direction of the operation.",
+          focus: "Founder",
+          tags: ["Foundation", "Direction", "Clarity"],
+          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/",
+        },
+        {
+          name: "Ignacio Quiroz",
+          role: "Strategy and communication",
+          summary: "Shapes positioning and narrative so intent turns into a clear commercial direction.",
+          focus: "Strategy",
+          tags: ["Positioning", "Narrative", "Offer"],
+          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/",
+        },
+        {
+          name: "Pedro V. Félix",
+          role: "Data and technology",
+          summary: "Organizes data, automation, and technical support for safer decisions.",
+          focus: "Technology",
+          tags: ["Data", "Automation", "Integration"],
+          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/",
+        }
+      ],
+    },
     strategicBenefits: {
+      badge: "The TAG08 standard",
       title: "The TAG08 Studio Standard",
       subtitle: "Differentials that place us at the top of the strategic marketing chain.",
+      stats: {
+        transparency: "Transparency",
+        roi: "Average ROI",
+      },
       items: [
         { title: "Absolute Consistency", desc: "Uninterrupted and professional digital presence that builds real authority." },
         { title: "Focused ROI", desc: "Campaigns optimized to generate profit and scale, avoiding vanity metrics." },
@@ -431,23 +629,25 @@ export const translations: Record<Language, TranslationSchema> = {
     footer: {
       badge: "Elite Consulting",
       title: "Your company ready for the",
-      titleAccent: "next level of maturity.",
-      description: "TAG08 unites business strategy, process engineering, and technology to transform operational chaos into self-managed growth machines.",
+      titleAccent: "next stage of maturity.",
+      description: "TAG08 combines business strategy, process engineering and technology to turn operational chaos into growth machines.",
       ctaDiagnosis: "SCHEDULE DIAGNOSIS",
-      ctaDirection: "TALK TO DIRECTION",
-      about: "Specialized consulting in business leverage. We replace 'guesswork' with data and chaos with validated processes.",
+      ctaDirection: "TALK TO LEADERSHIP",
+      headquarters: "Headquarters",
+      centralSupport: "Central support",
+      about: "Business leverage consulting. We replace guesswork with data and chaos with validated processes.",
       ecosystem: "TAG08 Ecosystem",
       aboutTag08: "About TAG08",
       blog: "Strategic Blog",
       sebraetec: "Sebraetec",
       institutional: "Institutional",
       social: "Social Media",
-      socialDesc: "Follow the backstage of consulting and daily management insights.",
+      socialDesc: "Follow the consulting behind the scenes and daily management insights.",
       rights: "TAG08 Digital Strategy",
       allRights: "All rights reserved.",
       privacy: "Privacy",
       cookies: "Cookie Policy",
-      preferences: "Privacy Preferences"
+      preferences: "Privacy preferences"
     },
     growthRoadmap: {
       title: "The Path to the",
@@ -471,38 +671,52 @@ export const translations: Record<Language, TranslationSchema> = {
   },
   es: {
     nicheHeadlines: {
-      'real-estate': "Destaque sus inmuebles.",
-      'health': "Fortalezca su clínica.",
-      'tech': "Escala tu Startup.",
-      'expert': "Su autoridad merece un escaparate de élite.",
-      'generic': "Venda más."
+      'real-estate': "Domina el mercado inmobiliario.",
+      'health': "Autoridad m?xima en salud.",
+      'tech': "Escalabilidad digital de ?lite.",
+      'expert': "Tu autoridad merece una vitrina de ?lite.",
+      'generic': "Vende m?s. Sin suposiciones."
     },
     hero: {
       badge: "Plan Base Studio",
-      title: "Venda más.",
-      titleAccent: "Luzca mejor.",
-      description: "Transformamos empresas estancadas en marcas dominantes a través de gestión estratégica de marketing y diseño de élite.",
-      cta: "Agendar Diagnóstico",
-      limited: "Cupos Limitados",
+      title: "Vende m?s.",
+      titleAccent: "Aparece mejor.",
+      description: "Transformamos empresas estancadas en marcas dominantes a trav?s de gesti?n estrat?gica de marketing y dise?o de ?lite.",
+      cta: "Agendar diagn?stico",
+      limited: "Cupos limitados",
       welcomeBack: "Bienvenido de nuevo",
-      sourceMeta: "Domine lo Social.",
-      sourceGoogle: "Aparezca en el Top.",
-      sourceLinkedin: "Conquiste el B2B.",
-      heroAlt: "Equipo de consultoría estratégica de TAG08 planificando el crecimiento de una marca premium",
+      sourceMeta: "Domina las redes.",
+      sourceGoogle: "Aparece en la cima.",
+      sourceLinkedin: "Conquista B2B.",
+      heroAlt: "Equipo de consultor?a estrat?gica de TAG08 planificando el crecimiento de una marca premium",
       headlines: {
-        data: "Decisiones basadas en beneficios reales.",
-        vision: "El futuro de su marca, hoy.",
-        default: "Venda más. Luzca melhor.",
+        data: "Decisiones basadas en beneficio real.",
+        vision: "El futuro de tu marca, hoy.",
+        default: "Vende m?s. Aparece mejor.",
       }
-    },
-    navbar: {
-      diagnosis: "Diagnóstico",
+    },    navbar: {
+      diagnosis: "Diagn?stico",
       free: "Gratis",
       menu: {
         problem: "Problema",
-        solution: "Solución",
-        plan: "El Plan",
+        solution: "Soluci?n",
+        plan: "Pilares",
         cycle: "Ciclo",
+        videos: "Videos",
+        team: "Equipo",
+        testimonials: "Testimonios",
+        faq: "FAQ",
+      }
+    },
+    valueProposition: {
+      badge: "Nuestra propuesta",
+      title: "Somos el brazo derecho",
+      titleAccent: "de tu negocio.",
+      subtitle: "El Plan Base TAG08 fue creado para empresas que ya validaron su producto y ahora necesitan una estructura profesional para escalar sin la complejidad de gestionar varios freelancers.",
+      features: {
+        focus: { title: "Enfoque en el negocio", desc: "T? te enfocas en vender y entregar; nosotros cuidamos la atracci?n y la autoridad digital." },
+        data: { title: "Datos y an?lisis", desc: "Informes mensuales claros muestran qu? genera ganancias y qu? debe cambiar." },
+        scale: { title: "Escalabilidad", desc: "Las acciones continuas construyen valor de marca y autoridad a largo plazo." },
       }
     },
     problem: {
@@ -523,13 +737,14 @@ export const translations: Record<Language, TranslationSchema> = {
       }
     },
     pillars: {
-      title: "Los 4 Pilares de la Entrega",
-      subtitle: "Una solución completa e integrada para su consolidación digital.",
+      badge: "Arquitectura de entrega",
+      title: "Construcci?n de Activos Digitales",
+      subtitle: "Construimos el patrimonio digital que tu empresa necesita para dominar el nicho de forma sostenible.",
       items: {
-        strategy: { title: "Planeación Estratégica", desc: "Definição de canais, personas, linha editorial e cronograma de ações trimestrais focado em conversão." },
-        content: { title: "Producción de Conteúdo", desc: "Creación de creativos para redes sociales y anuncios, manteniendo el estándar visual premium de su marca." },
-        ads: { title: "Gestión de Tráfico Pago", desc: "Configuración y optimización diaria de campañas en Meta Ads y Google Ads para maximizar o ROI." },
-        analysis: { title: "Análise e Reportes", desc: "Dashboard em tempo real e reuniões mensais de alinhamento com especialistas de marketing." },
+        strategy: { title: "Direcci?n Estrat?gica", desc: "Definici?n de canales, personas y l?nea editorial enfocada en ROI real y previsibilidad." },
+        content: { title: "Producci?n de Elite", desc: "Creativos premium que convierten atenci?n en autoridad y deseo de compra." },
+        ads: { title: "Apalancamiento de Tr?fico", desc: "Gesti?n profesional de campa?as en Meta y Google para maximizar la ganancia, no solo los clics." },
+        analysis: { title: "Dashboard de Rendimiento", desc: "Seguimiento en tiempo real y reuniones mensuales con especialistas senior." },
       }
     },
     faq: {
@@ -564,11 +779,40 @@ export const translations: Record<Language, TranslationSchema> = {
       disclaimer: "Al hacer clic, acepta el procesamiento de sus datos para fines de contacto comercial según nuestra política de privacidad.",
       urgency: "Cupos limitados para nuevos socios este mes",
     },
+    contactRouting: {
+      badge: "Enrutamiento directo",
+      title: "Elige el",
+      titleAccent: "canal correcto.",
+      subtitle: "Brasil e Internacional / Español siguen rutas distintas. Eso evita ruido y te lleva al equipo que atiende tu caso.",
+      helper: "Si estás en Brasil, usa el canal nacional. Si estás fuera del país o necesitas atención en español, usa el canal internacional.",
+      recommended: "Recomendado",
+      disclaimer: "Al iniciar el contacto, autorizas a TAG08 a tratar tus datos con fines de diagnóstico comercial, de acuerdo con nuestra política de privacidad.",
+      routes: {
+        br: {
+          label: "Brasil",
+          summary: "Atención nacional por WhatsApp para clientes en Brasil.",
+          button: "Abrir WhatsApp Brasil",
+          message: "Olá, quero atendimento para o Brasil.",
+        },
+        intl: {
+          label: "Internacional / Español",
+          summary: "Atención por WhatsApp para clientes internacionales y conversaciones en español.",
+          button: "Abrir WhatsApp Internacional",
+          message: "Hola, necesito atención internacional en español.",
+        },
+      },
+    },
     cookie: {
-      title: "Privacidad y Datos",
-      desc: "Utilizamos cookies para optimizar su experiencia e analizar nuestro tráfico.",
+      title: "Privacidad y datos",
+      desc: "Usamos cookies esenciales, anal?ticas y de marketing para optimizar tu experiencia y entender nuestro tr?fico.",
       accept: "Aceptar",
-      policy: "Política de Privacidad",
+      policy: "Pol?tica de cookies",
+      configure: "Configurar",
+      acceptAll: "Aceptar todo",
+      customizeTitle: "Personalizar cookies",
+      customizeSubtitle: "Tu elecci?n influye en c?mo podemos mejorar el sitio para ti.",
+      back: "Volver",
+      savePreferences: "Guardar preferencias",
     },
     privacy: {
       title: "Política de Privacidad",
@@ -607,6 +851,8 @@ export const translations: Record<Language, TranslationSchema> = {
       subtitle: "Lo que dicen nuestros socios sobre la experiencia TAG08 en Google.",
       googleRating: "5.0",
       reviewCount: "más de 40 reseñas",
+      reviewCountLabel: "reseñas",
+      sourceLabel: "Perfil de Google Business",
       viewAll: "Ver todas en Google",
       items: [
         { name: "Ricardo Almeida", role: "CEO, TechFlux", content: "TAG08 transformó nuestra presencia digital. El Plan Base nos dio a constancia que faltaba y el ROI foi visible ya en el segundo mes.", date: "hace 2 meses" },
@@ -614,14 +860,66 @@ export const translations: Record<Language, TranslationSchema> = {
         { name: "Bruno Mantovani", role: "Socio, Nexus Invest", content: "El profesionalismo del equipo es impresionante. El ciclo mensual de entrega está muy organizado y nos da total claridad del crecimiento.", date: "hace 3 semanas" }
       ]
     },
-    strategicBenefits: {
-      title: "El Estándar Studio TAG08",
-      subtitle: "Diferenciales que nos colocan en la cima de la cadena del marketing estratégico.",
+    videoGallery: {
+      badge: "Prueba pública",
+      title: "El canal TAG08 en",
+      titleAccent: "vitrina viva.",
+      subtitle: "Una selección siempre actualizada de los videos más recientes. Aquí la entrega se vuelve visible: ritmo, consistencia y volumen real de producción.",
+      updated: "Actualizado automáticamente",
+      featured: "Video destacado",
+      latest: "Últimos videos",
+      openChannel: "Abrir canal",
+      watch: "Ver",
+      loading: "Cargando los últimos videos...",
+      error: "No fue posible cargar los videos ahora. Abra el canal para ver la biblioteca completa.",
+    },
+    teamShowcase: {
+      badge: "Núcleo senior",
+      title: "El núcleo detrás de",
+      titleAccent: "TAG08.",
+      subtitle: "Carlos Martins creó TAG08. Ignacio y Pedro sostienen estrategia, operación y tecnología sin ruido innecesario.",
+      featuredLabel: "Liderazgo activo",
+      openProfile: "Abrir perfil",
       items: [
-        { title: "Consistencia Absoluta", desc: "Presencia digital ininterrumpida y profesional que construye autoridad real." },
-        { title: "ROI Enfocado", desc: "Campañas optimizadas para generar lucro y escala, huyendo de métricas de vanidad." },
-        { title: "Equipo Sénior", desc: "Acceso directo a consultores expertos, sin intermediarios ni pasantes." },
-        { title: "Agilidad", desc: "Ejecución veloz y adaptación constante a los cambios del mercado digital." }
+        {
+          name: "Carlos Martins",
+          role: "Fundador y dirección",
+          summary: "Creó TAG08 y conduce la dirección estratégica de la operación.",
+          focus: "Fundador",
+          tags: ["Fundación", "Dirección", "Claridad"],
+          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/",
+        },
+        {
+          name: "Ignacio Quiroz",
+          role: "Estrategia y comunicación",
+          summary: "Define posicionamiento y narrativa para convertir intención en dirección comercial.",
+          focus: "Estrategia",
+          tags: ["Posicionamiento", "Narrativa", "Oferta"],
+          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/",
+        },
+        {
+          name: "Pedro V. Félix",
+          role: "Datos y tecnología",
+          summary: "Organiza datos, automatización y soporte técnico para decisiones más seguras.",
+          focus: "Tecnología",
+          tags: ["Datos", "Automatización", "Integración"],
+          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/",
+        }
+      ],
+    },
+    strategicBenefits: {
+      badge: "El est?ndar TAG08",
+      title: "El est?ndar TAG08",
+      subtitle: "Diferenciales que nos ponen en la cima del marketing estrat?gico e inteligente.",
+      stats: {
+        transparency: "Transparencia",
+        roi: "ROI promedio",
+      },
+      items: [
+        { title: "Inteligencia Estrat?gica", desc: "No solo ejecutamos; pensamos tu negocio alrededor de activos digitales recurrentes." },
+        { title: "Patrimonio de Marca", desc: "Construimos una autoridad que gana valor con el tiempo y genera deseo de compra real." },
+        { title: "Equipo Senior", desc: "Acceso directo a consultores especialistas. Sin becarios en la primera l?nea de tu marca." },
+        { title: "Procesos Validados", desc: "Reemplaza el caos por la claridad de un flujo que protege tu productividad." }
       ]
     },
     calculator: {
@@ -643,7 +941,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleAccent: "Estratégica.",
       subtitle: "Claridad total sobre el valor de su transformación. Sin letra pequeña, solo desempeño de élite.",
       cardTitle: "Seguridad de Studio",
-      fideleityTitle: "Cero Fidelidad",
+      fidelityTitle: "Cero Fidelidad",
       fidelityTag: "ELITE",
       fidelityDesc: "Enfoque en resultados. No atrapamos a nuestros clientes con contratos largos; nuestra retención se basa en el desempeño real.",
       cancelTitle: "Cancelación Flexible",
@@ -666,25 +964,27 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     footer: {
-      badge: "Consultoría de Élite",
-      title: "Su empresa lista para el",
-      titleAccent: "próximo nivel de madurez.",
-      description: "TAG08 une estrategia de negocios, ingeniería de procesos y tecnología para transformar el caos operativo en máquinas de crecimiento autogestionadas.",
-      ctaDiagnosis: "AGENDAR DIAGNÓSTICO",
-      ctaDirection: "HABLAR CON LA DIRECCIÓN",
-      about: "Consultoría especializada en apalancamiento de negocios. Reemplazamos las 'conjeturas' con datos y el caos con procesos validados.",
+      badge: "Consultor?a de ?lite",
+      title: "Tu empresa lista para el",
+      titleAccent: "siguiente nivel de madurez.",
+      description: "TAG08 une estrategia de negocio, ingenier?a de procesos y tecnolog?a para convertir el caos operativo en m?quinas de crecimiento.",
+      ctaDiagnosis: "AGENDAR DIAGN?STICO",
+      ctaDirection: "HABLAR CON DIRECCI?N",
+      headquarters: "Sede",
+      centralSupport: "Central de atenci?n",
+      about: "Consultor?a especializada en apalancamiento de negocios. Sustituimos el 'supuesto' por datos y el caos por procesos validados.",
       ecosystem: "Ecosistema TAG08",
       aboutTag08: "Sobre TAG08",
-      blog: "Blog Estratégico",
+      blog: "Blog Estrat?gico",
       sebraetec: "Sebraetec",
       institutional: "Institucional",
       social: "Redes Sociales",
-      socialDesc: "Siga el backstage de las consultorías e insights diarios de gestión.",
+      socialDesc: "Sigue detr?s de c?maras de las consultor?as e insights diarios de gesti?n.",
       rights: "TAG08 Estrategia Digital",
       allRights: "Todos los derechos reservados.",
       privacy: "Privacidad",
-      cookies: "Política de Cookies",
-      preferences: "Preferencias de Privacidad"
+      cookies: "Pol?tica de cookies",
+      preferences: "Preferencias de privacidad"
     },
     growthRoadmap: {
       title: "El Camino hacia el",
@@ -708,38 +1008,52 @@ export const translations: Record<Language, TranslationSchema> = {
   },
   fr: {
     nicheHeadlines: {
-      'real-estate': "Mettez en avant vos biens.",
+      'real-estate': "Mettez vos biens en avant.",
       'health': "Renforcez votre clinique.",
-      'tech': "Escalez votre Startup.",
-      'expert': "Votre autorité mérite une vitrine d’élite.",
-      'generic': "Vendez plus."
+      'tech': "Scalabilit? digitale d'?lite.",
+      'expert': "Votre autorit? m?rite une vitrine d'?lite.",
+      'generic': "Vendez plus. Sans suppositions."
     },
     hero: {
-      badge: "Plan de Base Studio",
+      badge: "Plan de base Studio",
       title: "Vendez plus.",
-      titleAccent: "Paraissez mieux.",
-      description: "Nous transformons les entreprises stagnantes en marques dominantes grâce à une gestion stratégique du marketing et un design d'élite.",
-      cta: "Prendre Rendez-vous",
-      limited: "Places Limitées",
+      titleAccent: "Soyez plus visible.",
+      description: "Nous transformons les entreprises stagnantes en marques dominantes gr?ce ? une gestion strat?gique du marketing et un design d'?lite.",
+      cta: "Programmer un diagnostic",
+      limited: "Places limit?es",
       welcomeBack: "Bon retour",
-      sourceMeta: "Maîtrisez le Social.",
-      sourceGoogle: "Soyez au Sommet.",
-      sourceLinkedin: "Conquérez le B2B.",
-      heroAlt: "L'équipe de conseil stratégique de TAG08 planifie la croissance d'une marque premium",
+      sourceMeta: "Dominez les r?seaux.",
+      sourceGoogle: "Soyez en haut.",
+      sourceLinkedin: "Conqu?rez le B2B.",
+      heroAlt: "?quipe de conseil strat?gique TAG08 planifiant la croissance d'une marque premium",
       headlines: {
-        data: "Des décisions basées sur des profits réels.",
+        data: "D?cisions bas?es sur un profit r?el.",
         vision: "L'avenir de votre marque, aujourd'hui.",
-        default: "Vendez plus. Paraissez mieux.",
+        default: "Vendez plus. Soyez plus visible.",
       }
-    },
-    navbar: {
+    },    navbar: {
       diagnosis: "Diagnostic",
       free: "Gratuit",
       menu: {
-        problem: "Problème",
+        problem: "Probl?me",
         solution: "Solution",
-        plan: "Le Plan",
+        plan: "Piliers",
         cycle: "Cycle",
+        videos: "Vid?os",
+        team: "?quipe",
+        testimonials: "T?moignages",
+        faq: "FAQ",
+      }
+    },
+    valueProposition: {
+      badge: "Notre proposition",
+      title: "Nous sommes le bras droit",
+      titleAccent: "de votre entreprise.",
+      subtitle: "Le Plan Base TAG08 a ?t? con?u pour les entreprises qui ont d?j? valid? leur produit et ont maintenant besoin d'une structure professionnelle pour ?voluer sans la complexit? de g?rer plusieurs freelances.",
+      features: {
+        focus: { title: "Focus m?tier", desc: "Vous vous concentrez sur la vente et la livraison; nous g?rons l'attraction et l'autorit? num?rique." },
+        data: { title: "Donn?es et analyse", desc: "Des rapports mensuels clairs montrent ce qui g?n?re du profit et ce qui doit changer." },
+        scale: { title: "Scalabilit?", desc: "Des actions continues construisent la valeur de marque et l'autorit? dans la dur?e." },
       }
     },
     problem: {
@@ -760,13 +1074,14 @@ export const translations: Record<Language, TranslationSchema> = {
       }
     },
     pillars: {
-      title: "Les 4 Piliers de la Prestation",
-      subtitle: "Une solution complète et intégrée pour votre consolidation numérique.",
+      badge: "Architecture de livraison",
+      title: "Construction d'Actifs Num?riques",
+      subtitle: "Nous construisons le patrimoine num?rique dont votre entreprise a besoin pour dominer durablement son niche.",
       items: {
-        strategy: { title: "Planification Stratégique", desc: "Définition des canaux, des personas, de la ligne éditoriale et du calendrier d'actions trimestriel axé sur la conversion." },
-        content: { title: "Production de Contenu", desc: "Création de visuels pour les réseaux sociaux et les publicités, tout en maintenant le standard visuel premium de votre marque." },
-        ads: { title: "Gestion de la Publicité Payante", desc: "Configuration et optimisation quotidienne des campagnes Meta Ads et Google Ads pour maximiser le ROI." },
-        analysis: { title: "Analyse et Rapports", desc: "Tableau de bord en tempo réel et réunions mensuelles d'alignement avec des experts en marketing." },
+        strategy: { title: "Direction strat?gique", desc: "D?finition des canaux, des personas et de la ligne ?ditoriale ax?e sur un ROI r?el et la pr?visibilit?." },
+        content: { title: "Production d'?lite", desc: "Des cr?ations premium qui convertissent l'attention en autorit? et en d?sir d'achat." },
+        ads: { title: "Levier de trafic", desc: "Gestion professionnelle des campagnes Meta et Google pour maximiser le profit, pas seulement les clics." },
+        analysis: { title: "Tableau de bord de performance", desc: "Suivi en temps r?el et r?unions mensuelles avec des sp?cialistes seniors." },
       }
     },
     faq: {
@@ -801,11 +1116,40 @@ export const translations: Record<Language, TranslationSchema> = {
       disclaimer: "En cliquant, vous acceptez le traitement de vos données à des fins de contact commercial conformément à notre politique de confidentialité.",
       urgency: "Places limitées pour de nouveaux partenaires ce mois-ci",
     },
+    contactRouting: {
+      badge: "Acheminement direct",
+      title: "Choisissez le",
+      titleAccent: "bon canal.",
+      subtitle: "Le Brésil et l'International / Espagnol suivent des routes différentes. Cela évite le bruit et vous dirige vers l'équipe qui traite votre cas.",
+      helper: "Si vous êtes au Brésil, utilisez le canal national. Si vous êtes hors du pays ou avez besoin d'une assistance en espagnol, utilisez le canal international.",
+      recommended: "Recommandé",
+      disclaimer: "En démarrant le contact, vous autorisez TAG08 à traiter vos données à des fins de diagnostic commercial, conformément à notre politique de confidentialité.",
+      routes: {
+        br: {
+          label: "Brésil",
+          summary: "Assistance WhatsApp nationale pour les clients au Brésil.",
+          button: "Ouvrir WhatsApp Brésil",
+          message: "Olá, quero atendimento para o Brasil.",
+        },
+        intl: {
+          label: "International / Espagnol",
+          summary: "Assistance WhatsApp pour les clients internationaux et les conversations en espagnol.",
+          button: "Ouvrir WhatsApp International",
+          message: "Hola, necesito atención internacional en español.",
+        },
+      },
+    },
     cookie: {
-      title: "Confidentialité & Données",
-      desc: "Nous utilisons des cookies pour optimiser votre experiência et analyser notre trafic.",
-      accept: "Aceiter",
-      policy: "Politique de Confidentialité",
+      title: "Confidentialit? et donn?es",
+      desc: "Nous utilisons des cookies essentiels, analytiques et marketing pour optimiser votre exp?rience et comprendre notre trafic.",
+      accept: "Accepter",
+      policy: "Politique de cookies",
+      configure: "Configurer",
+      acceptAll: "Tout accepter",
+      customizeTitle: "Personnaliser les cookies",
+      customizeSubtitle: "Votre choix influence la mani?re dont nous pouvons am?liorer le site pour vous.",
+      back: "Retour",
+      savePreferences: "Enregistrer les pr?f?rences",
     },
     privacy: {
       title: "Politique de Confidentialité",
@@ -844,6 +1188,8 @@ export const translations: Record<Language, TranslationSchema> = {
       subtitle: "Ce que nos partenaires disent de l'expérience TAG08 sur Google.",
       googleRating: "5.0",
       reviewCount: "plus de 40 avis",
+      reviewCountLabel: "avis",
+      sourceLabel: "Profil Google Business",
       viewAll: "Tout voir sur Google",
       items: [
         { name: "Ricardo Almeida", role: "CEO, TechFlux", content: "TAG08 a transformé notre présence numérique. Le Plan de Base nous a donné la constance qui nous manquait e le ROI était visible dès le deuxième mois.", date: "il y a 2 mois" },
@@ -851,14 +1197,66 @@ export const translations: Record<Language, TranslationSchema> = {
         { name: "Bruno Mantovani", role: "Associé, Nexus Invest", content: "Le professionnalisme de l'équipe est impressionnant. Le cycle de livraison mensuel est très organisé et nous donne une clarté totale sur la croissance.", date: "il y a 3 semaines" }
       ]
     },
-    strategicBenefits: {
-      title: "Le Standard Studio TAG08",
-      subtitle: "Des différentiels qui nous placent au sommet de la chaîne du marketing stratégique.",
+    videoGallery: {
+      badge: "Preuve publique",
+      title: "La chaîne TAG08 en",
+      titleAccent: "vitrine vivante.",
+      subtitle: "Une sélection constamment mise à jour des dernières vidéos. C'est ici que la livraison devient visible : cadence, constance et volume réel de production.",
+      updated: "Mise à jour automatique",
+      featured: "Vidéo en vedette",
+      latest: "Dernières vidéos",
+      openChannel: "Ouvrir la chaîne",
+      watch: "Regarder",
+      loading: "Chargement des dernières vidéos...",
+      error: "Impossible de charger les vidéos pour le moment. Ouvrez la chaîne pour voir la bibliothèque complète.",
+    },
+    teamShowcase: {
+      badge: "Noyau senior",
+      title: "Le noyau derrière",
+      titleAccent: "TAG08.",
+      subtitle: "Carlos Martins a créé TAG08. Ignacio et Pedro soutiennent la stratégie, les opérations et la technologie sans bruit inutile.",
+      featuredLabel: "Leadership actif",
+      openProfile: "Ouvrir le profil",
       items: [
-        { title: "Consistance Absolue", desc: "Présence numérique ininterrompue et professionnelle qui renforce l'autorité réelle." },
-        { title: "ROI Focalisé", desc: "Campagnes optimisées pour générer profit et échelle, évitant les métriques de vanité." },
-        { title: "Équipe Senior", desc: "Accès direct à des consultants experts, sans intermédiaires ni stagiaires." },
-        { title: "Agilité", desc: "Exécution rapide et adaptation constante aux évolutions du marché numérique." }
+        {
+          name: "Carlos Martins",
+          role: "Fondateur et direction",
+          summary: "A créé TAG08 et conduit la direction stratégique de l’opération.",
+          focus: "Fondateur",
+          tags: ["Fondation", "Direction", "Clarté"],
+          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/",
+        },
+        {
+          name: "Ignacio Quiroz",
+          role: "Stratégie et communication",
+          summary: "Structure le positionnement et la narration pour transformer l’intention en direction commerciale.",
+          focus: "Stratégie",
+          tags: ["Positionnement", "Narration", "Offre"],
+          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/",
+        },
+        {
+          name: "Pedro V. Félix",
+          role: "Données et technologie",
+          summary: "Organise les données, l’automatisation et le support technique pour des décisions plus sûres.",
+          focus: "Technologie",
+          tags: ["Données", "Automatisation", "Intégration"],
+          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/",
+        }
+      ],
+    },
+    strategicBenefits: {
+      badge: "La norme TAG08",
+      title: "La norme TAG08",
+      subtitle: "Des diff?renciateurs qui nous placent au sommet du marketing strat?gique et intelligent.",
+      stats: {
+        transparency: "Transparence",
+        roi: "ROI moyen",
+      },
+      items: [
+        { title: "Intelligence strat?gique", desc: "Nous n'ex?cutons pas seulement; nous pensons votre entreprise autour d'actifs num?riques r?currents." },
+        { title: "Patrimoine de marque", desc: "Nous construisons une autorit? qui prend de la valeur dans le temps et cr?e un v?ritable d?sir d'achat." },
+        { title: "?quipe senior", desc: "Acc?s direct ? des consultants sp?cialis?s. Aucun stagiaire sur la premi?re ligne de votre marque." },
+        { title: "Processus valid?s", desc: "Remplacez le chaos par la clart? d'un flux qui prot?ge votre productivit?." }
       ]
     },
     calculator: {
@@ -880,7 +1278,7 @@ export const translations: Record<Language, TranslationSchema> = {
       titleAccent: "Stratégique.",
       subtitle: "Clarté totale sur la valeur de votre transformation. Pas de petits caractères, juste une performance d'élite.",
       cardTitle: "Sécurité du Studio",
-      fideleityTitle: "Zéro Fidélité",
+      fidelityTitle: "Zéro Fidélité",
       fidelityTag: "ÉLITE",
       fidelityDesc: "Concentrez-vous sur les résultats. Nous n'enfermons pas nos clients avec des contrats longs ; notre rétention est basée sur la performance réelle.",
       cancelTitle: "Annulation Flexible",
@@ -903,25 +1301,27 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     footer: {
-      badge: "Conseil d'Élite",
-      title: "Votre entreprise prête pour le",
-      titleAccent: "prochain niveau de maturité.",
-      description: "TAG08 unit stratégie d'entreprise, ingénierie des processus et technologie pour transformer le chaos opérationnel en machines de croissance autogérées.",
-      ctaDiagnosis: "PROGRAMMER UN DIAGNOSTIC",
-      ctaDirection: "PARLER À LA DIRECTION",
-      about: "Conseil spécialisé en levier commercial. Nous remplaçons les 'conjectures' par des données et le chaos par des processus validés.",
-      ecosystem: "Écosystème TAG08",
-      aboutTag08: "À propos de TAG08",
-      blog: "Blog Stratégique",
+      badge: "Conseil d'?lite",
+      title: "Votre entreprise pr?te pour le",
+      titleAccent: "niveau de maturit? suivant.",
+      description: "TAG08 associe strat?gie d'entreprise, ing?nierie des processus et technologie pour transformer le chaos op?rationnel en machines de croissance.",
+      ctaDiagnosis: "PLANIFIER UN DIAGNOSTIC",
+      ctaDirection: "PARLER ? LA DIRECTION",
+      headquarters: "Si?ge",
+      centralSupport: "Support central",
+      about: "Conseil sp?cialis? en levier commercial. Nous rempla?ons les suppositions par des donn?es et le chaos par des processus valid?s.",
+      ecosystem: "?cosyst?me TAG08",
+      aboutTag08: "? propos de TAG08",
+      blog: "Blog strat?gique",
       sebraetec: "Sebraetec",
       institutional: "Institutionnel",
-      social: "Réseaux Sociaux",
-      socialDesc: "Suivez les coulisses du conseil et les insights quotidiens sur la gestion.",
-      rights: "TAG08 Stratégie Digitale",
-      allRights: "Tous droits réservés.",
-      privacy: "Confidentialité",
-      cookies: "Politique relative aux cookies",
-      preferences: "Préférences de confidentialité"
+      social: "R?seaux sociaux",
+      socialDesc: "Suivez les coulisses des missions et les insights de gestion au quotidien.",
+      rights: "TAG08 Strat?gie Digitale",
+      allRights: "Tous droits r?serv?s.",
+      privacy: "Confidentialit?",
+      cookies: "Politique de cookies",
+      preferences: "Pr?f?rences de confidentialit?"
     },
     growthRoadmap: {
       title: "Le Chemin vers le",

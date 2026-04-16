@@ -4,7 +4,7 @@ import './globals.css';
 import { Providers } from './providers';
 import CustomCursor from '../components/CustomCursor';
 import StructuredData from '../components/StructuredData';
-import { SITE_CONFIG } from '../constants';
+import { SITE_CONFIG, SITE_PROFILE } from '../constants';
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ['latin'],
@@ -27,18 +27,30 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'TAG08 Studio | Marketing Estratégico & Design de Elite',
+  metadataBase: new URL(SITE_CONFIG.domain),
+  title: `${SITE_CONFIG.siteName} | Marketing Estratégico & Design de Elite`,
   description: 'Consultoria estratégica de marketing focada em escala e consolidação de marcas premium.',
   alternates: {
     canonical: SITE_CONFIG.domain,
   },
   openGraph: {
-    title: 'TAG08 Studio | Marketing Estratégico & Design de Elite',
+    title: `${SITE_CONFIG.siteName} | Marketing Estratégico & Design de Elite`,
     description: 'Consultoria estratégica de marketing focada em escala e consolidação de marcas premium.',
     url: SITE_CONFIG.domain,
-    siteName: 'TAG08 Studio',
+    siteName: SITE_CONFIG.siteName,
     locale: 'pt_BR',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_CONFIG.domain}${SITE_PROFILE.logoPath}`,
+        width: 512,
+        height: 512,
+        alt: SITE_CONFIG.siteName,
+      },
+    ],
+  },
+  icons: {
+    icon: SITE_PROFILE.logoPath,
   },
 };
 
@@ -53,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             href="#main-content"
             className="sr-only focus-visible:inline-flex focus-visible:items-center focus-visible:gap-2 focus-visible:absolute focus-visible:top-4 focus-visible:left-4 focus-visible:z-[999] focus-visible:bg-white focus-visible:text-brand-black focus-visible:px-4 focus-visible:py-2 focus-visible:rounded-full focus-visible:shadow-lg"
           >
-            Pular para o conteudo
+            Pular para o conteúdo
           </a>
           <div id="root">{children}</div>
         </Providers>

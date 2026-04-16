@@ -3,7 +3,9 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 import { LanguageProvider } from '../contexts/LanguageContext';
+import { ConsentProvider } from '../contexts/ConsentContext';
 import { UXProvider, useUX } from '../contexts/UXContext';
+import AnalyticsManager from '../components/AnalyticsManager';
 
 const BlueprintWrapper = ({ children }: { children?: React.ReactNode }) => {
   const { isBlueprintMode } = useUX();
@@ -54,11 +56,14 @@ export function Providers({ children }: { children?: React.ReactNode }) {
 
   return (
     <LanguageProvider>
-      <UXProvider>
-        <BlueprintWrapper>
-          {children}
-        </BlueprintWrapper>
-      </UXProvider>
+      <ConsentProvider>
+        <AnalyticsManager />
+        <UXProvider>
+          <BlueprintWrapper>
+            {children}
+          </BlueprintWrapper>
+        </UXProvider>
+      </ConsentProvider>
     </LanguageProvider>
   );
 }

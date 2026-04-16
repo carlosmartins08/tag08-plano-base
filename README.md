@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# TAG08 Plano Base
 
-# Run and deploy your AI Studio app
+Landing page institucional em Next.js para a TAG08 Studio.
 
-This contains everything you need to run your app locally.
+O projeto usa uma única landing page com seções ancoradas, conteúdo multilíngue no client, SEO centralizado e consentimento de cookies com carregamento dinâmico de analytics.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1T4UwrmqoYXoZqZgBVoLqiYdKJFSR7hLS
+## Rodar localmente
 
-## Run Locally
+```bash
+npm install
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+## Variáveis de ambiente
 
+- `GOOGLE_MAPS_API_KEY` - necessário para buscar reviews reais do Google Business Profile
+- `NEXT_PUBLIC_GA_TRACKING_ID` - Google Analytics 4, opcional
+- `NEXT_PUBLIC_GOOGLE_TAG_ID` - Google Tag, opcional
+- `NEXT_PUBLIC_GOOGLE_ADS_ID` - Google Ads, opcional
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Validação
+
+```bash
+npm run lint
+npm run build
+```
+
+## Documentação de base
+
+- `docs/ARCHITECTURE.md` - mapa da arquitetura e fontes de verdade
+- `docs/ROUTES.md` - mapa de rotas, anchors e canonical
+- `docs/AI_RULES.md` - regras para alterar a base sem duplicar responsabilidade
+- `docs/DESIGN-SYSTEM-GOVERNANCE.md` - regras de consistência visual
+- `docs/DECISIONS.md` - decisões já tomadas
+- `docs/DECISION_MATRIX.md` - matriz de decisão para alterações futuras
+
+## Observações
+
+- A base não tem rota de locale na URL neste momento.
+- O conteúdo e o SEO devem ser editados a partir dos contratos existentes, não por arquivos paralelos.
+- A seção de depoimentos usa reviews reais do Google quando `GOOGLE_MAPS_API_KEY` está configurada no ambiente.
+

@@ -8,51 +8,62 @@ const ValueProposition: React.FC = () => {
   const { t } = useTranslation();
 
   const features = [
-    { icon: <Target className="w-6 h-6" />, title: "Foco no Negócio", desc: "Você foca em vender e entregar, nós cuidamos da atração e autoridade da sua marca no digital." },
-    { icon: <BarChart className="w-6 h-6" />, title: "Dados & Análise", desc: "Chega de achismos. Relatórios mensais objetivos que mostram exatamente o que está gerando lucro." },
-    { icon: <Rocket className="w-6 h-6" />, title: "Escalabilidade", desc: "Ações contínuas e recorrentes que constroem valor de marca e autoridade a longo prazo." },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: t.valueProposition.features.focus.title,
+      desc: t.valueProposition.features.focus.desc,
+    },
+    {
+      icon: <BarChart className="w-6 h-6" />,
+      title: t.valueProposition.features.data.title,
+      desc: t.valueProposition.features.data.desc,
+    },
+    {
+      icon: <Rocket className="w-6 h-6" />,
+      title: t.valueProposition.features.scale.title,
+      desc: t.valueProposition.features.scale.desc,
+    },
   ];
 
   return (
-    <section id="solucao" className="py-24 lg:py-32 bg-brand-black relative overflow-hidden bg-noise">
-      {/* Background Accent */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1/4 h-full bg-brand-lime/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <section id="solucao" className="relative overflow-hidden bg-brand-black py-24 lg:py-32 bg-noise">
+      <div className="absolute top-1/2 left-0 h-full w-1/4 -translate-y-1/2 rounded-full bg-brand-lime/5 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div className="max-w-4xl mx-auto">
-          <div className="reveal inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-brand-lime/20 bg-brand-lime/5 mb-8">
-            <CheckCircle2 className="w-4 h-4 text-brand-lime" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <div className="reveal mb-8 inline-flex items-center gap-3 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-4 py-1.5">
+            <CheckCircle2 className="h-4 w-4 text-brand-lime" />
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-              A Nossa Proposta
+              {t.valueProposition.badge}
             </span>
           </div>
 
-          <h2 className="reveal stagger-1 text-4xl md:text-6xl lg:text-7xl font-display font-black text-white mb-10 leading-[0.95] tracking-tight uppercase italic">
-            Somos o braço direito <br />
-            <span className="text-brand-lime">do seu negócio.</span>
+          <h2 className="reveal stagger-1 mb-10 font-display text-4xl font-black uppercase italic leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
+            {t.valueProposition.title} <br />
+            <span className="text-brand-lime">{t.valueProposition.titleAccent}</span>
           </h2>
 
-          <p className="reveal stagger-2 text-xl md:text-2xl text-slate-400 leading-relaxed mb-20 font-medium max-w-3xl mx-auto">
-            O Plano Base TAG08 foi desenhado para empresas que já validaram seu produto e agora precisam de uma <span className="text-white">estrutura profissional</span> para escalar sem a complexidade de gerenciar múltiplos freelancers.
+          <p className="reveal stagger-2 mx-auto mb-20 max-w-3xl text-xl font-medium leading-relaxed text-slate-400 md:text-2xl">
+            {t.valueProposition.subtitle}
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 text-left">
+          <div className="grid gap-6 text-left md:grid-cols-3">
             {features.map((feature, idx) => (
               <div
-                key={idx}
-                className={`reveal stagger-${idx + 3} p-10 bg-white/[0.02] border border-white/5 rounded-[40px] hover:border-brand-lime/40 hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden`}
+                key={feature.title}
+                className={`reveal stagger-${idx + 3} group relative overflow-hidden rounded-[40px] border border-white/5 bg-white/[0.02] p-10 transition-all duration-500 hover:border-brand-lime/40 hover:bg-white/[0.04]`}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-brand-lime/5 blur-2xl rounded-full translate-x-12 -translate-y-12 group-hover:bg-brand-lime/20 transition-all duration-700"></div>
+                <div className="absolute right-0 top-0 h-24 w-24 -translate-y-12 translate-x-12 rounded-full bg-brand-lime/5 blur-2xl transition-all duration-700 group-hover:bg-brand-lime/20" />
 
-                <div className="w-14 h-14 rounded-2xl bg-brand-lime text-brand-black flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-lime text-brand-black shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
                   {feature.icon}
                 </div>
 
-                <h3 className="text-xl font-black text-white mb-4 uppercase tracking-tight group-hover:text-brand-lime transition-colors">
+                <h3 className="mb-4 text-xl font-black uppercase tracking-tight text-white transition-colors group-hover:text-brand-lime">
                   {feature.title}
                 </h3>
 
-                <p className="text-slate-400 text-sm leading-relaxed font-medium">
+                <p className="text-sm font-medium leading-relaxed text-slate-400">
                   {feature.desc}
                 </p>
               </div>
@@ -65,4 +76,3 @@ const ValueProposition: React.FC = () => {
 };
 
 export default ValueProposition;
-

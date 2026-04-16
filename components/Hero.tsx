@@ -46,6 +46,7 @@ const Hero: React.FC = () => {
 
   return (
     <section
+      id="hero"
       className="relative pt-24 pb-20 lg:pt-40 lg:pb-36 overflow-hidden bg-brand-black bg-noise"
       onMouseEnter={() => setStrategyNote(t.strategyNotes.hero)}
       onMouseLeave={() => setStrategyNote(null)}
@@ -126,4 +127,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-

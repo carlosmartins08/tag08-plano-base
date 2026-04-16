@@ -46,7 +46,7 @@ const InvestmentAndSecurity: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-xl font-black mb-3 uppercase tracking-tight text-white flex items-center gap-4">
-                      {t.investment.fideleityTitle}
+                      {t.investment.fidelityTitle}
                       <span className="bg-brand-lime text-brand-black text-[9px] px-3 py-1 rounded-full font-black animate-pulse">{t.investment.fidelityTag}</span>
                     </h4>
                     <p className="text-slate-400 text-base leading-relaxed font-medium">

@@ -30,66 +30,63 @@ const IncludedPillars: React.FC = () => {
   return (
     <section
       id="pilares"
-      className="py-24 lg:py-32 bg-brand-black text-white overflow-hidden relative bg-noise px-4"
+      className="relative overflow-hidden bg-brand-black px-4 py-24 text-white bg-noise lg:py-32"
       onMouseEnter={() => setStrategyNote(t.strategyNotes.design)}
       onMouseLeave={() => setStrategyNote(null)}
     >
-      {/* Background Gradient */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-lime/5 blur-[120px] rounded-full translate-x-1/2" aria-hidden="true"></div>
+      <div className="absolute right-0 top-0 h-full w-1/3 translate-x-1/2 rounded-full bg-brand-lime/5 blur-[120px]" aria-hidden="true" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <header className="text-center mb-20 reveal relative">
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <header className="reveal relative mb-20 text-center">
           <span className="blueprint-label -top-8 left-1/2 -translate-x-1/2">SERVICE_ARCHITECTURE: PILLARS</span>
-          <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-white/10 bg-white/5">
+          <div className="mb-6 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-              Full Stack Marketing
+              {t.pillars.badge}
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-display font-black mb-6 tracking-tight uppercase italic leading-[0.9]">
+          <h2 className="font-display text-4xl font-black uppercase italic leading-[0.9] tracking-tight text-white md:text-6xl">
             {t.pillars.title}
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto font-medium text-lg leading-relaxed">
+          <p className="mx-auto max-w-2xl text-lg font-medium leading-relaxed text-slate-400">
             {t.pillars.subtitle}
           </p>
         </header>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          <span className="blueprint-label -left-12 top-0 rotate-90 origin-left">GRID_COLS: 4</span>
+        <div className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <span className="blueprint-label -left-12 top-0 origin-left rotate-90">GRID_COLS: 4</span>
           {pillars.map((pillar, idx) => (
             <article
-              key={idx}
+              key={pillar.title}
               onMouseMove={(e) => handleMouseMove(e, idx)}
               onMouseEnter={() => setActiveCard(idx)}
               onMouseLeave={() => setActiveCard(null)}
-              className={`reveal stagger-${idx + 1} relative p-8 md:p-10 border border-white/5 bg-white/[0.02] rounded-[32px] overflow-hidden transition-all duration-500 group hover:border-brand-lime/40 hover:-translate-y-2 blueprint-element`}
+              className="blueprint-element reveal group relative overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-8 transition-all duration-500 hover:-translate-y-2 hover:border-brand-lime/40 md:p-10"
             >
               <span className="blueprint-label -top-4 left-6">PILLAR_ID: P0{idx + 1}</span>
-              {/* Spotlight Effect */}
               {activeCard === idx && (
                 <div
-                  className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-100"
+                  className="pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-300"
                   style={{
-                    background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 255, 0, 0.08), transparent 40%)`
+                    background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(212, 255, 0, 0.08), transparent 40%)`,
                   }}
                 />
               )}
 
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-brand-lime mb-10 transition-all duration-500 group-hover:scale-110 group-hover:bg-brand-lime group-hover:text-brand-black group-hover:rotate-6 shadow-xl">
+                <div className="mb-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-brand-lime shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-brand-lime group-hover:text-brand-black">
                   {pillar.icon}
                 </div>
 
-                <h3 className="text-xl font-black mb-4 uppercase tracking-tight text-white transition-colors group-hover:text-brand-lime">
+                <h3 className="mb-4 text-xl font-black uppercase tracking-tight text-white transition-colors group-hover:text-brand-lime">
                   {pillar.title}
                 </h3>
 
-                <p className="text-slate-400 text-sm leading-relaxed font-medium">
+                <p className="text-sm font-medium leading-relaxed text-slate-400">
                   {pillar.desc}
                 </p>
               </div>
 
-              {/* Decorative Corner */}
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-brand-lime/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div className="absolute -bottom-4 -right-4 h-20 w-20 rounded-full bg-brand-lime/10 blur-2xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
               <span className="blueprint-label -bottom-2 right-4 opacity-50">HEURISTIC: 0.92</span>
             </article>
           ))}

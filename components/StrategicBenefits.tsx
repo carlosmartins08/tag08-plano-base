@@ -15,59 +15,62 @@ const StrategicBenefits: React.FC = () => {
   ];
 
   return (
-    <section id="diferenciais" className="py-24 lg:py-32 bg-brand-black text-white overflow-hidden relative bg-noise">
-      {/* Dynamic Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-lime/10 blur-[120px] rounded-full opacity-50 animate-slow-pulse"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-lime/5 blur-[120px] rounded-full opacity-30 animate-slow-pulse"></div>
+    <section id="diferenciais" className="relative overflow-hidden bg-brand-black py-24 text-white bg-noise lg:py-32">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-brand-lime/10 blur-[120px] opacity-50 animate-slow-pulse" />
+        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-brand-lime/5 blur-[120px] opacity-30 animate-slow-pulse" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
-          <div className="flex-1 reveal">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-lime/20 bg-brand-lime/5 mb-6">
-              <span className="w-2 h-2 rounded-full bg-brand-lime"></span>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-24 flex flex-col items-center gap-16 lg:flex-row">
+          <div className="reveal flex-1">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-3 py-1">
+              <span className="h-2 w-2 rounded-full bg-brand-lime" />
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-                The Standard
+                {t.strategicBenefits.badge}
               </span>
             </div>
 
-            <h2 className="text-5xl md:text-7xl font-display font-black text-white uppercase tracking-tight italic leading-[0.9] mb-8">
+            <h2 className="mb-8 font-display text-5xl font-black uppercase italic leading-[0.9] tracking-tight text-white md:text-7xl">
               {t.strategicBenefits.title.split(' ').slice(0, -1).join(' ')} <br />
               <span className="text-brand-lime">{t.strategicBenefits.title.split(' ').pop()}</span>
             </h2>
 
-            <p className="text-slate-400 text-xl font-medium leading-relaxed max-w-xl">
+            <p className="max-w-xl text-xl font-medium leading-relaxed text-slate-400">
               {t.strategicBenefits.subtitle}
             </p>
 
             <div className="mt-12 grid grid-cols-2 gap-8">
               <div>
-                <p className="text-4xl font-display font-black text-white italic">100%</p>
-                <p className="text-[10px] font-black uppercase tracking-widest text-brand-lime mt-2">Transparência</p>
+                <p className="font-display text-4xl font-black italic text-white">100%</p>
+                <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-brand-lime">
+                  {t.strategicBenefits.stats.transparency}
+                </p>
               </div>
               <div>
-                <p className="text-4xl font-display font-black text-white italic">+200%</p>
-                <p className="text-[10px] font-black uppercase tracking-widest text-brand-lime mt-2">Média de ROI</p>
+                <p className="font-display text-4xl font-black italic text-white">+200%</p>
+                <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-brand-lime">
+                  {t.strategicBenefits.stats.roi}
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="flex-1 w-full reveal stagger-2">
+          <div className="reveal stagger-2 w-full flex-1">
             <div className="grid gap-4">
               {t.strategicBenefits.items.map((benefit, idx) => (
                 <div
-                  key={idx}
-                  className="group flex items-center gap-6 p-6 rounded-[32px] border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-brand-lime/30 transition-all duration-500"
+                  key={benefit.title}
+                  className="group flex items-center gap-6 rounded-[32px] border border-white/5 bg-white/[0.02] p-6 transition-all duration-500 hover:border-brand-lime/30 hover:bg-white/[0.04]"
                 >
-                  <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-brand-lime text-brand-black flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-xl">
+                  <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-brand-lime text-brand-black shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                     {icons[idx]}
                   </div>
                   <div>
-                    <h3 className="text-xl font-black text-white uppercase tracking-tight mb-1 group-hover:text-brand-lime transition-colors">
+                    <h3 className="mb-1 text-xl font-black uppercase tracking-tight text-white transition-colors group-hover:text-brand-lime">
                       {benefit.title}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed font-medium">
+                    <p className="text-sm leading-relaxed font-medium text-slate-400">
                       {benefit.desc}
                     </p>
                   </div>
@@ -77,13 +80,12 @@ const StrategicBenefits: React.FC = () => {
           </div>
         </div>
 
-        {/* Feature Comparison or Extra Authority Badge */}
-        <div className="reveal stagger-3 border-t border-white/10 pt-16 mt-16 text-center">
-          <div className="inline-flex flex-wrap justify-center gap-8 md:gap-16 opacity-40">
+        <div className="reveal stagger-3 mt-16 border-t border-white/10 pt-16 text-center">
+          <div className="inline-flex flex-wrap justify-center gap-8 opacity-40 md:gap-16">
             {['Estratégia Proprietária', 'Gestão de Ativos', 'Creative Lab', 'Performance Sênior'].map((tag, i) => (
               <div key={i} className="flex items-center gap-3">
-                <CheckCircle2 className="w-4 h-4 text-brand-lime" />
-                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white">
+                <CheckCircle2 className="h-4 w-4 text-brand-lime" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white md:text-xs">
                   {tag}
                 </span>
               </div>
@@ -96,4 +98,3 @@ const StrategicBenefits: React.FC = () => {
 };
 
 export default StrategicBenefits;
-

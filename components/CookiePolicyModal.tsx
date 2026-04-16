@@ -1,83 +1,67 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { useConsent } from '../contexts/ConsentContext';
+import ModalShell from './ModalShell';
 
 const CookiePolicyModal: React.FC = () => {
-  const { t, isCookieModalOpen, setCookieModalOpen } = useTranslation();
-
-  useEffect(() => {
-    if (isCookieModalOpen) {
-      document.body.style.overflow = 'hidden';
-      const handleEsc = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') setCookieModalOpen(false);
-      };
-      window.addEventListener('keydown', handleEsc);
-      return () => {
-        window.removeEventListener('keydown', handleEsc);
-        document.body.style.overflow = 'unset';
-      };
-    }
-  }, [isCookieModalOpen, setCookieModalOpen]);
+  const { t } = useTranslation();
+  const { isCookieModalOpen, setCookieModalOpen } = useConsent();
 
   if (!isCookieModalOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[300] flex items-center justify-center px-4 py-8">
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-brand-black/95 backdrop-blur-xl animate-in fade-in duration-300" 
-        onClick={() => setCookieModalOpen(false)}
-      ></div>
-
-      {/* Modal Content */}
-      <div className="relative bg-brand-black border border-white/10 w-full max-w-4xl max-h-full overflow-y-auto rounded-[2.5rem] shadow-2xl p-8 md:p-12 animate-in zoom-in-95 duration-300">
-        <div className="flex justify-between items-start mb-12">
+    <ModalShell isOpen={isCookieModalOpen} onClose={() => setCookieModalOpen(false)}>
+      <div>
+        <div className="mb-12 flex items-start justify-between">
           <div>
-            <h2 className="text-3xl md:text-5xl font-black text-white uppercase italic tracking-tighter mb-4">
+            <h2 className="mb-4 text-3xl font-black uppercase italic tracking-tighter text-white md:text-5xl">
               {t.cookiePolicy.title}
             </h2>
-            <p className="text-slate-400 font-medium max-w-2xl leading-relaxed">
+            <p className="max-w-2xl font-medium leading-relaxed text-slate-400">
               {t.cookiePolicy.intro}
             </p>
           </div>
-          <button 
+          <button
+            type="button"
             onClick={() => setCookieModalOpen(false)}
-            className="p-3 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-all"
+            className="rounded-full bg-white/5 p-3 text-white/50 transition-all hover:bg-white/10 hover:text-white"
             aria-label={t.privacy.close}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-8 md:grid-cols-2">
           {(Object.entries(t.cookiePolicy.sections) as [string, { title: string; text: string }][]).map(([key, section]) => (
-            <div key={key} className="p-8 bg-white/5 border border-white/5 rounded-3xl hover:border-brand-lime/30 transition-colors">
-              <h3 className="text-brand-lime font-black uppercase tracking-widest text-xs mb-4">
+            <div key={key} className="rounded-3xl border border-white/5 bg-white/5 p-8 transition-colors hover:border-brand-lime/30">
+              <h3 className="mb-4 text-xs font-black uppercase tracking-widest text-brand-lime">
                 {section.title}
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed font-medium">
+              <p className="text-sm font-medium leading-relaxed text-slate-400">
                 {section.text}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 flex justify-between items-center gap-4">
-          <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+        <div className="mt-12 flex items-center justify-between gap-4 border-t border-white/10 pt-8">
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
             Policy v1.0
           </p>
-          <button 
+          <button
+            type="button"
             onClick={() => setCookieModalOpen(false)}
-            className="px-8 py-3 bg-brand-lime text-brand-black font-black text-xs uppercase tracking-widest rounded-xl hover:bg-white transition-all"
+            className="rounded-xl bg-brand-lime px-8 py-3 text-xs font-black uppercase tracking-widest text-brand-black transition-all hover:bg-white"
           >
             {t.privacy.close}
           </button>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 };
 

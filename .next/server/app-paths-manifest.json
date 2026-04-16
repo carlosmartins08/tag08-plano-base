@@ -1,3 +1,5 @@
 {
+  "/api/youtube/latest/route": "app/api/youtube/latest/route.js",
+  "/api/google/reviews/route": "app/api/google/reviews/route.js",
   "/page": "app/page.js"
 }

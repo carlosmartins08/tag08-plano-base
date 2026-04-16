@@ -63,9 +63,7 @@ const FAQ: React.FC = () => {
                   {t.faq.supportBody}
                 </p>
                 <a
-                  href="https://wa.me/5583998868882"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#contato"
                   className="text-brand-lime text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:gap-3 transition-all"
                 >
                   {t.faq.supportCta} <ArrowRight size={14} />

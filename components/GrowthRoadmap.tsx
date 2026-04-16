@@ -34,6 +34,7 @@ const GrowthRoadmap: React.FC = () => {
 
     return (
         <section
+            id="roadmap"
             className="py-24 lg:py-32 bg-brand-black relative overflow-hidden bg-noise"
             onMouseEnter={() => setStrategyNote(t.strategyNotes.roadmap)}
             onMouseLeave={() => setStrategyNote(null)}

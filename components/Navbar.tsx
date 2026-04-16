@@ -8,7 +8,7 @@ import { useUX } from '../contexts/UXContext';
 import Magnetic from './Magnetic';
 
 const Navbar: React.FC = () => {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
   const { setStrategyNote, isBlueprintMode, toggleBlueprintMode } = useUX();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -39,6 +39,10 @@ const Navbar: React.FC = () => {
     { label: t.navbar.menu.solution, href: '#solucao', id: 'solucao' },
     { label: t.navbar.menu.plan, href: '#pilares', id: 'pilares' },
     { label: t.navbar.menu.cycle, href: '#ciclo', id: 'ciclo' },
+    { label: t.navbar.menu.videos, href: '#videos', id: 'videos' },
+    { label: t.navbar.menu.team, href: '#equipe', id: 'equipe' },
+    { label: t.navbar.menu.testimonials, href: '#depoimentos', id: 'depoimentos' },
+    { label: t.navbar.menu.faq, href: '#faq', id: 'faq' },
   ];
 
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -53,7 +57,7 @@ const Navbar: React.FC = () => {
 
         setIsScrolled(window.scrollY > 50);
 
-        const sections = ['problema', 'solucao', 'pilares', 'ciclo'];
+        const sections = ['problema', 'solucao', 'pilares', 'ciclo', 'videos', 'equipe', 'depoimentos', 'faq'];
         const current = sections.find(section => {
           const el = document.getElementById(section);
           if (el) {
@@ -99,7 +103,7 @@ const Navbar: React.FC = () => {
       >
         <div className="flex items-center gap-3 mr-auto group cursor-pointer" onClick={handleLogoClick}>
           <Link
-            href={`/${language}`}
+            href="#hero"
             className="flex items-center gap-3"
             aria-label="Voltar ao início"
             onMouseEnter={() => setStrategyNote(t.strategyNotes.hero)}
@@ -129,7 +133,7 @@ const Navbar: React.FC = () => {
               href={item.href}
               role="menuitem"
               aria-current={activeSection === item.id ? 'page' : undefined}
-              className={`relative px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all group ${activeSection === item.id
+              className={`relative px-3 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all group ${activeSection === item.id
                 ? 'bg-brand-lime text-brand-black shadow-lg shadow-brand-lime/20'
                 : 'text-white/60 hover:text-white'
                 }`}
