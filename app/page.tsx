@@ -29,43 +29,19 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <ProblemContext />
-        <div className="reveal">
-          <OpportunityCalculator />
-        </div>
-        <div className="reveal">
-          <ValueProposition />
-        </div>
+        <OpportunityCalculator />
+        <ValueProposition />
         <IncludedPillars />
-        <div className="reveal">
-          <MonthlyCycle />
-        </div>
-        <div className="reveal">
-          <GrowthRoadmap />
-        </div>
-        <div className="reveal">
-          <StrategicBenefits />
-        </div>
-        <div className="reveal">
-          <VideoGallery />
-        </div>
-        <div className="reveal">
-          <TeamShowcase />
-        </div>
-        <div className="reveal">
-          <Testimonials />
-        </div>
-        <div className="reveal">
-          <InvestmentAndSecurity />
-        </div>
-        <div className="reveal">
-          <ClientResponsibilities />
-        </div>
-        <div className="reveal">
-          <FAQ />
-        </div>
-        <div className="reveal">
-          <FinalCTA />
-        </div>
+        <MonthlyCycle />
+        <GrowthRoadmap />
+        <StrategicBenefits />
+        <VideoGallery />
+        <TeamShowcase />
+        <Testimonials />
+        <InvestmentAndSecurity />
+        <ClientResponsibilities />
+        <FAQ />
+        <FinalCTA />
       </main>
       <Footer />
       <CookieBanner />

@@ -6,6 +6,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, PlayCircle, RefreshCcw, Sparkl
 import { useTranslation } from '../contexts/LanguageContext';
 import { SITE_CONFIG } from '../constants';
 import { Language } from '../types';
+import Button from './Button';
 
 type VideoItem = {
   id: string;
@@ -45,7 +46,7 @@ const VideoSkeleton = ({ label }: { label: string }) => (
 
     <div className="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,2.1fr)_minmax(0,0.95fr)] lg:items-center">
       <div className="hidden lg:block translate-y-6">
-        <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-[0_20px_60px_rgba(0,0,0,0.35)] opacity-35">
+        <div className="ds-panel-shell overflow-hidden rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.35)] opacity-35">
           <div className="aspect-[16/9] bg-white/10" />
           <div className="space-y-3 p-4">
             <div className="h-3 w-20 rounded-full bg-white/10" />
@@ -55,7 +56,7 @@ const VideoSkeleton = ({ label }: { label: string }) => (
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/[0.03] shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
+      <div className="ds-panel-shell overflow-hidden rounded-[2.25rem] shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
         <div className="aspect-[16/9] bg-white/10" />
         <div className="space-y-5 p-6 md:p-8">
           <div className="flex items-start justify-between gap-4">
@@ -76,7 +77,7 @@ const VideoSkeleton = ({ label }: { label: string }) => (
       </div>
 
       <div className="hidden lg:block translate-y-6">
-        <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-[0_20px_60px_rgba(0,0,0,0.35)] opacity-35">
+        <div className="ds-panel-shell overflow-hidden rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.35)] opacity-35">
           <div className="aspect-[16/9] bg-white/10" />
           <div className="space-y-3 p-4">
             <div className="h-3 w-20 rounded-full bg-white/10" />
@@ -91,7 +92,7 @@ const VideoSkeleton = ({ label }: { label: string }) => (
       {[0, 1, 2, 3].map((item) => (
         <div
           key={item}
-          className="min-w-[240px] flex-1 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.03]"
+          className="ds-panel-shell min-w-[240px] flex-1 overflow-hidden rounded-[1.75rem]"
         >
           <div className="aspect-video bg-white/10" />
           <div className="space-y-3 p-4">
@@ -178,6 +179,36 @@ const VideoGallery: React.FC = () => {
     [videos, carousel.activeIndex],
   );
 
+  const videoJsonLd = useMemo(() => {
+    if (!videos.length) return null;
+
+    const graph = videos.map((video) => {
+      const parsedDate = new Date(video.publishedAt);
+      const uploadDate = Number.isNaN(parsedDate.getTime()) ? undefined : parsedDate.toISOString();
+
+      return {
+        '@type': 'VideoObject',
+        '@id': `${SITE_CONFIG.domain}/#video-${video.id}`,
+        name: video.title,
+        description: `Conteúdo do canal ${SITE_CONFIG.siteName}: ${video.title}`,
+        thumbnailUrl: [video.thumbnail],
+        url: video.url,
+        embedUrl: `https://www.youtube.com/embed/${video.id}`,
+        uploadDate,
+        publisher: {
+          '@type': 'Organization',
+          name: SITE_CONFIG.siteName,
+          url: SITE_CONFIG.domain,
+        },
+      };
+    });
+
+    return {
+      '@context': 'https://schema.org',
+      '@graph': graph,
+    };
+  }, [videos]);
+
   const cycleVideo = (direction: -1 | 1) => {
     if (!videos.length) return;
 
@@ -188,7 +219,7 @@ const VideoGallery: React.FC = () => {
   };
 
   const renderPreviewCard = (video: VideoItem, position: 'left' | 'right') => (
-    <div className="pointer-events-none overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] opacity-35 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+    <div className="ds-panel-shell pointer-events-none overflow-hidden rounded-[2rem] opacity-35 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
       <div className="relative aspect-[16/9] overflow-hidden">
         <Image
           src={video.thumbnail}
@@ -230,9 +261,9 @@ const VideoGallery: React.FC = () => {
         key={video.id}
         type="button"
         onClick={() => setActiveIndex(index)}
-        className={`group snap-start flex-none w-[min(78vw,280px)] md:w-[280px] overflow-hidden rounded-[1.75rem] border text-left transition-all duration-500 ${isActive
+        className={`group ds-card-shell snap-start flex-none w-[min(78vw,280px)] md:w-[280px] overflow-hidden rounded-[1.75rem] text-left transition-all duration-500 ${isActive
           ? 'border-brand-lime/60 bg-white/[0.06] shadow-[0_20px_60px_rgba(0,0,0,0.35)]'
-          : 'border-white/10 bg-white/[0.03] hover:border-brand-lime/30 hover:bg-white/[0.05]'
+          : 'ds-card-shell-hover-lime border-white/10 bg-white/[0.03]'
           }`}
       >
         <div className="relative aspect-video overflow-hidden">
@@ -245,7 +276,7 @@ const VideoGallery: React.FC = () => {
             unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90" />
-          <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/35 px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/70 backdrop-blur-md">
+          <div className="ds-chip ds-chip-muted absolute left-4 top-4 inline-flex items-center gap-2">
             {isActive ? text.featured : text.watch}
           </div>
           <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -282,17 +313,21 @@ const VideoGallery: React.FC = () => {
 
   return (
     <section id="videos" className="relative overflow-hidden bg-brand-black bg-noise py-24 lg:py-32">
+      {videoJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+        />
+      )}
       <div className="pointer-events-none absolute right-0 top-0 h-[30rem] w-[30rem] rounded-full bg-brand-lime/10 blur-[180px] translate-x-1/3 -translate-y-1/3" />
       <div className="pointer-events-none absolute bottom-0 left-0 h-[24rem] w-[24rem] rounded-full bg-white/5 blur-[180px] -translate-x-1/3 translate-y-1/3" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="reveal max-w-3xl">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-4 py-1.5">
+            <div className="mb-7 ds-section-badge gap-2">
               <Sparkles className="h-4 w-4 text-brand-lime" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-                {text.badge}
-              </span>
+              <span>{text.badge}</span>
             </div>
 
             <h2 className="mb-6 text-4xl font-black uppercase italic leading-[0.9] tracking-tight text-white md:text-6xl lg:text-7xl font-display">
@@ -304,16 +339,18 @@ const VideoGallery: React.FC = () => {
             </p>
           </div>
 
-          <a
+          <Button
             href={SITE_CONFIG.youtubeVideosUrl}
+            variant="solid"
+            size="md"
             target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-3 self-start rounded-2xl bg-brand-lime px-6 py-4 text-[10px] font-black uppercase tracking-widest text-brand-black transition-all hover:scale-[1.02] hover:bg-white active:scale-[0.98] lg:self-auto"
+            rel="noopener noreferrer"
+            className="self-start rounded-2xl hover:scale-[1.02] active:scale-[0.98] lg:self-auto"
           >
             <Youtube className="h-4 w-4" />
             {text.openChannel}
             <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </Button>
         </div>
 
         <div className="mb-4 flex items-center justify-between gap-4 text-[10px] font-black uppercase tracking-[0.35em] text-slate-500">
@@ -324,13 +361,13 @@ const VideoGallery: React.FC = () => {
 
           {videos.length > 0 && (
             <div className="flex items-center gap-2">
-              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-white/60">
+              <span className="ds-chip ds-chip-muted px-3 py-1 tracking-[0.22em] text-white/60">
                 {String(carousel.activeIndex + 1).padStart(2, '0')} / {String(videos.length).padStart(2, '0')}
               </span>
               <button
                 type="button"
                 onClick={() => cycleVideo(-1)}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime"
+                className="ds-icon-shell h-9 w-9 rounded-full bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime"
                 aria-label="Video anterior"
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -338,7 +375,7 @@ const VideoGallery: React.FC = () => {
               <button
                 type="button"
                 onClick={() => cycleVideo(1)}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime"
+                className="ds-icon-shell h-9 w-9 rounded-full bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime"
                 aria-label="Proximo video"
               >
                 <ChevronRight className="h-4 w-4" />
@@ -350,22 +387,24 @@ const VideoGallery: React.FC = () => {
         {isLoading ? (
           <VideoSkeleton label={text.loading} />
         ) : error || !videos.length ? (
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-10">
+          <div className="ds-panel-shell rounded-[2rem] bg-white/[0.04] p-8 md:p-10">
             <h3 className="mb-4 text-2xl font-black uppercase italic tracking-tight text-white">
               {text.latest}
             </h3>
             <p className="mb-6 max-w-2xl leading-relaxed text-slate-400">
               {error || text.error}
             </p>
-            <a
+            <Button
               href={SITE_CONFIG.youtubeVideosUrl}
+              variant="solid"
+              size="md"
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 rounded-2xl bg-brand-lime px-6 py-4 text-[10px] font-black uppercase tracking-widest text-brand-black transition-all hover:bg-white"
+              rel="noopener noreferrer"
+              className="rounded-2xl"
             >
               <Youtube className="h-4 w-4" />
               {text.openChannel}
-            </a>
+            </Button>
           </div>
         ) : (
           <div className="space-y-8">
@@ -378,8 +417,8 @@ const VideoGallery: React.FC = () => {
                 <a
                   href={carousel.activeVideo?.url || SITE_CONFIG.youtubeVideosUrl}
                   target="_blank"
-                  rel="noreferrer"
-                  className="group relative block overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/[0.03] shadow-[0_30px_100px_rgba(0,0,0,0.55)] transition-all duration-500 hover:-translate-y-1"
+                  rel="noopener noreferrer"
+                  className="group ds-panel-shell relative block overflow-hidden rounded-[2.25rem] shadow-[0_30px_100px_rgba(0,0,0,0.55)] transition-all duration-500 hover:-translate-y-1"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden">
                     <Image
@@ -398,10 +437,10 @@ const VideoGallery: React.FC = () => {
                         </div>
 
                         <div className="hidden items-center gap-2 md:flex">
-                          <span className="rounded-full bg-black/35 px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/70 backdrop-blur-md">
+                          <span className="ds-chip ds-chip-muted">
                             {String(carousel.activeIndex + 1).padStart(2, '0')} / {String(videos.length).padStart(2, '0')}
                           </span>
-                          <span className="rounded-full bg-brand-lime px-3 py-1 text-[10px] font-black uppercase tracking-[0.25em] text-brand-black">
+                          <span className="ds-chip border-brand-lime bg-brand-lime tracking-[0.25em] text-brand-black">
                             {text.featured}
                           </span>
                         </div>
@@ -425,7 +464,7 @@ const VideoGallery: React.FC = () => {
                         </div>
 
                         <div className="flex justify-start lg:justify-end">
-                          <span className="inline-flex items-center gap-2 rounded-full bg-brand-lime px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-brand-black shadow-[0_0_30px_rgba(212,255,0,0.18)]">
+                          <span className="ds-chip inline-flex items-center gap-2 border-brand-lime bg-brand-lime px-4 py-2 text-brand-black shadow-[0_0_30px_rgba(212,255,0,0.18)]">
                             <PlayCircle className="h-4 w-4" />
                             {text.watch}
                           </span>

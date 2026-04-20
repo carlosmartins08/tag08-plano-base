@@ -39,10 +39,8 @@ const IncludedPillars: React.FC = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         <header className="reveal relative mb-20 text-center">
           <span className="blueprint-label -top-8 left-1/2 -translate-x-1/2">SERVICE_ARCHITECTURE: PILLARS</span>
-          <div className="mb-6 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-              {t.pillars.badge}
-            </span>
+          <div className="mb-6 ds-section-badge">
+            <span>{t.pillars.badge}</span>
           </div>
           <h2 className="font-display text-4xl font-black uppercase italic leading-[0.9] tracking-tight text-white md:text-6xl">
             {t.pillars.title}
@@ -60,7 +58,7 @@ const IncludedPillars: React.FC = () => {
               onMouseMove={(e) => handleMouseMove(e, idx)}
               onMouseEnter={() => setActiveCard(idx)}
               onMouseLeave={() => setActiveCard(null)}
-              className="blueprint-element reveal group relative overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-8 transition-all duration-500 hover:-translate-y-2 hover:border-brand-lime/40 md:p-10"
+              className="blueprint-element reveal ds-card-shell ds-card-shell-hover-lime group relative overflow-hidden rounded-[32px] p-8 hover:-translate-y-2 md:p-10"
             >
               <span className="blueprint-label -top-4 left-6">PILLAR_ID: P0{idx + 1}</span>
               {activeCard === idx && (
@@ -73,7 +71,7 @@ const IncludedPillars: React.FC = () => {
               )}
 
               <div className="relative z-10">
-                <div className="mb-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-brand-lime shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-brand-lime group-hover:text-brand-black">
+                <div className="ds-icon-shell mb-10 h-14 w-14 shadow-xl group-hover:scale-110 group-hover:rotate-6 group-hover:bg-brand-lime group-hover:text-brand-black">
                   {pillar.icon}
                 </div>
 

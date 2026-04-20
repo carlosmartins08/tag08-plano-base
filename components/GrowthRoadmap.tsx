@@ -59,9 +59,9 @@ const GrowthRoadmap: React.FC = () => {
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                         {steps.map((step, i) => (
                             <div key={i} className="reveal" style={{ transitionDelay: `${i * 100}ms` }}>
-                                <div className="group relative p-8 bg-white/[0.03] border border-white/10 rounded-[40px] hover:border-brand-lime/40 transition-all duration-500 hover:-translate-y-4 blueprint-element">
+                                <div className="ds-panel-shell group relative p-8 rounded-[40px] hover:border-brand-lime/40 transition-all duration-500 hover:-translate-y-4 blueprint-element">
                                     <span className="blueprint-label -top-4 left-8">STAGE_0{i + 1}: POS_OFFSET</span>
-                                    <div className={`w-14 h-14 rounded-2xl ${step.color === 'bg-brand-lime' ? 'bg-brand-lime text-brand-black shadow-[0_0_20px_rgba(212,255,0,0.4)]' : 'bg-white/5 text-brand-lime'} flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110`}>
+                                    <div className={`ds-icon-shell w-14 h-14 mb-8 group-hover:scale-110 ${step.color === 'bg-brand-lime' ? 'border-brand-lime bg-brand-lime text-brand-black shadow-[0_0_20px_rgba(212,255,0,0.4)]' : 'bg-white/5 text-brand-lime'}`}>
                                         {step.icon}
                                     </div>
 

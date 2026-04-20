@@ -5,8 +5,20 @@ import { Plus, Minus, MessageCircle, HelpCircle, ArrowRight } from 'lucide-react
 import { useTranslation } from '../contexts/LanguageContext';
 
 const FAQ: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const handleSupportClick = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'direct_contact_click', {
+        entry_point: 'faq_support',
+        contact_route: recommendedContactRoute,
+        language_selected: language,
+        locale_region: localeSignals.regionCode ?? 'unknown',
+        locale_timezone: localeSignals.timeZone ?? 'unknown',
+      });
+    }
+  };
 
   const questions = t.faq.items.map((item, index) => ({
     ...item,
@@ -38,32 +50,35 @@ const FAQ: React.FC = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
           <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
-            <div className="inline-flex items-center gap-2 text-brand-lime border border-brand-lime/20 bg-brand-lime/5 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold mb-6">
+            <div className="ds-section-badge mb-6 tracking-widest">
               <HelpCircle size={12} />
               {t.faq.badge}
             </div>
 
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
               {t.faq.title} <br />
-              <span className="text-gray-500">{t.faq.titleAccent}</span>
+              <span className="text-slate-500">{t.faq.titleAccent}</span>
             </h2>
 
-            <p className="text-gray-400 text-sm leading-relaxed mb-8 border-l border-white/10 pl-4">
+            <p className="text-slate-400 text-sm leading-relaxed mb-8 border-l border-white/10 pl-4">
               {t.faq.subtitle}
             </p>
 
-            <div className="bg-[#0A0A0A] border border-white/10 rounded-xl p-6 relative overflow-hidden group hover:border-brand-lime/30 transition-all duration-300">
+            <div className="ds-panel-shell bg-brand-dark rounded-xl p-6 relative overflow-hidden group hover:border-brand-lime/30 transition-all duration-300 ease-brand">
               <div className="absolute inset-0 bg-brand-lime/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-10 h-10 bg-brand-lime rounded-lg flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(212,255,0,0.2)] text-brand-black">
                   <MessageCircle size={20} />
                 </div>
                 <h4 className="text-white font-bold mb-2">{t.faq.supportTitle}</h4>
-                <p className="text-xs text-gray-500 mb-4 leading-relaxed">
+                <p className="text-xs text-slate-500 mb-4 leading-relaxed">
                   {t.faq.supportBody}
                 </p>
                 <a
-                  href="#contato"
+                  href={recommendedContactHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleSupportClick}
                   className="text-brand-lime text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:gap-3 transition-all"
                 >
                   {t.faq.supportCta} <ArrowRight size={14} />
@@ -80,9 +95,9 @@ const FAQ: React.FC = () => {
               return (
                 <div
                   key={question.id}
-                  className={`group border rounded-xl transition-all duration-500 overflow-hidden ${isOpen
-                    ? 'bg-brand-dark border-brand-lime/50 shadow-[0_0_30px_rgba(212,255,0,0.05)]'
-                    : 'bg-transparent border-white/10 hover:border-white/20 hover:bg-white/[0.02]'
+                  className={`group rounded-xl transition-all duration-500 overflow-hidden ${isOpen
+                    ? 'bg-brand-dark border border-brand-lime/50 shadow-[0_0_30px_rgba(212,255,0,0.05)]'
+                    : 'ds-card-shell border-white/10 bg-transparent hover:border-white/20'
                     }`}
                 >
                   <button
@@ -93,7 +108,7 @@ const FAQ: React.FC = () => {
                     aria-controls={panelId}
                   >
                     <span
-                      className={`text-sm font-mono font-bold pt-1 transition-colors duration-300 ${isOpen ? 'text-brand-lime' : 'text-gray-600'}`}
+                      className={`text-sm font-mono font-bold pt-1 transition-colors duration-300 ease-brand ${isOpen ? 'text-brand-lime' : 'text-slate-600'}`}
                     >
                       {question.id}
                     </span>
@@ -101,7 +116,7 @@ const FAQ: React.FC = () => {
                       <div className="flex justify-between items-start gap-4">
                         <span
                           id={headingId}
-                          className={`font-display font-bold text-lg md:text-xl transition-colors duration-300 ${isOpen ? 'text-white' : 'text-gray-300 group-hover:text-white'
+                          className={`font-display font-bold text-lg md:text-xl transition-colors duration-300 ease-brand ${isOpen ? 'text-white' : 'text-slate-300 group-hover:text-white'
                             }`}
                         >
                           {question.question}
@@ -110,13 +125,13 @@ const FAQ: React.FC = () => {
                           {isOpen ? (
                             <Minus className="text-brand-lime" size={20} />
                           ) : (
-                            <Plus className="text-gray-500 group-hover:text-white" size={20} />
+                            <Plus className="text-slate-500 group-hover:text-white" size={20} />
                           )}
                         </div>
                       </div>
 
                       <div
-                        className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                        className={`grid transition-[grid-template-rows] duration-500 ease-brand ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                           }`}
                       >
                         <div
@@ -126,7 +141,7 @@ const FAQ: React.FC = () => {
                           className="overflow-hidden"
                         >
                           <p
-                            className={`text-gray-400 leading-relaxed text-sm md:text-base border-t border-white/5 pt-4 mt-4 transform transition-all duration-500 ease-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                            className={`text-slate-400 leading-relaxed text-sm md:text-base border-t border-white/5 pt-4 mt-4 transform transition-all duration-500 ease-brand ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                               }`}
                           >
                             {question.answer}

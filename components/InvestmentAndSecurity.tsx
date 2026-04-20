@@ -5,7 +5,19 @@ import { useTranslation } from '../contexts/LanguageContext';
 import { Shield, Sparkles, Calendar, ArrowRight, Lock } from 'lucide-react';
 
 const InvestmentAndSecurity: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
+
+  const handleOfferClick = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'direct_contact_click', {
+        entry_point: 'investment_offer',
+        contact_route: recommendedContactRoute,
+        language_selected: language,
+        locale_region: localeSignals.regionCode ?? 'unknown',
+        locale_timezone: localeSignals.timeZone ?? 'unknown',
+      });
+    }
+  };
 
   return (
     <section id="investimento" className="py-24 lg:py-32 bg-brand-black relative overflow-hidden bg-noise">
@@ -14,11 +26,9 @@ const InvestmentAndSecurity: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mb-24 reveal">
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-brand-lime/20 bg-brand-lime/5 mb-8">
+          <div className="mb-8 ds-section-badge gap-3">
             <Lock className="w-4 h-4 text-brand-lime" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-              {t.investment.badge}
-            </span>
+            <span>{t.investment.badge}</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-display font-black text-white uppercase italic tracking-tighter leading-[0.9] mb-8">
             {t.investment.title} <br />
@@ -29,7 +39,7 @@ const InvestmentAndSecurity: React.FC = () => {
           </p>
         </div>
 
-        <div className="reveal stagger-1 bg-gradient-to-br from-white/[0.05] to-white/[0.01] rounded-[60px] p-8 lg:p-16 text-white shadow-2xl relative overflow-hidden border border-white/10 backdrop-blur-xl">
+        <div className="reveal stagger-1 ds-panel-shell rounded-[60px] p-8 lg:p-16 text-white shadow-2xl relative overflow-hidden bg-gradient-to-br from-white/[0.05] to-white/[0.01]">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-lime/10 blur-[150px] rounded-full pointer-events-none"></div>
 
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center relative z-10">
@@ -41,7 +51,7 @@ const InvestmentAndSecurity: React.FC = () => {
 
               <div className="space-y-12">
                 <div className="flex gap-8 items-start group">
-                  <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 text-brand-lime group-hover:scale-110 group-hover:bg-brand-lime group-hover:text-brand-black transition-all duration-500 shadow-xl">
+                  <div className="ds-icon-shell w-16 h-16 flex-shrink-0 group-hover:scale-110 group-hover:bg-brand-lime group-hover:text-brand-black shadow-xl">
                     <Shield className="w-8 h-8" />
                   </div>
                   <div>
@@ -56,7 +66,7 @@ const InvestmentAndSecurity: React.FC = () => {
                 </div>
 
                 <div className="flex gap-8 items-start group">
-                  <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 text-brand-lime group-hover:scale-110 group-hover:bg-brand-lime group-hover:text-brand-black transition-all duration-500 shadow-xl">
+                  <div className="ds-icon-shell w-16 h-16 flex-shrink-0 group-hover:scale-110 group-hover:bg-brand-lime group-hover:text-brand-black shadow-xl">
                     <Calendar className="w-8 h-8" />
                   </div>
                   <div>
@@ -88,7 +98,10 @@ const InvestmentAndSecurity: React.FC = () => {
                   {t.investment.offerDesc}
                 </p>
                 <a
-                  href="#contato"
+                  href={recommendedContactHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleOfferClick}
                   className="w-full inline-flex items-center justify-between bg-brand-black text-brand-lime font-black px-8 py-6 rounded-3xl hover:bg-slate-900 transition-all shadow-2xl text-lg uppercase tracking-widest group/btn"
                 >
                   {t.investment.offerCta}

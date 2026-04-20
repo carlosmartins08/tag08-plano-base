@@ -2,6 +2,7 @@
 import React from 'react';
 
 export type Language = 'pt' | 'en' | 'es' | 'fr';
+export type ContactRouteId = 'br' | 'intl';
 
 export interface NavItem {
   label: string;
@@ -181,6 +182,12 @@ export interface TranslationSchema {
     acceptAll: string;
     customizeTitle: string;
     customizeSubtitle: string;
+    necessaryLabel: string;
+    necessaryDesc: string;
+    analyticalLabel: string;
+    analyticalDesc: string;
+    marketingLabel: string;
+    marketingDesc: string;
     back: string;
     savePreferences: string;
   };

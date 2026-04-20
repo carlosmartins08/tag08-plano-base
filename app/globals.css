@@ -5,6 +5,12 @@
 :root {
   --brand-lime: #D4FF00;
   --brand-black: #000000;
+  --motion-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --surface-soft: rgba(255, 255, 255, 0.02);
+  --surface-medium: rgba(255, 255, 255, 0.03);
+  --surface-strong: rgba(255, 255, 255, 0.05);
+  --surface-border-soft: rgba(255, 255, 255, 0.05);
+  --surface-border-medium: rgba(255, 255, 255, 0.1);
 }
 
 html {
@@ -25,6 +31,80 @@ h5,
 h6,
 .font-display {
   font-family: var(--font-darker-grotesque), 'Darker Grotesque', 'ui-sans-serif', 'system-ui';
+}
+
+.ds-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 255, 0, 0.2);
+  background: rgba(212, 255, 0, 0.05);
+  padding: 0.375rem 1rem;
+  color: var(--brand-lime);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.ds-card-shell {
+  border: 1px solid var(--surface-border-soft);
+  background: var(--surface-soft);
+  border-radius: 2rem;
+  transition:
+    border-color 0.5s var(--motion-ease-standard),
+    background-color 0.5s var(--motion-ease-standard),
+    transform 0.5s var(--motion-ease-standard),
+    box-shadow 0.5s var(--motion-ease-standard);
+}
+
+.ds-card-shell-hover-lime:hover {
+  border-color: rgba(212, 255, 0, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ds-panel-shell {
+  border: 1px solid var(--surface-border-medium);
+  background: var(--surface-medium);
+  backdrop-filter: blur(24px);
+}
+
+.ds-icon-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid var(--surface-border-medium);
+  background: var(--surface-strong);
+  color: var(--brand-lime);
+  transition:
+    background-color 0.5s var(--motion-ease-standard),
+    border-color 0.5s var(--motion-ease-standard),
+    color 0.5s var(--motion-ease-standard),
+    transform 0.5s var(--motion-ease-standard);
+}
+
+.ds-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.25rem 0.75rem;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.ds-chip-lime {
+  color: var(--brand-lime);
+}
+
+.ds-chip-muted {
+  color: rgba(255, 255, 255, 0.65);
 }
 
 /* Noise Texture Effect */
@@ -54,7 +134,7 @@ h6,
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: opacity 0.8s var(--motion-ease-standard), transform 0.8s var(--motion-ease-standard);
 }
 
 .reveal.is-visible {
@@ -79,11 +159,15 @@ h6,
 }
 
 .btn-magnetic {
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  transition: transform 0.3s var(--motion-ease-standard), box-shadow 0.3s var(--motion-ease-standard);
 }
 
 .btn-magnetic:hover {
   transform: translateY(-4px) scale(1.02);
+}
+
+.motion-delay-2000 {
+  animation-delay: 2s;
 }
 
 /* Custom Selection Color */

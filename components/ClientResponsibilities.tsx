@@ -17,16 +17,14 @@ const ClientResponsibilities: React.FC = () => {
   return (
     <section className="py-24 lg:py-32 bg-brand-black relative overflow-hidden bg-noise">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="reveal border border-white/10 bg-white/[0.02] rounded-[60px] p-8 md:p-16 lg:p-24 backdrop-blur-sm relative overflow-hidden">
+        <div className="reveal ds-panel-shell rounded-[60px] p-8 md:p-16 lg:p-24 relative overflow-hidden">
           {/* Decorative Corner */}
           <div className="absolute top-0 left-0 w-32 h-32 bg-brand-lime/10 blur-[80px] rounded-full -translate-x-12 -translate-y-12"></div>
 
           <div className="max-w-4xl relative z-10">
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-brand-lime/20 bg-brand-lime/5 mb-8">
+            <div className="mb-8 ds-section-badge gap-3">
               <Handshake className="w-4 h-4 text-brand-lime" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-                {t.responsibilities.badge}
-              </span>
+              <span>{t.responsibilities.badge}</span>
             </div>
 
             <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-8 uppercase italic tracking-tighter leading-[0.9]">
@@ -41,7 +39,7 @@ const ClientResponsibilities: React.FC = () => {
             <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
               {t.responsibilities.items.map((text, i) => (
                 <div key={i} className="flex gap-6 group">
-                  <div className="w-12 h-12 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-brand-lime group-hover:text-brand-black transition-all duration-500 shadow-xl text-brand-lime">
+                  <div className="ds-icon-shell w-12 h-12 flex-shrink-0 group-hover:bg-brand-lime group-hover:text-brand-black shadow-xl">
                     {responsibilityIcons[i]}
                   </div>
                   <div>

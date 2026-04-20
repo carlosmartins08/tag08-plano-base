@@ -56,6 +56,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/api/geo/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/geo">> = Specific
+  const handler = {} as typeof import("../../app/api/geo/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/api/google/reviews/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/google/reviews">> = Specific

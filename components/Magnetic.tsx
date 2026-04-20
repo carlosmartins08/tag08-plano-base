@@ -32,7 +32,7 @@ const Magnetic: React.FC<MagneticProps> = ({ children, strength = 0.5 }) => {
             ref={ref}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="inline-block transition-transform duration-500 ease-out"
+            className="inline-block transition-transform duration-500 ease-brand"
             style={{
                 transform: `translate(${position.x}px, ${position.y}px)`
             }}

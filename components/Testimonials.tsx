@@ -138,11 +138,9 @@ const Testimonials: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-end justify-between gap-8 mb-20 reveal">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-lime/20 bg-brand-lime/5 mb-6">
+            <div className="mb-6 ds-section-badge">
               <MessageSquare className="w-3 h-3 text-brand-lime" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-                Social Proof
-              </span>
+              <span>Social Proof</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-display font-black text-white uppercase tracking-tight italic leading-[0.9]">
               {t.testimonials.title} <br />
@@ -153,7 +151,7 @@ const Testimonials: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-sm flex items-center gap-6">
+          <div className="ds-panel-shell p-6 rounded-3xl flex items-center gap-6">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg">
               <GoogleLogo />
             </div>
@@ -175,7 +173,7 @@ const Testimonials: React.FC = () => {
           {cards.map((testimonial, idx) => (
             <div
               key={testimonial.id}
-              className={`reveal stagger-${idx + 1} group bg-white/[0.03] border border-white/5 p-8 rounded-[32px] hover:border-brand-lime/30 hover:bg-white/[0.05] transition-all duration-500 relative overflow-hidden`}
+              className={`reveal stagger-${idx + 1} ds-card-shell ds-card-shell-hover-lime group p-8 rounded-[32px] relative overflow-hidden`}
             >
               <Quote className="absolute -top-4 -right-4 w-24 h-24 text-white/[0.02] -rotate-12 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-0" />
 

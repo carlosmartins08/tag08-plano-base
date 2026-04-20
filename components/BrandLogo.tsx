@@ -8,13 +8,10 @@ interface BrandLogoProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: string;
 }
 
-const BrandLogo: React.FC<BrandLogoProps> = ({ color = '#ffffff', className, ...props }) => (
-  <div className={clsx('flex items-center gap-3', className)} {...props}>
+const BrandLogo: React.FC<BrandLogoProps> = ({ color = 'currentColor', className, ...props }) => (
+  <div className={clsx('flex items-center gap-3 text-white', className)} style={{ color }} {...props}>
     <Icons.LogoIcon />
-    <span
-      className={clsx('font-black uppercase tracking-[0.3em]', className)}
-      style={{ color }}
-    >
+    <span className="font-black uppercase tracking-[0.3em]">
       TAG08
     </span>
   </div>

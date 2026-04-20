@@ -26,12 +26,15 @@ const LanguageSwitcher: React.FC = () => {
       <div
         id="language-switcher-menu"
         role="menu"
+        aria-label="Language options"
         className={`flex flex-col gap-2 transition-all duration-300 origin-bottom ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4 pointer-events-none'
           }`}
       >
         {languages.filter(l => l.code !== language).map((lang) => (
           <button
             key={lang.code}
+            type="button"
+            role="menuitem"
             onClick={() => handleLanguageChange(lang.code)}
             className="group flex items-center gap-3 px-4 py-2.5 bg-brand-black/80 backdrop-blur-xl border border-white/10 rounded-2xl text-white/60 hover:text-brand-lime hover:border-brand-lime/50 transition-all shadow-xl"
           >
@@ -49,7 +52,7 @@ const LanguageSwitcher: React.FC = () => {
         className={`flex items-center gap-3 px-4 py-3 bg-brand-black border rounded-2xl shadow-2xl transition-all duration-500 ${isOpen ? 'border-brand-lime ring-4 ring-brand-lime/10' : 'border-white/10 hover:border-brand-lime/50'
           }`}
         aria-label="Selecionar Idioma"
-        aria-haspopup="listbox"
+        aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls="language-switcher-menu"
       >

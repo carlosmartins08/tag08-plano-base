@@ -17,7 +17,7 @@ const ModalShell: React.FC<ModalShellProps> = ({
   children,
   containerClassName = '',
   backdropClassName = 'bg-brand-black/95 backdrop-blur-xl animate-in fade-in duration-300',
-  panelClassName = 'relative bg-brand-black border border-white/10 w-full max-w-4xl max-h-full overflow-y-auto rounded-[2.5rem] shadow-2xl p-8 md:p-12 animate-in zoom-in-95 duration-300',
+  panelClassName = 'ds-panel-shell relative bg-brand-black w-full max-w-4xl max-h-full overflow-y-auto rounded-[2.5rem] shadow-2xl p-8 md:p-12 animate-in zoom-in-95 duration-300',
 }) => {
   useEffect(() => {
     if (!isOpen) return;

@@ -3,52 +3,62 @@ import { Language, TranslationSchema } from './types';
 export const translations: Record<Language, TranslationSchema> = {
   pt: {
     nicheHeadlines: {
-      'real-estate': "Domine o mercado imobili?rio.",
-      'health': "Autoridade m?xima em sa?de.",
-      'tech': "Escalabilidade digital de elite.",
-      'expert': "Sua autoridade merece uma vitrine de elite.",
-      'generic': "Venda mais. Sem achismos."
+      "real-estate": "Domine o mercado imobiliário.",
+      health: "Autoridade máxima em saúde.",
+      tech: "Escalabilidade digital de elite.",
+      expert: "Sua autoridade merece uma vitrine de elite.",
+      generic: "Venda mais. Sem achismos."
     },
     hero: {
       badge: "Plano Base Studio",
       title: "Venda mais.",
-      titleAccent: "Apare?a melhor.",
-      description: "Transformamos empresas estagnadas em marcas dominantes atrav?s de gest?o estrat?gica de marketing e design de elite. O fim da tentativa e erro.",
-      cta: "Agendar Diagn?stico",
+      titleAccent: "Apareça melhor.",
+      description: "Transformamos empresas estagnadas em marcas dominantes através de gestão estratégica de marketing e design de elite. O fim da tentativa e erro.",
+      cta: "Agendar Diagnóstico",
       limited: "Vagas Limitadas",
       welcomeBack: "Bem-vindo de volta",
       sourceMeta: "Domine o Social.",
-      sourceGoogle: "Apare?a no Topo.",
+      sourceGoogle: "Apareça no Topo.",
       sourceLinkedin: "Conquiste o B2B.",
-      heroAlt: "Equipe de consultoria estrat?gica da TAG08 planejando o crescimento de uma marca premium",
+      heroAlt: "Equipe de consultoria estratégica da TAG08 planejando o crescimento de uma marca premium",
       headlines: {
-        data: "Decis?es baseadas em lucro real.",
+        data: "Decisões baseadas em lucro real.",
         vision: "O futuro da sua marca, hoje.",
-        default: "Venda mais. Apare?a melhor.",
+        default: "Venda mais. Apareça melhor."
       }
-    },    navbar: {
-      diagnosis: "Diagn?stico",
+    },
+    navbar: {
+      diagnosis: "Diagnóstico",
       free: "Gratuito",
       menu: {
         problem: "Problema",
-        solution: "Solu??o",
+        solution: "Solução",
         plan: "Pilares",
         cycle: "Ciclo",
-        videos: "V?deos",
+        videos: "Vídeos",
         team: "Equipe",
         testimonials: "Depoimentos",
-        faq: "FAQ",
+        faq: "FAQ"
       }
     },
     valueProposition: {
       badge: "A nossa proposta",
-      title: "Somos o bra?o direito",
-      titleAccent: "do seu neg?cio.",
-      subtitle: "O Plano Base TAG08 foi desenhado para empresas que j? validaram seu produto e agora precisam de uma estrutura profissional para escalar sem a complexidade de gerenciar m?ltiplos freelancers.",
+      title: "Somos o braço direito",
+      titleAccent: "do seu negócio.",
+      subtitle: "O Plano Base TAG08 foi desenhado para empresas que já validaram seu produto e agora precisam de uma estrutura profissional para escalar sem a complexidade de gerenciar múltiplos freelancers.",
       features: {
-        focus: { title: "Foco no neg?cio", desc: "Voc? foca em vender e entregar; n?s cuidamos da atra??o e da autoridade digital." },
-        data: { title: "Dados e an?lise", desc: "Relat?rios mensais objetivos mostram o que gera lucro e o que precisa mudar." },
-        scale: { title: "Escalabilidade", desc: "A??es cont?nuas constroem valor de marca e autoridade no longo prazo." },
+        focus: {
+          title: "Foco no negócio",
+          desc: "Você foca em vender e entregar; nós cuidamos da atração e da autoridade digital."
+        },
+        data: {
+          title: "Dados e análise",
+          desc: "Relatórios mensais objetivos mostram o que gera lucro e o que precisa mudar."
+        },
+        scale: {
+          title: "Escalabilidade",
+          desc: "Ações contínuas constroem valor de marca e autoridade no longo prazo."
+        }
       }
     },
     problem: {
@@ -65,18 +75,30 @@ export const translations: Record<Language, TranslationSchema> = {
         posts: "Falta de Método",
         leads: "Leads de Baixa Qualidade",
         money: "Dreno de Recursos",
-        brand: "Autoridade Estagnada",
+        brand: "Autoridade Estagnada"
       }
     },
     pillars: {
       badge: "Arquitetura da entrega",
-      title: "Constru??o de Ativos Digitais",
-      subtitle: "Constru?mos o patrim?nio digital que sua empresa precisa para dominar o nicho de forma sustent?vel.",
+      title: "Construção de Ativos Digitais",
+      subtitle: "Construímos o patrimônio digital que sua empresa precisa para dominar o nicho de forma sustentável.",
       items: {
-        strategy: { title: "Dire??o Estrat?gica", desc: "Defini??o de canais, personas e linha editorial focada em ROI real e previsibilidade." },
-        content: { title: "Produ??o de Elite", desc: "Cria??o de criativos premium que convertem aten??o em autoridade e desejo de compra." },
-        ads: { title: "Alavancagem de Tr?fego", desc: "Gest?o profissional de campanhas em Meta e Google para maximizar o lucro, n?o s? cliques." },
-        analysis: { title: "Dashboard de Performance", desc: "Acompanhamento em tempo real e reuni?es mensais de alinhamento com especialistas seniores." },
+        strategy: {
+          title: "Direção Estratégica",
+          desc: "Definição de canais, personas e linha editorial focada em ROI real e previsibilidade."
+        },
+        content: {
+          title: "Produção de Elite",
+          desc: "Criação de criativos premium que convertem atenção em autoridade e desejo de compra."
+        },
+        ads: {
+          title: "Alavancagem de Tráfego",
+          desc: "Gestão profissional de campanhas em Meta e Google para maximizar o lucro, não só cliques."
+        },
+        analysis: {
+          title: "Dashboard de Performance",
+          desc: "Acompanhamento em tempo real e reuniões mensais de alinhamento com especialistas seniores."
+        }
       }
     },
     faq: {
@@ -88,12 +110,30 @@ export const translations: Record<Language, TranslationSchema> = {
       supportBody: "Nossa equipe de especialistas está disponível no WhatsApp para responder questões específicas do seu nicho.",
       supportCta: "Falar com Consultor",
       items: [
-        { question: "O Plano Base é indicado para qualquer tipo de empresa?", answer: "Não. O Plano Base é exclusivo para empresas que buscam consistência estratégica e já validaram seu produto/serviço. Não atendemos quem busca 'só um post' ou quem não está disposto a seguir um plano estruturado." },
-        { question: "Vocês garantem retorno imediato ou viralização?", answer: "Não trabalhamos com fórmulas mágicas ou busca por viralização vazia. Oferecemos um sistema de crescimento sólido e previsível. Resultados reais surgem da disciplina e do respeito ao processo." },
-        { question: "Quem toma as decisões criativas?", answer: "A TAG08 atua como sua sócia estratégica de marketing. Valorizamos sua escuta, mas decisões técnicas são baseadas em dados e heurísticas de conversão. Buscamos parceiros, não apenas clientes." },
-        { question: "Esse plano é apenas gestão de redes sociais?", answer: "Não. É uma infraestrutura de inteligência. Além das redes, ele integra diagnóstico, tráfego e análise de dados para transformar sua presença digital em um ativo de faturamento." },
-        { question: "Como funciona a dinâmica de ajustes e retrabalho?", answer: "Trabalhamos com um fluxo organizado de validação. O cliente ideal participa ativamente nas definições estratégicas iniciais, o que garante precisão e elimina o retrabalho desnecessário." },
-        { question: "Existe contrato de fidelidade?", answer: "Não possuímos fidelidade forçada. Nossa retenção é baseada em performance e clareza. Se você vê marketing como um custo e não como investimento ativo, provavelmente não teremos o fit necessário." }
+        {
+          question: "O Plano Base é indicado para qualquer tipo de empresa?",
+          answer: "Não. O Plano Base é exclusivo para empresas que buscam consistência estratégica e já validaram seu produto/serviço. Não atendemos quem busca 'só um post' ou quem não está disposto a seguir um plano estruturado."
+        },
+        {
+          question: "Vocês garantem retorno imediato ou viralização?",
+          answer: "Não trabalhamos com fórmulas mágicas ou busca por viralização vazia. Oferecemos um sistema de crescimento sólido e previsível. Resultados reais surgem da disciplina e do respeito ao processo."
+        },
+        {
+          question: "Quem toma as decisões criativas?",
+          answer: "A TAG08 atua como sua sócia estratégica de marketing. Valorizamos sua escuta, mas decisões técnicas são baseadas em dados e heurísticas de conversão. Buscamos parceiros, não apenas clientes."
+        },
+        {
+          question: "Esse plano é apenas gestão de redes sociais?",
+          answer: "Não. É uma infraestrutura de inteligência. Além das redes, ele integra diagnóstico, tráfego e análise de dados para transformar sua presença digital em um ativo de faturamento."
+        },
+        {
+          question: "Como funciona a dinâmica de ajustes e retrabalho?",
+          answer: "Trabalhamos com um fluxo organizado de validação. O cliente ideal participa ativamente nas definições estratégicas iniciais, o que garante precisão e elimina o retrabalho desnecessário."
+        },
+        {
+          question: "Existe contrato de fidelidade?",
+          answer: "Não possuímos fidelidade forçada. Nossa retenção é baseada em performance e clareza. Se você vê marketing como um custo e não como investimento ativo, provavelmente não teremos o fit necessário."
+        }
       ]
     },
     cta: {
@@ -103,7 +143,7 @@ export const translations: Record<Language, TranslationSchema> = {
       highValueTitle: "Leve sua operação ao topo.",
       highValueButton: "Falar com um Sócio Sênior",
       disclaimer: "* Ao iniciar o contato, você autoriza a TAG08 a tratar seus dados para fins de diagnóstico comercial, conforme a LGPD e nossa política de privacidade.",
-      urgency: "Vagas limitadas para novos parceiros este mês",
+      urgency: "Vagas limitadas para novos parceiros este mês"
     },
     contactRouting: {
       badge: "Roteamento direto",
@@ -118,59 +158,101 @@ export const translations: Record<Language, TranslationSchema> = {
           label: "Brasil",
           summary: "Atendimento nacional via WhatsApp para clientes no Brasil.",
           button: "Abrir WhatsApp Brasil",
-          message: "Olá, quero atendimento para o Brasil.",
+          message: "Olá, quero atendimento para o Brasil."
         },
         intl: {
           label: "Internacional / Español",
           summary: "Atendimento via WhatsApp para clientes internacionais e em espanhol.",
           button: "Abrir WhatsApp Internacional",
-          message: "Hola, necesito atención internacional en español.",
-        },
-      },
+          message: "Hola, necesito atención internacional en español."
+        }
+      }
     },
     cookie: {
       title: "Privacidade & Dados",
-      desc: "Usamos cookies essenciais, anal?ticos e de marketing para otimizar sua experi?ncia e entender nosso tr?fego.",
+      desc: "Utilizamos cookies para otimizar sua experiência e analisar nosso tráfego.",
       accept: "Aceitar",
-      policy: "Pol?tica de cookies",
+      policy: "Política de Privacidade",
       configure: "Configurar",
       acceptAll: "Aceitar todos",
       customizeTitle: "Personalizar cookies",
-      customizeSubtitle: "Sua escolha impacta como podemos melhorar nosso servi?o para voc?.",
+      customizeSubtitle: "Sua escolha impacta como podemos melhorar nosso serviço para você.",
+      necessaryLabel: "Essenciais",
+      necessaryDesc: "Obrigatórios para o site funcionar.",
+      analyticalLabel: "Analíticos",
+      analyticalDesc: "Ajuda a entender nosso tráfego.",
+      marketingLabel: "Marketing",
+      marketingDesc: "Anúncios mais relevantes para você.",
       back: "Voltar",
-      savePreferences: "Salvar prefer?ncias",
+      savePreferences: "Salvar preferências"
     },
     privacy: {
       title: "Política de Privacidade",
       close: "Fechar",
       intro: "A TAG08 Studio respeita sua privacidade e se compromete a proteger seus dados pessoais.",
       sections: {
-        data: { title: "Coleta de Dados", text: "Coletamos informações básicas de contato (nome, e-mail, telefone) apenas quando você inicia voluntariamente uma consultoria ou contato via WhatsApp." },
-        cookies: { title: "Uso de Cookies", text: "Utilizamos cookies técnicos para garantir o funcionamento do site e cookies analíticos (Google Analytics) para entender como melhorar nossa entrega de conteúdo." },
-        rights: { title: "Seus Direitos", text: "Você tem o direito de acessar, corrigir ou solicitar a exclusão de seus dados a qualquer momento, conforme previsto na LGPD." },
-        security: { title: "Segurança", text: "Implementamos protocolos de criptografia e acesso restrito para garantir que suas informações estratégicas nunca sejam compartilhadas com terceiros sem autorização." }
+        data: {
+          title: "Coleta de Dados",
+          text: "Coletamos informações básicas de contato (nome, e-mail, telefone) apenas quando você inicia voluntariamente uma consultoria ou contato via WhatsApp."
+        },
+        cookies: {
+          title: "Uso de Cookies",
+          text: "Utilizamos cookies técnicos para garantir o funcionamento do site e cookies analíticos (Google Analytics) para entender como melhorar nossa entrega de conteúdo."
+        },
+        rights: {
+          title: "Seus Direitos",
+          text: "Você tem o direito de acessar, corrigir ou solicitar a exclusão de seus dados a qualquer momento, conforme previsto na LGPD."
+        },
+        security: {
+          title: "Segurança",
+          text: "Implementamos protocolos de criptografia e acesso restrito para garantir que suas informações estratégicas nunca sejam compartilhadas com terceiros sem autorização."
+        }
       }
     },
     cookiePolicy: {
       title: "Política de Cookies",
       intro: "Esta política explica como a TAG08 utiliza cookies para melhorar sua navegação e análise de performance.",
       sections: {
-        necessary: { title: "Cookies Necessários", text: "Essenciais para o funcionamento básico do site, como navegação em páginas e acesso a áreas seguras. O site não pode funcionar corretamente sem eles." },
-        analytical: { title: "Cookies de Desempenho", text: "Ajudam-nos a entender como os visitantes interagem com o site, coletando e reportando informações de forma anônima via Google Analytics." },
-        marketing: { title: "Cookies de Marketing", text: "Utilizados para rastrear visitantes em sites. A intenção é exibir anúncios relevantes e envolventes para o usuário individual." },
-        management: { title: "Gestão de Preferências", text: "Você pode gerenciar ou desativar cookies através das configurações do seu navegador a qualquer momento. Note que a desativação pode afetar sua experiência no site." }
+        necessary: {
+          title: "Cookies Necessários",
+          text: "Essenciais para o funcionamento básico do site, como navegação em páginas e acesso a áreas seguras. O site não pode funcionar corretamente sem eles."
+        },
+        analytical: {
+          title: "Cookies de Desempenho",
+          text: "Ajudam-nos a entender como os visitantes interagem com o site, coletando e reportando informações de forma anônima via Google Analytics."
+        },
+        marketing: {
+          title: "Cookies de Marketing",
+          text: "Utilizados para rastrear visitantes em sites. A intenção é exibir anúncios relevantes e envolventes para o usuário individual."
+        },
+        management: {
+          title: "Gestão de Preferências",
+          text: "Você pode gerenciar ou desativar cookies através das configurações do seu navegador a qualquer momento. Note que a desativação pode afetar sua experiência no site."
+        }
       }
     },
     monthlyCycle: {
       title: "Ciclo de Execução Recorrente",
       subtitle: "Marketing não é um evento, é um processo contínuo de inteligência.",
       steps: {
-        step1: { title: "Semana 1: Alinhamento", desc: "Reunião de kickoff mensal para definir os temas e objetivos estratégicos." },
-        step2: { title: "Semana 2: Produção", desc: "Desenvolvimento de artes, legendas e configuração técnica das campanhas." },
-        step3: { title: "Crescimento", desc: "Acompanhamento diário e otimização em tempo real baseada em dados reais." },
-        step4: { title: "Escala", desc: "Análise de KPIs e expansão agressiva de resultados e autoridade." },
+        step1: {
+          title: "Semana 1: Alinhamento",
+          desc: "Reunião de kickoff mensal para definir os temas e objetivos estratégicos."
+        },
+        step2: {
+          title: "Semana 2: Produção",
+          desc: "Desenvolvimento de artes, legendas e configuração técnica das campanhas."
+        },
+        step3: {
+          title: "Crescimento",
+          desc: "Acompanhamento diário e otimização em tempo real baseada em dados reais."
+        },
+        step4: {
+          title: "Escala",
+          desc: "Análise de KPIs e expansão agressiva de resultados e autoridade."
+        }
       },
-      footerText: "Repetimos o sucesso todos os meses",
+      footerText: "Repetimos o sucesso todos os meses"
     },
     testimonials: {
       title: "Reconhecimento de Elite",
@@ -181,9 +263,24 @@ export const translations: Record<Language, TranslationSchema> = {
       sourceLabel: "Google Meu Negócio",
       viewAll: "Ver todas no Google",
       items: [
-        { name: "Ricardo Almeida", role: "CEO, TechFlux", content: "A TAG08 transformou nossa presença digital. O Plano Base nos deu a constância que faltava e o ROI foi visível já no segundo mês.", date: "há 2 meses" },
-        { name: "Fernanda Costa", role: "Dir. de Marketing, Lumina", content: "Design de altíssimo nível e estratégia real. Não é apenas postagem, é construção de marca. Recomendo para quem busca o topo.", date: "há 1 mês" },
-        { name: "Bruno Mantovani", role: "Sócio, Nexus Invest", content: "O profissionalismo da equipe é impressionante. O ciclo mensal de entrega é muito organizado e nos dá total clareza do crescimento.", date: "há 3 semanas" }
+        {
+          name: "Ricardo Almeida",
+          role: "CEO, TechFlux",
+          content: "A TAG08 transformou nossa presença digital. O Plano Base nos deu a constância que faltava e o ROI foi visível já no segundo mês.",
+          date: "há 2 meses"
+        },
+        {
+          name: "Fernanda Costa",
+          role: "Dir. de Marketing, Lumina",
+          content: "Design de altíssimo nível e estratégia real. Não é apenas postagem, é construção de marca. Recomendo para quem busca o topo.",
+          date: "há 1 mês"
+        },
+        {
+          name: "Bruno Mantovani",
+          role: "Sócio, Nexus Invest",
+          content: "O profissionalismo da equipe é impressionante. O ciclo mensal de entrega é muito organizado e nos dá total clareza do crescimento.",
+          date: "há 3 semanas"
+        }
       ]
     },
     videoGallery: {
@@ -197,7 +294,7 @@ export const translations: Record<Language, TranslationSchema> = {
       openChannel: "Ver canal",
       watch: "Assistir",
       loading: "Carregando os últimos vídeos...",
-      error: "Não foi possível carregar os vídeos agora. Abra o canal para ver a biblioteca completa.",
+      error: "Não foi possível carregar os vídeos agora. Abra o canal para ver a biblioteca completa."
     },
     teamShowcase: {
       badge: "Núcleo sênior",
@@ -212,40 +309,64 @@ export const translations: Record<Language, TranslationSchema> = {
           role: "Fundador e direção",
           summary: "Criou a TAG08 e conduz a direção estratégica da operação.",
           focus: "Fundador",
-          tags: ["Fundação", "Direção", "Clareza"],
-          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/",
+          tags: [
+            "Fundação",
+            "Direção",
+            "Clareza"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/"
         },
         {
           name: "Ignacio Quiroz",
           role: "Estratégia e comunicação",
           summary: "Define posicionamento e narrativa para transformar intenção em direção comercial.",
           focus: "Estratégia",
-          tags: ["Posicionamento", "Narrativa", "Oferta"],
-          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/",
+          tags: [
+            "Posicionamento",
+            "Narrativa",
+            "Oferta"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/"
         },
         {
           name: "Pedro V. Félix",
           role: "Dados e tecnologia",
           summary: "Organiza dados, automação e suporte técnico para decisões mais seguras.",
           focus: "Tecnologia",
-          tags: ["Dados", "Automação", "Integração"],
-          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/",
+          tags: [
+            "Dados",
+            "Automação",
+            "Integração"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/"
         }
-      ],
+      ]
     },
     strategicBenefits: {
       badge: "La norme TAG08",
       title: "La norme TAG08",
-      subtitle: "Des diff?renciateurs qui nous placent au sommet du marketing strat?gique et intelligent.",
+      subtitle: "Diferenciais que nos colocam no topo da cadeia do marketing estratégico e inteligente.",
       stats: {
         transparency: "Transparence",
-        roi: "ROI moyen",
+        roi: "ROI moyen"
       },
       items: [
-        { title: "Coh?rence absolue", desc: "Une pr?sence num?rique continue et professionnelle qui construit une vraie autorit?." },
-        { title: "ROI cibl?", desc: "Des campagnes optimis?es pour g?n?rer du profit et de la croissance, sans m?triques de vanit?." },
-        { title: "?quipe senior", desc: "Acc?s direct ? des consultants experts, sans interm?diaires ni stagiaires." },
-        { title: "Agilit?", desc: "Ex?cution rapide et adaptation constante aux ?volutions du march? num?rique." }
+        {
+          title: "Inteligência Estratégica",
+          desc: "Não apenas executamos; pensamos o seu negócio com foco em ativos digitais recorrentes."
+        },
+        {
+          title: "ROI cibl?",
+          desc: "Construímos uma autoridade que se valoriza com o tempo, gerando desejo de compra real."
+        },
+        {
+          title: "?quipe senior",
+          desc: "Acesso direto a consultores especialistas. Sem estagiários na linha de frente da sua marca."
+        },
+        {
+          title: "Agilit?",
+          desc: "Troque o caos pela clareza de um fluxo de trabalho que privilegia a sua produtividade."
+        }
       ]
     },
     calculator: {
@@ -292,35 +413,51 @@ export const translations: Record<Language, TranslationSchema> = {
     footer: {
       badge: "Consultoria de Elite",
       title: "Sua empresa pronta para o",
-      titleAccent: "pr?ximo n?vel de maturidade.",
-      description: "A TAG08 une estrat?gia de neg?cios, engenharia de processos e tecnologia para transformar o caos operacional em m?quinas de crescimento.",
-      ctaDiagnosis: "AGENDAR DIAGN?STICO",
-      ctaDirection: "FALAR COM A DIRE??O",
+      titleAccent: "próximo nível de maturidade.",
+      description: "A TAG08 une estratégia de negócios, engenharia de processos e tecnologia para transformar o caos operacional em máquinas de crescimento.",
+      ctaDiagnosis: "AGENDAR DIAGNÓSTICO",
+      ctaDirection: "FALAR COM A DIREÇÃO",
       headquarters: "Sede",
       centralSupport: "Central de atendimento",
-      about: "Consultoria especializada em alavancagem de neg?cios. Substitu?mos o 'achismo' por dados e o caos por processos validados.",
+      about: "Consultoria especializada em alavancagem de negócios. Substituímos o 'achismo' por dados e o caos por processos validados.",
       ecosystem: "Ecossistema TAG08",
       aboutTag08: "Sobre a TAG08",
-      blog: "Blog Estrat?gico",
+      blog: "Blog Estratégico",
       sebraetec: "Sebraetec",
       institutional: "Institucional",
       social: "Redes Sociais",
-      socialDesc: "Acompanhe os bastidores das consultorias e insights di?rios de gest?o.",
-      rights: "TAG08 Estrat?gia Digital",
+      socialDesc: "Acompanhe os bastidores das consultorias e insights diários de gestão.",
+      rights: "TAG08 Estratégia Digital",
       allRights: "Todos os direitos reservados.",
       privacy: "Privacidade",
-      cookies: "Pol?tica de Cookies",
-      preferences: "Prefer?ncias de Privacidade"
+      cookies: "Política de Cookies",
+      preferences: "Preferências de Privacidade"
     },
     growthRoadmap: {
       title: "O Caminho para o",
       titleAccent: "Próximo Nível",
       subtitle: "Não é sobre um serviço mensal, é sobre uma jornada de escala previsível e lucrativa.",
       steps: {
-        step1: { stage: "Fase 01", title: "Consolidação", desc: "Ajuste de fundação, branding de elite e estrutura de tráfego inicial." },
-        step2: { stage: "Fase 02", title: "Escala", desc: "Expansão de budgets, otimização de funis e domínio de audiência." },
-        step3: { stage: "Fase 03", title: "Aceleração", desc: "Lançamentos e escala vertical para atingir o teto do mercado." },
-        step4: { stage: "Fase 04", title: "Domínio", desc: "Autoridade inquestionável e liderança absoluta no seu nicho." }
+        step1: {
+          stage: "Fase 01",
+          title: "Consolidação",
+          desc: "Ajuste de fundação, branding de elite e estrutura de tráfego inicial."
+        },
+        step2: {
+          stage: "Fase 02",
+          title: "Escala",
+          desc: "Expansão de budgets, otimização de funis e domínio de audiência."
+        },
+        step3: {
+          stage: "Fase 03",
+          title: "Aceleração",
+          desc: "Lançamentos e escala vertical para atingir o teto do mercado."
+        },
+        step4: {
+          stage: "Fase 04",
+          title: "Domínio",
+          desc: "Autoridade inquestionável e liderança absoluta no seu nicho."
+        }
       }
     },
     strategyNotes: {
@@ -334,11 +471,11 @@ export const translations: Record<Language, TranslationSchema> = {
   },
   en: {
     nicheHeadlines: {
-      'real-estate': "Highlight your properties.",
-      'health': "Strengthen your clinic.",
-      'tech': "Scale your Startup.",
-      'expert': "Your authority deserves an elite showcase.",
-      'generic': "Sell more."
+      "real-estate": "Highlight your properties.",
+      health: "Strengthen your clinic.",
+      tech: "Scale your Startup.",
+      expert: "Your authority deserves an elite showcase.",
+      generic: "Sell more."
     },
     hero: {
       badge: "Studio Base Plan",
@@ -355,9 +492,10 @@ export const translations: Record<Language, TranslationSchema> = {
       headlines: {
         data: "Decisions based on real profit.",
         vision: "The future of your brand, today.",
-        default: "Sell more. Look better.",
+        default: "Sell more. Look better."
       }
-    },    navbar: {
+    },
+    navbar: {
       diagnosis: "Diagnosis",
       free: "Free",
       menu: {
@@ -368,7 +506,7 @@ export const translations: Record<Language, TranslationSchema> = {
         videos: "Videos",
         team: "Team",
         testimonials: "Testimonials",
-        faq: "FAQ",
+        faq: "FAQ"
       }
     },
     valueProposition: {
@@ -377,9 +515,18 @@ export const translations: Record<Language, TranslationSchema> = {
       titleAccent: "of your business.",
       subtitle: "The TAG08 Base Plan was designed for companies that have already validated their product and now need a professional structure to scale without the complexity of managing multiple freelancers.",
       features: {
-        focus: { title: "Business focus", desc: "You focus on selling and delivery; we handle attraction and digital authority." },
-        data: { title: "Data and analysis", desc: "Clear monthly reports show what creates profit and what needs to change." },
-        scale: { title: "Scalability", desc: "Continuous actions build brand value and authority over time." },
+        focus: {
+          title: "Business focus",
+          desc: "You focus on selling and delivery; we handle attraction and digital authority."
+        },
+        data: {
+          title: "Data and analysis",
+          desc: "Clear monthly reports show what creates profit and what needs to change."
+        },
+        scale: {
+          title: "Scalability",
+          desc: "Continuous actions build brand value and authority over time."
+        }
       }
     },
     problem: {
@@ -396,7 +543,7 @@ export const translations: Record<Language, TranslationSchema> = {
         posts: "Irregular Posts",
         leads: "Unqualified Leads",
         money: "Wasted Money",
-        brand: "Invisible Brand",
+        brand: "Invisible Brand"
       }
     },
     pillars: {
@@ -404,10 +551,22 @@ export const translations: Record<Language, TranslationSchema> = {
       title: "Building Digital Assets",
       subtitle: "We build the digital equity your company needs to dominate the niche sustainably.",
       items: {
-        strategy: { title: "Strategic Direction", desc: "Channel, persona and editorial-line definition focused on real ROI and predictability." },
-        content: { title: "Elite Production", desc: "Premium creatives that convert attention into authority and buying intent." },
-        ads: { title: "Traffic Leverage", desc: "Professional Meta and Google campaign management to maximize profit, not just clicks." },
-        analysis: { title: "Performance Dashboard", desc: "Real-time tracking and monthly alignment with senior specialists." },
+        strategy: {
+          title: "Strategic Direction",
+          desc: "Channel, persona and editorial-line definition focused on real ROI and predictability."
+        },
+        content: {
+          title: "Elite Production",
+          desc: "Premium creatives that convert attention into authority and buying intent."
+        },
+        ads: {
+          title: "Traffic Leverage",
+          desc: "Professional Meta and Google campaign management to maximize profit, not just clicks."
+        },
+        analysis: {
+          title: "Performance Dashboard",
+          desc: "Real-time tracking and monthly alignment with senior specialists."
+        }
       }
     },
     faq: {
@@ -419,18 +578,54 @@ export const translations: Record<Language, TranslationSchema> = {
       supportBody: "Our consulting team is available via WhatsApp to answer niche-specific questions.",
       supportCta: "Talk to a Consultant",
       items: [
-        { question: "Is the Base Plan suitable for any type of company?", answer: "The Base Plan is indicated for companies that have already validated their business model and are in a digital consolidation phase but do not yet have an internal marketing team. It is not for early-stage startups or one-off posts." },
-        { question: "Is this plan just social media management?", answer: "No. The Base Plan goes beyond social media management. It includes strategic diagnosis, content planning, production, publishing, and monthly analysis for a continuous growth system." },
-        { question: "On which channels is the content published?", answer: "Content is published on Instagram and Facebook, as defined in the monthly planning. Other channels can be evaluated in specific proposals or complementary plans." },
-        { question: "Who creates the themes and ideas for the content?", answer: "TAG08 proposes the themes and strategic guidelines, and the client can contribute with business suggestions. Final planning is always validated together before production starts." },
-        { question: "Do the videos need to be recorded by TAG08?", answer: "Not necessarily. Videos can be recorded by TAG08 or provided by the client, as long as they follow the planning guidelines to ensure quality and coherence." },
-        { question: "How does the results tracking work?", answer: "Every month, we hold a follow-up meeting and deliver a report with engagement analysis, allowing us to adjust the strategic direction when necessary." },
-        { question: "Is there a loyalty contract?", answer: "No. The Base Plan has no contractual loyalty. If the client decides to cancel, only a 30-day notice is required." },
-        { question: "Can I hire extra content or services?", answer: "Yes. When needed, extra content or complementary services can be hired on a one-off basis without changing the Base Plan format." },
-        { question: "Does the Base Plan guarantee specific results?", answer: "We don't work with unrealistic promises. We offer structure, method, and consistency. Results depend on market, product, and client participation." },
-        { question: "What is expected from the client during the plan?", answer: "Clients should provide materials on time, appoint a focal point for approvals, and participate in monthly alignment meetings to ensure fluidity." },
-        { question: "How soon will I see the content live?", answer: "After planning approval, we start production. Every month, a new cycle begins on the 15th, ensuring predictability and organization." },
-        { question: "Can this plan evolve as my business grows?", answer: "Yes. The Base Plan was designed as an entry point for scalable solutions. As the business evolves, new strategies and services can be incorporated." }
+        {
+          question: "Is the Base Plan suitable for any type of company?",
+          answer: "The Base Plan is indicated for companies that have already validated their business model and are in a digital consolidation phase but do not yet have an internal marketing team. It is not for early-stage startups or one-off posts."
+        },
+        {
+          question: "Is this plan just social media management?",
+          answer: "No. The Base Plan goes beyond social media management. It includes strategic diagnosis, content planning, production, publishing, and monthly analysis for a continuous growth system."
+        },
+        {
+          question: "On which channels is the content published?",
+          answer: "Content is published on Instagram and Facebook, as defined in the monthly planning. Other channels can be evaluated in specific proposals or complementary plans."
+        },
+        {
+          question: "Who creates the themes and ideas for the content?",
+          answer: "TAG08 proposes the themes and strategic guidelines, and the client can contribute with business suggestions. Final planning is always validated together before production starts."
+        },
+        {
+          question: "Do the videos need to be recorded by TAG08?",
+          answer: "Not necessarily. Videos can be recorded by TAG08 or provided by the client, as long as they follow the planning guidelines to ensure quality and coherence."
+        },
+        {
+          question: "How does the results tracking work?",
+          answer: "Every month, we hold a follow-up meeting and deliver a report with engagement analysis, allowing us to adjust the strategic direction when necessary."
+        },
+        {
+          question: "Is there a loyalty contract?",
+          answer: "No. The Base Plan has no contractual loyalty. If the client decides to cancel, only a 30-day notice is required."
+        },
+        {
+          question: "Can I hire extra content or services?",
+          answer: "Yes. When needed, extra content or complementary services can be hired on a one-off basis without changing the Base Plan format."
+        },
+        {
+          question: "Does the Base Plan guarantee specific results?",
+          answer: "We don't work with unrealistic promises. We offer structure, method, and consistency. Results depend on market, product, and client participation."
+        },
+        {
+          question: "What is expected from the client during the plan?",
+          answer: "Clients should provide materials on time, appoint a focal point for approvals, and participate in monthly alignment meetings to ensure fluidity."
+        },
+        {
+          question: "How soon will I see the content live?",
+          answer: "After planning approval, we start production. Every month, a new cycle begins on the 15th, ensuring predictability and organization."
+        },
+        {
+          question: "Can this plan evolve as my business grows?",
+          answer: "Yes. The Base Plan was designed as an entry point for scalable solutions. As the business evolves, new strategies and services can be incorporated."
+        }
       ]
     },
     cta: {
@@ -440,7 +635,7 @@ export const translations: Record<Language, TranslationSchema> = {
       highValueTitle: "Take your operation to the top.",
       highValueButton: "Talk to a Senior Partner",
       disclaimer: "By clicking, you agree to the processing of your data for commercial contact purposes as per our privacy policy.",
-      urgency: "Limited spots for new partners this month",
+      urgency: "Limited spots for new partners this month"
     },
     contactRouting: {
       badge: "Direct routing",
@@ -455,15 +650,15 @@ export const translations: Record<Language, TranslationSchema> = {
           label: "Brazil",
           summary: "Brazilian WhatsApp support for local clients.",
           button: "Open Brazil WhatsApp",
-          message: "Olá, quero atendimento para o Brasil.",
+          message: "Olá, quero atendimento para o Brasil."
         },
         intl: {
           label: "International / Spanish",
           summary: "WhatsApp support for international clients and Spanish-speaking conversations.",
           button: "Open International WhatsApp",
-          message: "Hola, necesito atención internacional en español.",
-        },
-      },
+          message: "Hola, necesito atención internacional en español."
+        }
+      }
     },
     cookie: {
       title: "Privacy & Data",
@@ -474,40 +669,82 @@ export const translations: Record<Language, TranslationSchema> = {
       acceptAll: "Accept all",
       customizeTitle: "Customize cookies",
       customizeSubtitle: "Your choice affects how we can improve the site for you.",
+      necessaryLabel: "Essential",
+      necessaryDesc: "Required for the website to work properly.",
+      analyticalLabel: "Analytics",
+      analyticalDesc: "Helps us understand traffic and usage behavior.",
+      marketingLabel: "Marketing",
+      marketingDesc: "More relevant ads based on your preferences.",
       back: "Back",
-      savePreferences: "Save preferences",
+      savePreferences: "Save preferences"
     },
     privacy: {
       title: "Privacy Policy",
       close: "Close",
       intro: "TAG08 Studio respects your privacy and is committed to protecting your personal data.",
       sections: {
-        data: { title: "Data Collection", text: "We collect basic contact information (name, email, phone) only when you voluntarily start a consultation or contact via WhatsApp." },
-        cookies: { title: "Use of Cookies", text: "We use technical cookies to ensure site functionality and analytical cookies (Google Analytics) to understand how to improve our content delivery." },
-        rights: { title: "Your Rights", text: "You have the right to access, correct, or request the deletion of your data at any time, as provided by GDPR." },
-        security: { title: "Security", text: "We implement encryption protocols and restricted access to ensure your strategic information is never shared without authorization." }
+        data: {
+          title: "Data Collection",
+          text: "We collect basic contact information (name, email, phone) only when you voluntarily start a consultation or contact via WhatsApp."
+        },
+        cookies: {
+          title: "Use of Cookies",
+          text: "We use technical cookies to ensure site functionality and analytical cookies (Google Analytics) to understand how to improve our content delivery."
+        },
+        rights: {
+          title: "Your Rights",
+          text: "You have the right to access, correct, or request the deletion of your data at any time, as provided by GDPR."
+        },
+        security: {
+          title: "Security",
+          text: "We implement encryption protocols and restricted access to ensure your strategic information is never shared without authorization."
+        }
       }
     },
     cookiePolicy: {
       title: "Cookie Policy",
       intro: "This policy explains how TAG08 uses cookies to improve your browsing experience and performance analysis.",
       sections: {
-        necessary: { title: "Necessary Cookies", text: "Essential for the basic functioning of the site, such as page navigation and access to secure areas. The site cannot function properly without them." },
-        analytical: { title: "Performance Cookies", text: "Help us understand how visitors interact with the site by collecting and reporting information anonymously via Google Analytics." },
-        marketing: { title: "Marketing Cookies", text: "Used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user." },
-        management: { title: "Preference Management", text: "You can manage or disable cookies through your browser settings at any time. Note that disabling them may affect your experience on the site." }
+        necessary: {
+          title: "Necessary Cookies",
+          text: "Essential for the basic functioning of the site, such as page navigation and access to secure areas. The site cannot function properly without them."
+        },
+        analytical: {
+          title: "Performance Cookies",
+          text: "Help us understand how visitors interact with the site by collecting and reporting information anonymously via Google Analytics."
+        },
+        marketing: {
+          title: "Marketing Cookies",
+          text: "Used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user."
+        },
+        management: {
+          title: "Preference Management",
+          text: "You can manage or disable cookies through your browser settings at any time. Note that disabling them may affect your experience on the site."
+        }
       }
     },
     monthlyCycle: {
       title: "Recurring Execution Cycle",
       subtitle: "Marketing is not an event, it's a continuous process.",
       steps: {
-        step1: { title: "Week 1: Alignment", desc: "Monthly kickoff meeting to define themes and strategic objectives." },
-        step2: { title: "Week 2: Production", desc: "Creation of visuals, captions, and technical campaign setup." },
-        step3: { title: "Growth", desc: "Daily monitoring and real-time optimization." },
-        step4: { title: "Scaling", desc: "KPI analysis and aggressive result expansion." },
+        step1: {
+          title: "Week 1: Alignment",
+          desc: "Monthly kickoff meeting to define themes and strategic objectives."
+        },
+        step2: {
+          title: "Week 2: Production",
+          desc: "Creation of visuals, captions, and technical campaign setup."
+        },
+        step3: {
+          title: "Growth",
+          desc: "Daily monitoring and real-time optimization."
+        },
+        step4: {
+          title: "Scaling",
+          desc: "KPI analysis and aggressive result expansion."
+        }
       },
-      footerText: "We repeat the success every month",
+      footerText: "We repeat the success every month"
     },
     testimonials: {
       title: "Elite Recognition",
@@ -518,9 +755,24 @@ export const translations: Record<Language, TranslationSchema> = {
       sourceLabel: "Google Business Profile",
       viewAll: "View all on Google",
       items: [
-        { name: "Ricardo Almeida", role: "CEO, TechFlux", content: "TAG08 transformed our digital presence. The Base Plan gave us the consistency we lacked, and the ROI was visible by the second month.", date: "2 months ago" },
-        { name: "Fernanda Costa", role: "Marketing Dir., Lumina", content: "Top-tier design and real strategy. It's not just posting; it's brand building. I recommend it for those seeking the top.", date: "1 month ago" },
-        { name: "Bruno Mantovani", role: "Partner, Nexus Invest", content: "The team's professionalism is impressive. The monthly delivery cycle is very organized and gives us total clarity on growth.", date: "3 weeks ago" }
+        {
+          name: "Ricardo Almeida",
+          role: "CEO, TechFlux",
+          content: "TAG08 transformed our digital presence. The Base Plan gave us the consistency we lacked, and the ROI was visible by the second month.",
+          date: "2 months ago"
+        },
+        {
+          name: "Fernanda Costa",
+          role: "Marketing Dir., Lumina",
+          content: "Top-tier design and real strategy. It's not just posting; it's brand building. I recommend it for those seeking the top.",
+          date: "1 month ago"
+        },
+        {
+          name: "Bruno Mantovani",
+          role: "Partner, Nexus Invest",
+          content: "The team's professionalism is impressive. The monthly delivery cycle is very organized and gives us total clarity on growth.",
+          date: "3 weeks ago"
+        }
       ]
     },
     calculator: {
@@ -575,7 +827,7 @@ export const translations: Record<Language, TranslationSchema> = {
       openChannel: "Open channel",
       watch: "Watch",
       loading: "Loading the latest videos...",
-      error: "We could not load the videos right now. Open the channel to view the full library.",
+      error: "We could not load the videos right now. Open the channel to view the full library."
     },
     teamShowcase: {
       badge: "Senior core",
@@ -590,26 +842,38 @@ export const translations: Record<Language, TranslationSchema> = {
           role: "Founder and direction",
           summary: "Created TAG08 and leads the strategic direction of the operation.",
           focus: "Founder",
-          tags: ["Foundation", "Direction", "Clarity"],
-          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/",
+          tags: [
+            "Foundation",
+            "Direction",
+            "Clarity"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/"
         },
         {
           name: "Ignacio Quiroz",
           role: "Strategy and communication",
           summary: "Shapes positioning and narrative so intent turns into a clear commercial direction.",
           focus: "Strategy",
-          tags: ["Positioning", "Narrative", "Offer"],
-          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/",
+          tags: [
+            "Positioning",
+            "Narrative",
+            "Offer"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/"
         },
         {
           name: "Pedro V. Félix",
           role: "Data and technology",
           summary: "Organizes data, automation, and technical support for safer decisions.",
           focus: "Technology",
-          tags: ["Data", "Automation", "Integration"],
-          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/",
+          tags: [
+            "Data",
+            "Automation",
+            "Integration"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/"
         }
-      ],
+      ]
     },
     strategicBenefits: {
       badge: "The TAG08 standard",
@@ -617,13 +881,25 @@ export const translations: Record<Language, TranslationSchema> = {
       subtitle: "Differentials that place us at the top of the strategic marketing chain.",
       stats: {
         transparency: "Transparency",
-        roi: "Average ROI",
+        roi: "Average ROI"
       },
       items: [
-        { title: "Absolute Consistency", desc: "Uninterrupted and professional digital presence that builds real authority." },
-        { title: "Focused ROI", desc: "Campaigns optimized to generate profit and scale, avoiding vanity metrics." },
-        { title: "Senior Team", desc: "Direct access to expert consultants, without intermediaries or interns." },
-        { title: "Agility", desc: "Fast execution and constant adaptation to digital market changes." }
+        {
+          title: "Absolute Consistency",
+          desc: "Uninterrupted and professional digital presence that builds real authority."
+        },
+        {
+          title: "Focused ROI",
+          desc: "Campaigns optimized to generate profit and scale, avoiding vanity metrics."
+        },
+        {
+          title: "Senior Team",
+          desc: "Direct access to expert consultants, without intermediaries or interns."
+        },
+        {
+          title: "Agility",
+          desc: "Fast execution and constant adaptation to digital market changes."
+        }
       ]
     },
     footer: {
@@ -654,10 +930,26 @@ export const translations: Record<Language, TranslationSchema> = {
       titleAccent: "Next Level",
       subtitle: "It's not about a monthly service, it's about a journey of predictable and profitable scale.",
       steps: {
-        step1: { stage: "Phase 01", title: "Consolidation", desc: "Foundation adjustment, elite branding and initial traffic structure." },
-        step2: { stage: "Phase 02", title: "Scaling", desc: "Budget expansion, funnel optimization and audience dominance." },
-        step3: { stage: "Phase 03", title: "Acceleration", desc: "Launches and vertical scale to reach the market ceiling." },
-        step4: { stage: "Phase 04", title: "Dominance", desc: "Unquestionable authority and absolute leadership in your niche." }
+        step1: {
+          stage: "Phase 01",
+          title: "Consolidation",
+          desc: "Foundation adjustment, elite branding and initial traffic structure."
+        },
+        step2: {
+          stage: "Phase 02",
+          title: "Scaling",
+          desc: "Budget expansion, funnel optimization and audience dominance."
+        },
+        step3: {
+          stage: "Phase 03",
+          title: "Acceleration",
+          desc: "Launches and vertical scale to reach the market ceiling."
+        },
+        step4: {
+          stage: "Phase 04",
+          title: "Dominance",
+          desc: "Unquestionable authority and absolute leadership in your niche."
+        }
       }
     },
     strategyNotes: {
@@ -671,41 +963,42 @@ export const translations: Record<Language, TranslationSchema> = {
   },
   es: {
     nicheHeadlines: {
-      'real-estate': "Domina el mercado inmobiliario.",
-      'health': "Autoridad m?xima en salud.",
-      'tech': "Escalabilidad digital de ?lite.",
-      'expert': "Tu autoridad merece una vitrina de ?lite.",
-      'generic': "Vende m?s. Sin suposiciones."
+      "real-estate": "Domina el mercado inmobiliario.",
+      health: "Fortalezca su clínica.",
+      tech: "Escalabilidad digital de ?lite.",
+      expert: "Tu autoridad merece una vitrina de ?lite.",
+      generic: "Venda más."
     },
     hero: {
       badge: "Plan Base Studio",
-      title: "Vende m?s.",
+      title: "Venda más.",
       titleAccent: "Aparece mejor.",
-      description: "Transformamos empresas estancadas en marcas dominantes a trav?s de gesti?n estrat?gica de marketing y dise?o de ?lite.",
-      cta: "Agendar diagn?stico",
+      description: "Transformamos empresas estancadas en marcas dominantes a través de gestión estratégica de marketing y diseño de élite.",
+      cta: "Agendar Diagnóstico",
       limited: "Cupos limitados",
       welcomeBack: "Bienvenido de nuevo",
       sourceMeta: "Domina las redes.",
       sourceGoogle: "Aparece en la cima.",
       sourceLinkedin: "Conquista B2B.",
-      heroAlt: "Equipo de consultor?a estrat?gica de TAG08 planificando el crecimiento de una marca premium",
+      heroAlt: "Equipo de consultoría estratégica de TAG08 planificando el crecimiento de una marca premium",
       headlines: {
         data: "Decisiones basadas en beneficio real.",
         vision: "El futuro de tu marca, hoy.",
-        default: "Vende m?s. Aparece mejor.",
+        default: "Venda más. Luzca melhor."
       }
-    },    navbar: {
-      diagnosis: "Diagn?stico",
+    },
+    navbar: {
+      diagnosis: "Diagnóstico",
       free: "Gratis",
       menu: {
         problem: "Problema",
-        solution: "Soluci?n",
+        solution: "Solución",
         plan: "Pilares",
         cycle: "Ciclo",
         videos: "Videos",
         team: "Equipo",
         testimonials: "Testimonios",
-        faq: "FAQ",
+        faq: "FAQ"
       }
     },
     valueProposition: {
@@ -714,9 +1007,18 @@ export const translations: Record<Language, TranslationSchema> = {
       titleAccent: "de tu negocio.",
       subtitle: "El Plan Base TAG08 fue creado para empresas que ya validaron su producto y ahora necesitan una estructura profesional para escalar sin la complejidad de gestionar varios freelancers.",
       features: {
-        focus: { title: "Enfoque en el negocio", desc: "T? te enfocas en vender y entregar; nosotros cuidamos la atracci?n y la autoridad digital." },
-        data: { title: "Datos y an?lisis", desc: "Informes mensuales claros muestran qu? genera ganancias y qu? debe cambiar." },
-        scale: { title: "Escalabilidad", desc: "Las acciones continuas construyen valor de marca y autoridad a largo plazo." },
+        focus: {
+          title: "Enfoque en el negocio",
+          desc: "Tú te enfocas en vender y entregar; nosotros cuidamos la atracción y la autoridad digital."
+        },
+        data: {
+          title: "Datos y análisis",
+          desc: "Informes mensuales claros muestran qu? genera ganancias y qu? debe cambiar."
+        },
+        scale: {
+          title: "Escalabilidad",
+          desc: "Las acciones continuas construyen valor de marca y autoridad a largo plazo."
+        }
       }
     },
     problem: {
@@ -733,18 +1035,30 @@ export const translations: Record<Language, TranslationSchema> = {
         posts: "Posteos Irregulares",
         leads: "Leads Desqualificados",
         money: "Dinero Perdido",
-        brand: "Marca Invisible",
+        brand: "Marca Invisible"
       }
     },
     pillars: {
       badge: "Arquitectura de entrega",
-      title: "Construcci?n de Activos Digitales",
+      title: "Los 4 Pilares de la Entrega",
       subtitle: "Construimos el patrimonio digital que tu empresa necesita para dominar el nicho de forma sostenible.",
       items: {
-        strategy: { title: "Direcci?n Estrat?gica", desc: "Definici?n de canales, personas y l?nea editorial enfocada en ROI real y previsibilidad." },
-        content: { title: "Producci?n de Elite", desc: "Creativos premium que convierten atenci?n en autoridad y deseo de compra." },
-        ads: { title: "Apalancamiento de Tr?fico", desc: "Gesti?n profesional de campa?as en Meta y Google para maximizar la ganancia, no solo los clics." },
-        analysis: { title: "Dashboard de Rendimiento", desc: "Seguimiento en tiempo real y reuniones mensuales con especialistas senior." },
+        strategy: {
+          title: "Planeación Estratégica",
+          desc: "Definição de canais, personas, linha editorial e cronograma de ações trimestrais focado em conversão."
+        },
+        content: {
+          title: "Producción de Conteúdo",
+          desc: "Creación de creativos para redes sociales y anuncios, manteniendo el estándar visual premium de su marca."
+        },
+        ads: {
+          title: "Gestión de Tráfico Pago",
+          desc: "Configuración y optimización diaria de campañas en Meta Ads y Google Ads para maximizar o ROI."
+        },
+        analysis: {
+          title: "Dashboard de Rendimiento",
+          desc: "Seguimiento en tiempo real y reuniones mensuales con especialistas senior."
+        }
       }
     },
     faq: {
@@ -756,18 +1070,54 @@ export const translations: Record<Language, TranslationSchema> = {
       supportBody: "Nuestro equipo de consultores está disponible en WhatsApp para resolver consultas específicas de tu nicho.",
       supportCta: "Hablar con un Consultor",
       items: [
-        { question: "¿El Plan Base es adecuado para cualquier tipo de empresa?", answer: "El Plan Base está indicado para empresas que ya validaron su modelo de negocio y están en fase de consolidación digital, pero aún no tienen equipo interno. No es para negocios iniciales o publicaciones puntuales." },
-        { question: "¿Este plan es solo gestión de redes sociales?", answer: "No. El Plan Base va más allá. Incluye diagnóstico estratégico, planificación de contenido, producción, publicación y análisis mensual para un crecimiento digital continuo." },
-        { question: "¿En qué canales se publican los contenidos?", answer: "Se publican en Instagram y Facebook, según lo definido en la planificación mensual. Otros canales pueden evaluarse en propuestas específicas." },
-        { question: "¿Quién crea los temas e ideas de los contenidos?", answer: "TAG08 propone los temas y el cliente puede contribuir con sugerencias. La planificación final siempre se valida en conjunto antes de la producción." },
-        { question: "¿Los vídeos deben ser grabados por TAG08?", answer: "No necesariamente. Pueden ser grabados por TAG08 o proporcionados por el cliente, siempre que sigan las directrices de planificación para asegurar calidad y coherencia." },
-        { question: "¿Cómo funciona el seguimiento de resultados?", answer: "Mensualmente realizamos una reunión de seguimiento y entregamos un informe de rendimiento para ajustar la dirección estratégica si es necesario." },
-        { question: "¿Existe contrato de permanencia?", answer: "No. El Plan Base no tiene permanencia contractual. Si el cliente decide cancelar, solo se requiere un aviso previo de 30 días." },
-        { question: "¿Puedo contratar contenidos o servicios extras?", answer: "Sí. Cuando sea necesario, se pueden contratar contenidos o servicios extras de forma individual, sin alterar el formato del Plan Base." },
-        { question: "¿El Plan Base garantiza resultados específicos?", answer: "No trabajamos con promesas irreales. Ofrecemos estructura, método y constancia. Los resultados dependen del mercado, producto y participación del cliente." },
-        { question: "¿Qué se espera del cliente durante el plan?", answer: "El cliente debe entregar materiales a tiempo, asignar un punto focal para aprobaciones y participar en reuniones mensuales para asegurar la calidad." },
-        { question: "¿En cuánto tiempo veré el contenido al aire?", answer: "Tras aprobar la planificación, iniciamos la producción. Cada mes, un nuevo ciclo comienza el día 15, asegurando previsibilidad y organización." },
-        { question: "¿Puede este plan evolucionar conforme crece mi negocio?", answer: "Sí. El Plan Base es la puerta de entrada para soluciones escalables. A medida que el negocio evoluciona, se incorporan nuevas estrategias y servicios." }
+        {
+          question: "¿El Plan Base es adecuado para cualquier tipo de empresa?",
+          answer: "El Plan Base está indicado para empresas que ya validaron su modelo de negocio y están en fase de consolidación digital, pero aún no tienen equipo interno. No es para negocios iniciales o publicaciones puntuales."
+        },
+        {
+          question: "¿Este plan es solo gestión de redes sociales?",
+          answer: "No. El Plan Base va más allá. Incluye diagnóstico estratégico, planificación de contenido, producción, publicación y análisis mensual para un crecimiento digital continuo."
+        },
+        {
+          question: "¿En qué canales se publican los contenidos?",
+          answer: "Se publican en Instagram y Facebook, según lo definido en la planificación mensual. Otros canales pueden evaluarse en propuestas específicas."
+        },
+        {
+          question: "¿Quién crea los temas e ideas de los contenidos?",
+          answer: "TAG08 propone los temas y el cliente puede contribuir con sugerencias. La planificación final siempre se valida en conjunto antes de la producción."
+        },
+        {
+          question: "¿Los vídeos deben ser grabados por TAG08?",
+          answer: "No necesariamente. Pueden ser grabados por TAG08 o proporcionados por el cliente, siempre que sigan las directrices de planificación para asegurar calidad y coherencia."
+        },
+        {
+          question: "¿Cómo funciona el seguimiento de resultados?",
+          answer: "Mensualmente realizamos una reunión de seguimiento y entregamos un informe de rendimiento para ajustar la dirección estratégica si es necesario."
+        },
+        {
+          question: "¿Existe contrato de permanencia?",
+          answer: "No. El Plan Base no tiene permanencia contractual. Si el cliente decide cancelar, solo se requiere un aviso previo de 30 días."
+        },
+        {
+          question: "¿Puedo contratar contenidos o servicios extras?",
+          answer: "Sí. Cuando sea necesario, se pueden contratar contenidos o servicios extras de forma individual, sin alterar el formato del Plan Base."
+        },
+        {
+          question: "¿El Plan Base garantiza resultados específicos?",
+          answer: "No trabajamos con promesas irreales. Ofrecemos estructura, método y constancia. Los resultados dependen del mercado, producto y participación del cliente."
+        },
+        {
+          question: "¿Qué se espera del cliente durante el plan?",
+          answer: "El cliente debe entregar materiales a tiempo, asignar un punto focal para aprobaciones y participar en reuniones mensuales para asegurar la calidad."
+        },
+        {
+          question: "¿En cuánto tiempo veré el contenido al aire?",
+          answer: "Tras aprobar la planificación, iniciamos la producción. Cada mes, un nuevo ciclo comienza el día 15, asegurando previsibilidad y organización."
+        },
+        {
+          question: "¿Puede este plan evolucionar conforme crece mi negocio?",
+          answer: "Sí. El Plan Base es la puerta de entrada para soluciones escalables. A medida que el negocio evoluciona, se incorporan nuevas estrategias y servicios."
+        }
       ]
     },
     cta: {
@@ -777,7 +1127,7 @@ export const translations: Record<Language, TranslationSchema> = {
       highValueTitle: "Lleve su operación a la cima.",
       highValueButton: "Hablar con un Socio Sénior",
       disclaimer: "Al hacer clic, acepta el procesamiento de sus datos para fines de contacto comercial según nuestra política de privacidad.",
-      urgency: "Cupos limitados para nuevos socios este mes",
+      urgency: "Cupos limitados para nuevos socios este mes"
     },
     contactRouting: {
       badge: "Enrutamiento directo",
@@ -792,59 +1142,101 @@ export const translations: Record<Language, TranslationSchema> = {
           label: "Brasil",
           summary: "Atención nacional por WhatsApp para clientes en Brasil.",
           button: "Abrir WhatsApp Brasil",
-          message: "Olá, quero atendimento para o Brasil.",
+          message: "Olá, quero atendimento para o Brasil."
         },
         intl: {
           label: "Internacional / Español",
           summary: "Atención por WhatsApp para clientes internacionales y conversaciones en español.",
           button: "Abrir WhatsApp Internacional",
-          message: "Hola, necesito atención internacional en español.",
-        },
-      },
+          message: "Hola, necesito atención internacional en español."
+        }
+      }
     },
     cookie: {
       title: "Privacidad y datos",
-      desc: "Usamos cookies esenciales, anal?ticas y de marketing para optimizar tu experiencia y entender nuestro tr?fico.",
+      desc: "Utilizamos cookies para optimizar su experiencia e analizar nuestro tráfico.",
       accept: "Aceptar",
-      policy: "Pol?tica de cookies",
+      policy: "Política de Privacidad",
       configure: "Configurar",
       acceptAll: "Aceptar todo",
       customizeTitle: "Personalizar cookies",
-      customizeSubtitle: "Tu elecci?n influye en c?mo podemos mejorar el sitio para ti.",
+      customizeSubtitle: "Tu elección influye en cómo podemos mejorar el sitio para ti.",
+      necessaryLabel: "Esenciales",
+      necessaryDesc: "Obligatorias para que el sitio funcione.",
+      analyticalLabel: "Analíticas",
+      analyticalDesc: "Ayudan a entender el tráfico y el uso del sitio.",
+      marketingLabel: "Marketing",
+      marketingDesc: "Anuncios más relevantes según tus preferencias.",
       back: "Volver",
-      savePreferences: "Guardar preferencias",
+      savePreferences: "Guardar preferencias"
     },
     privacy: {
       title: "Política de Privacidad",
       close: "Cerrar",
       intro: "TAG08 Studio respeta su privacidad y se compromete a proteger sus datos personales.",
       sections: {
-        data: { title: "Recopilación de Datos", text: "Recopilamos información básica de contacto (nombre, email, teléfono) solo cuando inicia voluntariamente una consultoría o contacto vía WhatsApp." },
-        cookies: { title: "Uso de Cookies", text: "Utilizamos cookies técnicas para garantizar el funcionamiento del sitio y cookies analíticas (Google Analytics) para entender cómo mejorar nuestra entrega de contenido." },
-        rights: { title: "Sus Derechos", text: "Tiene derecho a acceder, corregir o solicitar la eliminación de sus datos en cualquier momento, según lo previsto en las leyes de protección de datos." },
-        security: { title: "Seguridad", text: "Implementamos protocolos de cifrado y acceso restringido para garantizar que su información estratégica nunca se comparta con terceros sin autorización." }
+        data: {
+          title: "Recopilación de Datos",
+          text: "Recopilamos información básica de contacto (nombre, email, teléfono) solo cuando inicia voluntariamente una consultoría o contacto vía WhatsApp."
+        },
+        cookies: {
+          title: "Uso de Cookies",
+          text: "Utilizamos cookies técnicas para garantizar el funcionamiento del sitio y cookies analíticas (Google Analytics) para entender cómo mejorar nuestra entrega de contenido."
+        },
+        rights: {
+          title: "Sus Derechos",
+          text: "Tiene derecho a acceder, corregir o solicitar la eliminación de sus datos en cualquier momento, según lo previsto en las leyes de protección de datos."
+        },
+        security: {
+          title: "Seguridad",
+          text: "Implementamos protocolos de cifrado y acceso restringido para garantizar que su información estratégica nunca se comparta con terceros sin autorización."
+        }
       }
     },
     cookiePolicy: {
       title: "Política de Cookies",
       intro: "Esta política explica cómo TAG08 utiliza cookies para mejorar su experiencia de navegación y análisis de rendimiento.",
       sections: {
-        necessary: { title: "Cookies Necesarias", text: "Esenciales para el funcionamiento básico del sitio, como la navegación por páginas y el acceso a áreas seguras. El sitio no puede funcionar correctamente sin ellos." },
-        analytical: { title: "Cookies de Rendimiento", text: "Nos ayudan a entender cómo los visitantes interactúan con el sitio mediante la recopilación y el reporte de información de forma anônima a través de Google Analytics." },
-        marketing: { title: "Cookies de Marketing", text: "Se utilizan para rastrear a los visitantes en los sitios web. La intención es mostrar anuncios que sean relevantes y atractivos para el usuario individual." },
-        management: { title: "Gestão de Preferências", text: "Puede gestionar o desactivar as cookies a través de la configuración de su navegador en cualquier momento. Tenga en cuenta que desactivarlas puede afectar a su experiencia en el sitio." }
+        necessary: {
+          title: "Cookies Necesarias",
+          text: "Esenciales para el funcionamiento básico del sitio, como la navegación por páginas y el acceso a áreas seguras. El sitio no puede funcionar correctamente sin ellos."
+        },
+        analytical: {
+          title: "Cookies de Rendimiento",
+          text: "Nos ayudan a entender cómo los visitantes interactúan con el sitio mediante la recopilación y el reporte de información de forma anônima a través de Google Analytics."
+        },
+        marketing: {
+          title: "Cookies de Marketing",
+          text: "Se utilizan para rastrear a los visitantes en los sitios web. La intención es mostrar anuncios que sean relevantes y atractivos para el usuario individual."
+        },
+        management: {
+          title: "Gestão de Preferências",
+          text: "Puede gestionar o desactivar as cookies a través de la configuración de su navegador en cualquier momento. Tenga en cuenta que desactivarlas puede afectar a su experiencia en el sitio."
+        }
       }
     },
     monthlyCycle: {
       title: "Ciclo de Ejecución Recurrente",
       subtitle: "El marketing no es un evento, es un proceso continuo.",
       steps: {
-        step1: { title: "Semana 1: Alineación", desc: "Reunión de inicio mensual para definir temas y objetivos estratégicos." },
-        step2: { title: "Semana 2: Producción", desc: "Desarrollo de artes, subtítulos y configuración técnica de campañas." },
-        step3: { title: "Semana 3: Lanzamiento", desc: "Activación de acciones e inicio de recolección de datos de rendimiento en tiempo real." },
-        step4: { title: "Semana 4: Análisis", desc: "Cierre del informe con insights y sugerencias de mejora para el próximo ciclo." },
+        step1: {
+          title: "Semana 1: Alineación",
+          desc: "Reunión de inicio mensual para definir temas y objetivos estratégicos."
+        },
+        step2: {
+          title: "Semana 2: Producción",
+          desc: "Desarrollo de artes, subtítulos y configuración técnica de campañas."
+        },
+        step3: {
+          title: "Semana 3: Lanzamiento",
+          desc: "Activación de acciones e inicio de recolección de datos de rendimiento en tiempo real."
+        },
+        step4: {
+          title: "Semana 4: Análisis",
+          desc: "Cierre del informe con insights y sugerencias de mejora para el próximo ciclo."
+        }
       },
-      footerText: "Repetimos el éxito todos los meses",
+      footerText: "Repetimos el éxito todos los meses"
     },
     testimonials: {
       title: "Reconocimiento de Élite",
@@ -855,9 +1247,24 @@ export const translations: Record<Language, TranslationSchema> = {
       sourceLabel: "Perfil de Google Business",
       viewAll: "Ver todas en Google",
       items: [
-        { name: "Ricardo Almeida", role: "CEO, TechFlux", content: "TAG08 transformó nuestra presencia digital. El Plan Base nos dio a constancia que faltaba y el ROI foi visible ya en el segundo mes.", date: "hace 2 meses" },
-        { name: "Fernanda Costa", role: "Dir. de Marketing, Lumina", content: "Diseño de altísimo nivel y estrategia real. No es solo publicación, es construcción de marca. Lo recomiendo para quienes buscan la cima.", date: "hace 1 mes" },
-        { name: "Bruno Mantovani", role: "Socio, Nexus Invest", content: "El profesionalismo del equipo es impresionante. El ciclo mensual de entrega está muy organizado y nos da total claridad del crecimiento.", date: "hace 3 semanas" }
+        {
+          name: "Ricardo Almeida",
+          role: "CEO, TechFlux",
+          content: "TAG08 transformó nuestra presencia digital. El Plan Base nos dio a constancia que faltaba y el ROI foi visible ya en el segundo mes.",
+          date: "hace 2 meses"
+        },
+        {
+          name: "Fernanda Costa",
+          role: "Dir. de Marketing, Lumina",
+          content: "Diseño de altísimo nivel y estrategia real. No es solo publicación, es construcción de marca. Lo recomiendo para quienes buscan la cima.",
+          date: "hace 1 mes"
+        },
+        {
+          name: "Bruno Mantovani",
+          role: "Socio, Nexus Invest",
+          content: "El profesionalismo del equipo es impresionante. El ciclo mensual de entrega está muy organizado y nos da total claridad del crecimiento.",
+          date: "hace 3 semanas"
+        }
       ]
     },
     videoGallery: {
@@ -871,7 +1278,7 @@ export const translations: Record<Language, TranslationSchema> = {
       openChannel: "Abrir canal",
       watch: "Ver",
       loading: "Cargando los últimos videos...",
-      error: "No fue posible cargar los videos ahora. Abra el canal para ver la biblioteca completa.",
+      error: "No fue posible cargar los videos ahora. Abra el canal para ver la biblioteca completa."
     },
     teamShowcase: {
       badge: "Núcleo senior",
@@ -886,40 +1293,64 @@ export const translations: Record<Language, TranslationSchema> = {
           role: "Fundador y dirección",
           summary: "Creó TAG08 y conduce la dirección estratégica de la operación.",
           focus: "Fundador",
-          tags: ["Fundación", "Dirección", "Claridad"],
-          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/",
+          tags: [
+            "Fundación",
+            "Dirección",
+            "Claridad"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/"
         },
         {
           name: "Ignacio Quiroz",
           role: "Estrategia y comunicación",
           summary: "Define posicionamiento y narrativa para convertir intención en dirección comercial.",
           focus: "Estrategia",
-          tags: ["Posicionamiento", "Narrativa", "Oferta"],
-          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/",
+          tags: [
+            "Posicionamiento",
+            "Narrativa",
+            "Oferta"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/"
         },
         {
           name: "Pedro V. Félix",
           role: "Datos y tecnología",
           summary: "Organiza datos, automatización y soporte técnico para decisiones más seguras.",
           focus: "Tecnología",
-          tags: ["Datos", "Automatización", "Integración"],
-          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/",
+          tags: [
+            "Datos",
+            "Automatización",
+            "Integración"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/"
         }
-      ],
+      ]
     },
     strategicBenefits: {
-      badge: "El est?ndar TAG08",
-      title: "El est?ndar TAG08",
-      subtitle: "Diferenciales que nos ponen en la cima del marketing estrat?gico e inteligente.",
+      badge: "El estándar TAG08",
+      title: "El Estándar Studio TAG08",
+      subtitle: "Diferenciales que nos colocan en la cima de la cadena del marketing estratégico.",
       stats: {
         transparency: "Transparencia",
-        roi: "ROI promedio",
+        roi: "ROI promedio"
       },
       items: [
-        { title: "Inteligencia Estrat?gica", desc: "No solo ejecutamos; pensamos tu negocio alrededor de activos digitales recurrentes." },
-        { title: "Patrimonio de Marca", desc: "Construimos una autoridad que gana valor con el tiempo y genera deseo de compra real." },
-        { title: "Equipo Senior", desc: "Acceso directo a consultores especialistas. Sin becarios en la primera l?nea de tu marca." },
-        { title: "Procesos Validados", desc: "Reemplaza el caos por la claridad de un flujo que protege tu productividad." }
+        {
+          title: "Consistencia Absoluta",
+          desc: "No solo ejecutamos; pensamos tu negocio alrededor de activos digitales recurrentes."
+        },
+        {
+          title: "Patrimonio de Marca",
+          desc: "Construimos una autoridad que gana valor con el tiempo y genera deseo de compra real."
+        },
+        {
+          title: "Equipo Senior",
+          desc: "Acceso directo a consultores expertos, sin intermediarios ni pasantes."
+        },
+        {
+          title: "Procesos Validados",
+          desc: "Reemplaza el caos por la claridad de un flujo que protege tu productividad."
+        }
       ]
     },
     calculator: {
@@ -964,26 +1395,26 @@ export const translations: Record<Language, TranslationSchema> = {
       ]
     },
     footer: {
-      badge: "Consultor?a de ?lite",
+      badge: "Consultoría de Élite",
       title: "Tu empresa lista para el",
       titleAccent: "siguiente nivel de madurez.",
-      description: "TAG08 une estrategia de negocio, ingenier?a de procesos y tecnolog?a para convertir el caos operativo en m?quinas de crecimiento.",
-      ctaDiagnosis: "AGENDAR DIAGN?STICO",
-      ctaDirection: "HABLAR CON DIRECCI?N",
+      description: "TAG08 une estrategia de negocios, ingeniería de procesos y tecnología para transformar el caos operativo en máquinas de crecimiento autogestionadas.",
+      ctaDiagnosis: "AGENDAR DIAGNÓSTICO",
+      ctaDirection: "HABLAR CON LA DIRECCIÓN",
       headquarters: "Sede",
-      centralSupport: "Central de atenci?n",
-      about: "Consultor?a especializada en apalancamiento de negocios. Sustituimos el 'supuesto' por datos y el caos por procesos validados.",
+      centralSupport: "Central de atención",
+      about: "Consultoría especializada en apalancamiento de negocios. Reemplazamos las 'conjeturas' con datos y el caos con procesos validados.",
       ecosystem: "Ecosistema TAG08",
       aboutTag08: "Sobre TAG08",
-      blog: "Blog Estrat?gico",
+      blog: "Blog Estratégico",
       sebraetec: "Sebraetec",
       institutional: "Institucional",
       social: "Redes Sociales",
-      socialDesc: "Sigue detr?s de c?maras de las consultor?as e insights diarios de gesti?n.",
+      socialDesc: "Siga el backstage de las consultorías e insights diarios de gestión.",
       rights: "TAG08 Estrategia Digital",
       allRights: "Todos los derechos reservados.",
       privacy: "Privacidad",
-      cookies: "Pol?tica de cookies",
+      cookies: "Política de Cookies",
       preferences: "Preferencias de privacidad"
     },
     growthRoadmap: {
@@ -991,10 +1422,26 @@ export const translations: Record<Language, TranslationSchema> = {
       titleAccent: "Próximo Nivel",
       subtitle: "No se trata de un servicio mensual, se trata de un viaje de escala predecible y rentable.",
       steps: {
-        step1: { stage: "Fase 01", title: "Consolidación", desc: "Ajuste de cimientos, branding de élite y estructura de tráfico inicial." },
-        step2: { stage: "Fase 02", title: "Escala", desc: "Expansión de presupuestos, optimización de embudos y dominio de audiencia." },
-        step3: { stage: "Fase 03", title: "Aceleración", desc: "Lanzamientos y escala vertical para alcanzar el techo del mercado." },
-        step4: { stage: "Fase 04", title: "Dominio", desc: "Autoridad incuestionable y liderazgo absoluto en su nicho." }
+        step1: {
+          stage: "Fase 01",
+          title: "Consolidación",
+          desc: "Ajuste de cimientos, branding de élite y estructura de tráfico inicial."
+        },
+        step2: {
+          stage: "Fase 02",
+          title: "Escala",
+          desc: "Expansión de presupuestos, optimización de embudos y dominio de audiencia."
+        },
+        step3: {
+          stage: "Fase 03",
+          title: "Aceleración",
+          desc: "Lanzamientos y escala vertical para alcanzar el techo del mercado."
+        },
+        step4: {
+          stage: "Fase 04",
+          title: "Dominio",
+          desc: "Autoridad incuestionable y liderazgo absoluto en su nicho."
+        }
       }
     },
     strategyNotes: {
@@ -1008,52 +1455,62 @@ export const translations: Record<Language, TranslationSchema> = {
   },
   fr: {
     nicheHeadlines: {
-      'real-estate': "Mettez vos biens en avant.",
-      'health': "Renforcez votre clinique.",
-      'tech': "Scalabilit? digitale d'?lite.",
-      'expert': "Votre autorit? m?rite une vitrine d'?lite.",
-      'generic': "Vendez plus. Sans suppositions."
+      "real-estate": "Mettez vos biens en avant.",
+      health: "Renforcez votre clinique.",
+      tech: "Scalabilit? digitale d'?lite.",
+      expert: "Votre autorité mérite une vitrine d’élite.",
+      generic: "Vendez plus. Sans suppositions."
     },
     hero: {
       badge: "Plan de base Studio",
       title: "Vendez plus.",
       titleAccent: "Soyez plus visible.",
-      description: "Nous transformons les entreprises stagnantes en marques dominantes gr?ce ? une gestion strat?gique du marketing et un design d'?lite.",
+      description: "Nous transformons les entreprises stagnantes en marques dominantes grâce à une gestion stratégique du marketing et un design d'élite.",
       cta: "Programmer un diagnostic",
-      limited: "Places limit?es",
+      limited: "Places Limitées",
       welcomeBack: "Bon retour",
-      sourceMeta: "Dominez les r?seaux.",
+      sourceMeta: "Maîtrisez le Social.",
       sourceGoogle: "Soyez en haut.",
-      sourceLinkedin: "Conqu?rez le B2B.",
-      heroAlt: "?quipe de conseil strat?gique TAG08 planifiant la croissance d'une marque premium",
+      sourceLinkedin: "Conquérez le B2B.",
+      heroAlt: "L'équipe de conseil stratégique de TAG08 planifie la croissance d'une marque premium",
       headlines: {
-        data: "D?cisions bas?es sur un profit r?el.",
+        data: "Des décisions basées sur des profits réels.",
         vision: "L'avenir de votre marque, aujourd'hui.",
-        default: "Vendez plus. Soyez plus visible.",
+        default: "Vendez plus. Soyez plus visible."
       }
-    },    navbar: {
+    },
+    navbar: {
       diagnosis: "Diagnostic",
       free: "Gratuit",
       menu: {
-        problem: "Probl?me",
+        problem: "Problème",
         solution: "Solution",
         plan: "Piliers",
         cycle: "Cycle",
-        videos: "Vid?os",
+        videos: "Vidéos",
         team: "?quipe",
-        testimonials: "T?moignages",
-        faq: "FAQ",
+        testimonials: "Témoignages",
+        faq: "FAQ"
       }
     },
     valueProposition: {
       badge: "Notre proposition",
       title: "Nous sommes le bras droit",
       titleAccent: "de votre entreprise.",
-      subtitle: "Le Plan Base TAG08 a ?t? con?u pour les entreprises qui ont d?j? valid? leur produit et ont maintenant besoin d'une structure professionnelle pour ?voluer sans la complexit? de g?rer plusieurs freelances.",
+      subtitle: "Le Plan Base TAG08 a été conçu pour les entreprises qui ont déjà validé leur produit et ont maintenant besoin d'une structure professionnelle pour évoluer sans la complexité de gérer plusieurs freelances.",
       features: {
-        focus: { title: "Focus m?tier", desc: "Vous vous concentrez sur la vente et la livraison; nous g?rons l'attraction et l'autorit? num?rique." },
-        data: { title: "Donn?es et analyse", desc: "Des rapports mensuels clairs montrent ce qui g?n?re du profit et ce qui doit changer." },
-        scale: { title: "Scalabilit?", desc: "Des actions continues construisent la valeur de marque et l'autorit? dans la dur?e." },
+        focus: {
+          title: "Focus métier",
+          desc: "Vous vous concentrez sur la vente et la livraison; nous gérons l'attraction et l'autorit? numérique."
+        },
+        data: {
+          title: "Données et analyse",
+          desc: "Des rapports mensuels clairs montrent ce qui génère du profit et ce qui doit changer."
+        },
+        scale: {
+          title: "Scalabilit?",
+          desc: "Des actions continues construisent la valeur de marque et l'autorit? dans la durée."
+        }
       }
     },
     problem: {
@@ -1070,18 +1527,30 @@ export const translations: Record<Language, TranslationSchema> = {
         posts: "Publications Irrégulières",
         leads: "Leads Non Qualifiés",
         money: "Argent Gaspillé",
-        brand: "Marque Invisible",
+        brand: "Marque Invisible"
       }
     },
     pillars: {
       badge: "Architecture de livraison",
-      title: "Construction d'Actifs Num?riques",
-      subtitle: "Nous construisons le patrimoine num?rique dont votre entreprise a besoin pour dominer durablement son niche.",
+      title: "Les 4 Piliers de la Prestation",
+      subtitle: "Une solution complète et intégrée pour votre consolidation numérique.",
       items: {
-        strategy: { title: "Direction strat?gique", desc: "D?finition des canaux, des personas et de la ligne ?ditoriale ax?e sur un ROI r?el et la pr?visibilit?." },
-        content: { title: "Production d'?lite", desc: "Des cr?ations premium qui convertissent l'attention en autorit? et en d?sir d'achat." },
-        ads: { title: "Levier de trafic", desc: "Gestion professionnelle des campagnes Meta et Google pour maximiser le profit, pas seulement les clics." },
-        analysis: { title: "Tableau de bord de performance", desc: "Suivi en temps r?el et r?unions mensuelles avec des sp?cialistes seniors." },
+        strategy: {
+          title: "Planification Stratégique",
+          desc: "Définition des canaux, des personas, de la ligne éditoriale et du calendrier d'actions trimestriel axé sur la conversion."
+        },
+        content: {
+          title: "Production d'?lite",
+          desc: "Création de visuels pour les réseaux sociaux et les publicités, tout en maintenant le standard visuel premium de votre marque."
+        },
+        ads: {
+          title: "Levier de trafic",
+          desc: "Gestion professionnelle des campagnes Meta et Google pour maximiser le profit, pas seulement les clics."
+        },
+        analysis: {
+          title: "Tableau de bord de performance",
+          desc: "Tableau de bord en tempo réel et réunions mensuelles d'alignement avec des experts en marketing."
+        }
       }
     },
     faq: {
@@ -1093,18 +1562,54 @@ export const translations: Record<Language, TranslationSchema> = {
       supportBody: "Notre équipe de consultants est disponible sur WhatsApp pour répondre aux demandes spécifiques de votre secteur.",
       supportCta: "Parler à un Consultant",
       items: [
-        { question: "Le Plan de Base convient-il à tout type d'entreprise ?", answer: "Le Plan de Base est destiné aux entreprises ayant déjà validé leur modèle d'affaires et étant en phase de consolidation numérique, mais n'ayant pas d'équipe interne. Pas pour les débutants." },
-        { question: "S'agit-il uniquement de gestion des réseaux sociaux ?", answer: "Non. Le Plan de Base va plus loin : diagnostic stratégique, planification, production, publication et analyse mensuelle pour une croissance numérique continue." },
-        { question: "Sur quels canaux les contenus sont-il publiés ?", answer: "Le contenu est publié sur Instagram et Facebook, selon le planning mensuel. D'autres canaux peuvent être évalués dans des propositions spécifiques." },
-        { question: "Qui crée les thèmes et les idées de contenu ?", answer: "TAG08 propose les thèmes stratégiques et le client peut contribuer avec ses suggestions. Le planning final est toujours validé ensemble avant la production." },
-        { question: "Les vidéos doivent-elles être enregistrées par TAG08 ?", answer: "Pas nécessairement. Elles peuvent être enregistrées par TAG08 ou fournies par le client, à condition de respecter les directives pour assurer la cohérence." },
-        { question: "Comment fonctionne le suivi des résultats ?", answer: "Chaque mois, nous organisons une réunion de suivi et livrons un rapport d'engagement, permettant d'ajuster la direction stratégique si nécessaire." },
-        { question: "Existe-t-il un contrat d'engagement ?", answer: "Non. Le Plan de Base n'a pas d'engagement contractuel. En cas d'annulation, un simple préavis de 30 jours est requis." },
-        { question: "Puis-je commander du contenu ou des services supplémentaires ?", answer: "Oui. Si nécessaire, des services ou contenus extras peuvent être commandés à la carte, sans modifier le format du Plan de Base." },
-        { question: "Le Plan de Base garantit-il des résultats spécifiques ?", answer: "Nous ne faisons pas de promesses irréalistes. Nous offrons structure, méthode et constance. Les résultats dépendent du marché, du produit et du client." },
-        { question: "Qu'est-ce qui est attendu du client pendant le plan ?", answer: "Le client doit fournir les matériaux dans les délais, désigner un point focal pour les validations et participer aux réunions mensuelles pour garantir la qualité." },
-        { question: "Dans quel délai le contenu sera-t-il en ligne ?", answer: "Après validation du planning, nous lançons la production. Chaque mois, un nouveau cycle commence le 15, assurant prévisibilité et organisation." },
-        { question: "Ce plan peut-il évoluer avec la croissance de mon entreprise ?", answer: "Oui. Le Plan de Base est conçu comme une porte d'entrée évolutive. À mesure que l'entreprise grandit, de nouvelles stratégies peuvent être intégrées." }
+        {
+          question: "Le Plan de Base convient-il à tout type d'entreprise ?",
+          answer: "Le Plan de Base est destiné aux entreprises ayant déjà validé leur modèle d'affaires et étant en phase de consolidation numérique, mais n'ayant pas d'équipe interne. Pas pour les débutants."
+        },
+        {
+          question: "S'agit-il uniquement de gestion des réseaux sociaux ?",
+          answer: "Non. Le Plan de Base va plus loin : diagnostic stratégique, planification, production, publication et analyse mensuelle pour une croissance numérique continue."
+        },
+        {
+          question: "Sur quels canaux les contenus sont-il publiés ?",
+          answer: "Le contenu est publié sur Instagram et Facebook, selon le planning mensuel. D'autres canaux peuvent être évalués dans des propositions spécifiques."
+        },
+        {
+          question: "Qui crée les thèmes et les idées de contenu ?",
+          answer: "TAG08 propose les thèmes stratégiques et le client peut contribuer avec ses suggestions. Le planning final est toujours validé ensemble avant la production."
+        },
+        {
+          question: "Les vidéos doivent-elles être enregistrées par TAG08 ?",
+          answer: "Pas nécessairement. Elles peuvent être enregistrées par TAG08 ou fournies par le client, à condition de respecter les directives pour assurer la cohérence."
+        },
+        {
+          question: "Comment fonctionne le suivi des résultats ?",
+          answer: "Chaque mois, nous organisons une réunion de suivi et livrons un rapport d'engagement, permettant d'ajuster la direction stratégique si nécessaire."
+        },
+        {
+          question: "Existe-t-il un contrat d'engagement ?",
+          answer: "Non. Le Plan de Base n'a pas d'engagement contractuel. En cas d'annulation, un simple préavis de 30 jours est requis."
+        },
+        {
+          question: "Puis-je commander du contenu ou des services supplémentaires ?",
+          answer: "Oui. Si nécessaire, des services ou contenus extras peuvent être commandés à la carte, sans modifier le format du Plan de Base."
+        },
+        {
+          question: "Le Plan de Base garantit-il des résultats spécifiques ?",
+          answer: "Nous ne faisons pas de promesses irréalistes. Nous offrons structure, méthode et constance. Les résultats dépendent du marché, du produit et du client."
+        },
+        {
+          question: "Qu'est-ce qui est attendu du client pendant le plan ?",
+          answer: "Le client doit fournir les matériaux dans les délais, désigner un point focal pour les validations et participer aux réunions mensuelles pour garantir la qualité."
+        },
+        {
+          question: "Dans quel délai le contenu sera-t-il en ligne ?",
+          answer: "Après validation du planning, nous lançons la production. Chaque mois, un nouveau cycle commence le 15, assurant prévisibilité et organisation."
+        },
+        {
+          question: "Ce plan peut-il évoluer avec la croissance de mon entreprise ?",
+          answer: "Oui. Le Plan de Base est conçu comme une porte d'entrée évolutive. À mesure que l'entreprise grandit, de nouvelles stratégies peuvent être intégrées."
+        }
       ]
     },
     cta: {
@@ -1114,7 +1619,7 @@ export const translations: Record<Language, TranslationSchema> = {
       highValueTitle: "Portez votre opération au sommet.",
       highValueButton: "Parler à un Associé Senior",
       disclaimer: "En cliquant, vous acceptez le traitement de vos données à des fins de contact commercial conformément à notre politique de confidentialité.",
-      urgency: "Places limitées pour de nouveaux partenaires ce mois-ci",
+      urgency: "Places limitées pour de nouveaux partenaires ce mois-ci"
     },
     contactRouting: {
       badge: "Acheminement direct",
@@ -1129,59 +1634,101 @@ export const translations: Record<Language, TranslationSchema> = {
           label: "Brésil",
           summary: "Assistance WhatsApp nationale pour les clients au Brésil.",
           button: "Ouvrir WhatsApp Brésil",
-          message: "Olá, quero atendimento para o Brasil.",
+          message: "Olá, quero atendimento para o Brasil."
         },
         intl: {
           label: "International / Espagnol",
           summary: "Assistance WhatsApp pour les clients internationaux et les conversations en espagnol.",
           button: "Ouvrir WhatsApp International",
-          message: "Hola, necesito atención internacional en español.",
-        },
-      },
+          message: "Hola, necesito atención internacional en español."
+        }
+      }
     },
     cookie: {
-      title: "Confidentialit? et donn?es",
-      desc: "Nous utilisons des cookies essentiels, analytiques et marketing pour optimiser votre exp?rience et comprendre notre trafic.",
+      title: "Confidentialité & Données",
+      desc: "Nous utilisons des cookies pour optimiser votre experiência et analyser notre trafic.",
       accept: "Accepter",
       policy: "Politique de cookies",
       configure: "Configurer",
       acceptAll: "Tout accepter",
       customizeTitle: "Personnaliser les cookies",
-      customizeSubtitle: "Votre choix influence la mani?re dont nous pouvons am?liorer le site pour vous.",
+      customizeSubtitle: "Votre choix influence la manière dont nous pouvons améliorer le site pour vous.",
+      necessaryLabel: "Essentiels",
+      necessaryDesc: "Nécessaires au bon fonctionnement du site.",
+      analyticalLabel: "Analytiques",
+      analyticalDesc: "Aident à comprendre le trafic et l'usage du site.",
+      marketingLabel: "Marketing",
+      marketingDesc: "Annonces plus pertinentes selon vos préférences.",
       back: "Retour",
-      savePreferences: "Enregistrer les pr?f?rences",
+      savePreferences: "Enregistrer les préférences"
     },
     privacy: {
       title: "Politique de Confidentialité",
       close: "Fermer",
       intro: "TAG08 Studio respecte votre vie privée et s'engage à proteger vos données personnelles.",
       sections: {
-        data: { title: "Collecte de Données", text: "Nous collectons des informations de contact de base (nom, e-mail, téléphone) uniquement lorsque vous lancez volontairement une consultation ou un contact via WhatsApp." },
-        cookies: { title: "Utilisation des Cookies", text: "Nous utilisons des cookies techniques pour assurer le fonctionnement du site et des cookies analitiques (Google Analytics) pour comprendre how to improve our diffusion de contenu." },
-        rights: { title: "Vos Droits", text: "Vous avez le droit d'accéder, de corriger ou de demander la suppression de vos données à tout moment, comme prévu par le RGPD." },
-        security: { title: "Sécurité", text: "Nous mettons en œuvre des protocoles de cryptage et un accès restreint pour garantir que vos informations stratégiques ne soient jamais partagées avec des tiers sans autorisation." }
+        data: {
+          title: "Collecte de Données",
+          text: "Nous collectons des informations de contact de base (nom, e-mail, téléphone) uniquement lorsque vous lancez volontairement une consultation ou un contact via WhatsApp."
+        },
+        cookies: {
+          title: "Utilisation des Cookies",
+          text: "Nous utilisons des cookies techniques pour assurer le fonctionnement du site et des cookies analitiques (Google Analytics) pour comprendre how to improve our diffusion de contenu."
+        },
+        rights: {
+          title: "Vos Droits",
+          text: "Vous avez le droit d'accéder, de corriger ou de demander la suppression de vos données à tout moment, comme prévu par le RGPD."
+        },
+        security: {
+          title: "Sécurité",
+          text: "Nous mettons en œuvre des protocoles de cryptage et un accès restreint pour garantir que vos informations stratégiques ne soient jamais partagées avec des tiers sans autorisation."
+        }
       }
     },
     cookiePolicy: {
       title: "Politique relative aux cookies",
       intro: "Cette politique explique comment TAG08 utilise des cookies pour améliorer votre expérience de navigation et l'analyse des performances.",
       sections: {
-        necessary: { title: "Cookies nécessaires", text: "Essentiels au fonctionnement de base du site, comme la navigation sur les pages et l'accès aux zones sécurisées. Le site ne peut pas fonctionner correctement sans eux." },
-        analytical: { title: "Cookies de performance", text: "Nous aident à comprendre comment les visiteurs interagissent avec le site en collectant et en signalant des informations de manière anonyme via Google Analytics." },
-        marketing: { title: "Cookies de marketing", text: "Utilisés pour suivre les visiteurs sur les sites web. L'intention est d'afficher des publicités qui soient relevantes et attrayantes para l'utilisateur individuel." },
-        management: { title: "Gestion des préférences", text: "Vous pouvez gérer ou désactiver les cookies via les paramètres de votre navigateur à tout moment. Notez que la désactivation peut affecter votre expérience sur le site." }
+        necessary: {
+          title: "Cookies nécessaires",
+          text: "Essentiels au fonctionnement de base du site, comme la navigation sur les pages et l'accès aux zones sécurisées. Le site ne peut pas fonctionner correctement sans eux."
+        },
+        analytical: {
+          title: "Cookies de performance",
+          text: "Nous aident à comprendre comment les visiteurs interagissent avec le site en collectant et en signalant des informations de manière anonyme via Google Analytics."
+        },
+        marketing: {
+          title: "Cookies de marketing",
+          text: "Utilisés pour suivre les visiteurs sur les sites web. L'intention est d'afficher des publicités qui soient relevantes et attrayantes para l'utilisateur individuel."
+        },
+        management: {
+          title: "Gestion des préférences",
+          text: "Vous pouvez gérer ou désactiver les cookies via les paramètres de votre navigateur à tout moment. Notez que la désactivation peut affecter votre expérience sur le site."
+        }
       }
     },
     monthlyCycle: {
       title: "Cycle d'Exécution Récurrent",
       subtitle: "Le marketing n'est pas un événement, c'est un processus continu.",
       steps: {
-        step1: { title: "Semaine 1 : Alignement", desc: "Réunion de lancement mensuelle pour définir les thèmes et objectifs stratégiques." },
-        step2: { title: "Semaine 2 : Production", desc: "Développement des visuels, légendes et configuration technique des campagnes." },
-        step3: { title: "Semaine 3 : Lancement", desc: "Activation des actions et début de la collecte des données de performance en temps réel." },
-        step4: { title: "Semaine 4 : Analyse", desc: "Clôture du rapport avec des insights et des suggestions d'amélioration pour le cycle suivant." },
+        step1: {
+          title: "Semaine 1 : Alignement",
+          desc: "Réunion de lancement mensuelle pour définir les thèmes et objectifs stratégiques."
+        },
+        step2: {
+          title: "Semaine 2 : Production",
+          desc: "Développement des visuels, légendes et configuration technique des campagnes."
+        },
+        step3: {
+          title: "Semaine 3 : Lancement",
+          desc: "Activation des actions et début de la collecte des données de performance en temps réel."
+        },
+        step4: {
+          title: "Semaine 4 : Analyse",
+          desc: "Clôture du rapport avec des insights et des suggestions d'amélioration pour le cycle suivant."
+        }
       },
-      footerText: "Nous répétons le succès chaque mois",
+      footerText: "Nous répétons le succès chaque mois"
     },
     testimonials: {
       title: "Reconnaissance d'Élite",
@@ -1192,9 +1739,24 @@ export const translations: Record<Language, TranslationSchema> = {
       sourceLabel: "Profil Google Business",
       viewAll: "Tout voir sur Google",
       items: [
-        { name: "Ricardo Almeida", role: "CEO, TechFlux", content: "TAG08 a transformé notre présence numérique. Le Plan de Base nous a donné la constance qui nous manquait e le ROI était visible dès le deuxième mois.", date: "il y a 2 mois" },
-        { name: "Fernanda Costa", role: "Dir. Marketing, Lumina", content: "Design de haut niveau et stratégie réelle. Ce n'est pas juste de l'affichage, c'est de la construction de marque. Je recommande pour ceux qui visent le sommet.", date: "il y a 1 mois" },
-        { name: "Bruno Mantovani", role: "Associé, Nexus Invest", content: "Le professionnalisme de l'équipe est impressionnant. Le cycle de livraison mensuel est très organisé et nous donne une clarté totale sur la croissance.", date: "il y a 3 semaines" }
+        {
+          name: "Ricardo Almeida",
+          role: "CEO, TechFlux",
+          content: "TAG08 a transformé notre présence numérique. Le Plan de Base nous a donné la constance qui nous manquait e le ROI était visible dès le deuxième mois.",
+          date: "il y a 2 mois"
+        },
+        {
+          name: "Fernanda Costa",
+          role: "Dir. Marketing, Lumina",
+          content: "Design de haut niveau et stratégie réelle. Ce n'est pas juste de l'affichage, c'est de la construction de marque. Je recommande pour ceux qui visent le sommet.",
+          date: "il y a 1 mois"
+        },
+        {
+          name: "Bruno Mantovani",
+          role: "Associé, Nexus Invest",
+          content: "Le professionnalisme de l'équipe est impressionnant. Le cycle de livraison mensuel est très organisé et nous donne une clarté totale sur la croissance.",
+          date: "il y a 3 semaines"
+        }
       ]
     },
     videoGallery: {
@@ -1208,7 +1770,7 @@ export const translations: Record<Language, TranslationSchema> = {
       openChannel: "Ouvrir la chaîne",
       watch: "Regarder",
       loading: "Chargement des dernières vidéos...",
-      error: "Impossible de charger les vidéos pour le moment. Ouvrez la chaîne pour voir la bibliothèque complète.",
+      error: "Impossible de charger les vidéos pour le moment. Ouvrez la chaîne pour voir la bibliothèque complète."
     },
     teamShowcase: {
       badge: "Noyau senior",
@@ -1223,40 +1785,64 @@ export const translations: Record<Language, TranslationSchema> = {
           role: "Fondateur et direction",
           summary: "A créé TAG08 et conduit la direction stratégique de l’opération.",
           focus: "Fondateur",
-          tags: ["Fondation", "Direction", "Clarté"],
-          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/",
+          tags: [
+            "Fondation",
+            "Direction",
+            "Clarté"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/carlosmartins08/"
         },
         {
           name: "Ignacio Quiroz",
           role: "Stratégie et communication",
           summary: "Structure le positionnement et la narration pour transformer l’intention en direction commerciale.",
           focus: "Stratégie",
-          tags: ["Positionnement", "Narration", "Offre"],
-          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/",
+          tags: [
+            "Positionnement",
+            "Narration",
+            "Offre"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/ignacio-quiroz-b1568a52/"
         },
         {
           name: "Pedro V. Félix",
           role: "Données et technologie",
           summary: "Organise les données, l’automatisation et le support technique pour des décisions plus sûres.",
           focus: "Technologie",
-          tags: ["Données", "Automatisation", "Intégration"],
-          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/",
+          tags: [
+            "Données",
+            "Automatisation",
+            "Intégration"
+          ],
+          linkedinUrl: "https://www.linkedin.com/in/pedrovsfelix/"
         }
-      ],
+      ]
     },
     strategicBenefits: {
       badge: "La norme TAG08",
       title: "La norme TAG08",
-      subtitle: "Des diff?renciateurs qui nous placent au sommet du marketing strat?gique et intelligent.",
+      subtitle: "Des différentiels qui nous placent au sommet de la chaîne du marketing stratégique.",
       stats: {
         transparency: "Transparence",
-        roi: "ROI moyen",
+        roi: "ROI moyen"
       },
       items: [
-        { title: "Intelligence strat?gique", desc: "Nous n'ex?cutons pas seulement; nous pensons votre entreprise autour d'actifs num?riques r?currents." },
-        { title: "Patrimoine de marque", desc: "Nous construisons une autorit? qui prend de la valeur dans le temps et cr?e un v?ritable d?sir d'achat." },
-        { title: "?quipe senior", desc: "Acc?s direct ? des consultants sp?cialis?s. Aucun stagiaire sur la premi?re ligne de votre marque." },
-        { title: "Processus valid?s", desc: "Remplacez le chaos par la clart? d'un flux qui prot?ge votre productivit?." }
+        {
+          title: "Consistance Absolue",
+          desc: "Présence numérique ininterrompue et professionnelle qui renforce l'autorité réelle."
+        },
+        {
+          title: "Patrimoine de marque",
+          desc: "Campagnes optimisées pour générer profit et échelle, évitant les métriques de vanité."
+        },
+        {
+          title: "?quipe senior",
+          desc: "Accès direct à des consultants experts, sans intermédiaires ni stagiaires."
+        },
+        {
+          title: "Agilité",
+          desc: "Exécution rapide et adaptation constante aux évolutions du marché numérique."
+        }
       ]
     },
     calculator: {
@@ -1302,36 +1888,52 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     footer: {
       badge: "Conseil d'?lite",
-      title: "Votre entreprise pr?te pour le",
+      title: "Votre entreprise prête pour le",
       titleAccent: "niveau de maturit? suivant.",
-      description: "TAG08 associe strat?gie d'entreprise, ing?nierie des processus et technologie pour transformer le chaos op?rationnel en machines de croissance.",
+      description: "TAG08 unit stratégie d'entreprise, ingénierie des processus et technologie pour transformer le chaos opérationnel en machines de croissance autogérées.",
       ctaDiagnosis: "PLANIFIER UN DIAGNOSTIC",
       ctaDirection: "PARLER ? LA DIRECTION",
-      headquarters: "Si?ge",
+      headquarters: "Siège",
       centralSupport: "Support central",
-      about: "Conseil sp?cialis? en levier commercial. Nous rempla?ons les suppositions par des donn?es et le chaos par des processus valid?s.",
-      ecosystem: "?cosyst?me TAG08",
+      about: "Conseil spécialisé en levier commercial. Nous remplaçons les 'conjectures' par des données et le chaos par des processus validés.",
+      ecosystem: "Écosystème TAG08",
       aboutTag08: "? propos de TAG08",
-      blog: "Blog strat?gique",
+      blog: "Blog Stratégique",
       sebraetec: "Sebraetec",
       institutional: "Institutionnel",
-      social: "R?seaux sociaux",
+      social: "Réseaux Sociaux",
       socialDesc: "Suivez les coulisses des missions et les insights de gestion au quotidien.",
-      rights: "TAG08 Strat?gie Digitale",
-      allRights: "Tous droits r?serv?s.",
+      rights: "TAG08 Stratégie Digitale",
+      allRights: "Tous droits réservés.",
       privacy: "Confidentialit?",
       cookies: "Politique de cookies",
-      preferences: "Pr?f?rences de confidentialit?"
+      preferences: "Préférences de confidentialité"
     },
     growthRoadmap: {
       title: "Le Chemin vers le",
       titleAccent: "Prochain Niveau",
       subtitle: "Il ne s'agit pas d'un service mensuel, mais d'un voyage vers une échelle prévisible et rentable.",
       steps: {
-        step1: { stage: "Phase 01", title: "Consolidation", desc: "Ajustement des fondations, branding d'élite et structure de trafic initiale." },
-        step2: { stage: "Phase 02", title: "Mise à l'échelle", desc: "Expansion des budgets, optimisation des entonnoirs et domination de l'audience." },
-        step3: { stage: "Phase 03", title: "Accélération", desc: "Lancements et mise à l'échelle verticale pour atteindre le plafond du marché." },
-        step4: { stage: "Phase 04", title: "Domination", desc: "Autorité incontestable et leadership absolu dans votre niche." }
+        step1: {
+          stage: "Phase 01",
+          title: "Consolidation",
+          desc: "Ajustement des fondations, branding d'élite et structure de trafic initiale."
+        },
+        step2: {
+          stage: "Phase 02",
+          title: "Mise à l'échelle",
+          desc: "Expansion des budgets, optimisation des entonnoirs et domination de l'audience."
+        },
+        step3: {
+          stage: "Phase 03",
+          title: "Accélération",
+          desc: "Lancements et mise à l'échelle verticale pour atteindre le plafond du marché."
+        },
+        step4: {
+          stage: "Phase 04",
+          title: "Domination",
+          desc: "Autorité incontestable et leadership absolu dans votre niche."
+        }
       }
     },
     strategyNotes: {

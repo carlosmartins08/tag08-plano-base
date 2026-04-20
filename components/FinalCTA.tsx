@@ -4,14 +4,46 @@ import React from 'react';
 import { ArrowRight, Globe2, MapPin, MessageCircle, Sparkles } from 'lucide-react';
 import { buildWhatsAppUrl, WHATSAPP_CONTACTS } from '../constants';
 import { useTranslation } from '../contexts/LanguageContext';
+import { Language } from '../types';
 import Magnetic from './Magnetic';
+import Button from './Button';
 
 type ContactRouteId = 'br' | 'intl';
 
-const FinalCTA: React.FC = () => {
-  const { language, t } = useTranslation();
+const ROUTING_REASON_COPY: Record<
+  Language,
+  { brPt: string; nonPt: string; nonBr: string; fallback: string }
+> = {
+  pt: {
+    brPt: 'Recomendação automática: Brasil + idioma PT.',
+    nonPt: 'Recomendação automática: idioma selecionado direciona para canal internacional.',
+    nonBr: 'Recomendação automática: localidade fora do Brasil.',
+    fallback: 'Recomendação automática: sinal de idioma priorizado.',
+  },
+  en: {
+    brPt: 'Automatic recommendation: Brazil + PT language.',
+    nonPt: 'Automatic recommendation: selected language routes to international channel.',
+    nonBr: 'Automatic recommendation: location outside Brazil.',
+    fallback: 'Automatic recommendation: language signal prioritized.',
+  },
+  es: {
+    brPt: 'Recomendación automática: Brasil + idioma PT.',
+    nonPt: 'Recomendación automática: el idioma seleccionado dirige al canal internacional.',
+    nonBr: 'Recomendación automática: localidad fuera de Brasil.',
+    fallback: 'Recomendación automática: se priorizó la señal de idioma.',
+  },
+  fr: {
+    brPt: 'Recommandation automatique : Brésil + langue PT.',
+    nonPt: 'Recommandation automatique : la langue choisie dirige vers le canal international.',
+    nonBr: 'Recommandation automatique : localisation hors du Brésil.',
+    fallback: 'Recommandation automatique : signal de langue priorisé.',
+  },
+};
 
-  const recommendedRoute: ContactRouteId = language === 'pt' ? 'br' : 'intl';
+const FinalCTA: React.FC = () => {
+  const { language, t, localeSignals, recommendedContactRoute } = useTranslation();
+
+  const recommendedRoute: ContactRouteId = recommendedContactRoute;
 
   const routes = [
     {
@@ -34,6 +66,22 @@ const FinalCTA: React.FC = () => {
     },
   ];
 
+  const orderedRoutes = [...routes].sort((a, b) => {
+    if (a.id === recommendedRoute) return -1;
+    if (b.id === recommendedRoute) return 1;
+    return 0;
+  });
+
+  const routingCopy = ROUTING_REASON_COPY[language];
+  const routingReason =
+    language === 'pt' && localeSignals.countryBucket === 'BR'
+      ? routingCopy.brPt
+      : language !== 'pt'
+        ? routingCopy.nonPt
+        : localeSignals.countryBucket === 'NON_BR'
+          ? routingCopy.nonBr
+          : routingCopy.fallback;
+
   const handleContactClick = (route: ContactRouteId) => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'generate_lead', {
@@ -41,6 +89,10 @@ const FinalCTA: React.FC = () => {
         value: 0,
         source: `whatsapp_${route}`,
         contact_route: route,
+        recommended_route: recommendedRoute,
+        language_selected: language,
+        locale_region: localeSignals.regionCode ?? 'unknown',
+        locale_timezone: localeSignals.timeZone ?? 'unknown',
       });
     }
   };
@@ -54,7 +106,7 @@ const FinalCTA: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-brand-lime">
+          <div className="ds-section-badge gap-2 tracking-[0.35em]">
             <Sparkles size={12} />
             {t.contactRouting.badge}
           </div>
@@ -71,10 +123,13 @@ const FinalCTA: React.FC = () => {
           <p className="mt-4 text-[11px] font-black uppercase tracking-[0.35em] text-brand-lime/80">
             {t.contactRouting.helper}
           </p>
+          <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-white/45">
+            {routingReason}
+          </p>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {routes.map((route) => {
+          {orderedRoutes.map((route) => {
             const isRecommended = route.id === recommendedRoute;
             const Icon = route.icon;
 
@@ -109,7 +164,7 @@ const FinalCTA: React.FC = () => {
                       </div>
 
                       <div>
-                        <span className="inline-flex items-center rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-white/60">
+                        <span className="ds-chip ds-chip-muted tracking-[0.35em]">
                           {route.label}
                         </span>
                         <h3 className="mt-4 font-display text-3xl md:text-4xl font-black uppercase italic leading-[0.9] tracking-tight text-white">
@@ -119,7 +174,7 @@ const FinalCTA: React.FC = () => {
                     </div>
 
                     {isRecommended && (
-                      <span className="rounded-full bg-brand-lime px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-brand-black">
+                      <span className="ds-chip border-brand-lime bg-brand-lime tracking-[0.35em] text-brand-black">
                         {t.contactRouting.recommended}
                       </span>
                     )}
@@ -131,21 +186,23 @@ const FinalCTA: React.FC = () => {
 
                   <div className="mt-auto flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <Magnetic>
-                      <a
+                      <Button
                         href={route.href}
+                        variant={isRecommended ? 'solid' : 'subtle'}
+                        size="md"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => handleContactClick(route.id)}
-                        className={`inline-flex items-center gap-3 rounded-2xl px-6 py-4 text-[11px] font-black uppercase tracking-[0.35em] transition-all duration-300 ${
+                        className={`rounded-2xl ${
                           isRecommended
-                            ? 'bg-brand-lime text-brand-black shadow-[0_18px_50px_rgba(212,255,0,0.18)] hover:scale-[1.02]'
-                            : 'border border-white/10 bg-black/35 text-brand-lime hover:border-brand-lime/30 hover:bg-brand-lime/5'
+                            ? 'shadow-[0_18px_50px_rgba(212,255,0,0.18)] hover:scale-[1.02]'
+                            : 'text-brand-lime'
                         }`}
                       >
                         <MessageCircle className="h-4 w-4" />
                         {route.button}
                         <ArrowRight className="h-4 w-4" />
-                      </a>
+                      </Button>
                     </Magnetic>
 
                     <div className="text-[10px] font-black uppercase tracking-[0.35em] text-white/35">

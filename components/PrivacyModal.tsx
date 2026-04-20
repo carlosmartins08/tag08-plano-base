@@ -26,7 +26,7 @@ const PrivacyModal: React.FC = () => {
           <button
             type="button"
             onClick={() => setPrivacyModalOpen(false)}
-            className="rounded-full bg-white/5 p-3 text-white/50 transition-all hover:bg-white/10 hover:text-white"
+            className="ds-icon-shell h-12 w-12 rounded-full p-3 text-white/50 hover:bg-white/10 hover:text-white"
             aria-label={t.privacy.close}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,7 +37,7 @@ const PrivacyModal: React.FC = () => {
 
         <div className="grid gap-8 md:grid-cols-2">
           {(Object.entries(t.privacy.sections) as [string, { title: string; text: string }][]).map(([key, section]) => (
-            <div key={key} className="rounded-3xl border border-white/5 bg-white/5 p-8 transition-colors hover:border-brand-lime/30">
+            <div key={key} className="ds-card-shell ds-card-shell-hover-lime rounded-3xl bg-white/5 p-8">
               <h3 className="mb-4 text-xs font-black uppercase tracking-widest text-brand-lime">
                 {section.title}
               </h3>

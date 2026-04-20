@@ -4,9 +4,10 @@ import Image from 'next/image';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
 import Magnetic from './Magnetic';
+import Button from './Button';
 
 const Hero: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
   const { source, isReturning, setStrategyNote, persona, niche } = useUX();
 
   const handleCtaClick = () => {
@@ -14,7 +15,11 @@ const Hero: React.FC = () => {
       (window as any).gtag('event', 'hero_cta_click', {
         source: source,
         is_returning: isReturning,
-        niche: niche
+        niche: niche,
+        contact_route: recommendedContactRoute,
+        language_selected: language,
+        locale_region: localeSignals.regionCode ?? 'unknown',
+        locale_timezone: localeSignals.timeZone ?? 'unknown',
       });
     }
   };
@@ -53,7 +58,7 @@ const Hero: React.FC = () => {
     >
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-lime/10 blur-[120px] rounded-full animate-slow-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-brand-lime/5 blur-[100px] rounded-full animate-slow-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-brand-lime/5 blur-[100px] rounded-full animate-slow-pulse motion-delay-2000"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
@@ -61,14 +66,14 @@ const Hero: React.FC = () => {
           <div className="flex-1 max-w-3xl relative">
             <span className="blueprint-label -top-8 left-0 text-[10px]">SECTION: HERO_MAIN</span>
             <div className="reveal stagger-1 flex flex-col items-center lg:items-start gap-4 mb-8">
-              <div className="inline-flex items-center gap-2 py-2 px-4 rounded-full border border-white/10 bg-white/5 text-brand-lime text-[10px] font-black uppercase tracking-[0.3em] relative">
+              <div className="ds-section-badge relative">
                 <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse"></span>
                 {t.hero.badge}
                 <span className="blueprint-label -top-4 right-0">IDEAL_MATCH: ON</span>
               </div>
               {isReturning && (
                 <span className="text-[10px] font-black text-brand-lime/40 uppercase tracking-[0.4em] animate-fade-in relative">
-                  — {t.hero.welcomeBack}
+                  - {t.hero.welcomeBack}
                   <span className="blueprint-label -right-12 top-0">RET_UID_TRUE</span>
                 </span>
               )}
@@ -87,14 +92,17 @@ const Hero: React.FC = () => {
             </div>
             <div className="reveal stagger-4 flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
               <Magnetic>
-                <a
-                  href="#contato"
+                <Button
+                  href={recommendedContactHref}
                   onClick={handleCtaClick}
-                  className="btn-magnetic inline-flex items-center justify-center px-12 py-5 bg-brand-lime text-brand-black rounded-full font-black text-xl hover:shadow-[0_0_30px_rgba(212,255,0,0.5)] transition-all relative"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="lg"
+                  className="btn-magnetic text-xl"
                 >
                   {t.hero.cta}
                   <span className="blueprint-label -top-4 left-0">CTA: STRATEGIC_START</span>
-                </a>
+                </Button>
               </Magnetic>
               <div className="flex items-center gap-4 text-white/50 text-sm font-bold uppercase tracking-widest relative">
                 <span className="w-12 h-px bg-white/20"></span>
@@ -127,3 +135,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+

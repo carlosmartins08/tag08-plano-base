@@ -38,10 +38,8 @@ const MonthlyCycle: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20 reveal">
-          <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-brand-lime/20 bg-brand-lime/5">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-              Workflow
-            </span>
+          <div className="mb-6 ds-section-badge">
+            <span>Workflow</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-6 uppercase tracking-tight italic">
             {t.monthlyCycle.title}
@@ -64,9 +62,9 @@ const MonthlyCycle: React.FC = () => {
                 {/* Connector Dot (Desktop) */}
                 <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-black border-2 border-white/20 z-20 transition-all duration-500 group-hover:border-brand-lime group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(212,255,0,0.5)]"></div>
 
-                <div className="h-full p-8 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-brand-lime/30 hover:bg-white/[0.04] transition-all duration-500 group">
+                <div className="ds-card-shell ds-card-shell-hover-lime h-full p-8 rounded-3xl backdrop-blur-sm group">
                   <div className="flex items-center justify-between mb-8">
-                    <div className="w-12 h-12 rounded-2xl bg-brand-lime/10 text-brand-lime flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                    <div className="ds-icon-shell h-12 w-12 border-brand-lime/10 bg-brand-lime/10 transition-transform group-hover:scale-110 group-hover:rotate-6">
                       {step.icon}
                     </div>
                     <span className="text-4xl font-display font-black text-white/5 italic select-none">

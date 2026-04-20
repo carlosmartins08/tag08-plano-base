@@ -16,6 +16,7 @@ These rules exist to prevent the project from drifting into duplicate implementa
 - Identify indirect consumers.
 - List every route, anchor and metadata field affected.
 - Check whether state already exists in a context or helper.
+- Verify design consistency with `ds:check`.
 - Verify the change with `lint` and `build`.
 
 ## Consent and analytics rule

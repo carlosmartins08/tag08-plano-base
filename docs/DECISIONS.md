@@ -12,8 +12,13 @@ These are the key decisions already made for this base.
 - The team showcase and video gallery are shared sections, not page-specific duplicates.
 - The footer now uses the official company profile, address and social links from `constants.tsx`.
 
+## 2026-04-19
+
+- Design system primitives were centralized in `app/globals.css` (`ds-section-badge`, `ds-card-shell`, `ds-panel-shell`, `ds-icon-shell`, `ds-chip`).
+- CTA behavior was standardized through `components/Button.tsx` variants and sizes.
+- Visual governance became mandatory through `npm run ds:check` and `docs/PR_CHECKLIST.md`.
+
 ## Open decisions
 
 - Whether the YouTube source should remain HTML scraping or move to a more stable published feed / API when credentials are available.
 - Whether the Testimonials section should stay hybrid (Google + fallback) or become fully API-driven.
-

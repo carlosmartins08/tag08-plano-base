@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { CookieConsent, useConsent } from '../contexts/ConsentContext';
+import Button from './Button';
 
 const DEFAULT_CONSENT: CookieConsent = {
   necessary: true,
@@ -50,7 +51,7 @@ const CookieBanner: React.FC = () => {
       aria-label={t.cookie.title}
       className="fixed bottom-6 left-1/2 z-[200] w-[95%] max-w-3xl -translate-x-1/2"
     >
-      <div className="flex flex-col gap-8 rounded-[2.5rem] border border-white/10 bg-brand-black/95 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl md:p-10 animate-in fade-in slide-in-from-bottom-10 duration-700">
+      <div className="ds-panel-shell flex flex-col gap-8 rounded-[2.5rem] bg-brand-black/95 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.6)] md:p-10 animate-in fade-in slide-in-from-bottom-10 duration-700">
         {!isConfiguring ? (
           <div className="flex flex-col items-center gap-8 md:flex-row">
             <div className="flex-1">
@@ -64,20 +65,24 @@ const CookieBanner: React.FC = () => {
             </div>
 
             <div className="flex w-full flex-col gap-3 sm:flex-row md:w-auto">
-              <button
+              <Button
                 type="button"
                 onClick={() => setIsConfiguring(true)}
-                className="rounded-xl bg-white/5 px-6 py-4 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-white/10"
+                variant="subtle"
+                size="md"
+                className="rounded-xl"
               >
                 {t.cookie.configure}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 onClick={handleAcceptAll}
-                className="rounded-xl bg-brand-lime px-8 py-4 text-[10px] font-black uppercase tracking-widest text-brand-black shadow-lg shadow-brand-lime/20 transition-all hover:scale-105 hover:bg-white active:scale-95"
+                variant="solid"
+                size="md"
+                className="rounded-xl shadow-lg shadow-brand-lime/20 hover:scale-105 active:scale-95"
               >
                 {t.cookie.acceptAll}
-              </button>
+              </Button>
             </div>
           </div>
         ) : (
@@ -92,10 +97,10 @@ const CookieBanner: React.FC = () => {
             </header>
 
             <div className="grid gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl border border-white/5 bg-white/5 p-5 opacity-80">
+              <div className="ds-card-shell rounded-2xl bg-white/5 p-5 opacity-80">
                 <div className="mb-2 flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-tighter text-white">
-                    Essenciais
+                    {t.cookie.necessaryLabel}
                   </span>
                   <div className="flex h-4 w-4 items-center justify-center rounded-full bg-brand-lime">
                     <svg className="h-2.5 w-2.5 text-brand-black" fill="currentColor" viewBox="0 0 20 20">
@@ -103,39 +108,39 @@ const CookieBanner: React.FC = () => {
                     </svg>
                   </div>
                 </div>
-                <p className="text-[9px] text-slate-400">Obrigatórios para o site funcionar.</p>
+                <p className="text-[9px] text-slate-400">{t.cookie.necessaryDesc}</p>
               </div>
 
               <button
                 type="button"
                 onClick={() => setTempConsent((prev) => ({ ...prev, analytical: !prev.analytical }))}
-                className={`rounded-2xl border p-5 text-left transition-all ${tempConsent.analytical ? 'border-brand-lime/40 bg-brand-lime/10' : 'border-white/5 bg-white/5'}`}
+                className={`rounded-2xl p-5 text-left transition-all ${tempConsent.analytical ? 'border border-brand-lime/40 bg-brand-lime/10' : 'ds-card-shell bg-white/5'}`}
               >
                 <div className="mb-2 flex items-center justify-between">
                   <span className={`text-[10px] font-black uppercase tracking-tighter ${tempConsent.analytical ? 'text-brand-lime' : 'text-white'}`}>
-                    Analíticos
+                    {t.cookie.analyticalLabel}
                   </span>
                   <div className={`relative h-4 w-8 rounded-full transition-colors ${tempConsent.analytical ? 'bg-brand-lime' : 'bg-white/20'}`}>
                     <div className={`absolute top-1 h-2 w-2 rounded-full bg-brand-black transition-all ${tempConsent.analytical ? 'left-5' : 'left-1'}`} />
                   </div>
                 </div>
-                <p className="text-[9px] text-slate-400">Ajuda a entender nosso tráfego.</p>
+                <p className="text-[9px] text-slate-400">{t.cookie.analyticalDesc}</p>
               </button>
 
               <button
                 type="button"
                 onClick={() => setTempConsent((prev) => ({ ...prev, marketing: !prev.marketing }))}
-                className={`rounded-2xl border p-5 text-left transition-all ${tempConsent.marketing ? 'border-brand-lime/40 bg-brand-lime/10' : 'border-white/5 bg-white/5'}`}
+                className={`rounded-2xl p-5 text-left transition-all ${tempConsent.marketing ? 'border border-brand-lime/40 bg-brand-lime/10' : 'ds-card-shell bg-white/5'}`}
               >
                 <div className="mb-2 flex items-center justify-between">
                   <span className={`text-[10px] font-black uppercase tracking-tighter ${tempConsent.marketing ? 'text-brand-lime' : 'text-white'}`}>
-                    Marketing
+                    {t.cookie.marketingLabel}
                   </span>
                   <div className={`relative h-4 w-8 rounded-full transition-colors ${tempConsent.marketing ? 'bg-brand-lime' : 'bg-white/20'}`}>
                     <div className={`absolute top-1 h-2 w-2 rounded-full bg-brand-black transition-all ${tempConsent.marketing ? 'left-5' : 'left-1'}`} />
                   </div>
                 </div>
-                <p className="text-[9px] text-slate-400">Anúncios mais relevantes para você.</p>
+                <p className="text-[9px] text-slate-400">{t.cookie.marketingDesc}</p>
               </button>
             </div>
 
@@ -149,27 +154,33 @@ const CookieBanner: React.FC = () => {
               </button>
 
               <div className="flex flex-col gap-3 sm:flex-row">
-                <button
+                <Button
                   type="button"
                   onClick={() => setCookieModalOpen(true)}
-                  className="rounded-xl border border-white/10 bg-black/35 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:border-brand-lime/30 hover:bg-brand-lime/5"
+                  variant="subtle"
+                  size="md"
+                  className="rounded-xl"
                 >
                   {t.cookie.policy}
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
                   onClick={handleAcceptAll}
-                  className="rounded-xl bg-white/5 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-white/10"
+                  variant="subtle"
+                  size="md"
+                  className="rounded-xl"
                 >
                   {t.cookie.acceptAll}
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
                   onClick={handleSavePreferences}
-                  className="rounded-xl bg-brand-lime px-6 py-3 text-[10px] font-black uppercase tracking-widest text-brand-black shadow-xl transition-all hover:bg-white"
+                  variant="solid"
+                  size="md"
+                  className="rounded-xl shadow-xl"
                 >
                   {t.cookie.savePreferences}
-                </button>
+                </Button>
               </div>
             </div>
           </div>

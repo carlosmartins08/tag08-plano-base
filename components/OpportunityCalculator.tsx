@@ -6,7 +6,7 @@ import { useUX } from '../contexts/UXContext';
 import { DollarSign, TrendingUp, ArrowRight, Info } from 'lucide-react';
 
 const OpportunityCalculator: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
   const { updateROI, setStrategyNote } = useUX();
   const [revenue, setRevenue] = useState(50000);
   const [targetGrowth, setTargetGrowth] = useState(20);
@@ -40,10 +40,23 @@ const OpportunityCalculator: React.FC = () => {
       (window as any).gtag('event', 'calculate_roi', {
         revenue: revenue,
         growth: targetGrowth,
-        annual_loss: annualLoss
+        annual_loss: annualLoss,
+        contact_route: recommendedContactRoute,
+        language_selected: language,
+        locale_region: localeSignals.regionCode ?? 'unknown',
+        locale_timezone: localeSignals.timeZone ?? 'unknown',
+      });
+
+      (window as any).gtag('event', 'direct_contact_click', {
+        entry_point: 'roi_calculator',
+        contact_route: recommendedContactRoute,
+        language_selected: language,
+        locale_region: localeSignals.regionCode ?? 'unknown',
+        locale_timezone: localeSignals.timeZone ?? 'unknown',
       });
     }
-    window.location.href = '#contato';
+
+    window.open(recommendedContactHref, '_blank', 'noopener,noreferrer');
   };
 
   const formatCurrency = (value: number) => {
@@ -69,11 +82,9 @@ const OpportunityCalculator: React.FC = () => {
           <span className="blueprint-label -top-8 left-0">MODULE: ROI_ANALYZER_V1</span>
 
           <div className="reveal">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-lime/20 bg-brand-lime/5 mb-8 relative">
+            <div className="ds-section-badge mb-8 relative">
               <TrendingUp className="w-3 h-3 text-brand-lime" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-                {t.calculator.badge}
-              </span>
+              <span>{t.calculator.badge}</span>
               <span className="blueprint-label -right-12 top-0">COMP_TYPE: CALC</span>
             </div>
 
@@ -110,7 +121,7 @@ const OpportunityCalculator: React.FC = () => {
           </div>
 
           <div className="reveal stagger-2">
-            <div className="bg-white/[0.03] border border-white/10 rounded-[48px] p-8 md:p-12 backdrop-blur-xl relative group blueprint-element">
+            <div className="ds-panel-shell rounded-[48px] p-8 md:p-12 relative group blueprint-element">
               <span className="blueprint-label -top-4 right-12">INPUT_CONTAINER: INTERACTIVE</span>
               <div className="space-y-12">
                 {/* Revenue Slider */}
@@ -166,7 +177,9 @@ const OpportunityCalculator: React.FC = () => {
                     >
                       {t.calculator.cta}
                       <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
-                      <span className="blueprint-label -bottom-2 right-4 text-brand-lime opacity-30">LINK: #CONTATO</span>
+                      <span className="blueprint-label -bottom-2 right-4 text-brand-lime opacity-30">
+                        LINK: WA_{recommendedContactRoute.toUpperCase()}
+                      </span>
                     </button>
                   </div>
 

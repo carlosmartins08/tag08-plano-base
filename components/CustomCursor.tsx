@@ -65,7 +65,7 @@ const CustomCursor: React.FC = () => {
 
             {/* Main follower circle */}
             <div
-                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-lime pointer-events-none z-[9999] transition-transform duration-300 ease-out flex items-center justify-center mix-blend-difference"
+                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-lime pointer-events-none z-[9999] transition-transform duration-300 ease-brand flex items-center justify-center mix-blend-difference"
                 style={{
                     transform: `translate(${position.x - 16}px, ${position.y - 16}px) scale(${isHovering || strategyNote ? 2 : 1})`,
                 }}
@@ -75,7 +75,7 @@ const CustomCursor: React.FC = () => {
 
             {/* Trailing glow */}
             <div
-                className="fixed top-0 left-0 w-64 h-64 bg-brand-lime/10 blur-[100px] rounded-full pointer-events-none z-[9998] transition-transform duration-700 ease-out"
+                className="fixed top-0 left-0 w-64 h-64 bg-brand-lime/10 blur-[100px] rounded-full pointer-events-none z-[9998] transition-transform duration-700 ease-brand"
                 style={{
                     transform: `translate(${position.x - 128}px, ${position.y - 128}px)`,
                 }}

@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
 
             <div className="space-y-8 pt-4">
               <div className="group relative flex items-start gap-4">
-                <div className="rounded-xl border border-white/5 bg-white/5 p-3 shadow-xl transition-all duration-500 group-hover:border-brand-lime group-hover:bg-brand-lime group-hover:text-brand-black">
+                <div className="ds-icon-shell rounded-xl p-3 shadow-xl group-hover:border-brand-lime group-hover:bg-brand-lime group-hover:text-brand-black">
                   <MapPin size={20} />
                 </div>
                 <div className="flex flex-col">
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
               </div>
 
               <div className="group flex items-center gap-4">
-                <div className="rounded-xl border border-white/5 bg-white/5 p-3 shadow-xl transition-all duration-500 group-hover:border-brand-lime group-hover:bg-brand-lime group-hover:text-brand-black">
+                <div className="ds-icon-shell rounded-xl p-3 shadow-xl group-hover:border-brand-lime group-hover:bg-brand-lime group-hover:text-brand-black">
                   <Mail size={20} />
                 </div>
                 <div className="flex flex-col">
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
                       {item.label}
                     </a>
                   ) : (
-                    <div className="mt-2 flex w-fit items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-[13px] font-black italic text-white">
+                    <div className="ds-panel-shell mt-2 flex w-fit items-center gap-3 rounded-lg bg-white/5 px-3 py-2 text-[13px] font-black italic text-white">
                       <span className="h-1.5 w-1.5 rounded-full bg-brand-lime shadow-[0_0_8px_rgba(212,255,0,1)] animate-pulse" />
                       {item.label}
                     </div>
@@ -164,7 +164,7 @@ const Footer: React.FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex aspect-square items-center justify-center rounded-xl border border-white/5 bg-white/5 p-3.5 shadow-lg transition-all hover:border-brand-lime hover:bg-brand-lime hover:text-brand-black group"
+                    className="ds-icon-shell flex aspect-square rounded-xl bg-white/5 p-3.5 shadow-lg hover:border-brand-lime hover:bg-brand-lime hover:text-brand-black group"
                     aria-label={link.label}
                   >
                     <Icon size={20} />
@@ -172,7 +172,7 @@ const Footer: React.FC = () => {
                 );
               })}
             </div>
-            <div className="rounded-2xl border border-brand-lime/10 bg-brand-lime/5 p-4 pt-4">
+            <div className="ds-panel-shell rounded-2xl border-brand-lime/10 bg-brand-lime/5 p-4 pt-4">
               <p className="text-[11px] font-medium leading-relaxed italic text-slate-400">
                 {t.footer.socialDesc}
               </p>

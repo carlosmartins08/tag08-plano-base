@@ -24,11 +24,9 @@ const StrategicBenefits: React.FC = () => {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-24 flex flex-col items-center gap-16 lg:flex-row">
           <div className="reveal flex-1">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-3 py-1">
+            <div className="mb-6 ds-section-badge">
               <span className="h-2 w-2 rounded-full bg-brand-lime" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-                {t.strategicBenefits.badge}
-              </span>
+              <span>{t.strategicBenefits.badge}</span>
             </div>
 
             <h2 className="mb-8 font-display text-5xl font-black uppercase italic leading-[0.9] tracking-tight text-white md:text-7xl">
@@ -61,9 +59,9 @@ const StrategicBenefits: React.FC = () => {
               {t.strategicBenefits.items.map((benefit, idx) => (
                 <div
                   key={benefit.title}
-                  className="group flex items-center gap-6 rounded-[32px] border border-white/5 bg-white/[0.02] p-6 transition-all duration-500 hover:border-brand-lime/30 hover:bg-white/[0.04]"
+                  className="ds-card-shell ds-card-shell-hover-lime group flex items-center gap-6 rounded-[32px] p-6"
                 >
-                  <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-brand-lime text-brand-black shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                  <div className="ds-icon-shell h-16 w-16 flex-shrink-0 border-brand-lime bg-brand-lime text-brand-black shadow-xl transition-transform group-hover:scale-110 group-hover:rotate-3">
                     {icons[idx]}
                   </div>
                   <div>

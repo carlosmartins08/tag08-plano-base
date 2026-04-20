@@ -21,21 +21,28 @@ const manrope = Manrope({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#000000',
   width: 'device-width',
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.domain),
-  title: `${SITE_CONFIG.siteName} | Marketing Estratégico & Design de Elite`,
-  description: 'Consultoria estratégica de marketing focada em escala e consolidação de marcas premium.',
+  title: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais com Estratégia`,
+  description: 'Gestão de conteúdo para redes sociais com direção estratégica, construção de audiência qualificada, posicionamento de marca e geração de vendas.',
+  keywords: [
+    'gestão de conteúdo',
+    'gestão de redes sociais',
+    'marketing de conteúdo',
+    'posicionamento de marca',
+    'audiência qualificada',
+    'consultoria de marketing digital',
+  ],
   alternates: {
     canonical: SITE_CONFIG.domain,
   },
   openGraph: {
-    title: `${SITE_CONFIG.siteName} | Marketing Estratégico & Design de Elite`,
-    description: 'Consultoria estratégica de marketing focada em escala e consolidação de marcas premium.',
+    title: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais com Estratégia`,
+    description: 'Direção estratégica de conteúdo para fortalecer marca, criar audiência e converter em vendas.',
     url: SITE_CONFIG.domain,
     siteName: SITE_CONFIG.siteName,
     locale: 'pt_BR',
@@ -48,6 +55,12 @@ export const metadata: Metadata = {
         alt: SITE_CONFIG.siteName,
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais`,
+    description: 'Conteúdo estratégico para posicionamento de marca, audiência e vendas.',
+    images: [`${SITE_CONFIG.domain}${SITE_PROFILE.logoPath}`],
   },
   icons: {
     icon: SITE_PROFILE.logoPath,

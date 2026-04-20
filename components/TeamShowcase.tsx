@@ -154,12 +154,12 @@ const TeamShowcase: React.FC = () => {
         key={member.linkedinUrl}
         href={member.linkedinUrl}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         aria-label={`${t.teamShowcase.openProfile} - ${member.name}`}
         onMouseEnter={() => setActiveIndex(member.originalIndex)}
         onMouseMove={handleCardMove}
         onFocus={() => setActiveIndex(member.originalIndex)}
-        className="group relative block min-h-[28rem] self-start overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] transition-[transform,opacity,box-shadow,border-color,filter,flex-grow,flex-basis] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-transform hover:border-brand-lime/30 lg:min-h-[34rem]"
+        className="group ds-card-shell ds-card-shell-hover-lime relative block min-h-[28rem] self-start overflow-hidden rounded-[2rem] transition-[transform,opacity,box-shadow,border-color,filter,flex-grow,flex-basis] duration-500 ease-brand will-change-transform lg:min-h-[34rem]"
         style={motionStyle}
       >
         <div className="relative flex h-full flex-col">
@@ -203,10 +203,10 @@ const TeamShowcase: React.FC = () => {
 
           <div className="flex flex-col gap-3 p-5 md:p-6">
             <div className="flex items-start justify-between gap-3">
-              <span className="inline-flex items-center rounded-full border border-brand-lime/20 bg-black/35 px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime backdrop-blur-md">
+              <span className="ds-chip ds-chip-lime border-brand-lime/20">
                 {isActive ? t.teamShowcase.featuredLabel : member.focus}
               </span>
-              <span className="inline-flex items-center rounded-full bg-black/35 px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/65 backdrop-blur-md">
+              <span className="ds-chip ds-chip-muted">
                 {String(member.originalIndex + 1).padStart(2, '0')} / {String(members.length).padStart(2, '0')}
               </span>
             </div>
@@ -235,7 +235,7 @@ const TeamShowcase: React.FC = () => {
                     {member.tags.slice(0, 2).map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-white/70"
+                        className="ds-chip border-white/10 bg-white/[0.05] tracking-[0.3em] text-white/70"
                       >
                         {tag}
                       </span>
@@ -245,7 +245,7 @@ const TeamShowcase: React.FC = () => {
               ) : null}
             </div>
 
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-black/35 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime backdrop-blur-md transition-transform duration-300 group-hover:translate-x-1">
+            <div className="ds-chip ds-chip-lime inline-flex w-fit items-center gap-2 px-4 py-2 transition-transform duration-300 group-hover:translate-x-1">
               <Linkedin className="h-4 w-4" />
               {t.teamShowcase.openProfile}
               <ArrowUpRight className="h-4 w-4" />
@@ -264,11 +264,9 @@ const TeamShowcase: React.FC = () => {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col gap-8 lg:flex-row lg:items-end">
           <div className="max-w-3xl">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-4 py-1.5">
+            <div className="mb-7 ds-section-badge gap-2">
               <Users className="h-4 w-4 text-brand-lime" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
-                {t.teamShowcase.badge}
-              </span>
+              <span>{t.teamShowcase.badge}</span>
             </div>
 
             <h2 className="mb-6 text-4xl font-black uppercase italic leading-[0.9] tracking-tight text-white md:text-6xl lg:text-7xl font-display">

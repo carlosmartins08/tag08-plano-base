@@ -6,9 +6,10 @@ import { Icons } from '../constants';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
 import Magnetic from './Magnetic';
+import Button from './Button';
 
 const Navbar: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
   const { setStrategyNote, isBlueprintMode, toggleBlueprintMode } = useUX();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -92,6 +93,18 @@ const Navbar: React.FC = () => {
     }
   }, [isMenuOpen]);
 
+  const handleDirectContactClick = (entryPoint: 'navbar' | 'mobile_menu') => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'direct_contact_click', {
+        entry_point: entryPoint,
+        contact_route: recommendedContactRoute,
+        language_selected: language,
+        locale_region: localeSignals.regionCode ?? 'unknown',
+        locale_timezone: localeSignals.timeZone ?? 'unknown',
+      });
+    }
+  };
+
   return (
     <>
       <nav
@@ -125,13 +138,12 @@ const Navbar: React.FC = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/5 relative" role="menubar">
+        <div className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/5 relative">
           <span className="blueprint-label -top-6 left-1/2 -translate-x-1/2">NAV_GRID</span>
           {navItems.map((item) => (
             <Link
               key={item.id}
               href={item.href}
-              role="menuitem"
               aria-current={activeSection === item.id ? 'page' : undefined}
               className={`relative px-3 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all group ${activeSection === item.id
                 ? 'bg-brand-lime text-brand-black shadow-lg shadow-brand-lime/20'
@@ -147,14 +159,18 @@ const Navbar: React.FC = () => {
         </div>
 
         <Magnetic>
-          <Link
-            href="#contato"
+          <Button
+            href={recommendedContactHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => handleDirectContactClick('navbar')}
             onMouseEnter={() => setStrategyNote(t.strategyNotes.metrics)}
             onMouseLeave={() => setStrategyNote(null)}
-            className={`hidden sm:flex items-center gap-2 px-5 py-2.5 bg-brand-lime text-brand-black rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all`}
+            size="sm"
+            className="hidden sm:flex rounded-xl"
           >
             {t.navbar.diagnosis} <span className="hidden lg:inline">{t.navbar.free}</span>
-          </Link>
+          </Button>
         </Magnetic>
 
         <button
@@ -173,7 +189,7 @@ const Navbar: React.FC = () => {
         {isScrolled && (
           <div className="absolute bottom-0 left-0 h-[2px] bg-brand-lime/20 w-full overflow-hidden rounded-b-2xl">
             <div
-              className="h-full bg-brand-lime transition-all duration-300 shadow-[0_0_10px_#D4FF00]"
+              className="h-full bg-brand-lime transition-all duration-300 ease-brand shadow-[0_0_10px_rgba(212,255,0,0.8)]"
               style={{ width: `${scrollProgress}%` }}
             ></div>
           </div>
@@ -184,11 +200,11 @@ const Navbar: React.FC = () => {
         id="mobile-menu"
         ref={menuRef}
         onScroll={handleMenuScroll}
-        className={`fixed inset-0 z-[90] bg-brand-black transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col px-10 overflow-y-auto ${isMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+        className={`fixed inset-0 z-[90] bg-brand-black transition-all duration-700 ease-brand flex flex-col px-10 overflow-y-auto ${isMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
         <div className="fixed inset-0 pointer-events-none overflow-hidden select-none z-0">
           <div
-            className={`absolute top-0 -left-20 text-[22rem] md:text-[30rem] font-black text-white leading-none transition-all duration-[1500ms] ease-out select-none mix-blend-soft-light`}
+            className={`absolute top-0 -left-20 text-[22rem] md:text-[30rem] font-black text-white leading-none transition-all duration-[1500ms] ease-brand select-none mix-blend-soft-light`}
             style={{
               transform: `translate(${isMenuOpen ? 0 : -100}px, ${menuScrollY * 0.15}px) rotate(${isMenuOpen ? -5 : -10}deg)`,
               opacity: isMenuOpen ? 0.08 : 0,
@@ -205,7 +221,7 @@ const Navbar: React.FC = () => {
               key={idx}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className={`relative text-5xl md:text-7xl font-black text-white hover:text-brand-lime transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] uppercase italic tracking-tighter group flex items-center gap-4 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
+              className={`relative text-5xl md:text-7xl font-black text-white hover:text-brand-lime transition-all duration-1000 ease-brand uppercase italic tracking-tighter group flex items-center gap-4 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
               style={{ transitionDelay: `${200 + idx * 80}ms` }}
             >
               <span className="relative z-10 transition-transform duration-500 group-hover:translate-x-4">{item.label}</span>
@@ -214,13 +230,19 @@ const Navbar: React.FC = () => {
           ))}
 
           <div className="mt-16">
-            <Link
-              href="#contato"
-              onClick={() => setIsMenuOpen(false)}
-              className="inline-flex items-center justify-center py-6 px-12 bg-brand-lime text-brand-black font-black text-xl rounded-2xl uppercase italic tracking-tighter"
+            <Button
+              href={recommendedContactHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                handleDirectContactClick('mobile_menu');
+                setIsMenuOpen(false);
+              }}
+              size="lg"
+              className="rounded-2xl text-xl italic tracking-tighter"
             >
               {t.cta.button}
-            </Link>
+            </Button>
           </div>
         </nav>
       </div>

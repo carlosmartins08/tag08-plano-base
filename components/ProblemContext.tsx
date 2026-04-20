@@ -97,11 +97,9 @@ const ProblemContext: React.FC = () => {
           {/* Right: Copy & Findings */}
           <div className="lg:col-span-7 order-1 lg:order-2 reveal relative">
             <span className="blueprint-label -top-8 right-0">SECTION: FINDINGS_LIST</span>
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-red-500/20 bg-red-500/5 mb-8">
+            <div className="mb-8 ds-section-badge gap-3 border-red-500/20 bg-red-500/5 text-red-500">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-red-500">
-                {t.problem.label}
-              </span>
+              <span>{t.problem.label}</span>
             </div>
 
             <h2 className="text-4xl md:text-7xl font-display font-black text-white mb-8 leading-[0.85] tracking-tighter uppercase italic">

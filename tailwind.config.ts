@@ -17,6 +17,9 @@ const config: Config = {
         sans: ['var(--font-manrope)', 'Manrope', 'ui-sans-serif', 'system-ui'],
         display: ['var(--font-darker-grotesque)', 'Darker Grotesque', 'ui-sans-serif', 'system-ui'],
       },
+      transitionTimingFunction: {
+        brand: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+      },
       keyframes: {
         'soft-bounce': {
           '0%, 100%': { transform: 'translateY(0) scale(1.1) rotate(3deg)' },
@@ -28,8 +31,8 @@ const config: Config = {
         }
       },
       animation: {
-        'slow-pulse': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'soft-bounce': 'soft-bounce 1.5s ease-in-out infinite',
+        'slow-pulse': 'pulse 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite',
+        'soft-bounce': 'soft-bounce 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite',
         'radar-spin': 'radar-spin 8s linear infinite',
       }
     },

@@ -123,7 +123,11 @@ export async function GET(request: Request) {
   }
 
   try {
-    const response = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(GOOGLE_BUSINESS.placeId)}`, {
+    const placeUrl = new URL(`https://places.googleapis.com/v1/places/${encodeURIComponent(GOOGLE_BUSINESS.placeId)}`);
+    placeUrl.searchParams.set('languageCode', language.languageCode);
+    placeUrl.searchParams.set('regionCode', language.regionCode);
+
+    const response = await fetch(placeUrl.toString(), {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

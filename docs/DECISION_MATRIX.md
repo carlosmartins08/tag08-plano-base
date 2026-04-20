@@ -10,6 +10,7 @@ Use this before changing the base.
 | Consent / analytics / persistence | Yes | Yes | If the context has mixed responsibilities | No |
 | External API integration | Yes | Yes | If the contract is unstable | Only if a dedicated contract layer does not exist |
 | Visual variation | Yes | Yes | If the design system is drifting | No |
+| New UI pattern (badge/card/panel/icon/CTA) | Yes | Yes | If `ds-*` or `Button` patterns are inconsistent | No |
 
 ## Mandatory questions
 
@@ -17,4 +18,4 @@ Use this before changing the base.
 - Does this create a second source of truth?
 - What breaks if I move this?
 - What route, contract or section depends on it?
-
+- Did I run `npm run ds:check` after visual changes?
