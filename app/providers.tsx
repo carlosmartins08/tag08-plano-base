@@ -44,7 +44,7 @@ export function Providers({ children }: { children?: React.ReactNode }) {
       });
     }, observerOptions);
 
-    const revealElements = document.querySelectorAll('.reveal');
+    const revealElements = document.querySelectorAll('.reveal, .motion-enter-primary');
     revealElements.forEach((el) => observer.observe(el));
 
     return () => {

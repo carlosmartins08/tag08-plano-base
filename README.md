@@ -41,6 +41,7 @@ npm run validate
 - `docs/DECISIONS.md` - decisoes ja tomadas
 - `docs/DECISION_MATRIX.md` - matriz de decisao para alteracoes futuras
 - `docs/PR_CHECKLIST.md` - checklist obrigatorio antes de abrir PR
+- `docs/MOTION_GUIDE.md` - linguagem de movimento, tokens e regras de extensao
 
 ## Observacoes
 

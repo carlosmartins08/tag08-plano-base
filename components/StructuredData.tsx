@@ -32,6 +32,8 @@ export default function StructuredData() {
           {
             '@type': 'ContactPoint',
             contactType: 'customer support',
+            telephone: `+${WHATSAPP_CONTACTS.br.phone}`,
+            url: `https://wa.me/${WHATSAPP_CONTACTS.br.phone}`,
             email: SITE_PROFILE.email,
             availableLanguage: SITE_CONFIG.locales,
             areaServed: ['BR', 'ES', 'US', 'FR'],

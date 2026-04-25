@@ -102,6 +102,7 @@ export interface TranslationSchema {
     title: string;
     titleAccent: string;
     subtitle: string;
+    support: string;
     features: {
       focus: { title: string; desc: string };
       data: { title: string; desc: string };
@@ -224,6 +225,7 @@ export interface TranslationSchema {
     footerText: string;
   };
   testimonials: {
+    badge: string;
     title: string;
     subtitle: string;
     googleRating: string;
@@ -250,12 +252,15 @@ export interface TranslationSchema {
     watch: string;
     loading: string;
     error: string;
+    previousVideoAria: string;
+    nextVideoAria: string;
   };
   teamShowcase: {
     badge: string;
     title: string;
     titleAccent: string;
     subtitle: string;
+    support: string;
     featuredLabel: string;
     openProfile: string;
     items: {

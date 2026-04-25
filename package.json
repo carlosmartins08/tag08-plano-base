@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:log": "node scripts/build-log.mjs",
     "start": "next start",
     "lint": "next lint",
     "ds:check": "node scripts/check-design-system.mjs",

@@ -140,11 +140,10 @@ const Testimonials: React.FC = () => {
           <div className="max-w-2xl">
             <div className="mb-6 ds-section-badge">
               <MessageSquare className="w-3 h-3 text-brand-lime" />
-              <span>Social Proof</span>
+              <span>{t.testimonials.badge}</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-display font-black text-white uppercase tracking-tight italic leading-[0.9]">
-              {t.testimonials.title} <br />
-              <span className="text-brand-lime">no Google.</span>
+              {t.testimonials.title}
             </h2>
             <p className="text-slate-400 text-lg font-medium mt-6">
               {t.testimonials.subtitle}

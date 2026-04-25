@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
             <span className="blueprint-label -top-8 left-0 text-[10px]">SECTION: HERO_MAIN</span>
             <div className="reveal stagger-1 flex flex-col items-center lg:items-start gap-4 mb-8">
               <div className="ds-section-badge relative">
-                <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-brand-lime motion-pulse-soft"></span>
                 {t.hero.badge}
                 <span className="blueprint-label -top-4 right-0">IDEAL_MATCH: ON</span>
               </div>
@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   size="lg"
-                  className="btn-magnetic text-xl"
+                  className="btn-magnetic motion-lift text-xl"
                 >
                   {t.hero.cta}
                   <span className="blueprint-label -top-4 left-0">CTA: STRATEGIC_START</span>

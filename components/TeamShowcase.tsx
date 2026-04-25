@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { ArrowUpRight, Linkedin, Users } from 'lucide-react';
 import { TEAM_SHOWCASE_MEDIA } from '../constants';
@@ -100,6 +100,18 @@ const TeamShowcase: React.FC = () => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverPosition, setHoverPosition] = useState({ x: 50, y: 36 });
+  const [isDesktopInteractive, setIsDesktopInteractive] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mediaQuery = window.matchMedia('(min-width: 1024px) and (hover: hover)');
+
+    const sync = () => setIsDesktopInteractive(mediaQuery.matches);
+    sync();
+
+    mediaQuery.addEventListener('change', sync);
+    return () => mediaQuery.removeEventListener('change', sync);
+  }, []);
 
   const members = useMemo<TeamCard[]>(
     () =>
@@ -120,6 +132,7 @@ const TeamShowcase: React.FC = () => {
   );
 
   const handleCardMove = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!isDesktopInteractive) return;
     const rect = event.currentTarget.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width) * 100;
     const y = ((event.clientY - rect.top) / rect.height) * 100;
@@ -134,19 +147,21 @@ const TeamShowcase: React.FC = () => {
     const isActive = member.originalIndex === activeIndex;
     const isAvatarLayout = member.layout === 'avatar';
     const spotlightStyle: React.CSSProperties = {
-      opacity: isActive ? 1 : 0,
+      opacity: isDesktopInteractive && isActive ? 1 : 0,
       background: `radial-gradient(260px circle at ${hoverPosition.x}% ${hoverPosition.y}%, rgba(212, 255, 0, 0.16), transparent 46%)`,
     };
 
     const motionStyle: React.CSSProperties = {
-      flexGrow: isActive ? 1.45 : 0.84,
-      flexBasis: isActive ? '54%' : '22%',
-      transform: isActive ? 'translateY(-10px) scale(1.02)' : 'translateY(10px) scale(0.98)',
-      opacity: isActive ? 1 : 0.74,
-      filter: isActive ? 'saturate(1) brightness(1)' : 'saturate(0.88) brightness(0.94)',
-      boxShadow: isActive
-        ? '0 32px 120px rgba(0, 0, 0, 0.56)'
-        : '0 22px 70px rgba(0, 0, 0, 0.28)',
+      flexGrow: isDesktopInteractive ? (isActive ? 1.2 : 0.9) : 1,
+      flexBasis: isDesktopInteractive ? (isActive ? '48%' : '26%') : '100%',
+      transform: isDesktopInteractive ? (isActive ? 'translateY(-8px) scale(1.01)' : 'translateY(8px) scale(0.985)') : 'none',
+      opacity: isDesktopInteractive ? (isActive ? 1 : 0.74) : 1,
+      filter: isDesktopInteractive ? (isActive ? 'saturate(1) brightness(1)' : 'saturate(0.88) brightness(0.94)') : 'none',
+      boxShadow: isDesktopInteractive
+        ? isActive
+          ? '0 32px 120px rgba(0, 0, 0, 0.56)'
+          : '0 22px 70px rgba(0, 0, 0, 0.28)'
+        : '0 12px 36px rgba(0, 0, 0, 0.28)',
     };
 
     return (
@@ -156,30 +171,54 @@ const TeamShowcase: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${t.teamShowcase.openProfile} - ${member.name}`}
-        onMouseEnter={() => setActiveIndex(member.originalIndex)}
+        onMouseEnter={() => {
+          if (isDesktopInteractive) setActiveIndex(member.originalIndex);
+        }}
         onMouseMove={handleCardMove}
-        onFocus={() => setActiveIndex(member.originalIndex)}
-        className="group ds-card-shell ds-card-shell-hover-lime relative block min-h-[28rem] self-start overflow-hidden rounded-[2rem] transition-[transform,opacity,box-shadow,border-color,filter,flex-grow,flex-basis] duration-500 ease-brand will-change-transform lg:min-h-[34rem]"
+        onFocus={() => {
+          if (isDesktopInteractive) setActiveIndex(member.originalIndex);
+        }}
+        className="group ds-card-shell ds-card-shell-hover-lime relative block min-h-[28rem] self-start overflow-hidden rounded-[2rem] transition-[transform,opacity,box-shadow,border-color,filter,flex-grow,flex-basis] [transition-duration:var(--motion-duration-medium)] [transition-timing-function:var(--motion-ease-standard)] will-change-transform lg:min-h-[34rem]"
         style={motionStyle}
       >
         <div className="relative flex h-full flex-col">
           <div
             className={`relative overflow-hidden border-b border-white/10 ${
-              isAvatarLayout ? 'aspect-[5/4] bg-[radial-gradient(circle_at_top,rgba(212,255,0,0.14),transparent_48%)]' : 'aspect-[4/5]'
+              isAvatarLayout ? 'aspect-[16/10] bg-[radial-gradient(circle_at_top_left,rgba(212,255,0,0.16),transparent_52%)]' : 'aspect-[4/5]'
             }`}
           >
             {isAvatarLayout ? (
-              <div className="absolute inset-0 flex items-center justify-center p-5 md:p-6">
-                <div className="relative h-full w-full max-w-[11rem] overflow-hidden rounded-[1.8rem] border border-white/10 bg-black/40 shadow-[0_24px_80px_rgba(0,0,0,0.45)] md:max-w-[12rem]">
-                  <Image
-                    src={member.photoUrl}
-                    alt={`${member.name} - ${member.role}`}
-                    fill
-                    sizes="(max-width: 1024px) 40vw, 12rem"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    style={{ objectPosition: member.photoPosition }}
-                    priority={member.originalIndex === 0}
-                  />
+              <div className="absolute inset-0 p-5 md:p-6">
+                <div className="absolute -left-8 -top-8 h-44 w-44 rounded-full bg-brand-lime/15 blur-3xl" />
+                <div className="absolute right-0 top-1/4 h-40 w-40 rounded-full bg-white/8 blur-3xl" />
+
+                <div className="relative flex h-full items-end gap-5">
+                  <div
+                    className={`relative overflow-hidden rounded-[2rem] border border-white/15 bg-black/60 shadow-[0_24px_80px_rgba(0,0,0,0.45)] ${
+                      isActive ? 'h-40 w-40 md:h-52 md:w-52' : 'h-32 w-32 md:h-40 md:w-40'
+                    }`}
+                  >
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,255,0,0.2),transparent_58%)]" />
+                    <div className="absolute inset-0 border border-brand-lime/15" />
+                    <Image
+                      src={member.photoUrl}
+                      alt={`${member.name} - ${member.role}`}
+                      fill
+                      sizes="(max-width: 768px) 10rem, 13rem"
+                      className={`object-cover ${isDesktopInteractive && isActive ? 'transition-transform duration-500 group-hover:scale-[1.03]' : ''}`}
+                      style={{ objectPosition: member.photoPosition }}
+                      priority={member.originalIndex === 0}
+                    />
+                  </div>
+
+                  <div className="hidden min-w-0 rounded-xl border border-white/10 bg-black/55 px-3 py-2 backdrop-blur-sm md:block">
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime/85">
+                      {member.focus}
+                    </p>
+                    <p className="mt-1 max-w-[14rem] text-[11px] font-semibold leading-relaxed text-white/86">
+                      {member.role}
+                    </p>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -194,9 +233,20 @@ const TeamShowcase: React.FC = () => {
               />
             )}
 
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,255,0,0.18),transparent_42%)]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/5" />
-            <div className="absolute inset-0 transition-opacity duration-500" style={spotlightStyle} />
+            {!isAvatarLayout && (
+              <>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,255,0,0.18),transparent_42%)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/5" />
+              </>
+            )}
+
+            {isAvatarLayout && (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/18 to-transparent" />
+              </>
+            )}
+
+            <div className="absolute inset-0 transition-opacity [transition-duration:var(--motion-duration-medium)]" style={spotlightStyle} />
 
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/85 to-transparent" />
           </div>
@@ -204,7 +254,7 @@ const TeamShowcase: React.FC = () => {
           <div className="flex flex-col gap-3 p-5 md:p-6">
             <div className="flex items-start justify-between gap-3">
               <span className="ds-chip ds-chip-lime border-brand-lime/20">
-                {isActive ? t.teamShowcase.featuredLabel : member.focus}
+                {isDesktopInteractive && isActive ? t.teamShowcase.featuredLabel : member.focus}
               </span>
               <span className="ds-chip ds-chip-muted">
                 {String(member.originalIndex + 1).padStart(2, '0')} / {String(members.length).padStart(2, '0')}
@@ -225,7 +275,7 @@ const TeamShowcase: React.FC = () => {
                 </p>
               </div>
 
-              {isActive ? (
+              {isDesktopInteractive && isActive ? (
                 <>
                   <p className="text-sm leading-relaxed text-white/78 md:text-base" style={clampStyle(2)}>
                     {member.summary}
@@ -245,7 +295,7 @@ const TeamShowcase: React.FC = () => {
               ) : null}
             </div>
 
-            <div className="ds-chip ds-chip-lime inline-flex w-fit items-center gap-2 px-4 py-2 transition-transform duration-300 group-hover:translate-x-1">
+            <div className="ds-chip ds-chip-lime inline-flex w-fit items-center gap-2 px-4 py-2 transition-transform [transition-duration:var(--motion-duration-fast)] [transition-timing-function:var(--motion-ease-standard)] group-hover:translate-x-1">
               <Linkedin className="h-4 w-4" />
               {t.teamShowcase.openProfile}
               <ArrowUpRight className="h-4 w-4" />
@@ -282,12 +332,18 @@ const TeamShowcase: React.FC = () => {
         <div
           className="flex flex-col gap-6 lg:flex-row lg:items-start"
           onMouseLeave={() => {
-            setActiveIndex(0);
-            setHoverPosition({ x: 50, y: 36 });
+            if (isDesktopInteractive) {
+              setActiveIndex(0);
+              setHoverPosition({ x: 50, y: 36 });
+            }
           }}
         >
           {members.map((member) => renderCard(member))}
         </div>
+
+        <p className="mt-10 max-w-3xl text-base font-semibold leading-relaxed text-white/72 md:text-lg">
+          {t.teamShowcase.support}
+        </p>
       </div>
     </section>
   );

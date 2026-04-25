@@ -48,6 +48,8 @@ export const WHATSAPP_CONTACTS = {
 export const buildWhatsAppUrl = (phone: string, message: string) =>
   `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
+export const buildTelUrl = (phone: string) => `tel:+${phone.replace(/\D/g, '')}`;
+
 export const HIGH_VALUE_THRESHOLD = 150000;
 
 export const TEAM_SHOWCASE_MEDIA: Record<

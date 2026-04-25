@@ -67,6 +67,10 @@ const ValueProposition: React.FC = () => {
               </div>
             ))}
           </div>
+
+          <p className="reveal stagger-6 mx-auto mt-12 max-w-3xl text-base font-semibold leading-relaxed text-white/75 md:text-lg">
+            {t.valueProposition.support}
+          </p>
         </div>
       </div>
     </section>

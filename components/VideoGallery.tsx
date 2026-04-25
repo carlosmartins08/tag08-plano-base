@@ -368,7 +368,7 @@ const VideoGallery: React.FC = () => {
                 type="button"
                 onClick={() => cycleVideo(-1)}
                 className="ds-icon-shell h-9 w-9 rounded-full bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime"
-                aria-label="Video anterior"
+                aria-label={text.previousVideoAria}
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
@@ -376,7 +376,7 @@ const VideoGallery: React.FC = () => {
                 type="button"
                 onClick={() => cycleVideo(1)}
                 className="ds-icon-shell h-9 w-9 rounded-full bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime"
-                aria-label="Proximo video"
+                aria-label={text.nextVideoAria}
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
