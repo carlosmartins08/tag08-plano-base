@@ -1,23 +1,22 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { Plus, Minus, MessageCircle, HelpCircle, ArrowRight } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
+import { trackEvent } from '../lib/analytics';
 
 const FAQ: React.FC = () => {
   const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const handleSupportClick = () => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'direct_contact_click', {
-        entry_point: 'faq_support',
-        contact_route: recommendedContactRoute,
-        language_selected: language,
-        locale_region: localeSignals.regionCode ?? 'unknown',
-        locale_timezone: localeSignals.timeZone ?? 'unknown',
-      });
-    }
+    trackEvent('direct_contact_click', {
+      entry_point: 'faq_support',
+      contact_route: recommendedContactRoute,
+      language_selected: language,
+      locale_region: localeSignals.regionCode ?? 'unknown',
+      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
   };
 
   const questions = t.faq.items.map((item, index) => ({

@@ -1,9 +1,10 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
 import { DollarSign, TrendingUp, ArrowRight, Info } from 'lucide-react';
+import { trackEvent } from '../lib/analytics';
 
 const OpportunityCalculator: React.FC = () => {
   const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
@@ -36,25 +37,23 @@ const OpportunityCalculator: React.FC = () => {
   }, [annualLoss, revenue, targetGrowth, updateROI]);
 
   const trackCalculator = () => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'calculate_roi', {
-        revenue: revenue,
-        growth: targetGrowth,
-        annual_loss: annualLoss,
-        contact_route: recommendedContactRoute,
-        language_selected: language,
-        locale_region: localeSignals.regionCode ?? 'unknown',
-        locale_timezone: localeSignals.timeZone ?? 'unknown',
-      });
+    trackEvent('calculate_roi', {
+      revenue: revenue,
+      growth: targetGrowth,
+      annual_loss: annualLoss,
+      contact_route: recommendedContactRoute,
+      language_selected: language,
+      locale_region: localeSignals.regionCode ?? 'unknown',
+      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
 
-      (window as any).gtag('event', 'direct_contact_click', {
-        entry_point: 'roi_calculator',
-        contact_route: recommendedContactRoute,
-        language_selected: language,
-        locale_region: localeSignals.regionCode ?? 'unknown',
-        locale_timezone: localeSignals.timeZone ?? 'unknown',
-      });
-    }
+    trackEvent('direct_contact_click', {
+      entry_point: 'roi_calculator',
+      contact_route: recommendedContactRoute,
+      language_selected: language,
+      locale_region: localeSignals.regionCode ?? 'unknown',
+      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
 
     window.open(recommendedContactHref, '_blank', 'noopener,noreferrer');
   };

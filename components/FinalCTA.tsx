@@ -1,10 +1,11 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { ArrowRight, Globe2, MapPin, MessageCircle, Sparkles } from 'lucide-react';
 import { buildTelUrl, buildWhatsAppUrl, WHATSAPP_CONTACTS } from '../constants';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Language } from '../types';
+import { trackEvent } from '../lib/analytics';
 import Magnetic from './Magnetic';
 import Button from './Button';
 
@@ -152,31 +153,27 @@ const FinalCTA: React.FC = () => {
   const routeContextCopy = ROUTE_CONTEXT_COPY[language];
 
   const handleContactClick = (route: ContactRouteId) => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'generate_lead', {
-        currency: 'BRL',
-        value: 0,
-        source: `whatsapp_${route}`,
-        contact_route: route,
-        recommended_route: recommendedRoute,
-        language_selected: language,
-        locale_region: localeSignals.regionCode ?? 'unknown',
-        locale_timezone: localeSignals.timeZone ?? 'unknown',
-      });
-    }
+    trackEvent('generate_lead', {
+      currency: 'BRL',
+      value: 0,
+      source: `whatsapp_${route}`,
+      contact_route: route,
+      recommended_route: recommendedRoute,
+      language_selected: language,
+      locale_region: localeSignals.regionCode ?? 'unknown',
+      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
   };
 
   const handlePhoneClick = (route: ContactRouteId) => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'contact_phone_click', {
-        source: `tel_${route}`,
-        contact_route: route,
-        recommended_route: recommendedRoute,
-        language_selected: language,
-        locale_region: localeSignals.regionCode ?? 'unknown',
-        locale_timezone: localeSignals.timeZone ?? 'unknown',
-      });
-    }
+    trackEvent('contact_phone_click', {
+      source: `tel_${route}`,
+      contact_route: route,
+      recommended_route: recommendedRoute,
+      language_selected: language,
+      locale_region: localeSignals.regionCode ?? 'unknown',
+      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
   };
 
   return (

@@ -1,22 +1,21 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Shield, Sparkles, Calendar, ArrowRight, Lock } from 'lucide-react';
+import { trackEvent } from '../lib/analytics';
 
 const InvestmentAndSecurity: React.FC = () => {
   const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
 
   const handleOfferClick = () => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'direct_contact_click', {
-        entry_point: 'investment_offer',
-        contact_route: recommendedContactRoute,
-        language_selected: language,
-        locale_region: localeSignals.regionCode ?? 'unknown',
-        locale_timezone: localeSignals.timeZone ?? 'unknown',
-      });
-    }
+    trackEvent('direct_contact_click', {
+      entry_point: 'investment_offer',
+      contact_route: recommendedContactRoute,
+      language_selected: language,
+      locale_region: localeSignals.regionCode ?? 'unknown',
+      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
   };
 
   return (

@@ -6,6 +6,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, PlayCircle, RefreshCcw, Sparkl
 import { useTranslation } from '../contexts/LanguageContext';
 import { SITE_CONFIG } from '../constants';
 import { Language } from '../types';
+import { trackEvent } from '../lib/analytics';
 import Button from './Button';
 
 type VideoItem = {
@@ -20,6 +21,8 @@ type ApiResponse = {
   channelUrl: string;
   videos: VideoItem[];
   error?: string;
+  source?: 'live' | 'stale-cache' | 'error';
+  fetchedAt?: string;
 };
 
 const localeMap: Record<Language, string> = {
@@ -114,6 +117,9 @@ const VideoGallery: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [dataSource, setDataSource] = useState<ApiResponse['source']>('live');
+  const [fetchedAt, setFetchedAt] = useState<string | null>(null);
+  const [degradationTracked, setDegradationTracked] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -131,12 +137,16 @@ const VideoGallery: React.FC = () => {
           setVideos(nextVideos);
           setActiveIndex(0);
           setError(nextVideos.length ? null : data.error || text.error);
+          setDataSource(data.source ?? 'live');
+          setFetchedAt(data.fetchedAt ?? null);
         }
       } catch {
         if (active) {
           setError(text.error);
           setVideos([]);
           setActiveIndex(0);
+          setDataSource('error');
+          setFetchedAt(null);
         }
       } finally {
         if (active) {
@@ -151,6 +161,33 @@ const VideoGallery: React.FC = () => {
       active = false;
     };
   }, [language, text.error]);
+
+  useEffect(() => {
+    if (degradationTracked) return;
+
+    if (dataSource === 'stale-cache') {
+      trackEvent('youtube_feed_degraded', {
+        source: 'stale-cache',
+        language_selected: language,
+      });
+      setDegradationTracked(true);
+    }
+
+    if (dataSource === 'error') {
+      trackEvent('youtube_feed_degraded', {
+        source: 'error',
+        language_selected: language,
+      });
+      setDegradationTracked(true);
+    }
+  }, [dataSource, degradationTracked, language]);
+
+  const sourceBadge =
+    dataSource === 'stale-cache'
+      ? { label: 'CACHE', className: 'border-amber-400/40 bg-amber-400/10 text-amber-300' }
+      : dataSource === 'error'
+        ? { label: 'OFFLINE', className: 'border-rose-400/40 bg-rose-400/10 text-rose-300' }
+        : { label: 'LIVE', className: 'border-emerald-400/40 bg-emerald-400/10 text-emerald-300' };
 
   const carousel = useMemo(() => {
     if (!videos.length) {
@@ -357,6 +394,14 @@ const VideoGallery: React.FC = () => {
           <div className="flex items-center gap-3">
             <RefreshCcw className="h-4 w-4 text-brand-lime" />
             <span>{text.updated}</span>
+            <span className={`rounded-full border px-2 py-1 tracking-[0.2em] ${sourceBadge.className}`}>
+              {sourceBadge.label}
+            </span>
+            {fetchedAt && (
+              <span className="tracking-[0.2em] text-slate-600">
+                {formatPublishedAt(fetchedAt, language)}
+              </span>
+            )}
           </div>
 
           {videos.length > 0 && (

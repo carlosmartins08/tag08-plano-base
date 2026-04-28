@@ -1,10 +1,11 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Icons } from '../constants';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
+import { trackEvent } from '../lib/analytics';
 import Magnetic from './Magnetic';
 import Button from './Button';
 
@@ -94,15 +95,13 @@ const Navbar: React.FC = () => {
   }, [isMenuOpen]);
 
   const handleDirectContactClick = (entryPoint: 'navbar' | 'mobile_menu') => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'direct_contact_click', {
-        entry_point: entryPoint,
-        contact_route: recommendedContactRoute,
-        language_selected: language,
-        locale_region: localeSignals.regionCode ?? 'unknown',
-        locale_timezone: localeSignals.timeZone ?? 'unknown',
-      });
-    }
+    trackEvent('direct_contact_click', {
+      entry_point: entryPoint,
+      contact_route: recommendedContactRoute,
+      language_selected: language,
+      locale_region: localeSignals.regionCode ?? 'unknown',
+      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
   };
 
   return (

@@ -1,8 +1,9 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
+import { trackEvent } from '../lib/analytics';
 import Magnetic from './Magnetic';
 import Button from './Button';
 
@@ -11,17 +12,15 @@ const Hero: React.FC = () => {
   const { source, isReturning, setStrategyNote, persona, niche } = useUX();
 
   const handleCtaClick = () => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'hero_cta_click', {
-        source: source,
-        is_returning: isReturning,
-        niche: niche,
-        contact_route: recommendedContactRoute,
-        language_selected: language,
-        locale_region: localeSignals.regionCode ?? 'unknown',
-        locale_timezone: localeSignals.timeZone ?? 'unknown',
-      });
-    }
+    trackEvent('hero_cta_click', {
+      source: source,
+      is_returning: isReturning,
+      niche: niche,
+      contact_route: recommendedContactRoute,
+      language_selected: language,
+      locale_region: localeSignals.regionCode ?? 'unknown',
+      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
   };
 
   const getSourceAccent = () => {

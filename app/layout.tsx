@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next';
+﻿import type { Metadata, Viewport } from 'next';
 import { Darker_Grotesque, Manrope } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
@@ -86,3 +86,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+

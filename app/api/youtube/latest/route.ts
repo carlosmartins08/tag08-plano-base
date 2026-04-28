@@ -5,6 +5,9 @@ export const runtime = 'nodejs';
 export const revalidate = 300;
 
 const DEFAULT_LIMIT = 8;
+const MAX_LIMIT = 12;
+const REQUEST_TIMEOUT_MS = 7000;
+const MAX_ATTEMPTS = 2;
 
 const REQUEST_HEADERS = {
   'user-agent':
@@ -25,6 +28,14 @@ type VideoItem = {
   url: string;
   thumbnail: string;
   publishedAt: string;
+};
+
+type YoutubeApiPayload = {
+  channelUrl: string;
+  videos: VideoItem[];
+  error?: string;
+  source?: 'live' | 'stale-cache' | 'error';
+  fetchedAt?: string;
 };
 
 type YoutubeTextBlock = {
@@ -157,7 +168,14 @@ const extractJsonAssignment = (source: string, marker: string) => {
 };
 
 const extractInitialData = (html: string): YoutubeInitialData | null => {
-  const jsonSource = extractJsonAssignment(html, 'var ytInitialData = ');
+  const markers = ['var ytInitialData = ', 'window["ytInitialData"] = ', 'ytInitialData = '];
+  let jsonSource: string | null = null;
+
+  for (const marker of markers) {
+    jsonSource = extractJsonAssignment(html, marker);
+    if (jsonSource) break;
+  }
+
   if (!jsonSource) return null;
 
   try {
@@ -265,62 +283,129 @@ const extractVideosFallback = (initialData: YoutubeInitialData, limit: number) =
     .slice(0, limit);
 };
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const normalizeVideos = (videos: VideoItem[], limit: number) => {
+  const seen = new Set<string>();
+  const validVideos: VideoItem[] = [];
+
+  for (const video of videos) {
+    if (validVideos.length >= limit) break;
+    if (!video.id || seen.has(video.id)) continue;
+    if (!video.url.startsWith('https://www.youtube.com/')) continue;
+
+    validVideos.push(video);
+    seen.add(video.id);
+  }
+
+  return validVideos;
+};
+
+const requestChannelHtml = async (language: string | null) => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(SITE_CONFIG.youtubeVideosUrl, {
+      headers: {
+        ...REQUEST_HEADERS,
+        'accept-language': getAcceptLanguage(language),
+      },
+      cache: 'no-store',
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Channel page fetch failed with status ${response.status}`);
+    }
+
+    return response.text();
+  } finally {
+    clearTimeout(timeout);
+  }
+};
+
+let lastSuccessfulPayload: YoutubeApiPayload | null = null;
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const requestedLimit = Number.parseInt(url.searchParams.get('limit') ?? `${DEFAULT_LIMIT}`, 10);
   const requestedLanguage = url.searchParams.get('lang');
-  const limit = Number.isFinite(requestedLimit) ? Math.min(Math.max(requestedLimit, 1), 12) : DEFAULT_LIMIT;
+  const limit = Number.isFinite(requestedLimit) ? Math.min(Math.max(requestedLimit, 1), MAX_LIMIT) : DEFAULT_LIMIT;
 
   try {
-    const channelPageResponse = await fetch(SITE_CONFIG.youtubeVideosUrl, {
+    let videos: VideoItem[] = [];
+    let lastError: unknown = null;
+
+    for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
+      try {
+        const channelHtml = await requestChannelHtml(requestedLanguage);
+        const initialData = extractInitialData(channelHtml);
+
+        if (!initialData) {
+          throw new Error('Unable to parse YouTube channel page.');
+        }
+
+        const directVideos = extractVideosFromInitialData(initialData, limit);
+        const fallbackVideos = directVideos.length ? [] : extractVideosFallback(initialData, limit);
+        videos = normalizeVideos(directVideos.length ? directVideos : fallbackVideos, limit);
+
+        if (!videos.length) {
+          throw new Error('Unable to extract latest videos from the channel page.');
+        }
+
+        break;
+      } catch (error) {
+        lastError = error;
+        if (attempt < MAX_ATTEMPTS) {
+          await sleep(250 * attempt);
+        }
+      }
+    }
+
+    if (!videos.length) {
+      throw lastError instanceof Error ? lastError : new Error('Unknown YouTube fetch error.');
+    }
+
+    const payload: YoutubeApiPayload = {
+      channelUrl: SITE_CONFIG.youtubeVideosUrl,
+      videos,
+      source: 'live',
+      fetchedAt: new Date().toISOString(),
+    };
+
+    lastSuccessfulPayload = payload;
+
+    return NextResponse.json(payload, {
       headers: {
-        ...REQUEST_HEADERS,
-        'accept-language': getAcceptLanguage(requestedLanguage),
+        'Cache-Control': 'public, max-age=0, s-maxage=300, stale-while-revalidate=1800',
       },
-      cache: 'no-store',
     });
-
-    if (!channelPageResponse.ok) {
-      throw new Error(`Channel page fetch failed with status ${channelPageResponse.status}`);
-    }
-
-    const channelHtml = await channelPageResponse.text();
-    const initialData = extractInitialData(channelHtml);
-
-    if (!initialData) {
-      throw new Error('Unable to parse YouTube channel page.');
-    }
-
-    let videos = extractVideosFromInitialData(initialData, limit);
-
-    if (!videos.length) {
-      videos = extractVideosFallback(initialData, limit);
-    }
-
-    if (!videos.length) {
-      throw new Error('Unable to extract latest videos from the channel page.');
-    }
-
-    return NextResponse.json(
-      {
-        channelUrl: SITE_CONFIG.youtubeVideosUrl,
-        videos,
-      },
-      {
-        headers: {
-          'Cache-Control': 'public, max-age=0, s-maxage=300, stale-while-revalidate=1800',
-        },
-      },
-    );
   } catch (error) {
     console.error('[youtube/latest]', error);
+
+    if (lastSuccessfulPayload?.videos?.length) {
+      return NextResponse.json(
+        {
+          ...lastSuccessfulPayload,
+          source: 'stale-cache',
+          error: 'Live feed temporarily unavailable. Showing latest cached videos.',
+        } satisfies YoutubeApiPayload,
+        {
+          headers: {
+            'Cache-Control': 'public, max-age=0, s-maxage=120, stale-while-revalidate=1800',
+          },
+        },
+      );
+    }
 
     return NextResponse.json(
       {
         channelUrl: SITE_CONFIG.youtubeVideosUrl,
         videos: [],
         error: 'Unable to load YouTube videos right now.',
-      },
+        source: 'error',
+      } satisfies YoutubeApiPayload,
       {
         headers: {
           'Cache-Control': 'no-store',
