@@ -379,6 +379,8 @@ export async function GET(request: Request) {
     return NextResponse.json(payload, {
       headers: {
         'Cache-Control': 'public, max-age=0, s-maxage=300, stale-while-revalidate=1800',
+        'X-Feed-Source': 'live',
+        'X-Feed-SLA': 'refresh<=300s',
       },
     });
   } catch (error) {
@@ -394,6 +396,8 @@ export async function GET(request: Request) {
         {
           headers: {
             'Cache-Control': 'public, max-age=0, s-maxage=120, stale-while-revalidate=1800',
+            'X-Feed-Source': 'stale-cache',
+            'X-Feed-SLA': 'degraded-cache',
           },
         },
       );
@@ -409,6 +413,8 @@ export async function GET(request: Request) {
       {
         headers: {
           'Cache-Control': 'no-store',
+          'X-Feed-Source': 'error',
+          'X-Feed-SLA': 'degraded-offline',
         },
       },
     );

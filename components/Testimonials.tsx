@@ -5,6 +5,8 @@ import { ArrowUpRight, MessageSquare, Quote, Star } from 'lucide-react';
 import { GOOGLE_BUSINESS } from '../constants';
 import { useTranslation } from '../contexts/LanguageContext';
 import { GoogleReviewsPayload, Language } from '../types';
+import { trackEvent } from '../lib/analytics';
+import { getExperimentVariant } from '../lib/experiments';
 
 type TestimonialCard = {
   id: string;
@@ -46,6 +48,7 @@ const renderStars = (rating: number) =>
 
 const Testimonials: React.FC = () => {
   const { language, t } = useTranslation();
+  const [testimonialVariant, setTestimonialVariant] = useState<'cards' | 'compact'>('cards');
 
   const fallbackCards = useMemo<TestimonialCard[]>(
     () =>
@@ -65,6 +68,26 @@ const Testimonials: React.FC = () => {
   const [ratingText, setRatingText] = useState<string>(t.testimonials.googleRating);
   const [reviewCountText, setReviewCountText] = useState<string>(t.testimonials.reviewCount);
   const [reviewLink, setReviewLink] = useState<string>(GOOGLE_BUSINESS.mapsUrl);
+  const [reviewsSource, setReviewsSource] = useState<GoogleReviewsPayload['source']>('fallback');
+
+  const fallbackPolicyCopy: Record<Language, string> = {
+    pt: 'Política de fallback: sem resposta do Google, exibimos depoimentos curados e mantemos o link oficial para validação.',
+    en: 'Fallback policy: if Google is unavailable, we display curated testimonials and keep the official verification link.',
+    es: 'Política de respaldo: si Google no responde, mostramos testimonios curados y mantenemos el enlace oficial.',
+    fr: 'Politique de secours : sans réponse Google, nous affichons des témoignages curés et conservons le lien officiel.',
+  };
+
+  useEffect(() => {
+    setTestimonialVariant(getExperimentVariant('testimonials-structure-v1', ['cards', 'compact']) as 'cards' | 'compact');
+  }, []);
+
+  useEffect(() => {
+    trackEvent('experiment_exposure', {
+      experiment: 'testimonials-structure-v1',
+      variant: testimonialVariant,
+      language_selected: language,
+    });
+  }, [testimonialVariant, language]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -74,6 +97,7 @@ const Testimonials: React.FC = () => {
     setRatingText(t.testimonials.googleRating);
     setReviewCountText(t.testimonials.reviewCount);
     setReviewLink(GOOGLE_BUSINESS.mapsUrl);
+    setReviewsSource('fallback');
 
     const loadGoogleReviews = async () => {
       try {
@@ -94,6 +118,9 @@ const Testimonials: React.FC = () => {
         const data = (await response.json()) as GoogleReviewsPayload;
 
         if (!active || controller.signal.aborted || data.source !== 'google' || !data.reviews.length) {
+          if (active && !controller.signal.aborted) {
+            setReviewsSource(data.source);
+          }
           return;
         }
 
@@ -118,6 +145,7 @@ const Testimonials: React.FC = () => {
         }
 
         setReviewLink(data.googleMapsUri ?? GOOGLE_BUSINESS.mapsUrl);
+        setReviewsSource('google');
       } catch {
         // Keep the local testimonial copy as a safe fallback.
       }
@@ -161,14 +189,14 @@ const Testimonials: React.FC = () => {
               <p className="text-white font-black text-xl leading-none">
                 {ratingText} <span className="text-white/40 text-sm font-medium ml-2">/ 5.0</span>
               </p>
-              <p className="text-white/40 text-[10px] uppercase tracking-widest mt-1 font-bold">
+              <p className="ds-text-muted text-[10px] uppercase tracking-widest mt-1 font-bold">
                 {reviewCountText}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className={`grid grid-cols-1 gap-8 ${testimonialVariant === 'compact' ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-3'}`}>
           {cards.map((testimonial, idx) => (
             <div
               key={testimonial.id}
@@ -193,7 +221,7 @@ const Testimonials: React.FC = () => {
                     {testimonial.role}
                   </p>
                 </div>
-                <span className="text-[10px] text-white/20 font-bold uppercase tracking-tighter">
+                <span className="text-[10px] ds-text-subtle font-bold uppercase tracking-tighter">
                   {testimonial.date}
                 </span>
               </div>
@@ -203,6 +231,11 @@ const Testimonials: React.FC = () => {
         </div>
 
         <div className="mt-16 text-center reveal stagger-4">
+          {reviewsSource !== 'google' && (
+            <p className="mx-auto mb-5 max-w-4xl text-xs font-bold uppercase tracking-[0.12em] ds-text-muted">
+              {fallbackPolicyCopy[language]}
+            </p>
+          )}
           <a
             href={reviewLink}
             target="_blank"

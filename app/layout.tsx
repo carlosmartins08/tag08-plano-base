@@ -29,6 +29,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.domain),
   title: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais com Estratégia`,
   description: 'Gestão de conteúdo para redes sociais com direção estratégica, construção de audiência qualificada, posicionamento de marca e geração de vendas.',
+  applicationName: SITE_CONFIG.siteName,
+  category: 'marketing',
+  authors: [{ name: SITE_PROFILE.legalName }],
+  creator: SITE_PROFILE.legalName,
+  publisher: SITE_PROFILE.legalName,
   keywords: [
     'gestão de conteúdo',
     'gestão de redes sociais',
@@ -39,6 +44,17 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: SITE_CONFIG.domain,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
   openGraph: {
     title: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais com Estratégia`,

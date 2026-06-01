@@ -59,7 +59,7 @@ const CookieBanner: React.FC = () => {
                 <span className="h-2 w-2 animate-pulse rounded-full bg-brand-lime" />
                 {t.cookie.title}
               </h4>
-              <p className="text-sm leading-relaxed font-medium text-slate-400">
+              <p className="text-sm leading-relaxed font-medium ds-text-secondary">
                 {t.cookie.desc}
               </p>
             </div>
@@ -91,7 +91,7 @@ const CookieBanner: React.FC = () => {
               <h4 className="mb-2 text-sm font-black uppercase tracking-widest text-white">
                 {t.cookie.customizeTitle}
               </h4>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs ds-text-muted">
                 {t.cookie.customizeSubtitle}
               </p>
             </header>
@@ -108,7 +108,7 @@ const CookieBanner: React.FC = () => {
                     </svg>
                   </div>
                 </div>
-                <p className="text-[9px] text-slate-400">{t.cookie.necessaryDesc}</p>
+                <p className="text-[9px] ds-text-secondary">{t.cookie.necessaryDesc}</p>
               </div>
 
               <button
@@ -124,7 +124,7 @@ const CookieBanner: React.FC = () => {
                     <div className={`absolute top-1 h-2 w-2 rounded-full bg-brand-black transition-all ${tempConsent.analytical ? 'left-5' : 'left-1'}`} />
                   </div>
                 </div>
-                <p className="text-[9px] text-slate-400">{t.cookie.analyticalDesc}</p>
+                <p className="text-[9px] ds-text-secondary">{t.cookie.analyticalDesc}</p>
               </button>
 
               <button
@@ -140,7 +140,7 @@ const CookieBanner: React.FC = () => {
                     <div className={`absolute top-1 h-2 w-2 rounded-full bg-brand-black transition-all ${tempConsent.marketing ? 'left-5' : 'left-1'}`} />
                   </div>
                 </div>
-                <p className="text-[9px] text-slate-400">{t.cookie.marketingDesc}</p>
+                <p className="text-[9px] ds-text-secondary">{t.cookie.marketingDesc}</p>
               </button>
             </div>
 
@@ -148,7 +148,7 @@ const CookieBanner: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsConfiguring(false)}
-                className="text-[10px] font-black uppercase tracking-widest text-slate-400 transition-colors hover:text-white"
+                className="text-[10px] font-black uppercase tracking-widest ds-text-muted transition-colors hover:text-white"
               >
                 {t.cookie.back}
               </button>

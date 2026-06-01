@@ -45,6 +45,7 @@ export default function StructuredData() {
         '@id': websiteId,
         name: SITE_CONFIG.siteName,
         url: SITE_CONFIG.domain,
+        inLanguage: SITE_CONFIG.locales,
         publisher: {
           '@id': organizationId,
         },
@@ -53,17 +54,23 @@ export default function StructuredData() {
         '@type': 'Service',
         '@id': serviceId,
         name: 'Plano Base TAG08',
-        serviceType: 'Gestão de conteúdo para redes sociais',
+        serviceType: 'Strategic social media content management',
         description:
-          'Serviço de gestão estratégica de conteúdo para posicionamento de marca, crescimento de audiência e geração de vendas.',
+          'Strategic content management service for social media focused on brand positioning, qualified audience growth, and sales conversion.',
         audience: {
           '@type': 'BusinessAudience',
-          audienceType: 'Empresas que precisam de posicionamento, audiência e vendas via canais sociais',
+          audienceType: 'Businesses that need positioning, audience growth, and sales through social channels',
         },
         provider: {
           '@id': organizationId,
         },
         areaServed: ['BR', 'ES', 'US', 'FR'],
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+          url: SITE_CONFIG.domain,
+          category: 'Marketing service',
+        },
       },
       {
         '@type': 'LocalBusiness',
@@ -92,7 +99,7 @@ export default function StructuredData() {
         '@type': 'WebPage',
         '@id': webpageId,
         url: SITE_CONFIG.domain,
-        name: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais`,
+        name: `${SITE_CONFIG.siteName} | Strategic Social Media Content Management`,
         isPartOf: {
           '@id': websiteId,
         },
@@ -100,6 +107,10 @@ export default function StructuredData() {
           '@id': serviceId,
         },
         inLanguage: SITE_CONFIG.locales,
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: `${SITE_CONFIG.domain}${SITE_PROFILE.logoPath}`,
+        },
       },
     ],
   };

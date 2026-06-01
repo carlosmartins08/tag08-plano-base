@@ -117,6 +117,8 @@ export async function GET(request: Request) {
       {
         headers: {
           'Cache-Control': 'no-store',
+          'X-Reviews-Source': 'unconfigured',
+          'X-Reviews-SLA': 'blocked-by-config',
         },
       },
     );
@@ -160,6 +162,8 @@ export async function GET(request: Request) {
           'Cache-Control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400',
           'X-Language-Code': language.languageCode,
           'X-Region-Code': language.regionCode,
+          'X-Reviews-Source': 'google',
+          'X-Reviews-SLA': 'refresh<=3600s',
         },
       },
     );
@@ -174,6 +178,8 @@ export async function GET(request: Request) {
       {
         headers: {
           'Cache-Control': 'no-store',
+          'X-Reviews-Source': 'error',
+          'X-Reviews-SLA': 'degraded-fallback',
         },
       },
     );

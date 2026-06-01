@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
 import { DollarSign, TrendingUp, ArrowRight, Info } from 'lucide-react';
-import { trackEvent } from '../lib/analytics';
+import { trackEvent, trackFunnelEvent } from '../lib/analytics';
 
 const OpportunityCalculator: React.FC = () => {
   const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
@@ -37,22 +37,19 @@ const OpportunityCalculator: React.FC = () => {
   }, [annualLoss, revenue, targetGrowth, updateROI]);
 
   const trackCalculator = () => {
-    trackEvent('calculate_roi', {
+    trackFunnelEvent('calculator_submit', {
+      lang: language,
+      section: 'calculator',
+      cta: 'capture_opportunity',
+      country: localeSignals.countryBucket,
+      route: recommendedContactRoute,
+      value: annualLoss,
+    });
+
+    trackEvent('calculator_context', {
       revenue: revenue,
       growth: targetGrowth,
       annual_loss: annualLoss,
-      contact_route: recommendedContactRoute,
-      language_selected: language,
-      locale_region: localeSignals.regionCode ?? 'unknown',
-      locale_timezone: localeSignals.timeZone ?? 'unknown',
-    });
-
-    trackEvent('direct_contact_click', {
-      entry_point: 'roi_calculator',
-      contact_route: recommendedContactRoute,
-      language_selected: language,
-      locale_region: localeSignals.regionCode ?? 'unknown',
-      locale_timezone: localeSignals.timeZone ?? 'unknown',
     });
 
     window.open(recommendedContactHref, '_blank', 'noopener,noreferrer');

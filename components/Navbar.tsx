@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Icons } from '../constants';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
-import { trackEvent } from '../lib/analytics';
+import { trackEvent, trackFunnelEvent } from '../lib/analytics';
 import Magnetic from './Magnetic';
 import Button from './Button';
 
@@ -89,9 +89,47 @@ const Navbar: React.FC = () => {
       document.body.style.overflow = 'hidden';
       if (menuRef.current) menuRef.current.scrollTop = 0;
       setMenuScrollY(0);
+
+      const focusable = menuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      focusable?.[0]?.focus();
     } else {
       document.body.style.overflow = 'unset';
     }
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen || !menuRef.current) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setIsMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const focusable = menuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      if (!focusable || focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+        return;
+      }
+
+      if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
   }, [isMenuOpen]);
 
   const handleDirectContactClick = (entryPoint: 'navbar' | 'mobile_menu') => {
@@ -101,6 +139,13 @@ const Navbar: React.FC = () => {
       language_selected: language,
       locale_region: localeSignals.regionCode ?? 'unknown',
       locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
+    trackFunnelEvent('whatsapp_click', {
+      lang: language,
+      section: entryPoint,
+      cta: 'diagnosis_button',
+      country: localeSignals.countryBucket,
+      route: recommendedContactRoute,
     });
   };
 

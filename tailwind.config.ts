@@ -4,6 +4,9 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./contexts/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+    "./i18n/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -18,7 +21,7 @@ const config: Config = {
         display: ['var(--font-darker-grotesque)', 'Darker Grotesque', 'ui-sans-serif', 'system-ui'],
       },
       transitionTimingFunction: {
-        brand: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+        brand: 'cubic-bezier(0.22, 0.8, 0.2, 1)',
       },
       keyframes: {
         'soft-bounce': {
@@ -31,8 +34,8 @@ const config: Config = {
         }
       },
       animation: {
-        'slow-pulse': 'pulse 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite',
-        'soft-bounce': 'soft-bounce 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite',
+        'slow-pulse': 'pulse 8s cubic-bezier(0.22, 0.8, 0.2, 1) infinite',
+        'soft-bounce': 'soft-bounce 1.5s cubic-bezier(0.22, 0.8, 0.2, 1) infinite',
         'radar-spin': 'radar-spin 8s linear infinite',
       }
     },

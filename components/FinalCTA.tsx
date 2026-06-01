@@ -5,7 +5,7 @@ import { ArrowRight, Globe2, MapPin, MessageCircle, Sparkles } from 'lucide-reac
 import { buildTelUrl, buildWhatsAppUrl, WHATSAPP_CONTACTS } from '../constants';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Language } from '../types';
-import { trackEvent } from '../lib/analytics';
+import { trackEvent, trackFunnelEvent } from '../lib/analytics';
 import Magnetic from './Magnetic';
 import Button from './Button';
 
@@ -153,15 +153,27 @@ const FinalCTA: React.FC = () => {
   const routeContextCopy = ROUTE_CONTEXT_COPY[language];
 
   const handleContactClick = (route: ContactRouteId) => {
-    trackEvent('generate_lead', {
-      currency: 'BRL',
-      value: 0,
-      source: `whatsapp_${route}`,
-      contact_route: route,
+    trackFunnelEvent('final_cta_click', {
+      lang: language,
+      section: 'final_cta',
+      cta: `open_whatsapp_${route}`,
+      country: localeSignals.countryBucket,
+      route: route,
+    });
+
+    trackFunnelEvent('whatsapp_click', {
+      lang: language,
+      section: 'final_cta',
+      cta: `whatsapp_${route}`,
+      country: localeSignals.countryBucket,
+      route: route,
+    });
+
+    trackEvent('routing_recommendation_gap', {
       recommended_route: recommendedRoute,
+      selected_route: route,
+      is_recommended_route: route === recommendedRoute,
       language_selected: language,
-      locale_region: localeSignals.regionCode ?? 'unknown',
-      locale_timezone: localeSignals.timeZone ?? 'unknown',
     });
   };
 
@@ -202,7 +214,7 @@ const FinalCTA: React.FC = () => {
           <p className="mt-4 text-[11px] font-black uppercase tracking-[0.35em] text-brand-lime/80">
             {t.contactRouting.helper}
           </p>
-          <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-white/45">
+          <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-white/65">
             {routingReason}
           </p>
         </div>
@@ -248,7 +260,7 @@ const FinalCTA: React.FC = () => {
                         <span className="ds-chip ds-chip-muted tracking-[0.35em]">
                           {route.label}
                         </span>
-                        <p className="mt-3 text-[10px] font-black uppercase tracking-[0.32em] text-white/50">
+                        <p className="mt-3 text-[10px] font-black uppercase tracking-[0.32em] text-white/70">
                           {context.path}
                         </p>
                         <a
@@ -308,7 +320,7 @@ const FinalCTA: React.FC = () => {
                       </Button>
                     </Magnetic>
 
-                    <div className="text-[10px] font-black uppercase tracking-[0.35em] text-white/35 md:block hidden">
+                    <div className="text-[10px] font-black uppercase tracking-[0.35em] ds-text-subtle md:block hidden">
                       {route.id === 'br' ? 'BR / WhatsApp' : 'INTL / WhatsApp'}
                     </div>
                   </div>
@@ -319,7 +331,7 @@ const FinalCTA: React.FC = () => {
         </div>
 
         <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-2xl text-sm leading-relaxed text-white/55">
+          <p className="max-w-2xl text-sm leading-relaxed ds-text-subtle">
             {t.contactRouting.disclaimer}
           </p>
           <p className="text-[10px] font-black uppercase tracking-[0.35em] text-brand-lime/55">

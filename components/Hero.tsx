@@ -1,25 +1,40 @@
 ﻿'use client';
 
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
-import { trackEvent } from '../lib/analytics';
+import { trackEvent, trackFunnelEvent } from '../lib/analytics';
+import { getExperimentVariant } from '../lib/experiments';
 import Magnetic from './Magnetic';
 import Button from './Button';
 
 const Hero: React.FC = () => {
   const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
   const { source, isReturning, setStrategyNote, persona, niche } = useUX();
+  const [headlineVariant, setHeadlineVariant] = useState<'control' | 'trust'>('control');
+
+  useEffect(() => {
+    setHeadlineVariant(getExperimentVariant('hero-headline-v1', ['control', 'trust']) as 'control' | 'trust');
+  }, []);
+
+  useEffect(() => {
+    trackEvent('experiment_exposure', {
+      experiment: 'hero-headline-v1',
+      variant: headlineVariant,
+      language_selected: language,
+    });
+  }, [headlineVariant, language]);
 
   const handleCtaClick = () => {
-    trackEvent('hero_cta_click', {
-      source: source,
-      is_returning: isReturning,
-      niche: niche,
-      contact_route: recommendedContactRoute,
-      language_selected: language,
-      locale_region: localeSignals.regionCode ?? 'unknown',
-      locale_timezone: localeSignals.timeZone ?? 'unknown',
+    trackFunnelEvent('hero_cta', {
+      lang: language,
+      section: 'hero',
+      cta: 'primary_diagnosis',
+      country: localeSignals.countryBucket,
+      route: recommendedContactRoute,
+      experiment: 'hero-headline-v1',
+      variant: headlineVariant,
     });
   };
 
@@ -31,6 +46,7 @@ const Hero: React.FC = () => {
   };
 
   const getHeadline = () => {
+    if (headlineVariant === 'trust') return t.hero.headlines.vision;
     if (persona === 'data-focused') return t.hero.headlines.data;
     if (persona === 'vision-focused') return t.hero.headlines.vision;
     if (niche !== 'generic') return t.nicheHeadlines[niche];

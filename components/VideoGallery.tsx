@@ -32,6 +32,13 @@ const localeMap: Record<Language, string> = {
   fr: 'fr-FR',
 };
 
+const FEED_POLICY_COPY: Record<Language, string> = {
+  pt: 'SLA interno: atualização em até 5 min quando a origem está estável. Em falha, mantemos cache recente ou rota oficial do canal.',
+  en: 'Internal SLA: refresh within 5 minutes while source is stable. On failure, we keep recent cache or the official channel route.',
+  es: 'SLA interno: actualización en hasta 5 min con origen estable. Si falla, mantenemos caché reciente o canal oficial.',
+  fr: 'SLA interne : mise à jour sous 5 min si la source est stable. En échec, cache récent ou chaîne officielle.',
+};
+
 const formatPublishedAt = (value: string, language: Language) => {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
@@ -212,7 +219,10 @@ const VideoGallery: React.FC = () => {
   }, [activeIndex, videos]);
 
   const railVideos = useMemo(
-    () => videos.filter((_, index) => index !== carousel.activeIndex),
+    () =>
+      videos
+        .map((video, originalIndex) => ({ video, originalIndex }))
+        .filter((item) => item.originalIndex !== carousel.activeIndex),
     [videos, carousel.activeIndex],
   );
 
@@ -290,14 +300,14 @@ const VideoGallery: React.FC = () => {
     </div>
   );
 
-  const renderRailCard = (video: VideoItem, index: number) => {
-    const isActive = index === carousel.activeIndex;
+  const renderRailCard = (video: VideoItem, originalIndex: number) => {
+    const isActive = originalIndex === carousel.activeIndex;
 
     return (
       <button
         key={video.id}
         type="button"
-        onClick={() => setActiveIndex(index)}
+        onClick={() => setActiveIndex(originalIndex)}
         className={`group ds-card-shell snap-start flex-none w-[min(78vw,280px)] md:w-[280px] overflow-hidden rounded-[1.75rem] text-left transition-all duration-500 ${isActive
           ? 'border-brand-lime/60 bg-white/[0.06] shadow-[0_20px_60px_rgba(0,0,0,0.35)]'
           : 'ds-card-shell-hover-lime border-white/10 bg-white/[0.03]'
@@ -335,7 +345,7 @@ const VideoGallery: React.FC = () => {
           >
             {video.title}
           </h4>
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">
             {formatPublishedAt(video.publishedAt, language)}
           </p>
           <div className="mt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime">
@@ -390,7 +400,7 @@ const VideoGallery: React.FC = () => {
           </Button>
         </div>
 
-        <div className="mb-4 flex items-center justify-between gap-4 text-[10px] font-black uppercase tracking-[0.35em] text-slate-500">
+        <div className="mb-4 flex items-center justify-between gap-4 text-[10px] font-black uppercase tracking-[0.35em] text-slate-300">
           <div className="flex items-center gap-3">
             <RefreshCcw className="h-4 w-4 text-brand-lime" />
             <span>{text.updated}</span>
@@ -398,7 +408,7 @@ const VideoGallery: React.FC = () => {
               {sourceBadge.label}
             </span>
             {fetchedAt && (
-              <span className="tracking-[0.2em] text-slate-600">
+              <span className="tracking-[0.2em] text-slate-400">
                 {formatPublishedAt(fetchedAt, language)}
               </span>
             )}
@@ -428,6 +438,9 @@ const VideoGallery: React.FC = () => {
             </div>
           )}
         </div>
+        <p className="mb-6 text-xs font-bold uppercase tracking-[0.12em] text-white/65">
+          {FEED_POLICY_COPY[language]}
+        </p>
 
         {isLoading ? (
           <VideoSkeleton label={text.loading} />
@@ -527,16 +540,16 @@ const VideoGallery: React.FC = () => {
 
             <div className="space-y-4">
               <div className="flex items-end justify-between gap-4">
-                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-slate-500">
+                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-slate-300">
                   {text.latest}
                 </p>
-                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-slate-600">
+                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-slate-400">
                   {SITE_CONFIG.siteName}
                 </p>
               </div>
 
               <div className="no-scrollbar flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
-                {railVideos.map((video, index) => renderRailCard(video, index))}
+                {railVideos.map((item) => renderRailCard(item.video, item.originalIndex))}
               </div>
             </div>
           </div>

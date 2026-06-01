@@ -19,6 +19,7 @@ This repository is a single landing page built around a small set of explicit so
 - Locale state: `contexts/LanguageContext.tsx`
 - Cookie consent state and modal visibility: `contexts/ConsentContext.tsx`
 - Analytics lifecycle: `components/AnalyticsManager.tsx`
+- Funnel event contract and tracking helper: `lib/analytics.ts`
 - Blueprint / strategy mode and visitor context: `contexts/UXContext.tsx`
 - Localized copy: `translations.ts`
 - Shared modal shell: `components/ModalShell.tsx`
@@ -55,4 +56,3 @@ This repository is a single landing page built around a small set of explicit so
 
 - `app/api/youtube/latest/route.ts` still derives latest videos from the public channel page, which is acceptable for now but remains an external dependency.
 - `app/api/google/reviews/route.ts` depends on `GOOGLE_MAPS_API_KEY` and the Google Places API.
-

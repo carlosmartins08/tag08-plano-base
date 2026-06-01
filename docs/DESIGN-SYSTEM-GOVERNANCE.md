@@ -8,6 +8,11 @@ This document is the source of truth for visual consistency.
 - Shared brand constants live in `constants.tsx` only when they are used by more than one subsystem.
 - Do not invent new color aliases inside individual components.
 - Surface and interaction primitives live in `app/globals.css` under `ds-*` classes.
+- Text contrast hierarchy must use shared tokens/classes from `app/globals.css`:
+  - `ds-text-primary`
+  - `ds-text-secondary`
+  - `ds-text-muted`
+  - `ds-text-subtle`
 
 ## Typography
 
@@ -30,6 +35,7 @@ This document is the source of truth for visual consistency.
 - Keep the black + lime system as the baseline.
 - Use lime for emphasis, not as a wall of color.
 - Keep cards and sections legible on mobile first.
+- Functional microcopy (status, helper text, disclaimers, metadata) must use the shared text contrast hierarchy instead of ad-hoc opacity classes.
 - If a new component repeats an existing pattern, extend the existing component instead of cloning it.
 - Section badges must use `ds-section-badge`.
 - Card and panel surfaces must use `ds-card-shell` or `ds-panel-shell`.
@@ -51,6 +57,7 @@ This document is the source of truth for visual consistency.
 - The guard blocks:
   - hardcoded hex colors outside approved files (`TeamShowcase`, `Testimonials`, etc.)
   - custom easing in components (`ease-out`, `ease-in-out`, `ease-[...]`, inline `cubic-bezier(...)`)
+  - inline `style={{...}}` in components unless explicitly allowlisted in the guard
   - legacy section badge recipe (must use `ds-section-badge`)
   - legacy chip recipes (must use `ds-chip` variants)
   - filenames with drift tokens (`V2`, `New`, `Updated`, `Shared`, `Common`)

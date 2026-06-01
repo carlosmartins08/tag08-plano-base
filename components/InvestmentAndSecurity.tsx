@@ -3,7 +3,7 @@
 import React from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Shield, Sparkles, Calendar, ArrowRight, Lock } from 'lucide-react';
-import { trackEvent } from '../lib/analytics';
+import { trackEvent, trackFunnelEvent } from '../lib/analytics';
 
 const InvestmentAndSecurity: React.FC = () => {
   const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
@@ -15,6 +15,13 @@ const InvestmentAndSecurity: React.FC = () => {
       language_selected: language,
       locale_region: localeSignals.regionCode ?? 'unknown',
       locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
+    trackFunnelEvent('whatsapp_click', {
+      lang: language,
+      section: 'investment_offer',
+      cta: 'request_proposal',
+      country: localeSignals.countryBucket,
+      route: recommendedContactRoute,
     });
   };
 

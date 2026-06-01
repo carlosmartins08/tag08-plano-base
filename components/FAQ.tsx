@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Plus, Minus, MessageCircle, HelpCircle, ArrowRight } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
-import { trackEvent } from '../lib/analytics';
+import { trackEvent, trackFunnelEvent } from '../lib/analytics';
 
 const FAQ: React.FC = () => {
   const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
@@ -16,6 +16,13 @@ const FAQ: React.FC = () => {
       language_selected: language,
       locale_region: localeSignals.regionCode ?? 'unknown',
       locale_timezone: localeSignals.timeZone ?? 'unknown',
+    });
+    trackFunnelEvent('whatsapp_click', {
+      lang: language,
+      section: 'faq_support',
+      cta: 'support_contact',
+      country: localeSignals.countryBucket,
+      route: recommendedContactRoute,
     });
   };
 

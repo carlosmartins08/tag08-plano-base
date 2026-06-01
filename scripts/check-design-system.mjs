@@ -28,6 +28,19 @@ const hardcodedHexPattern = /#[0-9A-Fa-f]{3,8}\b/g;
 const legacyBadgePattern = /border border-brand-lime\/20 bg-brand-lime\/5/g;
 const legacyNeutralChipPattern = /rounded-full border border-white\/10 bg-black\/35/g;
 const legacyLimeChipPattern = /rounded-full bg-brand-lime px-[0-9]+ py-[0-9]+ text-\[10px\]/g;
+const inlineStylePattern = /\bstyle=\{\{/g;
+
+const allowedInlineStyleFiles = new Set([
+  'components/BrandLogo.tsx',
+  'components/CustomCursor.tsx',
+  'components/GrowthRoadmap.tsx',
+  'components/IncludedPillars.tsx',
+  'components/Magnetic.tsx',
+  'components/Navbar.tsx',
+  'components/TeamShowcase.tsx',
+  'components/Testimonials.tsx',
+  'components/VideoGallery.tsx',
+]);
 
 const directoryPolicies = {
   'components/': {
@@ -149,6 +162,16 @@ for (const scanDir of SCAN_DIRS) {
             );
           }
           legacyLimeChipPattern.lastIndex = 0;
+
+          if (!allowedInlineStyleFiles.has(relativePath) && inlineStylePattern.test(lineContent)) {
+            addViolation(
+              relativePath,
+              lineNumber,
+              'Inline style detected in component. Prefer shared tokens/classes or add justified allowlist entry.',
+              lineContent,
+            );
+          }
+          inlineStylePattern.lastIndex = 0;
         }
       }
     });

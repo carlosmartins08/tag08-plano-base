@@ -3,6 +3,7 @@
 This project is a single landing page. The current public surface is:
 
 - `/` - main landing page
+- `/llms.txt` - machine-readable summary for LLM and AI retrieval systems
 - `robots.txt`
 - `sitemap.xml`
 - `/api/youtube/latest` - latest YouTube videos source for the gallery; accepts optional `limit` and `lang`
@@ -32,4 +33,3 @@ This project is a single landing page. The current public surface is:
 - Any future locale routing must update canonical URLs, sitemap, robots and internal links together.
 - Anchor targets should be stable. Do not create a second anchor for the same CTA or content block.
 - The contact router exposes two WhatsApp destinations: Brazil and International / Español.
-

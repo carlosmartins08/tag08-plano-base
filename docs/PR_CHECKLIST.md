@@ -24,6 +24,13 @@ Use this checklist before requesting review.
 - `npm run lint`
 - `npm run build`
 
+## Conversion and operations guardrails
+
+- Funnel events are preserved for `hero_cta`, `calculator_submit`, `final_cta_click`, `whatsapp_click`.
+- Any new WhatsApp entry point tracks `whatsapp_click` with `lang`, `section`, `cta`, `country`, `route`.
+- Experiment exposure events are tracked for active tests.
+- External feeds expose degradation/source headers and UI fallback remains explicit.
+
 ## Evidence in PR description
 
 - List files touched.

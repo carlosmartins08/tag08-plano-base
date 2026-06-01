@@ -22,3 +22,9 @@ These are the key decisions already made for this base.
 
 - Whether the YouTube source should remain HTML scraping or move to a more stable published feed / API when credentials are available.
 - Whether the Testimonials section should stay hybrid (Google + fallback) or become fully API-driven.
+
+## 2026-06-01
+
+- Conversion funnel contract standardized as `hero_cta -> calculator_submit -> final_cta_click -> whatsapp_click`.
+- A/B experiments started for hero headline and testimonials structure with exposure tracking.
+- External feeds now expose SLA and source headers for operational observability.
