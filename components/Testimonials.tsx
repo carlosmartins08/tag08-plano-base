@@ -164,6 +164,7 @@ const Testimonials: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-lime/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mb-4 chapter-kicker reveal">Capitulo 07</div>
         <div className="flex flex-col lg:flex-row items-end justify-between gap-8 mb-20 reveal">
           <div className="max-w-2xl">
             <div className="mb-6 ds-section-badge">
@@ -178,7 +179,7 @@ const Testimonials: React.FC = () => {
             </p>
           </div>
 
-          <div className="ds-panel-shell p-6 rounded-3xl flex items-center gap-6">
+          <div className="chapter-shell p-6 rounded-3xl flex items-center gap-6">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg">
               <GoogleLogo />
             </div>
@@ -200,7 +201,7 @@ const Testimonials: React.FC = () => {
           {cards.map((testimonial, idx) => (
             <div
               key={testimonial.id}
-              className={`reveal stagger-${idx + 1} ds-card-shell ds-card-shell-hover-lime group p-8 rounded-[32px] relative overflow-hidden`}
+              className={`reveal stagger-${idx + 1} chapter-shell group p-8 rounded-[32px] relative overflow-hidden`}
             >
               <Quote className="absolute -top-4 -right-4 w-24 h-24 text-white/[0.02] -rotate-12 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-0" />
 

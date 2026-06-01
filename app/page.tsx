@@ -7,8 +7,11 @@ import CookieBanner from '../components/CookieBanner';
 import PrivacyModal from '../components/PrivacyModal';
 import CookiePolicyModal from '../components/CookiePolicyModal';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import SectionMotion from '../components/SectionMotion';
+import ScrollDepthTracker from '../components/ScrollDepthTracker';
 
 const OpportunityCalculator = dynamicImport(() => import('../components/OpportunityCalculator'), { ssr: true });
+const DecisionLens = dynamicImport(() => import('../components/DecisionLens'), { ssr: true });
 const IncludedPillars = dynamicImport(() => import('../components/IncludedPillars'), { ssr: true });
 const MonthlyCycle = dynamicImport(() => import('../components/MonthlyCycle'), { ssr: true });
 const GrowthRoadmap = dynamicImport(() => import('../components/GrowthRoadmap'), { ssr: true });
@@ -28,21 +31,51 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <ProblemContext />
-        <OpportunityCalculator />
-        <ValueProposition />
-        <IncludedPillars />
-        <MonthlyCycle />
-        <GrowthRoadmap />
-        <StrategicBenefits />
-        <VideoGallery />
-        <TeamShowcase />
-        <Testimonials />
-        <InvestmentAndSecurity />
-        <ClientResponsibilities />
-        <FAQ />
+        <SectionMotion sectionId="problem">
+          <ProblemContext />
+        </SectionMotion>
+        <SectionMotion sectionId="calculator">
+          <OpportunityCalculator />
+        </SectionMotion>
+        <SectionMotion sectionId="value_proposition">
+          <ValueProposition />
+        </SectionMotion>
+        <SectionMotion sectionId="decision_lens">
+          <DecisionLens />
+        </SectionMotion>
+        <SectionMotion sectionId="pillars">
+          <IncludedPillars />
+        </SectionMotion>
+        <SectionMotion sectionId="monthly_cycle">
+          <MonthlyCycle />
+        </SectionMotion>
+        <SectionMotion sectionId="growth_roadmap">
+          <GrowthRoadmap />
+        </SectionMotion>
+        <SectionMotion sectionId="strategic_benefits">
+          <StrategicBenefits />
+        </SectionMotion>
+        <SectionMotion sectionId="video_gallery">
+          <VideoGallery />
+        </SectionMotion>
+        <SectionMotion sectionId="team_showcase">
+          <TeamShowcase />
+        </SectionMotion>
+        <SectionMotion sectionId="testimonials">
+          <Testimonials />
+        </SectionMotion>
+        <SectionMotion sectionId="investment_security">
+          <InvestmentAndSecurity />
+        </SectionMotion>
+        <SectionMotion sectionId="client_responsibilities">
+          <ClientResponsibilities />
+        </SectionMotion>
+        <SectionMotion sectionId="faq">
+          <FAQ />
+        </SectionMotion>
         <FinalCTA />
       </main>
+      <ScrollDepthTracker />
       <Footer />
       <CookieBanner />
       <PrivacyModal />

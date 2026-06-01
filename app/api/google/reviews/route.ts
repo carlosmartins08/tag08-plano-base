@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { GOOGLE_BUSINESS } from '../../../../constants';
 import { GoogleReview, GoogleReviewsPayload } from '../../../../types';
+import { logError, logWarn } from '../../../../lib/observability';
 
 export const runtime = 'nodejs';
 export const revalidate = 3600;
@@ -109,6 +110,11 @@ export async function GET(request: Request) {
   const apiKey = process.env.GOOGLE_MAPS_API_KEY?.trim();
 
   if (!apiKey) {
+    logWarn({
+      scope: 'api.google.reviews',
+      message: 'Google Maps API key is not configured.',
+    });
+
     return NextResponse.json(
       buildPayload('unconfigured', {
         placeId: GOOGLE_BUSINESS.placeId,
@@ -168,7 +174,16 @@ export async function GET(request: Request) {
       },
     );
   } catch (error) {
-    console.error('[google/reviews]', error);
+    logError({
+      scope: 'api.google.reviews',
+      message: 'Failed to fetch Google reviews.',
+      error,
+      details: {
+        placeId: GOOGLE_BUSINESS.placeId,
+        languageCode: language.languageCode,
+        regionCode: language.regionCode,
+      },
+    });
 
     return NextResponse.json(
       buildPayload('error', {

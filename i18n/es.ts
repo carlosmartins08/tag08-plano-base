@@ -61,6 +61,32 @@ export const es: TranslationSchema = {
     },
     "support": "Cada ciclo responde tres preguntas: que mantener, que ajustar y que escalar en el siguiente mes."
   },
+  "decisionLens": {
+    "badge": "Lectura estrategica",
+    "title": "Senales pequenas,",
+    "titleAccent": "impacto grande en conversion.",
+    "subtitle": "La mayor perdida no viene por falta de esfuerzo. Viene por interpretar mal las senales de decision.",
+    "revealLabel": "Punto critico",
+    "revealTitle": "Lo que muchos equipos no ven",
+    "revealBody": "Sin claridad de diagnostico, el equipo sube volumen antes de corregir direccion. Eso escala costo, no crecimiento.",
+    "items": [
+      {
+        "title": "Lead curioso no es lead listo",
+        "hidden": "Mucho volumen con baja intencion crea una falsa sensacion de avance.",
+        "action": "Califica por dolor, urgencia y capacidad de decision antes de escalar inversion."
+      },
+      {
+        "title": "Diseno bonito sin contexto no convierte",
+        "hidden": "Si la oferta no es clara, el visual se vuelve ruido.",
+        "action": "Ordena el mensaje: promesa, prueba, proceso y CTA en secuencia de decision."
+      },
+      {
+        "title": "Campana sin lectura semanal quema presupuesto",
+        "hidden": "Sin checkpoints, un error pequeno se vuelve patron caro.",
+        "action": "Gestiona el embudo como rutina operativa y corta rapido lo que no performa."
+      }
+    ]
+  },
   "problem": {
     "label": "El Escenario Actual",
     "title": "¿Su empresa está estancada en el \"casi\"?",

@@ -109,6 +109,20 @@ export interface TranslationSchema {
       scale: { title: string; desc: string };
     };
   };
+  decisionLens: {
+    badge: string;
+    title: string;
+    titleAccent: string;
+    subtitle: string;
+    revealLabel: string;
+    revealTitle: string;
+    revealBody: string;
+    items: {
+      title: string;
+      hidden: string;
+      action: string;
+    }[];
+  };
   problem: {
     label: string;
     title: string;

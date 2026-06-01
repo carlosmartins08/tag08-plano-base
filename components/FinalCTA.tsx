@@ -197,6 +197,7 @@ const FinalCTA: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl">
+          <div className="chapter-kicker">Capitulo 10</div>
           <div className="ds-section-badge gap-2 tracking-[0.35em]">
             <Sparkles size={12} />
             {t.contactRouting.badge}
@@ -229,7 +230,7 @@ const FinalCTA: React.FC = () => {
             return (
               <article
                 key={route.id}
-                className={`relative overflow-hidden rounded-[2rem] border p-6 md:p-8 motion-enter-primary ${
+                className={`relative overflow-hidden rounded-[2rem] border p-6 md:p-8 motion-enter-primary chapter-shell ${
                   isRecommended
                     ? 'border-brand-lime/50 bg-white/[0.05] md:shadow-[0_0_80px_rgba(212,255,0,0.08)]'
                     : 'border-white/10 bg-white/[0.03]'

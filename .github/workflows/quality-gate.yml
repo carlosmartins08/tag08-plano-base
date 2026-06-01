@@ -1,0 +1,44 @@
+name: Quality Gate
+
+on:
+  pull_request:
+    branches: ["*"]
+  push:
+    branches: ["main", "master"]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Root hygiene check
+        run: npm run root:hygiene
+
+      - name: Tracking config check
+        run: npm run validate:tracking
+        env:
+          GOOGLE_MAPS_API_KEY: CI_PLACEHOLDER
+          NEXT_PUBLIC_GA_TRACKING_ID: G-CI0000000
+          NEXT_PUBLIC_GOOGLE_TAG_ID: GT-CI00000
+          NEXT_PUBLIC_GOOGLE_ADS_ID: AW-123456789
+          NEXT_PUBLIC_META_PIXEL_ID: 123456789012345
+
+      - name: Design system guard
+        run: npm run ds:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build

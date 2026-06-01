@@ -16,3 +16,7 @@ carlos-ig.html
 ignacio-site.html
 tmp-ignacio*/
 docs/WhatsApp Image 2026-04-15 at 21.33.27.jpeg
+docs/artifacts/logs/*
+docs/artifacts/investigation/*
+!docs/artifacts/logs/.gitkeep
+!docs/artifacts/investigation/.gitkeep

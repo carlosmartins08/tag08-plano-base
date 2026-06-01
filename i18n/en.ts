@@ -61,6 +61,32 @@ export const en: TranslationSchema = {
     },
     "support": "Every cycle answers three questions: what to keep, what to adjust, and what to scale next."
   },
+  "decisionLens": {
+    "badge": "Strategic lens",
+    "title": "Small signals,",
+    "titleAccent": "big impact on conversion.",
+    "subtitle": "Most revenue leakage does not come from low effort. It comes from misreading decision signals.",
+    "revealLabel": "Critical insight",
+    "revealTitle": "What most teams miss",
+    "revealBody": "Without diagnostic clarity, teams increase volume before fixing direction. That scales cost, not growth.",
+    "items": [
+      {
+        "title": "Curious leads are not ready leads",
+        "hidden": "High volume with low intent creates a fake sense of traction.",
+        "action": "Qualify by pain, urgency and decision authority before scaling spend."
+      },
+      {
+        "title": "Beautiful design without context will not convert",
+        "hidden": "If the offer is unclear, visuals become noise.",
+        "action": "Fix message hierarchy: promise, proof, process and CTA in decision order."
+      },
+      {
+        "title": "Campaigns without weekly reading burn budget",
+        "hidden": "Without checkpoints, small errors become expensive patterns.",
+        "action": "Run the funnel as an operating rhythm and cut weak moves fast."
+      }
+    ]
+  },
   "problem": {
     "label": "The Current Scenario",
     "title": "Is your company stuck in \"almost\"?",

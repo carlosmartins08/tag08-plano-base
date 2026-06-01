@@ -12,7 +12,7 @@ export const SITE_CONFIG = {
 export const SITE_PROFILE = {
   legalName: 'TAG08 CONSULTORIA E MARKETING LTDA',
   email: 'contato@tag08.com.br',
-  logoPath: '/logo.svg',
+  logoPath: '/assets/brand/logos/logo-horizontal-dark-primary.svg',
   address: {
     streetAddress: 'R. Cassimiro de Abreu, 56, Sala 05 - CXPST 018 - Brisamar',
     addressLocality: 'João Pessoa',
@@ -57,22 +57,26 @@ export const TEAM_SHOWCASE_MEDIA: Record<
   {
     photoUrl: string;
     photoPosition?: string;
+    photoPositionMobile?: string;
     layout: 'avatar' | 'portrait';
   }
 > = {
   'https://www.linkedin.com/in/carlosmartins08/': {
     photoUrl: '/team/carlos.jpg',
-    photoPosition: '36% 26%',
+    photoPosition: '50% 24%',
+    photoPositionMobile: '50% 18%',
     layout: 'avatar',
   },
   'https://www.linkedin.com/in/ignacio-quiroz-b1568a52/': {
     photoUrl: '/team/ignacio.jpeg',
-    photoPosition: '50% 18%',
+    photoPosition: '50% 22%',
+    photoPositionMobile: '50% 16%',
     layout: 'portrait',
   },
   'https://www.linkedin.com/in/pedrovsfelix/': {
     photoUrl: '/team/pedro.jpg',
-    photoPosition: '50% 16%',
+    photoPosition: '52% 20%',
+    photoPositionMobile: '50% 14%',
     layout: 'portrait',
   },
 };
@@ -129,4 +133,5 @@ export const Icons = {
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="8" x2="12" y2="22"></line><path d="M5 5.5A11 11 0 1 1 16 19.5"></path><circle cx="12" cy="12" r="10"></circle></svg>
   )
 };
+
 

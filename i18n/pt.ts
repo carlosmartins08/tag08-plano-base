@@ -61,6 +61,32 @@ export const pt: TranslationSchema = {
     },
     "support": "Toda entrega precisa responder tres perguntas: o que manter, o que ajustar e o que acelerar no proximo ciclo."
   },
+  "decisionLens": {
+    "badge": "Leitura estrategica",
+    "title": "Sinais que parecem pequenos,",
+    "titleAccent": "mas decidem seu resultado.",
+    "subtitle": "Boa parte da perda de conversao nao vem de falta de esforco. Vem de detalhes mal interpretados no momento da decisao.",
+    "revealLabel": "Ponto de atencao",
+    "revealTitle": "O que o mercado nao te conta",
+    "revealBody": "Sem clareza de diagnostico, a empresa tende a aumentar volume antes de corrigir direcao. Isso acelera custo, nao crescimento.",
+    "items": [
+      {
+        "title": "Lead curioso nao e lead pronto",
+        "hidden": "Volume alto com baixa intencao cria falsa sensacao de progresso.",
+        "action": "Qualifique por dor, urgencia e capacidade de decisao antes de escalar investimento."
+      },
+      {
+        "title": "Design bonito sem contexto nao converte",
+        "hidden": "Quando a oferta nao esta clara, o visual so distrai.",
+        "action": "Ajuste hierarquia de mensagem: promessa, prova, processo e CTA em ordem de decisao."
+      },
+      {
+        "title": "Campanha sem leitura semanal perde dinheiro",
+        "hidden": "Sem checkpoint, o erro pequeno vira padrao caro.",
+        "action": "Trate o funil como rotina operacional com corte rapido do que nao performa."
+      }
+    ]
+  },
   "problem": {
     "label": "Análise de Maturidade Digital",
     "title": "Cansado da falta de estrutura e da tentativa e erro?",

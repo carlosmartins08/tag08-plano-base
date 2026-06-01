@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { SITE_CONFIG } from '../../../../constants';
+import { logError, logWarn } from '../../../../lib/observability';
 
 export const runtime = 'nodejs';
 export const revalidate = 300;
@@ -384,9 +385,25 @@ export async function GET(request: Request) {
       },
     });
   } catch (error) {
-    console.error('[youtube/latest]', error);
+    logError({
+      scope: 'api.youtube.latest',
+      message: 'Failed to fetch latest YouTube videos.',
+      error,
+      details: {
+        requestedLanguage,
+        limit,
+      },
+    });
 
     if (lastSuccessfulPayload?.videos?.length) {
+      logWarn({
+        scope: 'api.youtube.latest',
+        message: 'Serving stale cached videos after live feed failure.',
+        details: {
+          cachedCount: lastSuccessfulPayload.videos.length,
+        },
+      });
+
       return NextResponse.json(
         {
           ...lastSuccessfulPayload,

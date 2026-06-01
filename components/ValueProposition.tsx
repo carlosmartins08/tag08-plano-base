@@ -31,6 +31,10 @@ const ValueProposition: React.FC = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
+          <div className="reveal mb-5 chapter-kicker justify-center">
+            Capitulo 02
+          </div>
+
           <div className="reveal mb-8 ds-section-badge gap-3">
             <CheckCircle2 className="h-4 w-4 text-brand-lime" />
             <span>{t.valueProposition.badge}</span>
@@ -49,7 +53,7 @@ const ValueProposition: React.FC = () => {
             {features.map((feature, idx) => (
               <div
                 key={feature.title}
-                className={`reveal stagger-${idx + 3} ds-card-shell ds-card-shell-hover-lime group relative overflow-hidden rounded-[40px] p-10`}
+                className={`reveal stagger-${idx + 3} chapter-shell group relative overflow-hidden rounded-[40px] p-10`}
               >
                 <div className="absolute right-0 top-0 h-24 w-24 -translate-y-12 translate-x-12 rounded-full bg-brand-lime/5 blur-2xl transition-all duration-700 group-hover:bg-brand-lime/20" />
 

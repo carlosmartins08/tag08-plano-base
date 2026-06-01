@@ -10,6 +10,11 @@ Official funnel events:
 - `final_cta_click`
 - `whatsapp_click`
 
+Strategic reading event:
+- `decision_lens_card_view`
+- `section_engagement`
+- `scroll_depth`
+
 Required params:
 - `lang`
 - `section`
@@ -23,6 +28,8 @@ Required params:
 
 - Loaded by consent in `components/AnalyticsManager.tsx`
 - Events are sent via `trackEvent` / `trackFunnelEvent` in `lib/analytics.ts`
+- Section visibility orchestration in `components/SectionMotion.tsx`
+- Scroll depth tracking in `components/ScrollDepthTracker.tsx`
 
 ### Meta Pixel
 
@@ -32,6 +39,8 @@ Required params:
   - `hero_cta` -> `HeroCTA` (`trackCustom`)
   - `calculator_submit` -> `CalculatorSubmit` (`trackCustom`)
   - `final_cta_click` -> `FinalCTAClick` (`trackCustom`)
+- Strategic mapping in `lib/analytics.ts`:
+  - `decision_lens_card_view` -> `DecisionLensCardView` (`trackCustom`)
 
 ## Environment variables
 
@@ -58,5 +67,8 @@ Required params:
 1. Accept analytical+marketing cookies.
 2. Open Meta Pixel Helper and confirm `PageView`.
 3. Trigger each funnel step and confirm GA4 DebugView + Meta events.
-4. Revoke consent and confirm scripts are removed.
-5. Confirm no event loss in baseline after deployment.
+4. Hover cards in "Decision Lens" and confirm `decision_lens_card_view` + `DecisionLensCardView`.
+5. Scroll page and confirm `scroll_depth` at 25/50/75/100.
+6. Navigate sections and confirm `section_engagement` once per section per session.
+7. Revoke consent and confirm scripts are removed.
+8. Confirm no event loss in baseline after deployment.

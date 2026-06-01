@@ -43,6 +43,11 @@ Ou em sequencia:
 npm run validate
 ```
 
+Qualidade em PR:
+
+- Workflow CI: `.github/workflows/quality-gate.yml`
+- Gates: `validate:tracking`, `ds:check`, `lint`, `build`
+
 ## Documentacao de base
 
 - `docs/ARCHITECTURE.md` - mapa da arquitetura e fontes de verdade
@@ -60,8 +65,11 @@ npm run validate
 - `docs/WEEKLY_RITUAL.md` - ritual semanal de leitura e decisao por evidencia
 - `docs/MEASUREMENT_STACK.md` - guia de instrumentacao GA4 + Meta Pixel + CAPI
 - `docs/CROSS_PROJECT_SYNERGY.md` - contrato estrategico de sinergia entre todas as landings TAG08
-- `docs/ROUTES.md` - inclui superficie publica para IA (`/llms.txt`) e mapa de anchors
 - `docs/CONTENT_ENTITY_MAP.md` - contrato semantico canonico para SEO e busca por IA no nicho
+- `docs/REPO_CONVENTIONS.md` - convencoes oficiais de estrutura e nomenclatura do repositorio
+- `docs/REPLICATION_CHECKLIST.md` - checklist de replicacao para as outras landings TAG08
+- `docs/WEEKLY_DECISION_GUIDE.md` - regra semanal para melhorar conversao por evidencia
+- `docs/ARTIFACTS_POLICY.md` - politica de organizacao para logs e arquivos temporarios
 
 ## Observacoes
 

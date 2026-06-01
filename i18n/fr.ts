@@ -61,6 +61,32 @@ export const fr: TranslationSchema = {
     },
     "support": "Chaque cycle doit repondre a trois questions: quoi garder, quoi ajuster et quoi accelerer ensuite."
   },
+  "decisionLens": {
+    "badge": "Lecture strategique",
+    "title": "Des signaux discrets,",
+    "titleAccent": "un impact fort sur la conversion.",
+    "subtitle": "La perte ne vient pas seulement d'un manque d'effort. Elle vient surtout d'une mauvaise lecture des signaux de decision.",
+    "revealLabel": "Point critique",
+    "revealTitle": "Ce que beaucoup d'equipes ignorent",
+    "revealBody": "Sans clarte de diagnostic, l'equipe augmente le volume avant de corriger la direction. Cela augmente le cout, pas la croissance.",
+    "items": [
+      {
+        "title": "Un lead curieux n'est pas un lead pret",
+        "hidden": "Un volume eleve avec faible intention cree une fausse impression de traction.",
+        "action": "Qualifier par douleur, urgence et pouvoir de decision avant d'augmenter le budget."
+      },
+      {
+        "title": "Un design beau sans contexte ne convertit pas",
+        "hidden": "Si l'offre n'est pas claire, le visuel devient du bruit.",
+        "action": "Reorganiser le message: promesse, preuve, processus et CTA dans l'ordre de decision."
+      },
+      {
+        "title": "Une campagne sans lecture hebdomadaire brule le budget",
+        "hidden": "Sans checkpoints, une petite erreur devient une habitude couteuse.",
+        "action": "Piloter le funnel comme une routine operationnelle et couper vite ce qui ne performe pas."
+      }
+    ]
+  },
   "problem": {
     "label": "Le Scénario Actuel",
     "title": "Votre entreprise est-elle bloquée au stade du \"presque\" ?",

@@ -1,5 +1,6 @@
 export type EventParams = Record<string, string | number | boolean | null | undefined>;
 export type FunnelStep = 'hero_cta' | 'calculator_submit' | 'final_cta_click' | 'whatsapp_click';
+export type StrategicEventName = 'decision_lens_card_view';
 
 export type FunnelEventParams = {
   lang: string;
@@ -36,6 +37,16 @@ const mapFunnelToMetaEvent = (step: FunnelStep): { mode: 'track' | 'trackCustom'
   return { mode: 'trackCustom', name: 'FinalCTAClick' };
 };
 
+const mapStrategicToMetaEvent = (
+  eventName: StrategicEventName,
+): { mode: 'track' | 'trackCustom'; name: string } => {
+  if (eventName === 'decision_lens_card_view') {
+    return { mode: 'trackCustom', name: 'DecisionLensCardView' };
+  }
+
+  return { mode: 'trackCustom', name: eventName };
+};
+
 export const trackEvent = (eventName: string, params?: EventParams) => {
   const gtag = getGtag();
   if (gtag) {
@@ -50,5 +61,15 @@ export const trackFunnelEvent = (step: FunnelStep, params: FunnelEventParams) =>
   if (!fbq) return;
 
   const mapped = mapFunnelToMetaEvent(step);
+  fbq(mapped.mode, mapped.name, params);
+};
+
+export const trackStrategicEvent = (eventName: StrategicEventName, params?: EventParams) => {
+  trackEvent(eventName, params);
+
+  const fbq = getFbq();
+  if (!fbq) return;
+
+  const mapped = mapStrategicToMetaEvent(eventName);
   fbq(mapped.mode, mapped.name, params);
 };

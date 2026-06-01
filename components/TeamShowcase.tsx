@@ -101,6 +101,7 @@ const TeamShowcase: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverPosition, setHoverPosition] = useState({ x: 50, y: 36 });
   const [isDesktopInteractive, setIsDesktopInteractive] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -113,6 +114,17 @@ const TeamShowcase: React.FC = () => {
     return () => mediaQuery.removeEventListener('change', sync);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mobileQuery = window.matchMedia('(max-width: 767px)');
+
+    const sync = () => setIsMobile(mobileQuery.matches);
+    sync();
+
+    mobileQuery.addEventListener('change', sync);
+    return () => mobileQuery.removeEventListener('change', sync);
+  }, []);
+
   const members = useMemo<TeamCard[]>(
     () =>
       t.teamShowcase.items.map((member, index) => {
@@ -123,12 +135,12 @@ const TeamShowcase: React.FC = () => {
           photoUrl:
             media?.photoUrl ??
             buildFallbackPortrait(member, PORTRAIT_TONES[index % PORTRAIT_TONES.length].accent, index),
-          photoPosition: media?.photoPosition ?? '50% 20%',
+          photoPosition: isMobile ? (media?.photoPositionMobile ?? media?.photoPosition ?? '50% 16%') : (media?.photoPosition ?? '50% 20%'),
           layout: media?.layout ?? 'portrait',
           originalIndex: index,
         };
       }),
-    [t.teamShowcase.items],
+    [isMobile, t.teamShowcase.items],
   );
 
   const handleCardMove = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -188,39 +200,23 @@ const TeamShowcase: React.FC = () => {
             }`}
           >
             {isAvatarLayout ? (
-              <div className="absolute inset-0 p-5 md:p-6">
-                <div className="absolute -left-8 -top-8 h-44 w-44 rounded-full bg-brand-lime/15 blur-3xl" />
-                <div className="absolute right-0 top-1/4 h-40 w-40 rounded-full bg-white/8 blur-3xl" />
-
-                <div className="relative flex h-full items-end gap-5">
-                  <div
-                    className={`relative overflow-hidden rounded-[2rem] border border-white/15 bg-black/60 shadow-[0_24px_80px_rgba(0,0,0,0.45)] ${
-                      isActive ? 'h-40 w-40 md:h-52 md:w-52' : 'h-32 w-32 md:h-40 md:w-40'
-                    }`}
-                  >
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,255,0,0.2),transparent_58%)]" />
-                    <div className="absolute inset-0 border border-brand-lime/15" />
-                    <Image
-                      src={member.photoUrl}
-                      alt={`${member.name} - ${member.role}`}
-                      fill
-                      sizes="(max-width: 768px) 10rem, 13rem"
-                      className={`object-cover ${isDesktopInteractive && isActive ? 'transition-transform duration-500 group-hover:scale-[1.03]' : ''}`}
-                      style={{ objectPosition: member.photoPosition }}
-                      priority={member.originalIndex === 0}
-                    />
-                  </div>
-
-                  <div className="hidden min-w-0 rounded-xl border border-white/10 bg-black/55 px-3 py-2 backdrop-blur-sm md:block">
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime/85">
-                      {member.focus}
-                    </p>
-                    <p className="mt-1 max-w-[14rem] text-[11px] font-semibold leading-relaxed text-white/86">
-                      {member.role}
-                    </p>
-                  </div>
+              <>
+                <Image
+                  src={member.photoUrl}
+                  alt={`${member.name} - ${member.role}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 46vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  style={{ objectPosition: member.photoPosition }}
+                  priority={member.originalIndex === 0}
+                />
+                <div className="absolute -left-8 -top-8 h-44 w-44 rounded-full bg-brand-lime/18 blur-3xl" />
+                <div className="absolute right-0 top-1/4 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
+                <div className="absolute left-4 top-4 hidden min-w-0 rounded-xl border border-white/15 bg-black/50 px-3 py-2 backdrop-blur-sm md:block">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-lime/90">{member.focus}</p>
+                  <p className="mt-1 max-w-[14rem] text-[11px] font-semibold leading-relaxed text-white/90">{member.role}</p>
                 </div>
-              </div>
+              </>
             ) : (
               <Image
                 src={member.photoUrl}
@@ -242,7 +238,8 @@ const TeamShowcase: React.FC = () => {
 
             {isAvatarLayout && (
               <>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/18 to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,255,0,0.12),transparent_45%)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/86 via-black/28 to-black/8" />
               </>
             )}
 
