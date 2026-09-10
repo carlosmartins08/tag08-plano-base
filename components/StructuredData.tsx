@@ -1,11 +1,10 @@
 import Script from 'next/script';
-import { GOOGLE_BUSINESS, SITE_CONFIG, SITE_PROFILE, WHATSAPP_CONTACTS } from '../constants';
+import { SITE_CONFIG, SITE_PROFILE, WHATSAPP_CONTACTS } from '../constants';
 
 export default function StructuredData() {
   const organizationId = `${SITE_CONFIG.domain}/#organization`;
   const websiteId = `${SITE_CONFIG.domain}/#website`;
   const serviceId = `${SITE_CONFIG.domain}/#service`;
-  const localBusinessId = `${SITE_CONFIG.domain}/#localbusiness`;
   const webpageId = `${SITE_CONFIG.domain}/#webpage`;
 
   const jsonLd = {
@@ -54,45 +53,20 @@ export default function StructuredData() {
         '@type': 'Service',
         '@id': serviceId,
         name: 'Plano Base TAG08',
-        serviceType: 'Strategic social media content management',
+        serviceType: 'Gestão Estratégica de Redes Sociais',
         description:
-          'Strategic content management service for social media focused on brand positioning, qualified audience growth, and sales conversion.',
+          'Estrutura recorrente de planejamento editorial e produção de conteúdo para negócios com oferta ativa que precisam organizar a presença digital com mais consistência.',
         audience: {
           '@type': 'BusinessAudience',
-          audienceType: 'Businesses that need positioning, audience growth, and sales through social channels',
+          audienceType: 'Negócios com oferta ativa que precisam de uma rotina recorrente de comunicação',
         },
         provider: {
           '@id': organizationId,
         },
-        areaServed: ['BR', 'ES', 'US', 'FR'],
         offers: {
           '@type': 'Offer',
-          availability: 'https://schema.org/InStock',
-          url: SITE_CONFIG.domain,
-          category: 'Marketing service',
-        },
-      },
-      {
-        '@type': 'LocalBusiness',
-        '@id': localBusinessId,
-        name: SITE_CONFIG.siteName,
-        legalName: SITE_PROFILE.legalName,
-        url: SITE_CONFIG.domain,
-        image: `${SITE_CONFIG.domain}${SITE_PROFILE.logoPath}`,
-        logo: `${SITE_CONFIG.domain}${SITE_PROFILE.logoPath}`,
-        email: SITE_PROFILE.email,
-        telephone: `+${WHATSAPP_CONTACTS.br.phone}`,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: SITE_PROFILE.address.streetAddress,
-          addressLocality: SITE_PROFILE.address.addressLocality,
-          addressRegion: SITE_PROFILE.address.addressRegion,
-          addressCountry: SITE_PROFILE.address.addressCountry,
-        },
-        hasMap: GOOGLE_BUSINESS.mapsUrl,
-        sameAs: Object.values(SITE_PROFILE.socialProfiles),
-        parentOrganization: {
-          '@id': organizationId,
+          url: `${SITE_CONFIG.domain}/pt`,
+          category: 'Gestão de Redes Sociais',
         },
       },
       {

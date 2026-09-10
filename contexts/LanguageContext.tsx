@@ -291,10 +291,8 @@ export const LanguageProvider: React.FC<{ children?: React.ReactNode; initialLan
 
   const recommendedContactMessage = useMemo(
     () =>
-      recommendedContactRoute === 'br'
-        ? t.contactRouting.routes.br.message
-        : t.contactRouting.routes.intl.message,
-    [recommendedContactRoute, t.contactRouting.routes.br.message, t.contactRouting.routes.intl.message],
+      recommendedContactRoute === 'br' ? t.cta.messageBr : t.cta.messageIntl,
+    [recommendedContactRoute, t.cta.messageBr, t.cta.messageIntl],
   );
 
   const recommendedContactHref = useMemo(

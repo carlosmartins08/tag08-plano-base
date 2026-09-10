@@ -2,19 +2,8 @@
 
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
-import { LanguageProvider } from '../contexts/LanguageContext';
 import { ConsentProvider } from '../contexts/ConsentContext';
-import { UXProvider, useUX } from '../contexts/UXContext';
 import AnalyticsManager from '../components/AnalyticsManager';
-
-const BlueprintWrapper = ({ children }: { children?: React.ReactNode }) => {
-  const { isBlueprintMode } = useUX();
-  return (
-    <div className={`${isBlueprintMode ? 'blueprint-active' : ''} min-h-screen transition-colors duration-500`}>
-      {children}
-    </div>
-  );
-};
 
 export function Providers({ children }: { children?: React.ReactNode }) {
   useEffect(() => {
@@ -55,16 +44,10 @@ export function Providers({ children }: { children?: React.ReactNode }) {
   }, []);
 
   return (
-    <LanguageProvider>
-      <ConsentProvider>
-        <AnalyticsManager />
-        <UXProvider>
-          <BlueprintWrapper>
-            {children}
-          </BlueprintWrapper>
-        </UXProvider>
-      </ConsentProvider>
-    </LanguageProvider>
+    <ConsentProvider>
+      <AnalyticsManager />
+      <div className="min-h-screen">{children}</div>
+    </ConsentProvider>
   );
 }
 

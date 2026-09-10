@@ -27,8 +27,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.domain),
-  title: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais com Estratégia`,
-  description: 'Gestão de conteúdo para redes sociais com direção estratégica, construção de audiência qualificada, posicionamento de marca e geração de vendas.',
+  title: 'Plano Base TAG08 | Gestão de Redes Sociais Estratégica',
+  description: 'Planejamento editorial, produção de conteúdo, publicação e acompanhamento mensal para negócios com oferta ativa que precisam de presença digital mais consistente.',
   applicationName: SITE_CONFIG.siteName,
   category: 'marketing',
   authors: [{ name: SITE_PROFILE.legalName }],
@@ -43,12 +43,13 @@ export const metadata: Metadata = {
     'consultoria de marketing digital',
   ],
   alternates: {
-    canonical: '/',
+    canonical: '/pt',
     languages: {
-      'pt-BR': '/?lang=pt',
-      'en-US': '/?lang=en',
-      'es-ES': '/?lang=es',
-      'x-default': '/',
+      'pt-BR': '/pt',
+      'en-US': '/en',
+      'es-ES': '/es',
+      'fr-FR': '/fr',
+      'x-default': '/pt',
     },
   },
   robots: {
@@ -63,9 +64,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais com Estratégia`,
-    description: 'Direção estratégica de conteúdo para fortalecer marca, criar audiência e converter em vendas.',
-    url: SITE_CONFIG.domain,
+    title: 'Plano Base TAG08 | Gestão de Redes Sociais Estratégica',
+    description: 'Planejamento editorial e produção de conteúdo para negócios com oferta ativa que precisam de uma rotina mensal mais consistente.',
+    url: `${SITE_CONFIG.domain}/pt`,
     siteName: SITE_CONFIG.siteName,
     locale: 'pt_BR',
     type: 'website',
@@ -80,8 +81,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_CONFIG.siteName} | Gestão de Conteúdo para Redes Sociais`,
-    description: 'Conteúdo estratégico para posicionamento de marca, audiência e vendas.',
+    title: 'Plano Base TAG08 | Gestão de Redes Sociais Estratégica',
+    description: 'Planejamento editorial e produção de conteúdo em uma rotina mensal coordenada.',
     images: [`${SITE_CONFIG.domain}${SITE_PROFILE.logoPath}`],
   },
   icons: {

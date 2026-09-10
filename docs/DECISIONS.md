@@ -1,30 +1,9 @@
 # Decisions
 
-These are the key decisions already made for this base.
+## 2026-09-10 — Plano Base consolidation
 
-## 2026-04-15
-
-- The app stays as a single landing page; no locale route tree is introduced.
-- Consent was split out of the language context into `ConsentContext`.
-- Organization and Service schema were centralized in `components/StructuredData.tsx`.
-- The contact router was kept as a single section with Brazil and International / Español WhatsApp paths.
-- Latest YouTube videos and Google reviews are consumed through API routes instead of being copied into the page.
-- The team showcase and video gallery are shared sections, not page-specific duplicates.
-- The footer now uses the official company profile, address and social links from `constants.tsx`.
-
-## 2026-04-19
-
-- Design system primitives were centralized in `app/globals.css` (`ds-section-badge`, `ds-card-shell`, `ds-panel-shell`, `ds-icon-shell`, `ds-chip`).
-- CTA behavior was standardized through `components/Button.tsx` variants and sizes.
-- Visual governance became mandatory through `npm run ds:check` and `docs/PR_CHECKLIST.md`.
-
-## Open decisions
-
-- Whether the YouTube source should remain HTML scraping or move to a more stable published feed / API when credentials are available.
-- Whether the Testimonials section should stay hybrid (Google + fallback) or become fully API-driven.
-
-## 2026-06-01
-
-- Conversion funnel contract standardized as `hero_cta -> calculator_submit -> final_cta_click -> whatsapp_click`.
-- A/B experiments started for hero headline and testimonials structure with exposure tracking.
-- External feeds now expose SLA and source headers for operational observability.
+- Plano Base is a recurring social-media planning and content-production operation for businesses with an active offer. Paid media, guarantees, ROI, scale and arbitrary lead qualification are not part of the default offer.
+- The calculator, UXContext, blueprint mode, Decision Lens, team, videos, testimonials and their external API routes were removed from the active product.
+- Conversion events are hero_cta, final_cta_click, whatsapp_click and, where relevant, institutional_link_click.
+- Analytics and marketing tags load only after the corresponding consent.
+- Legal identity, policy language and official analytics IDs remain PENDENTE_VALIDACAO_JURIDICO_INSTITUCIONAL, PENDENTE_VALIDACAO_JURIDICA and PENDENTE_VALIDACAO_ANALYTICS until confirmed by their owners.

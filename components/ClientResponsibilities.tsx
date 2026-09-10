@@ -28,8 +28,7 @@ const ClientResponsibilities: React.FC = () => {
             </div>
 
             <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-8 uppercase italic tracking-tighter leading-[0.9]">
-              {t.responsibilities.title} <br />
-              <span className="text-brand-lime">{t.responsibilities.titleAccent}</span>
+              {t.responsibilities.title}
             </h2>
 
             <p className="text-slate-400 mb-16 leading-relaxed font-medium text-lg max-w-2xl">

@@ -2,16 +2,18 @@ import { SITE_CONFIG } from '../constants';
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date('2026-09-10T00:00:00.000Z');
+
   return [
-    {
-      url: SITE_CONFIG.domain,
-      lastModified: new Date('2026-06-01T00:00:00.000Z'),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
+    ...['pt', 'en', 'es', 'fr'].map((lang) => ({
+      url: `${SITE_CONFIG.domain}/${lang}`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: lang === 'pt' ? 1 : 0.8,
+    })),
     {
       url: `${SITE_CONFIG.domain}/llms.txt`,
-      lastModified: new Date('2026-06-01T00:00:00.000Z'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.6,
     },

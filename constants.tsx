@@ -4,7 +4,6 @@ import React from 'react';
 export const SITE_CONFIG = {
   domain: 'https://socialmedia.tag08.com.br',
   siteName: 'TAG08 Studio',
-  youtubeVideosUrl: 'https://www.youtube.com/@tag08.com.br_sobre/videos',
   locales: ['pt', 'en', 'es', 'fr'],
   defaultLocale: 'pt',
 };
@@ -23,15 +22,9 @@ export const SITE_PROFILE = {
     instagram: 'https://www.instagram.com/tag08.com.br/',
     linkedin: 'https://www.linkedin.com/company/tag08-com-br/',
     facebook: 'https://www.facebook.com/tag08.com.br',
-    youtube: SITE_CONFIG.youtubeVideosUrl,
+    youtube: 'https://www.youtube.com/@tag08.com.br_sobre/videos',
     twitter: 'https://twitter.com/TAG08_com_br',
   },
-} as const;
-
-export const GOOGLE_BUSINESS = {
-  placeId: 'ChIJmV8-JAvdrAcRsu1481Ot-jg',
-  name: 'TAG08 - Marketing e Consultoria',
-  mapsUrl: 'https://www.google.com/maps/place/?q=place_id:ChIJmV8-JAvdrAcRsu1481Ot-jg',
 } as const;
 
 export const WHATSAPP_CONTACTS = {
@@ -49,37 +42,6 @@ export const buildWhatsAppUrl = (phone: string, message: string) =>
   `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
 export const buildTelUrl = (phone: string) => `tel:+${phone.replace(/\D/g, '')}`;
-
-export const HIGH_VALUE_THRESHOLD = 150000;
-
-export const TEAM_SHOWCASE_MEDIA: Record<
-  string,
-  {
-    photoUrl: string;
-    photoPosition?: string;
-    photoPositionMobile?: string;
-    layout: 'avatar' | 'portrait';
-  }
-> = {
-  'https://www.linkedin.com/in/carlosmartins08/': {
-    photoUrl: '/team/carlos.jpg',
-    photoPosition: '50% 24%',
-    photoPositionMobile: '50% 18%',
-    layout: 'avatar',
-  },
-  'https://www.linkedin.com/in/ignacio-quiroz-b1568a52/': {
-    photoUrl: '/team/ignacio.jpeg',
-    photoPosition: '50% 22%',
-    photoPositionMobile: '50% 16%',
-    layout: 'portrait',
-  },
-  'https://www.linkedin.com/in/pedrovsfelix/': {
-    photoUrl: '/team/pedro.jpg',
-    photoPosition: '52% 20%',
-    photoPositionMobile: '50% 14%',
-    layout: 'portrait',
-  },
-};
 
 export const Icons = {
   LogoIcon: () => (

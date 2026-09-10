@@ -1,10 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useUX } from '../contexts/UXContext';
 
 const CustomCursor: React.FC = () => {
-    const { strategyNote } = useUX();
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -47,30 +45,14 @@ const CustomCursor: React.FC = () => {
 
     return (
         <>
-            {/* Strategy Note Tooltip */}
-            <div
-                className={`fixed pointer-events-none z-[10000] px-3 py-2 bg-brand-lime text-brand-black rounded-lg text-[9px] font-black uppercase tracking-wider transition-all duration-300 shadow-2xl ${strategyNote ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4'}`}
-                style={{
-                    left: position.x + 24,
-                    top: position.y - 12,
-                }}
-            >
-                <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-brand-black rounded-full animate-pulse"></span>
-                    {strategyNote}
-                </div>
-                {/* Connector Line */}
-                <div className="absolute top-1/2 -left-2 w-2 h-px bg-brand-lime"></div>
-            </div>
-
             {/* Main follower circle */}
             <div
                 className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-lime pointer-events-none z-[9999] transition-transform duration-300 ease-brand flex items-center justify-center mix-blend-difference"
                 style={{
-                    transform: `translate(${position.x - 16}px, ${position.y - 16}px) scale(${isHovering || strategyNote ? 2 : 1})`,
+                    transform: `translate(${position.x - 16}px, ${position.y - 16}px) scale(${isHovering ? 2 : 1})`,
                 }}
             >
-                <div className={`w-1 h-1 bg-brand-lime rounded-full transition-all duration-300 ${strategyNote ? 'scale-[3]' : 'scale-100'}`}></div>
+                <div className="w-1 h-1 rounded-full bg-brand-lime transition-all duration-300"></div>
             </div>
 
             {/* Trailing glow */}

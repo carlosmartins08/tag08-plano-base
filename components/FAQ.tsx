@@ -62,8 +62,7 @@ const FAQ: React.FC = () => {
             </div>
 
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              {t.faq.title} <br />
-              <span className="text-slate-500">{t.faq.titleAccent}</span>
+              {t.faq.title}
             </h2>
 
             <p className="text-slate-400 text-sm leading-relaxed mb-8 border-l border-white/10 pl-4">

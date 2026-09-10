@@ -362,30 +362,6 @@ h6,
   color: var(--brand-black);
 }
 
-/* Blueprint Mode CSS */
-.blueprint-active {
-  background-image:
-    linear-gradient(rgba(212, 255, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 255, 0, 0.03) 1px, transparent 1px) !important;
-  background-size: 40px 40px !important;
-}
-
-.blueprint-label {
-  @apply absolute pointer-events-none opacity-0 scale-90 transition-all duration-500 bg-brand-lime text-brand-black text-[8px] font-mono px-1.5 py-0.5 rounded-sm z-[60] uppercase tracking-tighter hidden md:block;
-}
-
-.blueprint-active .blueprint-label {
-  @apply md:opacity-100 md:scale-100;
-}
-
-.blueprint-active .blueprint-element {
-  @apply md:border-brand-lime/30 md:border-dashed !important;
-}
-
-.blueprint-active .blueprint-bg {
-  @apply bg-brand-lime/5 !important;
-}
-
 /* Handle Custom Cursor for Touch */
 @media (hover: none) and (pointer: coarse) {
   .custom-cursor-active {
