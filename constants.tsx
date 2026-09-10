@@ -1,4 +1,4 @@
-﻿
+
 import React from 'react';
 
 export const SITE_CONFIG = {
@@ -20,7 +20,7 @@ export const SITE_PROFILE = {
     addressCountry: 'BR',
   },
   socialProfiles: {
-    instagram: 'https://www.instagram.com/tag08.mkt',
+    instagram: 'https://www.instagram.com/tag08.com.br/',
     linkedin: 'https://www.linkedin.com/company/tag08-com-br/',
     facebook: 'https://www.facebook.com/tag08.com.br',
     youtube: SITE_CONFIG.youtubeVideosUrl,

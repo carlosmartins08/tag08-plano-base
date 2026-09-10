@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Icons } from '../constants';
+import { MessageCircleMore } from 'lucide-react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { useUX } from '../contexts/UXContext';
 import { trackEvent, trackFunnelEvent } from '../lib/analytics';
 import Magnetic from './Magnetic';
 import Button from './Button';
+import BrandLogo from './BrandLogo';
 
 const Navbar: React.FC = () => {
   const { t, language, localeSignals, recommendedContactHref, recommendedContactRoute } = useTranslation();
@@ -17,6 +18,7 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuScrollY, setMenuScrollY] = useState(0);
   const menuRef = useRef<HTMLDivElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
 
   // Script para ativação secreta do Blueprint (3 cliques no logo)
   const [logoClicks, setLogoClicks] = useState(0);
@@ -85,16 +87,19 @@ const Navbar: React.FC = () => {
   };
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      if (menuRef.current) menuRef.current.scrollTop = 0;
-      setMenuScrollY(0);
+    if (!isMenuOpen) return;
 
-      const focusable = menuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
-      focusable?.[0]?.focus();
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    if (menuRef.current) menuRef.current.scrollTop = 0;
+    setMenuScrollY(0);
+
+    const focusable = menuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+    focusable?.[0]?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [isMenuOpen]);
 
   useEffect(() => {
@@ -104,6 +109,7 @@ const Navbar: React.FC = () => {
       if (event.key === 'Escape') {
         event.preventDefault();
         setIsMenuOpen(false);
+        menuToggleRef.current?.focus();
         return;
       }
 
@@ -155,73 +161,72 @@ const Navbar: React.FC = () => {
         aria-label="Navegação Principal"
         className={`fixed left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 flex items-center gap-4 ${isScrolled
           ? 'top-6 w-[95%] max-w-5xl py-2 px-3 bg-brand-black/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl'
-          : 'top-0 w-full py-6 px-8 bg-transparent'
+          : 'top-0 w-full py-5 px-5 xl:px-6 bg-black/35 backdrop-blur-md border-b border-white/6'
           }`}
       >
-        <div className="flex items-center gap-3 mr-auto group cursor-pointer" onClick={handleLogoClick}>
+        <div className="flex items-center mr-auto group cursor-pointer pr-2 xl:pr-3" onClick={handleLogoClick}>
           <Link
-            href="#hero"
-            className="flex items-center gap-3"
+          href="#hero"
+            className="flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
             aria-label="Voltar ao início"
             onMouseEnter={() => setStrategyNote(t.strategyNotes.hero)}
             onMouseLeave={() => setStrategyNote(null)}
           >
-            <div className={`${isScrolled ? 'scale-75' : 'scale-100'} transition-transform duration-300 relative`}>
-              <Icons.LogoIcon />
+            <div className={`${isScrolled ? 'scale-90' : 'scale-100'} transition-transform duration-300 relative`}>
+              <BrandLogo className="max-h-10" variant="light" width={isScrolled ? 132 : 148} />
               <span className="blueprint-label -top-4 -left-4">LOGO_ANCHOR</span>
               {/* Feedback visual discreto para cliques no logo */}
               {logoClicks > 0 && (
                 <span className="absolute -top-1 -right-1 w-1.5 h-1.5 bg-brand-lime rounded-full animate-ping"></span>
               )}
             </div>
-            <div className={`flex flex-col ${isScrolled ? 'hidden md:flex' : 'flex'} relative`}>
-              <span className="font-black tracking-tighter leading-none text-white transition-colors group-hover:text-brand-lime">TAG08</span>
-              <span className={`text-[8px] font-bold tracking-[0.2em] uppercase leading-none mt-1 ${isScrolled ? 'text-brand-lime' : 'text-slate-400'}`}>Studio</span>
-              <span className="blueprint-label -right-12 top-0">T08_V1.1</span>
-            </div>
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/5 relative">
+        <div className="hidden xl:flex flex-1 items-center justify-center gap-0.5 relative min-w-0">
           <span className="blueprint-label -top-6 left-1/2 -translate-x-1/2">NAV_GRID</span>
           {navItems.map((item) => (
             <Link
               key={item.id}
               href={item.href}
               aria-current={activeSection === item.id ? 'page' : undefined}
-              className={`relative px-3 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all group ${activeSection === item.id
-                ? 'bg-brand-lime text-brand-black shadow-lg shadow-brand-lime/20'
+              className={`relative rounded-full px-2 py-2 text-[10px] font-black uppercase tracking-[0.12em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black group whitespace-nowrap xl:px-2.5 ${activeSection === item.id
+                ? 'bg-brand-lime text-brand-black shadow-[0_10px_30px_rgba(212,255,0,0.22)]'
                 : 'text-white/60 hover:text-white'
                 }`}
             >
               <span className="relative z-10">{item.label}</span>
               {activeSection !== item.id && (
-                <span className="absolute bottom-2 left-4 right-4 h-[1px] bg-brand-lime transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                <span className="absolute bottom-[7px] left-3 right-3 h-[1px] bg-brand-lime/80 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               )}
             </Link>
           ))}
         </div>
 
         <Magnetic>
-          <Button
+          <a
             href={recommendedContactHref}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => handleDirectContactClick('navbar')}
             onMouseEnter={() => setStrategyNote(t.strategyNotes.metrics)}
             onMouseLeave={() => setStrategyNote(null)}
-            size="sm"
-            className="hidden sm:flex rounded-xl"
+            aria-label={`${t.navbar.diagnosis} ${t.navbar.free}`}
+            title={`${t.navbar.diagnosis} ${t.navbar.free}`}
+            className="hidden xl:flex ml-2 h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-lime text-brand-black shadow-[0_10px_24px_rgba(212,255,0,0.2)] transition-all duration-300 hover:bg-white hover:shadow-[0_12px_28px_rgba(212,255,0,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
           >
-            {t.navbar.diagnosis} <span className="hidden lg:inline">{t.navbar.free}</span>
-          </Button>
+            <MessageCircleMore className="h-[18px] w-[18px]" aria-hidden="true" />
+          </a>
         </Magnetic>
 
         <button
+          ref={menuToggleRef}
+          type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/10 text-brand-lime relative z-[101]"
+          className="relative z-[101] flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black xl:hidden"
           aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
           <div className="space-y-1.5 w-5">
             <span className={`block h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -244,7 +249,9 @@ const Navbar: React.FC = () => {
         id="mobile-menu"
         ref={menuRef}
         onScroll={handleMenuScroll}
-        className={`fixed inset-0 z-[90] bg-brand-black transition-all duration-700 ease-brand flex flex-col px-10 overflow-y-auto ${isMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
+        className={`fixed inset-0 z-[90] bg-brand-black transition-all duration-700 ease-brand flex flex-col px-6 sm:px-10 overflow-y-auto ${isMenuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
         <div className="fixed inset-0 pointer-events-none overflow-hidden select-none z-0">
           <div
@@ -259,21 +266,21 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        <nav className="relative z-10 flex flex-col gap-6 pt-36 pb-20 my-auto">
+        <nav className="relative z-10 my-auto flex flex-col gap-4 pt-28 pb-16 sm:gap-6 sm:pt-36 sm:pb-20">
           {navItems.map((item, idx) => (
             <Link
               key={idx}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className={`relative text-5xl md:text-7xl font-black text-white hover:text-brand-lime transition-all duration-1000 ease-brand uppercase italic tracking-tighter group flex items-center gap-4 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
+              className={`relative flex items-center gap-4 text-4xl font-black uppercase italic tracking-tighter text-white transition-all duration-1000 ease-brand hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black sm:text-5xl lg:text-6xl ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
               style={{ transitionDelay: `${200 + idx * 80}ms` }}
             >
               <span className="relative z-10 transition-transform duration-500 group-hover:translate-x-4">{item.label}</span>
-              <span className="text-[10px] font-black italic text-white/20 absolute -left-8 top-1">0{idx + 1}</span>
+              <span className="absolute -left-4 top-1 text-[10px] font-black italic text-white/20 sm:-left-8">0{idx + 1}</span>
             </Link>
           ))}
 
-          <div className="mt-16">
+          <div className="mt-10 sm:mt-16">
             <Button
               href={recommendedContactHref}
               target="_blank"

@@ -34,6 +34,8 @@ const allowedInlineStyleFiles = new Set([
   'components/BrandLogo.tsx',
   'components/CustomCursor.tsx',
   'components/GrowthRoadmap.tsx',
+  // Hero parallax uses runtime transforms gated to desktop widths.
+  'components/Hero.tsx',
   'components/IncludedPillars.tsx',
   'components/Magnetic.tsx',
   'components/Navbar.tsx',

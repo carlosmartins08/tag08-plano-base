@@ -87,6 +87,33 @@ export const es: TranslationSchema = {
       }
     ]
   },
+  "contentLab": {
+    "badge": "Insights de operacion",
+    "title": "Experiencia real,",
+    "titleAccent": "sin frases vacias.",
+    "subtitle": "Aqui tienes lectura de campo aplicada: errores repetidos, correccion de ruta y criterio de decision para no confundir actividad con progreso.",
+    "ctaLabel": "Abrir insight",
+    "items": [
+      {
+        "hook": "Mas contenido no corrige una oferta debil",
+        "context": "Si la propuesta no esta clara, publicar mas solo aumenta ruido y costo de atencion.",
+        "insight": "Primero alinea promesa, prueba y perfil decisor. Luego escala volumen.",
+        "action": "Revisa el CTA principal y elimina mensajes que compiten en el mismo bloque."
+      },
+      {
+        "hook": "Reporte sin decision es vanidad operativa",
+        "context": "Muchos equipos miden todo y cambian poco. Parece control, pero sin impacto real.",
+        "insight": "Cada lectura semanal debe terminar en corte, ajuste o aceleracion.",
+        "action": "En la revision semanal, obliga una decision por etapa del embudo."
+      },
+      {
+        "hook": "Perdida en el traspaso comercial no es problema del anuncio",
+        "context": "Cuando marketing atrae y ventas no absorbe, el CAC sube sin explicacion clara.",
+        "insight": "La conversion es un sistema unico: mensaje, filtro y primer contacto deben coincidir.",
+        "action": "Estandariza el guion de primer contacto segun la promesa de la landing."
+      }
+    ]
+  },
   "problem": {
     "label": "El Escenario Actual",
     "title": "¿Su empresa está estancada en el \"casi\"?",
@@ -197,11 +224,12 @@ export const es: TranslationSchema = {
   },
   "contactRouting": {
     "badge": "Enrutamiento directo",
-    "title": "Elige el",
+    "title": "Entra por el",
     "titleAccent": "canal correcto.",
     "subtitle": "Brasil e Internacional / Español siguen rutas distintas. Eso evita ruido y te lleva al equipo que atiende tu caso.",
     "helper": "Si estás en Brasil, usa el canal nacional. Si estás fuera del país o necesitas atención en español, usa el canal internacional.",
-    "recommended": "Recomendado",
+    "recommended": "Canal prioritario",
+    "secondary": "Canal complementario",
     "disclaimer": "Al iniciar el contacto, autorizas a TAG08 a tratar tus datos con fines de diagnóstico comercial, de acuerdo con nuestra política de privacidad.",
     "routes": {
       "br": {

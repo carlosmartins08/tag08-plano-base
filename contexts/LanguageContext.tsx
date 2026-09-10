@@ -131,10 +131,6 @@ const inferLanguage = (
     return 'es';
   }
 
-  if (hasLanguage('fr')) {
-    return 'fr';
-  }
-
   if (hasLanguage('pt')) {
     return 'pt';
   }

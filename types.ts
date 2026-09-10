@@ -123,6 +123,19 @@ export interface TranslationSchema {
       action: string;
     }[];
   };
+  contentLab: {
+    badge: string;
+    title: string;
+    titleAccent: string;
+    subtitle: string;
+    ctaLabel: string;
+    items: {
+      hook: string;
+      context: string;
+      insight: string;
+      action: string;
+    }[];
+  };
   problem: {
     label: string;
     title: string;
@@ -172,6 +185,7 @@ export interface TranslationSchema {
     subtitle: string;
     helper: string;
     recommended: string;
+    secondary: string;
     disclaimer: string;
     routes: {
       br: {

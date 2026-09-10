@@ -9,9 +9,12 @@ import CookiePolicyModal from '../components/CookiePolicyModal';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import SectionMotion from '../components/SectionMotion';
 import ScrollDepthTracker from '../components/ScrollDepthTracker';
+import SceneDivider from '../components/SceneDivider';
+import GlobalAtmosphere from '../components/GlobalAtmosphere';
 
 const OpportunityCalculator = dynamicImport(() => import('../components/OpportunityCalculator'), { ssr: true });
 const DecisionLens = dynamicImport(() => import('../components/DecisionLens'), { ssr: true });
+const OperatorInsights = dynamicImport(() => import('../components/OperatorInsights'), { ssr: true });
 const IncludedPillars = dynamicImport(() => import('../components/IncludedPillars'), { ssr: true });
 const MonthlyCycle = dynamicImport(() => import('../components/MonthlyCycle'), { ssr: true });
 const GrowthRoadmap = dynamicImport(() => import('../components/GrowthRoadmap'), { ssr: true });
@@ -28,6 +31,7 @@ const Footer = dynamicImport(() => import('../components/Footer'), { ssr: true }
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
+      <GlobalAtmosphere />
       <Navbar />
       <main id="main-content">
         <Hero />
@@ -37,12 +41,17 @@ export default function Home() {
         <SectionMotion sectionId="calculator">
           <OpportunityCalculator />
         </SectionMotion>
+        <SceneDivider label="Leitura de contexto" className="py-4 lg:py-6" />
         <SectionMotion sectionId="value_proposition">
           <ValueProposition />
         </SectionMotion>
         <SectionMotion sectionId="decision_lens">
           <DecisionLens />
         </SectionMotion>
+        <SectionMotion sectionId="operator_insights">
+          <OperatorInsights />
+        </SectionMotion>
+        <SceneDivider label="Arquitetura de execucao" className="py-4 lg:py-6" />
         <SectionMotion sectionId="pillars">
           <IncludedPillars />
         </SectionMotion>
@@ -58,6 +67,7 @@ export default function Home() {
         <SectionMotion sectionId="video_gallery">
           <VideoGallery />
         </SectionMotion>
+        <SceneDivider label="Autoridade operacional" className="py-4 lg:py-6" />
         <SectionMotion sectionId="team_showcase">
           <TeamShowcase />
         </SectionMotion>

@@ -87,6 +87,33 @@ export const en: TranslationSchema = {
       }
     ]
   },
+  "contentLab": {
+    "badge": "Operator insights",
+    "title": "Field experience,",
+    "titleAccent": "not generic advice.",
+    "subtitle": "This is practical signal reading: recurring mistakes, route correction and decision criteria to avoid confusing activity with progress.",
+    "ctaLabel": "Open insight",
+    "items": [
+      {
+        "hook": "More content does not fix a weak offer",
+        "context": "If the value proposition is unclear, publishing more only increases noise and attention cost.",
+        "insight": "Align promise, proof and buyer profile first. Then scale volume.",
+        "action": "Review your main CTA and remove competing messages in the same fold."
+      },
+      {
+        "hook": "Reports without decisions are operational vanity",
+        "context": "Many teams measure everything and change little. It feels controlled but impact stays flat.",
+        "insight": "Every weekly reading must end with a cut, an adjustment or an acceleration.",
+        "action": "At weekly review, force one decision per funnel stage."
+      },
+      {
+        "hook": "Commercial handoff losses are not ad problems",
+        "context": "When marketing attracts but sales cannot absorb, CAC rises with no obvious reason.",
+        "insight": "Conversion is one system: message, qualification and first contact must match.",
+        "action": "Standardize your first-contact script based on the landing promise."
+      }
+    ]
+  },
   "problem": {
     "label": "The Current Scenario",
     "title": "Is your company stuck in \"almost\"?",
@@ -197,11 +224,12 @@ export const en: TranslationSchema = {
   },
   "contactRouting": {
     "badge": "Direct routing",
-    "title": "Choose the right",
-    "titleAccent": "channel.",
+    "title": "Start in the",
+    "titleAccent": "right channel.",
     "subtitle": "Brazil and International / Spanish follow different routes. That keeps the conversation clean and sends you to the team that handles your case.",
     "helper": "If you're in Brazil, use the national channel. If you're outside the country or need Spanish support, use the international channel.",
-    "recommended": "Recommended",
+    "recommended": "Priority route",
+    "secondary": "Secondary route",
     "disclaimer": "By starting the contact, you agree that TAG08 may process your data for commercial diagnosis purposes, in line with our privacy policy.",
     "routes": {
       "br": {

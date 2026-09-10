@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
           <div className="reveal relative space-y-12 lg:col-span-4">
             <span className="blueprint-label -top-4 left-0">BRAND_SECTION</span>
             <div className="group cursor-pointer origin-left transition-transform duration-500 hover:scale-[1.02]">
-              <BrandLogo className="text-4xl text-white" color="white" />
+              <BrandLogo className="text-4xl text-white" color="white" variant="light" />
             </div>
             <p className="max-w-sm text-sm leading-relaxed font-medium text-slate-400">
               {t.footer.about}
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
                       href={GOOGLE_BUSINESS.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-bold leading-snug text-white transition-colors hover:text-brand-lime"
+                      className="rounded text-sm font-bold leading-snug text-white transition-colors hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
                     >
                       {SITE_PROFILE.address.streetAddress}<br />
                       {SITE_PROFILE.address.addressLocality} - {SITE_PROFILE.address.addressRegion}<br />
@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
                   </span>
                   <a
                     href={`mailto:${SITE_PROFILE.email}`}
-                    className="text-sm font-bold text-white transition-colors hover:text-brand-lime"
+                    className="rounded text-sm font-bold text-white transition-colors hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
                   >
                     {SITE_PROFILE.email}
                   </a>
@@ -101,10 +101,12 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {[
                 { label: 'TAG08 Digital Strategy', href: 'https://tag08.com.br/' },
+                { label: 'Hospedagem TAG08', href: 'https://hospedagem.tag08.com.br/' },
+                { label: 'Social Media TAG08', href: 'https://socialmedia.tag08.com.br/' },
                 { label: t.footer.aboutTag08, href: 'https://tag08.com.br/sobre-a-tag08/' },
                 { label: t.footer.blog, href: 'https://tag08.com.br/blog/' },
                 { label: t.footer.sebraetec, href: 'https://tag08.com.br/sebraetec-impulsionando-empreendedores/' },
-                { label: 'Process Intelligence', href: null },
+                { label: 'Process Intelligence', href: 'https://processos.tag08.com.br/' },
               ].map((item) => (
                 <li key={item.label}>
                   {item.href ? (
@@ -112,7 +114,7 @@ const Footer: React.FC = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-3 text-[13px] font-bold uppercase tracking-wider text-slate-400 transition-all hover:text-brand-lime"
+                      className="group flex items-center gap-3 rounded text-[13px] font-bold uppercase tracking-wider text-slate-400 transition-all hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
                     >
                       <ArrowUpRight size={14} className="opacity-0 -ml-4 text-brand-lime transition-all group-hover:ml-0 group-hover:opacity-100" />
                       {item.label}
@@ -142,7 +144,7 @@ const Footer: React.FC = () => {
                   <button
                     type="button"
                     onClick={item.action}
-                    className="text-left text-[13px] font-bold uppercase tracking-wider text-slate-400 transition-all hover:text-brand-lime"
+                    className="rounded text-left text-[13px] font-bold uppercase tracking-wider text-slate-400 transition-all hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
                   >
                     {item.label}
                   </button>
@@ -164,7 +166,7 @@ const Footer: React.FC = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ds-icon-shell flex aspect-square rounded-xl bg-white/5 p-3.5 shadow-lg hover:border-brand-lime hover:bg-brand-lime hover:text-brand-black group"
+                    className="ds-icon-shell group flex aspect-square rounded-xl bg-white/5 p-3.5 shadow-lg hover:border-brand-lime hover:bg-brand-lime hover:text-brand-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
                     aria-label={link.label}
                   >
                     <Icon size={20} />
@@ -183,13 +185,13 @@ const Footer: React.FC = () => {
 
       <div className="relative z-10 border-t border-white/5 bg-black px-6 py-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 sm:flex-row">
-          <div className="flex flex-col items-center gap-4 text-center text-[9px] font-mono uppercase tracking-[0.4em] text-slate-500 sm:flex-row sm:gap-8 sm:text-left">
+          <div className="ds-text-muted flex flex-col items-center gap-3 text-center text-[10px] font-mono uppercase tracking-[0.22em] sm:flex-row sm:gap-8 sm:text-left">
             <span>© {new Date().getFullYear()} {t.footer.rights}</span>
             <span className="hidden text-white/10 sm:block">|</span>
             <span>{t.footer.allRights}</span>
           </div>
 
-          <div className="group relative flex flex-col items-center gap-4 text-center text-[9px] font-mono uppercase tracking-[0.4em] text-slate-500 sm:flex-row sm:gap-6 sm:text-left">
+          <div className="group relative flex flex-col items-center gap-3 text-center text-[10px] font-mono uppercase tracking-[0.22em] ds-text-muted sm:flex-row sm:gap-6 sm:text-left">
             <span className="blueprint-label -top-6 right-0 opacity-0 transition-all group-hover:opacity-100 italic pointer-events-none">NODE_SVR_PROD: LATEST</span>
             <span>CNPJ: 26.828.685/0001-52</span>
             <div className="flex items-center gap-2">

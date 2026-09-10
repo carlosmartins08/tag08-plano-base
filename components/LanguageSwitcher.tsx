@@ -1,58 +1,75 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Language } from '../types';
 
 const LanguageSwitcher: React.FC = () => {
   const { language, setLanguage } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   const handleLanguageChange = (newLang: Language) => {
     setLanguage(newLang);
     setIsOpen(false);
+    window.requestAnimationFrame(() => toggleRef.current?.focus());
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setIsOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   const languages: { code: Language; label: string; name: string }[] = [
     { code: 'pt', label: 'PT', name: 'Português' },
     { code: 'en', label: 'EN', name: 'English' },
-    { code: 'es', label: 'ES', name: 'Español' },
     { code: 'fr', label: 'FR', name: 'Français' },
+    { code: 'es', label: 'ES', name: 'Español' },
   ];
 
   return (
     <div className="fixed bottom-6 right-6 z-[150] flex flex-col items-end gap-2">
-      {/* Expanded Menu */}
-      <div
-        id="language-switcher-menu"
-        role="menu"
-        aria-label="Language options"
-        className={`flex flex-col gap-2 transition-all duration-300 origin-bottom ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4 pointer-events-none'
-          }`}
-      >
-        {languages.filter(l => l.code !== language).map((lang) => (
-          <button
-            key={lang.code}
-            type="button"
-            role="menuitem"
-            onClick={() => handleLanguageChange(lang.code)}
-            className="group flex items-center gap-3 px-4 py-2.5 bg-brand-black/80 backdrop-blur-xl border border-white/10 rounded-2xl text-white/60 hover:text-brand-lime hover:border-brand-lime/50 transition-all shadow-xl"
-          >
-            <span className="text-[10px] font-black tracking-widest uppercase">{lang.name}</span>
-            <span className="text-[9px] font-black w-6 h-6 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-brand-lime group-hover:text-brand-black transition-colors">
-              {lang.label}
-            </span>
-          </button>
-        ))}
-      </div>
+      {isOpen && (
+        <div
+          id="language-switcher-menu"
+          role="group"
+          aria-label="Language options"
+          className="flex origin-bottom flex-col gap-2 animate-in fade-in slide-in-from-bottom-2 duration-300"
+        >
+          {languages.filter((item) => item.code !== language).map((lang) => (
+            <button
+              key={lang.code}
+              type="button"
+              onClick={() => handleLanguageChange(lang.code)}
+              className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-brand-black/80 px-4 py-2.5 text-white/60 shadow-xl backdrop-blur-xl transition-all hover:border-brand-lime/50 hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
+            >
+              <span className="text-[10px] font-black tracking-widest uppercase">{lang.name}</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-white/5 text-[9px] font-black transition-colors group-hover:bg-brand-lime group-hover:text-brand-black">
+                {lang.label}
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Main Toggle Button */}
       <button
+        ref={toggleRef}
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-3 px-4 py-3 bg-brand-black border rounded-2xl shadow-2xl transition-all duration-500 ${isOpen ? 'border-brand-lime ring-4 ring-brand-lime/10' : 'border-white/10 hover:border-brand-lime/50'
+        className={`flex items-center gap-3 rounded-2xl border bg-brand-black px-4 py-3 shadow-2xl transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black ${isOpen ? 'border-brand-lime ring-4 ring-brand-lime/10' : 'border-white/10 hover:border-brand-lime/50'
           }`}
         aria-label="Selecionar Idioma"
-        aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls="language-switcher-menu"
       >

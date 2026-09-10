@@ -171,7 +171,7 @@ const Testimonials: React.FC = () => {
               <MessageSquare className="w-3 h-3 text-brand-lime" />
               <span>{t.testimonials.badge}</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-display font-black text-white uppercase tracking-tight italic leading-[0.9]">
+            <h2 className="cinematic-title text-4xl md:text-6xl font-display font-black text-white uppercase tracking-tight italic leading-[0.9]">
               {t.testimonials.title}
             </h2>
             <p className="text-slate-400 text-lg font-medium mt-6">

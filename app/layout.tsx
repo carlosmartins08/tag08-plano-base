@@ -43,7 +43,13 @@ export const metadata: Metadata = {
     'consultoria de marketing digital',
   ],
   alternates: {
-    canonical: SITE_CONFIG.domain,
+    canonical: '/',
+    languages: {
+      'pt-BR': '/?lang=pt',
+      'en-US': '/?lang=en',
+      'es-ES': '/?lang=es',
+      'x-default': '/',
+    },
   },
   robots: {
     index: true,
@@ -102,4 +108,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-

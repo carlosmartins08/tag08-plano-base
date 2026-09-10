@@ -113,8 +113,11 @@ const CookieBanner: React.FC = () => {
 
               <button
                 type="button"
+                role="switch"
+                aria-checked={tempConsent.analytical}
+                aria-describedby="analytical-cookie-description"
                 onClick={() => setTempConsent((prev) => ({ ...prev, analytical: !prev.analytical }))}
-                className={`rounded-2xl p-5 text-left transition-all ${tempConsent.analytical ? 'border border-brand-lime/40 bg-brand-lime/10' : 'ds-card-shell bg-white/5'}`}
+                className={`rounded-2xl p-5 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black ${tempConsent.analytical ? 'border border-brand-lime/40 bg-brand-lime/10' : 'ds-card-shell bg-white/5'}`}
               >
                 <div className="mb-2 flex items-center justify-between">
                   <span className={`text-[10px] font-black uppercase tracking-tighter ${tempConsent.analytical ? 'text-brand-lime' : 'text-white'}`}>
@@ -124,13 +127,16 @@ const CookieBanner: React.FC = () => {
                     <div className={`absolute top-1 h-2 w-2 rounded-full bg-brand-black transition-all ${tempConsent.analytical ? 'left-5' : 'left-1'}`} />
                   </div>
                 </div>
-                <p className="text-[9px] ds-text-secondary">{t.cookie.analyticalDesc}</p>
+                <p id="analytical-cookie-description" className="text-[9px] ds-text-secondary">{t.cookie.analyticalDesc}</p>
               </button>
 
               <button
                 type="button"
+                role="switch"
+                aria-checked={tempConsent.marketing}
+                aria-describedby="marketing-cookie-description"
                 onClick={() => setTempConsent((prev) => ({ ...prev, marketing: !prev.marketing }))}
-                className={`rounded-2xl p-5 text-left transition-all ${tempConsent.marketing ? 'border border-brand-lime/40 bg-brand-lime/10' : 'ds-card-shell bg-white/5'}`}
+                className={`rounded-2xl p-5 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black ${tempConsent.marketing ? 'border border-brand-lime/40 bg-brand-lime/10' : 'ds-card-shell bg-white/5'}`}
               >
                 <div className="mb-2 flex items-center justify-between">
                   <span className={`text-[10px] font-black uppercase tracking-tighter ${tempConsent.marketing ? 'text-brand-lime' : 'text-white'}`}>
@@ -140,7 +146,7 @@ const CookieBanner: React.FC = () => {
                     <div className={`absolute top-1 h-2 w-2 rounded-full bg-brand-black transition-all ${tempConsent.marketing ? 'left-5' : 'left-1'}`} />
                   </div>
                 </div>
-                <p className="text-[9px] ds-text-secondary">{t.cookie.marketingDesc}</p>
+                <p id="marketing-cookie-description" className="text-[9px] ds-text-secondary">{t.cookie.marketingDesc}</p>
               </button>
             </div>
 
@@ -148,7 +154,7 @@ const CookieBanner: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsConfiguring(false)}
-                className="text-[10px] font-black uppercase tracking-widest ds-text-muted transition-colors hover:text-white"
+                className="text-[10px] font-black uppercase tracking-widest ds-text-muted transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
               >
                 {t.cookie.back}
               </button>

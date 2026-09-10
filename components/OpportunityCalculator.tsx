@@ -93,17 +93,17 @@ const OpportunityCalculator: React.FC = () => {
               {t.calculator.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-8 py-8 border-y border-white/10 relative">
+            <div className="relative grid grid-cols-1 gap-6 border-y border-white/10 py-8 sm:grid-cols-2 sm:gap-8">
               <span className="blueprint-label -top-4 left-1/2 -translate-x-1/2">DATA_OUTPUT: CURRENCY_BRL</span>
               <div>
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">{t.calculator.monthlyLossLabel}</p>
-                <p className="text-white text-2xl font-black italic">
+                  <p className="break-words text-2xl font-black italic text-white">
                   {formatCurrency(revenue * (targetGrowth / 100))}
                 </p>
               </div>
               <div>
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">{t.calculator.newCeilingLabel}</p>
-                <p className="text-brand-lime text-2xl font-black italic relative">
+                  <p className="relative break-words text-2xl font-black italic text-brand-lime">
                   {formatCurrency(revenue * (1 + targetGrowth / 100))}
                   <span className="blueprint-label -bottom-6 right-0">EST_MAX: 1.25X</span>
                 </p>
@@ -122,37 +122,41 @@ const OpportunityCalculator: React.FC = () => {
               <div className="space-y-12">
                 {/* Revenue Slider */}
                 <div className="space-y-6">
-                  <div className="flex justify-between items-end">
-                    <label className="text-white font-black uppercase tracking-tighter text-sm italic">{t.calculator.revenueLabel}</label>
+                  <div className="relative flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                    <label htmlFor="monthly-revenue" className="text-white font-black uppercase tracking-tighter text-sm italic">{t.calculator.revenueLabel}</label>
                     <span className="text-brand-lime text-3xl font-display font-black italic">{formatCurrency(revenue)}</span>
                     <span className="blueprint-label -top-4 left-0">VAR: CURR_REV</span>
                   </div>
                   <input
+                    id="monthly-revenue"
                     type="range"
                     min="10000"
                     max="500000"
                     step="5000"
                     value={revenue}
                     onChange={(e) => setRevenue(Number(e.target.value))}
-                    className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-brand-lime"
+                    aria-valuetext={formatCurrency(revenue)}
+                    className="w-full h-2 cursor-pointer appearance-none rounded-lg bg-white/10 accent-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                   />
                 </div>
 
                 {/* Growth Slider */}
                 <div className="space-y-6">
-                  <div className="flex justify-between items-end">
-                    <label className="text-white font-black uppercase tracking-tighter text-sm italic">{t.calculator.growthLabel}</label>
+                  <div className="relative flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                    <label htmlFor="growth-target" className="text-white font-black uppercase tracking-tighter text-sm italic">{t.calculator.growthLabel}</label>
                     <span className="text-brand-lime text-3xl font-display font-black italic">{targetGrowth}%</span>
                     <span className="blueprint-label -top-4 left-0">VAR: GROWTH_TARGET</span>
                   </div>
                   <input
+                    id="growth-target"
                     type="range"
                     min="5"
                     max="100"
                     step="5"
                     value={targetGrowth}
                     onChange={(e) => setTargetGrowth(Number(e.target.value))}
-                    className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-brand-lime"
+                    aria-valuetext={`${targetGrowth}%`}
+                    className="w-full h-2 cursor-pointer appearance-none rounded-lg bg-white/10 accent-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                   />
                 </div>
 
@@ -163,13 +167,16 @@ const OpportunityCalculator: React.FC = () => {
                     <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-2 opacity-50">
                       {t.calculator.lossLabel}
                     </p>
-                    <p className="text-4xl md:text-5xl font-display font-black italic tracking-tighter leading-none">
+                    <p aria-hidden="true" className="text-4xl md:text-5xl font-display font-black italic tracking-tighter leading-none">
                       {formatCurrency(animatedLoss)}
+                    </p>
+                    <p className="sr-only" aria-live="polite" aria-atomic="true">
+                      {t.calculator.lossLabel}: {formatCurrency(annualLoss)}
                     </p>
 
                     <button
                       onClick={trackCalculator}
-                      className="mt-10 w-full bg-brand-black text-brand-lime py-5 rounded-2xl flex items-center justify-center gap-3 font-black uppercase tracking-widest text-sm hover:bg-slate-900 transition-all shadow-xl group relative"
+                      className="relative mt-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-brand-black py-5 text-sm font-black uppercase tracking-widest text-brand-lime shadow-xl transition-all hover:bg-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-black focus-visible:ring-offset-2 focus-visible:ring-offset-brand-lime group"
                     >
                       {t.calculator.cta}
                       <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />

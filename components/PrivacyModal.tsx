@@ -12,11 +12,15 @@ const PrivacyModal: React.FC = () => {
   if (!isPrivacyModalOpen) return null;
 
   return (
-    <ModalShell isOpen={isPrivacyModalOpen} onClose={() => setPrivacyModalOpen(false)}>
+    <ModalShell
+      isOpen={isPrivacyModalOpen}
+      onClose={() => setPrivacyModalOpen(false)}
+      ariaLabelledBy="privacy-policy-title"
+    >
       <div>
         <div className="mb-12 flex items-start justify-between">
           <div>
-            <h2 className="mb-4 text-3xl font-black uppercase italic tracking-tighter text-white md:text-5xl">
+            <h2 id="privacy-policy-title" className="mb-4 text-3xl font-black uppercase italic tracking-tighter text-white md:text-5xl">
               {t.privacy.title}
             </h2>
             <p className="max-w-2xl font-medium leading-relaxed text-slate-400">
@@ -26,7 +30,7 @@ const PrivacyModal: React.FC = () => {
           <button
             type="button"
             onClick={() => setPrivacyModalOpen(false)}
-            className="ds-icon-shell h-12 w-12 rounded-full p-3 text-white/50 hover:bg-white/10 hover:text-white"
+            className="ds-icon-shell h-12 w-12 rounded-full p-3 text-white/50 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
             aria-label={t.privacy.close}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,13 +53,13 @@ const PrivacyModal: React.FC = () => {
         </div>
 
         <div className="mt-12 flex items-center justify-between gap-4 border-t border-white/10 pt-8">
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
+          <p className="ds-text-subtle text-[10px] font-black uppercase tracking-[0.2em]">
             Last Update: 2024.12
           </p>
           <button
             type="button"
             onClick={() => setPrivacyModalOpen(false)}
-            className="rounded-xl bg-brand-lime px-8 py-3 text-xs font-black uppercase tracking-widest text-brand-black transition-all hover:bg-white"
+            className="rounded-xl bg-brand-lime px-8 py-3 text-xs font-black uppercase tracking-widest text-brand-black transition-all hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
           >
             {t.privacy.close}
           </button>

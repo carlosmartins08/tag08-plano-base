@@ -1,7 +1,8 @@
 ﻿'use client';
 
 import React from 'react';
-import { ArrowRight, Globe2, MapPin, MessageCircle, Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Globe2, MapPin, MessageCircle } from 'lucide-react';
 import { buildTelUrl, buildWhatsAppUrl, WHATSAPP_CONTACTS } from '../constants';
 import { useTranslation } from '../contexts/LanguageContext';
 import { Language } from '../types';
@@ -150,7 +151,15 @@ const FinalCTA: React.FC = () => {
         : localeSignals.countryBucket === 'NON_BR'
           ? routingCopy.nonBr
           : routingCopy.fallback;
+
   const routeContextCopy = ROUTE_CONTEXT_COPY[language];
+  const primaryRoute = orderedRoutes[0];
+  const secondaryRoute = orderedRoutes[1];
+  const primaryContext = primaryRoute.id === 'br' ? routeContextCopy.br : routeContextCopy.intl;
+  const PrimaryIcon = primaryRoute.icon;
+  const SecondaryIcon = secondaryRoute.icon;
+  const primaryPhone = splitPhoneDisplay(primaryRoute.phone);
+  const secondaryPhone = splitPhoneDisplay(secondaryRoute.phone);
 
   const handleContactClick = (route: ContactRouteId) => {
     trackFunnelEvent('final_cta_click', {
@@ -158,7 +167,7 @@ const FinalCTA: React.FC = () => {
       section: 'final_cta',
       cta: `open_whatsapp_${route}`,
       country: localeSignals.countryBucket,
-      route: route,
+      route,
     });
 
     trackFunnelEvent('whatsapp_click', {
@@ -166,7 +175,7 @@ const FinalCTA: React.FC = () => {
       section: 'final_cta',
       cta: `whatsapp_${route}`,
       country: localeSignals.countryBucket,
-      route: route,
+      route,
     });
 
     trackEvent('routing_recommendation_gap', {
@@ -189,155 +198,190 @@ const FinalCTA: React.FC = () => {
   };
 
   return (
-    <section id="contato" className="relative overflow-hidden border-t border-white/10 bg-brand-black py-24 lg:py-32 bg-noise">
+    <section id="contato" className="relative scroll-mt-40 overflow-hidden border-t border-white/10 bg-brand-black py-28 lg:scroll-mt-44 lg:py-36 bg-noise">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-24 left-0 h-72 w-72 rounded-full bg-brand-lime/10 blur-3xl" />
         <div className="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-brand-lime/5 blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl">
-          <div className="chapter-kicker">Capitulo 10</div>
-          <div className="ds-section-badge gap-2 tracking-[0.35em]">
-            <Sparkles size={12} />
-            {t.contactRouting.badge}
-          </div>
+      <div className="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-[2.8rem] bg-brand-lime px-6 py-6 shadow-[0_30px_120px_rgba(212,255,0,0.14)] md:px-7 md:py-8 xl:px-10 xl:py-10">
+          <div className="flex flex-col gap-8 xl:flex-row xl:items-start">
+            <div className="relative flex min-h-[clamp(24rem,40vw,32.5rem)] w-full min-w-0 flex-col justify-between overflow-hidden rounded-[2.15rem] border border-black/10 bg-black/88 xl:w-[40%] xl:self-start">
+              <Image
+                src="/team/pedro.jpg"
+                alt="TAG08 operação estratégica"
+                fill
+                sizes="(max-width: 1280px) 100vw, 34vw"
+                className="object-cover object-[44%_28%] grayscale brightness-[0.58] contrast-[1.12]"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.42)),radial-gradient(circle_at_46%_24%,rgba(255,255,255,0.10),transparent_24%),radial-gradient(circle_at_50%_78%,rgba(0,0,0,0.18),transparent_38%)]" />
 
-          <h2 className="mt-6 font-display text-4xl md:text-7xl font-black uppercase italic leading-[0.9] tracking-tighter text-white">
-            {t.contactRouting.title}{' '}
-            <span className="text-brand-lime">{t.contactRouting.titleAccent}</span>
-          </h2>
+              <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 p-5 sm:flex-nowrap sm:gap-4 sm:p-6">
+                <span className="rounded-full border border-white/10 bg-black/38 px-4 py-2 text-[10px] font-black uppercase tracking-[0.24em] text-white/68 backdrop-blur-md">
+                  Núcleo operacional
+                </span>
+                <span className="rounded-full border border-white/8 bg-black/15 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.24em] text-white/34">
+                  TAG08.v3
+                </span>
+              </div>
 
-          <p className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-white/70">
-            {t.contactRouting.subtitle}
-          </p>
-
-          <p className="mt-4 text-[11px] font-black uppercase tracking-[0.35em] text-brand-lime/80">
-            {t.contactRouting.helper}
-          </p>
-          <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-white/65">
-            {routingReason}
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {orderedRoutes.map((route) => {
-            const isRecommended = route.id === recommendedRoute;
-            const Icon = route.icon;
-            const context = route.id === 'br' ? routeContextCopy.br : routeContextCopy.intl;
-            const { prefix, rest } = splitPhoneDisplay(route.phone);
-
-            return (
-              <article
-                key={route.id}
-                className={`relative overflow-hidden rounded-[2rem] border p-6 md:p-8 motion-enter-primary chapter-shell ${
-                  isRecommended
-                    ? 'border-brand-lime/50 bg-white/[0.05] md:shadow-[0_0_80px_rgba(212,255,0,0.08)]'
-                    : 'border-white/10 bg-white/[0.03]'
-                }`}
-              >
-                <div
-                  className={`absolute inset-0 pointer-events-none transition-opacity [transition-duration:var(--motion-duration-medium)] ${
-                    isRecommended
-                      ? 'bg-[radial-gradient(circle_at_top,rgba(212,255,0,0.10),transparent_40%)]'
-                      : 'bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_40%)]'
-                  }`}
-                />
-
-                <div className="relative flex h-full flex-col gap-8">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-start gap-4">
-                      <div
-                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${
-                          isRecommended
-                            ? 'border-brand-lime/30 bg-brand-lime text-brand-black'
-                            : 'border-white/10 bg-white/[0.05] text-brand-lime'
-                        }`}
-                      >
-                        <Icon className="h-5 w-5" />
-                      </div>
-
-                      <div>
-                        <span className="ds-chip ds-chip-muted tracking-[0.35em]">
-                          {route.label}
-                        </span>
-                        <p className="mt-3 text-[10px] font-black uppercase tracking-[0.32em] text-white/70">
-                          {context.path}
-                        </p>
-                        <a
-                          href={route.telHref}
-                          aria-label={`Ligar para ${route.phone}`}
-                          onClick={() => handlePhoneClick(route.id)}
-                          className="mt-3 inline-flex flex-wrap items-end gap-x-2 md:gap-x-3 gap-y-1 font-display font-black italic leading-none text-white tabular-nums transition-colors [transition-duration:var(--motion-duration-fast)] hover:text-brand-lime"
-                        >
-                          <span className="text-2xl md:text-3xl text-brand-lime">{prefix}</span>
-                          <span className="text-3xl md:text-5xl tracking-tight whitespace-nowrap">{rest}</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    {isRecommended && (
-                      <span className="hidden sm:inline-flex ds-chip border-brand-lime bg-brand-lime tracking-[0.35em] text-brand-black">
-                        {t.contactRouting.recommended}
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="max-w-xl text-base md:text-lg leading-relaxed text-white/72">
-                    {route.summary}
+              <div className="relative z-10 mt-auto flex flex-col gap-4 p-5 sm:p-6">
+                <div className="w-fit max-w-full rounded-[1.6rem] border border-white/10 bg-black/18 px-5 py-4 backdrop-blur-[3px]">
+                  <p className="text-[10px] font-black uppercase tracking-[0.24em] text-white/46">
+                    Roteamento TAG08
                   </p>
-                  <div className="grid gap-2">
-                    {context.signals.map((signal) => (
-                      <div
-                        key={`${route.id}-${signal}`}
-                        className="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-white/65"
-                      >
-                        {signal}
-                      </div>
-                    ))}
-                    <p className="pt-1 text-[10px] font-black uppercase tracking-[0.22em] text-brand-lime/75">
-                      {context.eta}
-                    </p>
+                  <p className="mt-3 text-3xl font-black uppercase leading-none tracking-[0.02em] text-white/88 md:text-[2.6rem]">
+                    COMERCIAL
+                  </p>
+                  <p className="mt-1 text-lg font-black uppercase tracking-[0.22em] text-white/34 md:text-xl">
+                    360
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] font-black uppercase tracking-[0.22em] text-white/42 sm:flex-nowrap sm:gap-4">
+                  <span>Latência: 12ms</span>
+                  <span className="rounded-full border border-white/10 bg-black/18 px-3 py-1.5 text-white/46 backdrop-blur-[2px]">
+                    Roteamento sênior
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="min-w-0 flex-1 pt-2 text-brand-black xl:pt-1">
+              <div className="inline-flex items-center gap-3">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full border-4 border-brand-black bg-transparent">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-black"></span>
+                </span>
+                <span className="text-[11px] font-black uppercase tracking-[0.28em] text-brand-black/80">
+                  {t.contactRouting.badge}
+                </span>
+              </div>
+
+              <h2 className="mt-5 max-w-[13ch] font-display text-4xl font-black uppercase leading-[0.84] tracking-[-0.06em] text-brand-black sm:text-5xl lg:text-[3.35rem] xl:text-[3.8rem]">
+                {t.contactRouting.title}
+                <span className="block">{t.contactRouting.titleAccent}</span>
+              </h2>
+
+              <p className="mt-4 max-w-[46ch] text-[0.95rem] font-bold leading-relaxed text-brand-black/80 md:text-[1rem]">
+                {t.contactRouting.subtitle}
+              </p>
+
+              <p className="mt-4 max-w-[62ch] text-[10px] font-black uppercase leading-[1.5] tracking-[0.18em] text-brand-black/55">
+                {t.contactRouting.helper}
+              </p>
+
+              <div className="mt-8 grid max-w-[920px] grid-cols-1 items-stretch gap-4 md:grid-cols-2">
+                <div className="flex h-full min-h-[332px] flex-col rounded-[2rem] border border-brand-lime/18 bg-brand-black/90 px-5 py-5 text-white shadow-[0_28px_80px_rgba(0,0,0,0.24)] md:px-6 md:py-6">
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-lime text-brand-black shadow-[0_8px_24px_rgba(212,255,0,0.22)]">
+                      <PrimaryIcon className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-black uppercase tracking-[0.24em] text-brand-lime/80">
+                        {t.contactRouting.recommended}
+                      </p>
+                      <p className="mt-2 max-w-[22ch] text-[1.02rem] font-bold leading-relaxed text-white/92">
+                        {primaryRoute.summary}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="mt-auto flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                  <div className="mt-5 rounded-[1.35rem] border border-white/10 bg-white/[0.035] px-4 py-4">
+                    <p className="ds-text-muted text-[10px] font-black uppercase tracking-[0.24em]">
+                      {primaryContext.path}
+                    </p>
+                    <a
+                      href={primaryRoute.telHref}
+                      aria-label={`Ligar para ${primaryRoute.phone}`}
+                      onClick={() => handlePhoneClick(primaryRoute.id)}
+                      className="mt-2 inline-flex flex-wrap items-end gap-x-2 gap-y-1 rounded font-display font-black italic leading-none text-white/94 transition-colors hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
+                    >
+                      <span className="text-base text-brand-lime">{primaryPhone.prefix}</span>
+                      <span className="text-[1.62rem] tracking-tight">{primaryPhone.rest}</span>
+                    </a>
+
                     <Magnetic>
                       <Button
-                        href={route.href}
-                        variant={isRecommended ? 'solid' : 'subtle'}
+                        href={primaryRoute.href}
+                        variant="solid"
                         size="md"
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => handleContactClick(route.id)}
-                        className={`rounded-2xl ${
-                          isRecommended
-                            ? 'shadow-[0_18px_50px_rgba(212,255,0,0.18)] motion-lift'
-                            : 'text-brand-lime motion-lift'
-                        }`}
+                        onClick={() => handleContactClick(primaryRoute.id)}
+                        className="mt-4 w-full rounded-2xl motion-lift justify-center shadow-[0_18px_50px_rgba(212,255,0,0.18)]"
                       >
                         <MessageCircle className="h-4 w-4" />
-                        {route.button}
+                        Conectar
                         <ArrowRight className="h-4 w-4" />
                       </Button>
                     </Magnetic>
+                  </div>
 
-                    <div className="text-[10px] font-black uppercase tracking-[0.35em] ds-text-subtle md:block hidden">
-                      {route.id === 'br' ? 'BR / WhatsApp' : 'INTL / WhatsApp'}
-                    </div>
+                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/8 pt-4 text-[10px] font-black uppercase tracking-[0.22em]">
+                    <span className="ds-text-subtle">AGÊNCIA TAG08</span>
+                    <span className="ds-chip ds-chip-lime border-brand-lime/30 bg-brand-lime/10">
+                      {primaryContext.eta}
+                    </span>
                   </div>
                 </div>
-              </article>
-            );
-          })}
-        </div>
 
-        <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-2xl text-sm leading-relaxed ds-text-subtle">
-            {t.contactRouting.disclaimer}
-          </p>
-          <p className="text-[10px] font-black uppercase tracking-[0.35em] text-brand-lime/55">
-            {t.cta.urgency}
-          </p>
+                <div className="flex h-full min-h-[332px] flex-col rounded-[2rem] border border-white/8 bg-brand-black/85 px-5 py-5 text-white shadow-[0_18px_46px_rgba(0,0,0,0.14)] md:px-6 md:py-6">
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-lime/8 text-brand-lime">
+                      <SecondaryIcon className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="ds-text-subtle text-[10px] font-black uppercase tracking-[0.24em]">
+                        {t.contactRouting.secondary}
+                      </p>
+                      <p className="mt-2 max-w-[22ch] text-[0.98rem] font-bold leading-relaxed text-white/84">
+                        {secondaryRoute.summary}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 rounded-[1.35rem] border border-white/8 bg-white/[0.025] px-4 py-4">
+                    <p className="ds-text-muted text-[10px] font-black uppercase tracking-[0.24em]">
+                      {secondaryRoute.label}
+                    </p>
+                    <a
+                      href={secondaryRoute.telHref}
+                      aria-label={`Ligar para ${secondaryRoute.phone}`}
+                      onClick={() => handlePhoneClick(secondaryRoute.id)}
+                      className="mt-2 inline-flex flex-wrap items-end gap-x-2 gap-y-1 rounded font-display font-black italic leading-none text-white/82 transition-colors hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
+                    >
+                      <span className="text-base text-brand-lime/90">{secondaryPhone.prefix}</span>
+                      <span className="text-[1.5rem] tracking-tight">{secondaryPhone.rest}</span>
+                    </a>
+
+                    <a
+                      href={secondaryRoute.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handleContactClick(secondaryRoute.id)}
+                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 text-[11px] font-black uppercase tracking-[0.22em] text-white/88 transition-colors hover:border-brand-lime/35 hover:bg-brand-lime/[0.05] hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
+                    >
+                      Abrir alternativa
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/8 pt-4 text-[10px] font-black uppercase tracking-[0.22em]">
+                    <span className="ds-text-subtle max-w-[22ch]">{routingReason}</span>
+                    <span className="ds-chip ds-chip-muted">
+                      {t.cta.urgency}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 border-t border-brand-black/10 pt-4 text-brand-black/46">
+            <p className="max-w-3xl text-xs leading-relaxed md:text-[13px]">
+              {t.contactRouting.disclaimer}
+            </p>
+          </div>
         </div>
       </div>
     </section>

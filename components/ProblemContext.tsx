@@ -66,7 +66,7 @@ const ProblemContext: React.FC = () => {
                       <div className="w-12 h-12 bg-black border border-white/10 rounded-xl flex items-center justify-center text-red-500 group-hover:border-red-500/50 transition-all duration-500 group-hover:scale-110 shadow-2xl">
                         {problemIcons[idx]}
                       </div>
-                      <div className="absolute top-14 left-0 whitespace-nowrap bg-black/80 backdrop-blur-md border border-white/10 px-3 py-1 rounded-md">
+                      <div className="absolute top-14 left-0 hidden whitespace-nowrap rounded-md border border-white/10 bg-black/80 px-3 py-1 backdrop-blur-md sm:block">
                         <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 group-hover:text-red-400">
                           {label as string}
                         </span>
@@ -81,7 +81,7 @@ const ProblemContext: React.FC = () => {
             </div>
 
             {/* Technical Labels */}
-            <div className="mt-20 flex justify-between px-8 text-[8px] font-mono text-slate-600 uppercase tracking-[0.3em] relative">
+            <div className="relative mt-12 flex flex-wrap justify-center gap-x-6 gap-y-3 px-0 text-center text-[8px] font-mono uppercase tracking-[0.3em] text-slate-600 sm:mt-20 sm:justify-between sm:px-8">
               <span className="flex items-center gap-2 relative">
                 <div className="w-1 h-1 bg-red-500 animate-pulse"></div> ERROR_DETECTED
                 <span className="blueprint-label -top-4 left-0">HEX: #DC2626</span>

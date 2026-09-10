@@ -1,4 +1,4 @@
-import { TranslationSchema } from '../types';
+﻿import { TranslationSchema } from '../types';
 
 export const pt: TranslationSchema = {
   "nicheHeadlines": {
@@ -84,6 +84,33 @@ export const pt: TranslationSchema = {
         "title": "Campanha sem leitura semanal perde dinheiro",
         "hidden": "Sem checkpoint, o erro pequeno vira padrao caro.",
         "action": "Trate o funil como rotina operacional com corte rapido do que nao performa."
+      }
+    ]
+  },
+  "contentLab": {
+    "badge": "Leitura de operação",
+    "title": "Experiência prática,",
+    "titleAccent": "sem frase pronta.",
+    "subtitle": "Aqui entram erros recorrentes, correções de rota e critérios de decisão para separar movimento de resultado.",
+    "ctaLabel": "Abrir insight",
+    "items": [
+      {
+        "hook": "Mais conteúdo não corrige uma oferta fraca",
+        "context": "Se a proposta de valor estiver confusa, aumentar volume só amplia ruído e custo de atenção.",
+        "insight": "Primeiro alinhe promessa, prova e perfil de comprador. Depois escale volume.",
+        "action": "Revise o CTA principal e elimine mensagens concorrentes na mesma dobra."
+      },
+      {
+        "hook": "Relatório sem decisão é vaidade operacional",
+        "context": "Muita equipe mede tudo e muda pouco. Parece controle, mas o impacto continua travado.",
+        "insight": "Toda leitura semanal precisa terminar em corte, ajuste ou aceleração.",
+        "action": "Na revisão da semana, force ao menos uma decisão por etapa do funil."
+      },
+      {
+        "hook": "Perda no repasse comercial não é problema de anúncio",
+        "context": "Quando o marketing atrai, mas o comercial não absorve, o CAC sobe sem motivo aparente.",
+        "insight": "Conversão é um sistema: mensagem, qualificação e primeiro contato precisam bater.",
+        "action": "Padronize o roteiro inicial de contato com base na promessa da landing."
       }
     ]
   },
@@ -173,22 +200,23 @@ export const pt: TranslationSchema = {
   },
   "contactRouting": {
     "badge": "Roteamento direto",
-    "title": "Escolha o canal",
+    "title": "Entre pelo canal",
     "titleAccent": "certo.",
-    "subtitle": "Brasil e Internacional / Español seguem rotas diferentes. Isso evita ruído e leva você ao time que atende o seu caso.",
-    "helper": "Se você estiver no Brasil, use o canal nacional. Se estiver fora do país ou precisar de atendimento em espanhol, use o canal internacional.",
-    "recommended": "Recomendado",
+    "subtitle": "Brasil e Internacional / Español seguem caminhos diferentes. Assim, sua conversa já começa com o time certo para o seu contexto.",
+    "helper": "Se sua operação está no Brasil, siga pelo canal nacional. Para demandas internacionais ou atendimento em espanhol, use o canal internacional.",
+    "recommended": "Canal prioritário",
+    "secondary": "Canal complementar",
     "disclaimer": "* Ao iniciar o contato, você autoriza a TAG08 a tratar seus dados para fins de diagnóstico comercial, conforme a LGPD e nossa política de privacidade.",
     "routes": {
       "br": {
         "label": "Brasil",
-        "summary": "Atendimento nacional via WhatsApp para clientes no Brasil.",
+        "summary": "Canal comercial dedicado a operações no Brasil, com atendimento direto pelo WhatsApp.",
         "button": "Abrir WhatsApp Brasil",
         "message": "Olá, quero atendimento para o Brasil."
       },
       "intl": {
         "label": "Internacional / Español",
-        "summary": "Atendimento via WhatsApp para clientes internacionais e em espanhol.",
+        "summary": "Canal comercial para operações internacionais e conversas conduzidas em espanhol.",
         "button": "Abrir WhatsApp Internacional",
         "message": "Hola, necesito atención internacional en español."
       }

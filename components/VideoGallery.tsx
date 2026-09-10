@@ -98,11 +98,11 @@ const VideoSkeleton = ({ label }: { label: string }) => (
       </div>
     </div>
 
-    <div className="flex gap-4 overflow-hidden pb-4">
+    <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
       {[0, 1, 2, 3].map((item) => (
         <div
           key={item}
-          className="ds-panel-shell min-w-[240px] flex-1 overflow-hidden rounded-[1.75rem]"
+          className="ds-panel-shell w-[min(78vw,280px)] flex-none snap-start overflow-hidden rounded-[1.75rem] md:w-[280px]"
         >
           <div className="aspect-video bg-white/10" />
           <div className="space-y-3 p-4">
@@ -308,7 +308,8 @@ const VideoGallery: React.FC = () => {
         key={video.id}
         type="button"
         onClick={() => setActiveIndex(originalIndex)}
-        className={`group ds-card-shell snap-start flex-none w-[min(78vw,280px)] md:w-[280px] overflow-hidden rounded-[1.75rem] text-left transition-all duration-500 ${isActive
+        aria-pressed={isActive}
+        className={`group ds-card-shell w-[min(78vw,280px)] flex-none snap-start overflow-hidden rounded-[1.75rem] text-left transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black md:w-[280px] ${isActive
           ? 'border-brand-lime/60 bg-white/[0.06] shadow-[0_20px_60px_rgba(0,0,0,0.35)]'
           : 'ds-card-shell-hover-lime border-white/10 bg-white/[0.03]'
           }`}
@@ -422,7 +423,8 @@ const VideoGallery: React.FC = () => {
               <button
                 type="button"
                 onClick={() => cycleVideo(-1)}
-                className="ds-icon-shell h-9 w-9 rounded-full bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime"
+                disabled={videos.length < 2}
+                className="ds-icon-shell h-9 w-9 rounded-full bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black disabled:cursor-not-allowed disabled:opacity-40"
                 aria-label={text.previousVideoAria}
               >
                 <ChevronLeft className="h-4 w-4" />
@@ -430,7 +432,8 @@ const VideoGallery: React.FC = () => {
               <button
                 type="button"
                 onClick={() => cycleVideo(1)}
-                className="ds-icon-shell h-9 w-9 rounded-full bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime"
+                disabled={videos.length < 2}
+                className="ds-icon-shell h-9 w-9 rounded-full bg-white/[0.03] text-white/70 transition-colors hover:border-brand-lime/50 hover:text-brand-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black disabled:cursor-not-allowed disabled:opacity-40"
                 aria-label={text.nextVideoAria}
               >
                 <ChevronRight className="h-4 w-4" />
@@ -476,7 +479,7 @@ const VideoGallery: React.FC = () => {
                   href={carousel.activeVideo?.url || SITE_CONFIG.youtubeVideosUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group ds-panel-shell relative block overflow-hidden rounded-[2.25rem] shadow-[0_30px_100px_rgba(0,0,0,0.55)] transition-all duration-500 hover:-translate-y-1"
+                  className="group ds-panel-shell relative block overflow-hidden rounded-[2.25rem] shadow-[0_30px_100px_rgba(0,0,0,0.55)] transition-all duration-500 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-4 focus-visible:ring-offset-brand-black"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden">
                     <Image
@@ -548,7 +551,7 @@ const VideoGallery: React.FC = () => {
                 </p>
               </div>
 
-              <div className="no-scrollbar flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
+              <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4" role="region" aria-label={text.latest}>
                 {railVideos.map((item) => renderRailCard(item.video, item.originalIndex))}
               </div>
             </div>
