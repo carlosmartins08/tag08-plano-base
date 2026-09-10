@@ -319,11 +319,14 @@ export interface TranslationSchema {
     titleAccent: string;
     description: string;
     revenueLabel: string;
+    revenueRange: string;
     growthLabel: string;
-    lossLabel: string;
-    monthlyLossLabel: string;
-    newCeilingLabel: string;
+    growthRange: string;
+    annualPotentialLabel: string;
+    monthlyPotentialLabel: string;
+    newMonthlyRevenueLabel: string;
     cta: string;
+    currencyNote: string;
     disclaimer: string;
   };
   investment: {
@@ -388,6 +391,7 @@ export interface TranslationSchema {
     metrics: string;
     roadmap: string;
     roi: string;
+    calculator: string;
     design: string;
     blueprint: string;
   };

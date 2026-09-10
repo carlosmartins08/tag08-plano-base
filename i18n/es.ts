@@ -452,17 +452,20 @@ export const es: TranslationSchema = {
     ]
   },
   "calculator": {
-    "badge": "Calculadora de ROI",
-    "title": "¿Cuánto estás",
-    "titleAccent": "dejando en la mesa?",
-    "description": "El costo de la inercia es el impuesto más caro que paga su empresa. Calcule ahora el potencial de crecimiento descuidado.",
+    "badge": "Simulador de potencial de ingresos",
+    "title": "¿Qué ingresos podría",
+    "titleAccent": "alcanzar su empresa?",
+    "description": "Simule un escenario de crecimiento sobre la facturación mensual actual. El resultado muestra potencial de ingresos, no ROI, beneficio ni un resultado garantizado.",
     "revenueLabel": "Facturación Mensual",
+    "revenueRange": "De R$10 mil a R$500 mil",
     "growthLabel": "Meta de Crecimiento",
-    "lossLabel": "Oportunidade Perdida Anual",
-    "monthlyLossLabel": "Crecimiento Mensual",
-    "newCeilingLabel": "Nuevo Techo Mensual",
-    "cta": "Capturar Oportunidad",
-    "disclaimer": "Análisis basado en benchmarking sénior"
+    "growthRange": "Del 5% al 50% sobre la facturación mensual actual",
+    "annualPotentialLabel": "Potencial Anual Estimado",
+    "monthlyPotentialLabel": "Potencial Mensual Estimado",
+    "newMonthlyRevenueLabel": "Nuevo Nivel Mensual",
+    "cta": "Hablar sobre este escenario",
+    "currencyNote": "Simulación en reales brasileños (BRL)",
+    "disclaimer": "Cálculo lineal: facturación mensual × meta de crecimiento × 12. No representa ROI, beneficio ni un resultado garantizado."
   },
   "investment": {
     "badge": "Seguridad ante todo",
@@ -547,6 +550,7 @@ export const es: TranslationSchema = {
     "metrics": "Optimización basada en heurísticas de usabilidad senior.",
     "roadmap": "Visión 360 del LTV para máxima previsibilidade.",
     "roi": "Predicción de pérdida anual por estancamento digital.",
+    "calculator": "Proyección lineal del potencial anual de ingresos, sin resultados garantizados.",
     "design": "Grid de elite para armonía visual absoluta.",
     "blueprint": "Blueprint Mode: Visualizando las capas estratégicas."
   }

@@ -428,17 +428,20 @@ export const pt: TranslationSchema = {
     ]
   },
   "calculator": {
-    "badge": "Calculadora de ROI",
-    "title": "Quanto você está",
-    "titleAccent": "deixando na mesa?",
-    "description": "O custo da inércia é o imposto mais caro que sua empresa paga. Calcule agora o potencial de crescimento negligenciado.",
+    "badge": "Simulador de potencial",
+    "title": "Qual receita sua empresa",
+    "titleAccent": "pode buscar?",
+    "description": "Simule um cenário de crescimento sobre o faturamento mensal atual. O resultado mostra potencial de receita, não ROI, lucro ou resultado garantido.",
     "revenueLabel": "Faturamento Mensal",
+    "revenueRange": "De R$ 10 mil a R$ 500 mil",
     "growthLabel": "Meta de Crescimento",
-    "lossLabel": "Oportunidade Perdida Anual",
-    "monthlyLossLabel": "Crescimento Mensal",
-    "newCeilingLabel": "Novo Teto Mensal",
-    "cta": "Capturar Oportunidade",
-    "disclaimer": "Análise baseada em benchmarking sênior"
+    "growthRange": "De 5% a 50% sobre o faturamento mensal atual",
+    "annualPotentialLabel": "Potencial Anual Estimado",
+    "monthlyPotentialLabel": "Potencial Mensal Estimado",
+    "newMonthlyRevenueLabel": "Novo Patamar Mensal",
+    "cta": "Conversar sobre este cenário",
+    "currencyNote": "Simulação em reais (BRL)",
+    "disclaimer": "Cálculo linear: faturamento mensal × meta de crescimento × 12. Não representa ROI, lucro ou resultado garantido."
   },
   "investment": {
     "badge": "Segurança em primeiro lugar",
@@ -523,6 +526,7 @@ export const pt: TranslationSchema = {
     "metrics": "Otimização baseada em heurísticas de usabilidade e conversão real.",
     "roadmap": "Filtro de LTV 360: Atraindo quem investe e repelindo quem gasta.",
     "roi": "Identificação de falhas estruturais causadas por marketing amador.",
+    "calculator": "Projeção linear de potencial anual de receita, sem promessa de resultado.",
     "design": "Grid de elite: A estética como primeira barreira de autoridade.",
     "blueprint": "Strategic Transparency: Mostrando as camadas invisíveis do método."
   }

@@ -8,7 +8,7 @@ type Source = 'google' | 'meta' | 'linkedin' | 'direct';
 interface UXContextType {
   source: Source;
   isReturning: boolean;
-  updateROI: (revenue: number, growth: number) => void;
+  markRevenueScenarioExplored: () => void;
   strategyNote: string | null;
   setStrategyNote: (note: string | null) => void;
   persona: Persona;
@@ -53,6 +53,9 @@ export const UXProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const savedPersona = localStorage.getItem('tag08_persona') as Persona | null;
     const savedBlueprint = localStorage.getItem('tag08_blueprint') === 'true';
 
+    localStorage.removeItem('tag08_last_roi');
+    localStorage.removeItem('tag08_last_revenue');
+
     if (savedPersona) setPersona(savedPersona);
     if (savedBlueprint) setIsBlueprintMode(savedBlueprint);
   }, []);
@@ -67,11 +70,7 @@ export const UXProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }
   }, [persona]);
 
-  const updateROI = (revenue: number, growth: number) => {
-    const annualLoss = revenue * (growth / 100) * 12;
-    localStorage.setItem('tag08_last_roi', annualLoss.toString());
-    localStorage.setItem('tag08_last_revenue', revenue.toString());
-
+  const markRevenueScenarioExplored = () => {
     updatePersona('data-focused');
   };
 
@@ -93,7 +92,7 @@ export const UXProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         source,
         isReturning,
-        updateROI,
+        markRevenueScenarioExplored,
         strategyNote,
         setStrategyNote,
         persona,

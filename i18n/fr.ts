@@ -452,17 +452,20 @@ export const fr: TranslationSchema = {
     ]
   },
   "calculator": {
-    "badge": "ROI Calculator",
-    "title": "Combien vous",
-    "titleAccent": "laissez sur la table ?",
-    "description": "Le coÃ»t de l'inertie est l'impÃ´t le plus cher que votre entreprise paie. Calculez dÃ¨s maintenant le potentiel de croissance nÃ©gligÃ©.",
-    "revenueLabel": "Chiffre d'Affaires Mensuel",
+    "badge": "Simulateur de potentiel de revenus",
+    "title": "Quel chiffre d'affaires votre entreprise",
+    "titleAccent": "pourrait-elle viser ?",
+    "description": "Simulez un scénario de croissance à partir du chiffre d'affaires mensuel actuel. Le résultat indique un potentiel de revenus, pas un ROI, un bénéfice ou un résultat garanti.",
+    "revenueLabel": "Chiffre d'affaires mensuel",
+    "revenueRange": "De 10 k R$ à 500 k R$",
     "growthLabel": "Objectif de Croissance",
-    "lossLabel": "OpportunitÃ© Perdue Annuelle",
-    "monthlyLossLabel": "Croissance Mensuelle",
-    "newCeilingLabel": "Nouveau Plafond Mensuel",
-    "cta": "Saisir l'OpportunitÃ©",
-    "disclaimer": "Analyse basÃ©e sur un benchmarking senior"
+    "growthRange": "De 5 % à 50 % du chiffre d'affaires mensuel actuel",
+    "annualPotentialLabel": "Potentiel Annuel Estimé",
+    "monthlyPotentialLabel": "Potentiel Mensuel Estimé",
+    "newMonthlyRevenueLabel": "Nouveau Niveau Mensuel",
+    "cta": "Parler de ce scénario",
+    "currencyNote": "Simulation en réals brésiliens (BRL)",
+    "disclaimer": "Calcul linéaire : chiffre d'affaires mensuel × objectif de croissance × 12. Ce n'est pas un ROI, un bénéfice ou un résultat garanti."
   },
   "investment": {
     "badge": "Securite dabord",
@@ -547,6 +550,7 @@ export const fr: TranslationSchema = {
     "metrics": "Optimisation basÃ©e sur les heuristiques d'utilisabilitÃ© senior.",
     "roadmap": "Vision 360 du LTV pour une prÃ©visibilitÃ© maximale.",
     "roi": "PrÃ©vision de perte annuelle due Ã  la stagnation numÃ©rique.",
+    "calculator": "Projection linéaire du potentiel annuel de revenus, sans résultat garanti.",
     "design": "Grille d'Ã©lite pour une harmonie visuelle absolue.",
     "blueprint": "Blueprint Mode: Visualisation des couches stratÃ©giques."
   }

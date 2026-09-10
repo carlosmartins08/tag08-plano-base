@@ -14,7 +14,7 @@ This project is a single landing page. The current public surface is:
 - `#main-content` - skip-link target defined in `app/layout.tsx`
 - `#hero` - hero section in `components/Hero.tsx`
 - `#problema` - diagnosis section in `components/ProblemContext.tsx`
-- `#calculadora` - ROI calculator in `components/OpportunityCalculator.tsx`
+- `#calculadora` - revenue potential simulator in `components/OpportunityCalculator.tsx`
 - `#solucao` - solution / value proposition in `components/ValueProposition.tsx`
 - `#pilares` - service pillars in `components/IncludedPillars.tsx`
 - `#ciclo` - monthly cycle in `components/MonthlyCycle.tsx`

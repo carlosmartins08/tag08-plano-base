@@ -363,17 +363,20 @@ export const en: TranslationSchema = {
     "badge": "Testimonials"
   },
   "calculator": {
-    "badge": "ROI Calculator",
-    "title": "How much are you",
-    "titleAccent": "leaving on the table?",
-    "description": "The cost of inertia is the most expensive tax your company pays. Calculate the neglected growth potential now.",
+    "badge": "Revenue potential simulator",
+    "title": "What revenue could your company",
+    "titleAccent": "work toward?",
+    "description": "Model a growth scenario based on current monthly revenue. This is revenue potential, not ROI, profit, or a guaranteed outcome.",
     "revenueLabel": "Monthly Revenue",
+    "revenueRange": "From R$10k to R$500k",
     "growthLabel": "Growth Goal",
-    "lossLabel": "Annual Lost Opportunity",
-    "monthlyLossLabel": "Monthly Growth",
-    "newCeilingLabel": "New Monthly Ceiling",
-    "cta": "Capture Opportunity",
-    "disclaimer": "Analysis based on senior benchmarking"
+    "growthRange": "From 5% to 50% of current monthly revenue",
+    "annualPotentialLabel": "Estimated Annual Potential",
+    "monthlyPotentialLabel": "Estimated Monthly Potential",
+    "newMonthlyRevenueLabel": "New Monthly Level",
+    "cta": "Discuss this scenario",
+    "currencyNote": "Simulation in Brazilian reais (BRL)",
+    "disclaimer": "Linear calculation: monthly revenue × growth goal × 12. It is not ROI, profit, or a guaranteed outcome."
   },
   "investment": {
     "badge": "Safety First",
@@ -547,6 +550,7 @@ export const en: TranslationSchema = {
     "metrics": "Optimization based on senior usability heuristics.",
     "roadmap": "360 vision of LTV for maximum predictability.",
     "roi": "Annual loss projection due to digital stagnation.",
+    "calculator": "Linear projection of annual revenue potential, without a guaranteed outcome.",
     "design": "Elite grid for absolute visual harmony.",
     "blueprint": "Blueprint Mode: Visualizing strategic layers."
   }

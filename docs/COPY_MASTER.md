@@ -13,7 +13,7 @@ Gerado em: 2026-04-25T01:38:57.715Z
 
 ## Copy PT
 
-Total de entradas de texto: **303**
+Total de entradas de texto: **307**
 
 | Chave | Texto |
 | --- | --- |
@@ -245,17 +245,20 @@ Total de entradas de texto: **303**
 | `strategicBenefits.items[2].desc` | Acesso direto a consultores especialistas. Sem estagiários na linha de frente da sua marca. |
 | `strategicBenefits.items[3].title` | Agilidade |
 | `strategicBenefits.items[3].desc` | Troque o caos pela clareza de um fluxo de trabalho que privilegia a sua produtividade. |
-| `calculator.badge` | Calculadora de ROI |
-| `calculator.title` | Quanto você está |
-| `calculator.titleAccent` | deixando na mesa? |
-| `calculator.description` | O custo da inércia é o imposto mais caro que sua empresa paga. Calcule agora o potencial de crescimento negligenciado. |
+| `calculator.badge` | Simulador de potencial |
+| `calculator.title` | Qual receita sua empresa |
+| `calculator.titleAccent` | pode buscar? |
+| `calculator.description` | Simule um cenário de crescimento sobre o faturamento mensal atual. O resultado mostra potencial de receita, não ROI, lucro ou resultado garantido. |
 | `calculator.revenueLabel` | Faturamento Mensal |
+| `calculator.revenueRange` | De R$ 10 mil a R$ 500 mil |
 | `calculator.growthLabel` | Meta de Crescimento |
-| `calculator.lossLabel` | Oportunidade Perdida Anual |
-| `calculator.monthlyLossLabel` | Crescimento Mensal |
-| `calculator.newCeilingLabel` | Novo Teto Mensal |
-| `calculator.cta` | Capturar Oportunidade |
-| `calculator.disclaimer` | Análise baseada em benchmarking sênior |
+| `calculator.growthRange` | De 5% a 50% sobre o faturamento mensal atual |
+| `calculator.annualPotentialLabel` | Potencial Anual Estimado |
+| `calculator.monthlyPotentialLabel` | Potencial Mensal Estimado |
+| `calculator.newMonthlyRevenueLabel` | Novo Patamar Mensal |
+| `calculator.cta` | Conversar sobre este cenário |
+| `calculator.currencyNote` | Simulação em reais (BRL) |
+| `calculator.disclaimer` | Cálculo linear: faturamento mensal × meta de crescimento × 12. Não representa ROI, lucro ou resultado garantido. |
 | `investment.badge` | Segurança em primeiro lugar |
 | `investment.title` | Investimento |
 | `investment.titleAccent` | Estratégico. |
@@ -318,12 +321,13 @@ Total de entradas de texto: **303**
 | `strategyNotes.metrics` | Otimização baseada em heurísticas de usabilidade e conversão real. |
 | `strategyNotes.roadmap` | Filtro de LTV 360: Atraindo quem investe e repelindo quem gasta. |
 | `strategyNotes.roi` | Identificação de falhas estruturais causadas por marketing amador. |
+| `strategyNotes.calculator` | Projeção linear de potencial anual de receita, sem promessa de resultado. |
 | `strategyNotes.design` | Grid de elite: A estética como primeira barreira de autoridade. |
 | `strategyNotes.blueprint` | Strategic Transparency: Mostrando as camadas invisíveis do método. |
 
 ## Copy EN
 
-Total de entradas de texto: **315**
+Total de entradas de texto: **319**
 
 | Chave | Texto |
 | --- | --- |
@@ -510,17 +514,20 @@ Total de entradas de texto: **315**
 | `testimonials.items[2].content` | Decisions are calmer now because the team shows what improved, what dropped, and what will change next. |
 | `testimonials.items[2].date` | 3 weeks ago |
 | `testimonials.badge` | Testimonials |
-| `calculator.badge` | ROI Calculator |
-| `calculator.title` | How much are you |
-| `calculator.titleAccent` | leaving on the table? |
-| `calculator.description` | The cost of inertia is the most expensive tax your company pays. Calculate the neglected growth potential now. |
+| `calculator.badge` | Revenue potential simulator |
+| `calculator.title` | What revenue could your company |
+| `calculator.titleAccent` | work toward? |
+| `calculator.description` | Model a growth scenario based on current monthly revenue. This is revenue potential, not ROI, profit, or a guaranteed outcome. |
 | `calculator.revenueLabel` | Monthly Revenue |
+| `calculator.revenueRange` | From R$10k to R$500k |
 | `calculator.growthLabel` | Growth Goal |
-| `calculator.lossLabel` | Annual Lost Opportunity |
-| `calculator.monthlyLossLabel` | Monthly Growth |
-| `calculator.newCeilingLabel` | New Monthly Ceiling |
-| `calculator.cta` | Capture Opportunity |
-| `calculator.disclaimer` | Analysis based on senior benchmarking |
+| `calculator.growthRange` | From 5% to 50% of current monthly revenue |
+| `calculator.annualPotentialLabel` | Estimated Annual Potential |
+| `calculator.monthlyPotentialLabel` | Estimated Monthly Potential |
+| `calculator.newMonthlyRevenueLabel` | New Monthly Level |
+| `calculator.cta` | Discuss this scenario |
+| `calculator.currencyNote` | Simulation in Brazilian reais (BRL) |
+| `calculator.disclaimer` | Linear calculation: monthly revenue × growth goal × 12. It is not ROI, profit, or a guaranteed outcome. |
 | `investment.badge` | Safety First |
 | `investment.title` | Strategic |
 | `investment.titleAccent` | Investment. |
@@ -640,12 +647,13 @@ Total de entradas de texto: **315**
 | `strategyNotes.metrics` | Optimization based on senior usability heuristics. |
 | `strategyNotes.roadmap` | 360 vision of LTV for maximum predictability. |
 | `strategyNotes.roi` | Annual loss projection due to digital stagnation. |
+| `strategyNotes.calculator` | Linear projection of annual revenue potential, without a guaranteed outcome. |
 | `strategyNotes.design` | Elite grid for absolute visual harmony. |
 | `strategyNotes.blueprint` | Blueprint Mode: Visualizing strategic layers. |
 
 ## Copy ES
 
-Total de entradas de texto: **315**
+Total de entradas de texto: **319**
 
 | Chave | Texto |
 | --- | --- |
@@ -889,17 +897,20 @@ Total de entradas de texto: **315**
 | `strategicBenefits.items[2].desc` | Acceso directo a consultores expertos, sin intermediarios ni pasantes. |
 | `strategicBenefits.items[3].title` | Procesos Validados |
 | `strategicBenefits.items[3].desc` | Reemplaza el caos por la claridad de un flujo que protege tu productividad. |
-| `calculator.badge` | Calculadora de ROI |
-| `calculator.title` | ¿Cuánto estás |
-| `calculator.titleAccent` | dejando en la mesa? |
-| `calculator.description` | El costo de la inercia es el impuesto más caro que paga su empresa. Calcule ahora el potencial de crecimiento descuidado. |
+| `calculator.badge` | Simulador de potencial de ingresos |
+| `calculator.title` | ¿Qué ingresos podría |
+| `calculator.titleAccent` | alcanzar su empresa? |
+| `calculator.description` | Simule un escenario de crecimiento sobre la facturación mensual actual. El resultado muestra potencial de ingresos, no ROI, beneficio ni un resultado garantizado. |
 | `calculator.revenueLabel` | Facturación Mensual |
+| `calculator.revenueRange` | De R$10 mil a R$500 mil |
 | `calculator.growthLabel` | Meta de Crecimiento |
-| `calculator.lossLabel` | Oportunidade Perdida Anual |
-| `calculator.monthlyLossLabel` | Crecimiento Mensual |
-| `calculator.newCeilingLabel` | Nuevo Techo Mensual |
-| `calculator.cta` | Capturar Oportunidad |
-| `calculator.disclaimer` | Análisis basado en benchmarking sénior |
+| `calculator.growthRange` | Del 5% al 50% sobre la facturación mensual actual |
+| `calculator.annualPotentialLabel` | Potencial Anual Estimado |
+| `calculator.monthlyPotentialLabel` | Potencial Mensual Estimado |
+| `calculator.newMonthlyRevenueLabel` | Nuevo Nivel Mensual |
+| `calculator.cta` | Hablar sobre este escenario |
+| `calculator.currencyNote` | Simulación en reales brasileños (BRL) |
+| `calculator.disclaimer` | Cálculo lineal: facturación mensual × meta de crecimiento × 12. No representa ROI, beneficio ni un resultado garantizado. |
 | `investment.badge` | Seguridad ante todo |
 | `investment.title` | Inversión |
 | `investment.titleAccent` | Estratégica. |
@@ -962,12 +973,13 @@ Total de entradas de texto: **315**
 | `strategyNotes.metrics` | Optimización basada en heurísticas de usabilidad senior. |
 | `strategyNotes.roadmap` | Visión 360 del LTV para máxima previsibilidade. |
 | `strategyNotes.roi` | Predicción de pérdida anual por estancamento digital. |
+| `strategyNotes.calculator` | Proyección lineal del potencial anual de ingresos, sin resultados garantizados. |
 | `strategyNotes.design` | Grid de elite para armonía visual absoluta. |
 | `strategyNotes.blueprint` | Blueprint Mode: Visualizando las capas estratégicas. |
 
 ## Copy FR
 
-Total de entradas de texto: **315**
+Total de entradas de texto: **319**
 
 | Chave | Texto |
 | --- | --- |
@@ -1211,17 +1223,20 @@ Total de entradas de texto: **315**
 | `strategicBenefits.items[2].desc` | Accès direct à des consultants experts, sans intermédiaires ni stagiaires. |
 | `strategicBenefits.items[3].title` | Agilité |
 | `strategicBenefits.items[3].desc` | Exécution rapide et adaptation constante aux évolutions du marché numérique. |
-| `calculator.badge` | ROI Calculator |
-| `calculator.title` | Combien vous |
-| `calculator.titleAccent` | laissez sur la table ? |
-| `calculator.description` | Le coût de l'inertie est l'impôt le plus cher que votre entreprise paie. Calculez dès maintenant le potentiel de croissance négligé. |
+| `calculator.badge` | Simulateur de potentiel de revenus |
+| `calculator.title` | Quel chiffre d'affaires votre entreprise |
+| `calculator.titleAccent` | pourrait-elle viser ? |
+| `calculator.description` | Simulez un scénario de croissance à partir du chiffre d'affaires mensuel actuel. Le résultat indique un potentiel de revenus, pas un ROI, un bénéfice ou un résultat garanti. |
 | `calculator.revenueLabel` | Chiffre d'Affaires Mensuel |
+| `calculator.revenueRange` | De 10 k R$ à 500 k R$ |
 | `calculator.growthLabel` | Objectif de Croissance |
-| `calculator.lossLabel` | Opportunité Perdue Annuelle |
-| `calculator.monthlyLossLabel` | Croissance Mensuelle |
-| `calculator.newCeilingLabel` | Nouveau Plafond Mensuel |
-| `calculator.cta` | Saisir l'Opportunité |
-| `calculator.disclaimer` | Analyse basée sur un benchmarking senior |
+| `calculator.growthRange` | De 5 % à 50 % du chiffre d'affaires mensuel actuel |
+| `calculator.annualPotentialLabel` | Potentiel Annuel Estimé |
+| `calculator.monthlyPotentialLabel` | Potentiel Mensuel Estimé |
+| `calculator.newMonthlyRevenueLabel` | Nouveau Niveau Mensuel |
+| `calculator.cta` | Parler de ce scénario |
+| `calculator.currencyNote` | Simulation en réals brésiliens (BRL) |
+| `calculator.disclaimer` | Calcul linéaire : chiffre d'affaires mensuel × objectif de croissance × 12. Ce n'est pas un ROI, un bénéfice ou un résultat garanti. |
 | `investment.badge` | Securite dabord |
 | `investment.title` | Investissement |
 | `investment.titleAccent` | Stratégique. |
@@ -1284,5 +1299,6 @@ Total de entradas de texto: **315**
 | `strategyNotes.metrics` | Optimisation basée sur les heuristiques d'utilisabilité senior. |
 | `strategyNotes.roadmap` | Vision 360 du LTV pour une prévisibilité maximale. |
 | `strategyNotes.roi` | Prévision de perte annuelle due à la stagnation numérique. |
+| `strategyNotes.calculator` | Projection linéaire du potentiel annuel de revenus, sans résultat garanti. |
 | `strategyNotes.design` | Grille d'élite pour une harmonie visuelle absolue. |
 | `strategyNotes.blueprint` | Blueprint Mode: Visualisation des couches stratégiques. |
